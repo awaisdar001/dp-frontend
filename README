@@ -1,20 +1,50 @@
+# Django React Project
+
+This project is for testing purposes and with a goal to be integrated with DestinationPak.com
+
+## Project Setup
+
+1. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install virtualenv.
+
+```bash
+pip install virtualenv
+```
+2. Create a virtual env & make sure you have `virtualenv` installed
+```bash
+virtualenv venv
+```
+3. Enable virtualenv
+```bash
+source venv/bin/activate
+```
+4. Install requirements
+```bash
+make requirements
+```
+5. Install Node Modules this will create node modules
+```bash
+make static
+```
+6. Run Djnago server
+```bash
+make run
+```
+7. Run Webpack Watcher
+```bash
+npm run hot
+```
+
+## Run Project
+Running project is easy.
+1. Run Django Server
+```python
+make run
+```
+2. Run Webpack watcher
+```bash
+npm run hot
+```
 
 
-1. Create a virtual env & make sure you have `virtualenv` installed
-	`virtualenv venv`
-
-2. Enable VENV => source venv/bin/activate
-
-3. Install requirements
-	`make requirements`
-
-4. Install Node Modules this will create node modules
-	`make static`
-
-4. Run Djnago server
-	`make run`
-
-5. Run Webpack Watcher
-	`npm run hot`
-
-
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
