@@ -1,0 +1,4 @@
+1. Enable VENV => source venv/bin/activate
+2. Run Server => python manage.py runserver
+3. Run Webpack Watcher => npm run hot
+4. https://github.com/mbrochh/django-reactjs-boilerplate/tree/step7_add_redux

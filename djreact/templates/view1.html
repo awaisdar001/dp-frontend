@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block main %}
+<div id="app"></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'index' %}
+{% endblock %}
