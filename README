@@ -1,4 +1,19 @@
-1. Enable VENV => source venv/bin/activate
-2. Run Server => python manage.py runserver
-3. Run Webpack Watcher => npm run hot
-4. https://github.com/mbrochh/django-reactjs-boilerplate/tree/step7_add_redux
+
+
+1. Create a virtual env & make sure you have `virtualenv` installed
+	`virtualenv venv`
+
+2. Enable VENV => source venv/bin/activate
+
+3. Install requirements
+	`pip install -r requirements.txt`
+
+4. Install Node Modules this will create node modules
+	`npm install`
+
+4. Run Djnago server
+	`python manage.py runserver`
+
+5. Run Webpack Watcher
+	`npm run hot`
+
