@@ -17,3 +17,8 @@
 5. Run Webpack Watcher
 	`npm run hot`
 
+Issues:
+-bash: webpack: command not found
+Run the following command which will install webpack globally on your system, that makes it available in terminal window.
+`npm i webpack -g`
+
