@@ -6,19 +6,15 @@
 2. Enable VENV => source venv/bin/activate
 
 3. Install requirements
-	`pip install -r requirements.txt`
+	`make requirements`
 
 4. Install Node Modules this will create node modules
-	`npm install`
+	`make static`
 
 4. Run Djnago server
-	`python manage.py runserver`
+	`make run`
 
 5. Run Webpack Watcher
 	`npm run hot`
 
-Issues:
--bash: webpack: command not found
-Run the following command which will install webpack globally on your system, that makes it available in terminal window.
-`npm i webpack -g`
 
