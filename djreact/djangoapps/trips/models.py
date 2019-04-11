@@ -1,10 +1,16 @@
 import json
+from datetime import datetime
 
 from django.db import models
 from django.db.models import permalink
 
 
 class Host(models.Model):
+    """
+    Trip host model.
+
+    This model contains the information for the trip hosts who are organizing trips.
+    """
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=50, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -12,22 +18,44 @@ class Host(models.Model):
 
 
 class Location(models.Model):
+    """
+    Trip location model
+
+    This model contains information about trip location with respect to coordinates. We will use
+    coordinates to draw google map.
+    """
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=50, null=True, blank=True)
     coordinates = models.CharField(max_length=40, null=True, blank=True)
 
 
 class Activity(models.Model):
+    """
+    Trip activity model
+
+    This model contains what kind of activities a trip will offer.
+    """
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=50, null=True, blank=True)
 
 
 class Facility(models.Model):
+    """
+    Trip Facility model
+
+    This model contains information all the available facilities that can be provided in
+    a trip.
+    """
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=50, null=True, blank=True)
 
 
 class Trip(models.Model):
+    """
+    Trip model
+
+    This model contains the main information that will be presented to end users.
+    """
     objects = models.Manager()
 
     name = models.CharField("Title", max_length=500, null=True, blank=True)
@@ -36,16 +64,14 @@ class Trip(models.Model):
     # meta includes tinyurl, poster
     _metadata = models.TextField(default='{}', null=True, blank=True)
 
-    date_from = models.DateTimeField(null=True, blank=True)
-    date_to = models.DateTimeField(null=True, blank=True)
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
     price = models.SmallIntegerField(default=0, null=True, blank=True)
 
     starting_location = models.ForeignKey(Location)
 
     locations_included = models.ManyToManyField(Location)
-    activities = models.ManyToManyField(Activity)
-    facilities = models.ManyToManyField(Facility)
+    activities = models.ManyToManyField(Activity, null=True, blank=True)
+    facilities = models.ManyToManyField(Facility, null=True, blank=True)
 
     cancelation_policy = models.TextField("Cancelation policy", null=True, blank=True)
 
@@ -73,7 +99,12 @@ class Trip(models.Model):
         return json.loads(self._metadata)
 
 
-class Itinerary(models.Model):
+class TripItinerary(models.Model):
+    """
+    Trip itinerary model
+
+    This model describes a trip with respect to each day.
+    """
     trip = models.ForeignKey(Trip, related_name="trip_itinerary")
     day = models.SmallIntegerField(default=0)
     title = models.TextField(max_length=100)
@@ -85,3 +116,30 @@ class Itinerary(models.Model):
 
     class Meta:
         ordering = ['trip', 'day']
+
+
+class AvailableTripsManager(models.Manager):
+    """
+    Trip schedule safe queryset manager.
+    """
+    def get_queryset(self):
+        """
+        This method will only return the objects which have date_from defined in the future
+
+        Usage:
+            >>> TripSchedule.available.all()
+        """
+        return super(AvailableTripsManager).get_queryset().filter(date_from__gt=datetime.now())
+
+
+class TripSchedule(models.Model):
+    """
+    Trip schedule model
+
+    This model contains information of upcoming trips
+    """
+    objects = models.Manager()  # The default manager.
+    available = AvailableTripsManager()  # Available Trips manager
+
+    trip = models.ForeignKey(Trip, related_name="trip_schedule")
+    date_from = models.DateTimeField()
