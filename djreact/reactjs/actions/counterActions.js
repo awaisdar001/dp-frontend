@@ -3,9 +3,9 @@ export const SUBTRACT = "ADD"
 export const MUL = "MUL"
 
 export function increaseCounter() {
-    return {type: INCREASE}
+  return {type: INCREASE}
 }
 
 export function subtractCounter() {
-    return {type: SUBTRACT}
+  return {type: SUBTRACT}
 }
