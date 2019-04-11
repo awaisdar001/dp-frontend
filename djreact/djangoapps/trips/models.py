@@ -1,8 +1,9 @@
 import json
-from datetime import datetime
 
 from django.db import models
 from django.db.models import permalink
+
+from managers import AvailableTripsManager
 
 
 class Host(models.Model):
@@ -67,8 +68,8 @@ class Trip(models.Model):
     _metadata = models.TextField(default='{}', null=True, blank=True)
 
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
-
-    starting_location = models.ForeignKey(Location)
+    price = models.SmallIntegerField(default=0, null=True, blank=True)
+    starting_location = models.OneToOneField(Location)
 
     locations_included = models.ManyToManyField(Location)
     activities = models.ManyToManyField(Activity, null=True, blank=True)
@@ -122,24 +123,6 @@ class TripItinerary(models.Model):
         ordering = ['trip', 'day']
 
 
-class AvailableTripsManager(models.Manager):
-    """
-    Trip schedule safe queryset manager.
-    """
-
-    def get_queryset(self):
-        """
-        This method will only return the objects which have date_from defined
-        in the future
-
-        Usage:
-            >>> TripSchedule.available.all()
-        """
-        return super(AvailableTripsManager).get_queryset().filter(
-            date_from__gt=datetime.now()
-        )
-
-
 class TripSchedule(models.Model):
     """
     Trip schedule model
@@ -151,4 +134,4 @@ class TripSchedule(models.Model):
 
     trip = models.ForeignKey(Trip, related_name="trip_schedule")
     date_from = models.DateTimeField()
-    price = models.SmallIntegerField(default=0, null=True, blank=True)
+    price_override = models.SmallIntegerField(default=0, null=True, blank=True)
