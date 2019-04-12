@@ -13,9 +13,8 @@ static: ## Gather all static assets for production
 	npm install
 	python manage.py collectstatic -v 0 --noinput
 
-
-
 run: requirements update_db ## Runs django development server
+	npm run dev
 	python manage.py runserver 127.0.0.1:8004
 
 help: ## display this help message
