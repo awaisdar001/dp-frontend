@@ -48,7 +48,7 @@ class Facility(models.Model):
     This model contains information all the available facilities that can be
     provided in a trip.
     """
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=150)
     slug = models.SlugField(max_length=50, null=True, blank=True)
 
 
