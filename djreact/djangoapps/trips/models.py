@@ -69,20 +69,17 @@ class Trip(models.Model):
 
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
     price = models.SmallIntegerField(default=0, null=True, blank=True)
-    starting_location = models.OneToOneField(Location)
+    starting_location = models.OneToOneField(Location, related_name="trip_starting_location")
 
-    locations_included = models.ManyToManyField(Location)
-    activities = models.ManyToManyField(Activity, null=True, blank=True)
-    facilities = models.ManyToManyField(Facility, null=True, blank=True)
+    locations_included = models.ManyToManyField(Location, related_name="trip_locations")
+    activities = models.ManyToManyField(Activity)
+    facilities = models.ManyToManyField(Facility)
 
     cancelation_policy = models.TextField(null=True, blank=True)
 
     deleted = models.BooleanField(default=False)
 
-    created_by = models.ForeignKey(
-        'auth.User',
-        related_name="created_by_trips"
-    )
+    created_by = models.ForeignKey('auth.User', related_name="created_by_trips")
     host = models.ForeignKey(Host, related_name="host_trips")
 
     created_at = models.DateTimeField(auto_now_add=True)
