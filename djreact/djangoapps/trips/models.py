@@ -76,6 +76,7 @@ class Trip(models.Model):
     facilities = models.ManyToManyField(Facility)
 
     cancelation_policy = models.TextField(null=True, blank=True)
+    gear = models.TextField("Recommended Gear", null=True, blank=True)
 
     deleted = models.BooleanField(default=False)
 

@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime, timedelta
+
 from django.test import TestCase
+from pytz import UTC
 
 from djangoapps.trips.models import (
-    Host, Location, Activity, Facility
+    Host, Location, Activity, Facility, Trip, TripSchedule
+)
+from djangoapps.trips.tests.factories import (
+    TripFactory, LocationFactory, HostFactory, ActivityFactory,
+    FacilityFactory, TripScheduleFactory, TripItineraryFactory
 )
 
 
@@ -12,8 +19,7 @@ class TestHost(TestCase):
     """
 
     def setUp(self):
-        self.host = Host(name="Arbisoft")
-        self.host.save()
+        self.host = HostFactory()
 
     def test_create_host(self):
         """
@@ -61,8 +67,7 @@ class TestLocation(TestCase):
     """
 
     def setUp(self):
-        self.location = Location(name="Lahore")
-        self.location.save()
+        self.location = LocationFactory()
 
     def test_create_location(self):
         """
@@ -96,8 +101,7 @@ class TestActivity(TestCase):
     """
 
     def setUp(self):
-        self.activity = Activity(name="Snow Fights")
-        self.activity.save()
+        self.activity = ActivityFactory()
 
     def test_create_activity(self):
         """
@@ -130,8 +134,7 @@ class TestFacility(TestCase):
     """
 
     def setUp(self):
-        self.facility = Facility(name="Food")
-        self.facility.save()
+        self.facility = FacilityFactory()
 
     def test_create_facility(self):
         """
@@ -156,3 +159,62 @@ class TestFacility(TestCase):
         self.assertEqual(1, len(Facility.objects.all()))
         self.facility.delete()
         self.assertEqual(0, len(Facility.objects.all()))
+
+
+class TestTrip(TestCase):
+    """Test the application Trip model for CURD oprations"""
+
+    def setUp(self):
+        """Setup objects for testing"""
+
+        location_1 = LocationFactory()
+        self.trip = TripFactory.create(locations_included=[location_1], starting_location=location_1)
+
+    def test_create(self):
+        """Checks if setup has created model object"""
+        self.assertIsNotNone(self.trip.id)
+
+    def test_update(self):
+        """Test update trip method."""
+        self.trip.description = 'This is my dummy description'
+        self.trip.save()
+        trip = Trip.objects.get(id=self.trip.id)
+        self.assertEqual(trip.description, self.trip.description)
+
+    def test_delete(self):
+        """Test Trip delete"""
+        self.assertEqual(Trip.objects.all().count(), 1)
+        self.trip.delete()
+        self.assertEqual(Trip.objects.all().count(), 0)
+
+    def test_gear_update(self):
+        """Test update gear"""
+        new_gear = "My test gear"
+        self.trip.gear = new_gear
+        self.trip.save()
+        self.assertEqual(Trip.objects.get(id=self.trip.id).gear, new_gear)
+
+    def test_trip_itinerary(self):
+        """Test trip itinerary"""
+        self.assertEqual(self.trip.trip_itinerary.all().count(), 0)
+        TripItineraryFactory(trip=self.trip, day=1)
+        TripItineraryFactory(trip=self.trip, day=2)
+        self.assertEqual(self.trip.trip_itinerary.all().count(), 2)
+
+    def test_trip_schedule(self):
+        """Test Trip schedule"""
+        today_date = datetime.now(tz=UTC)
+        self.assertEqual(self.trip.trip_schedule.all().count(), 0)
+        __ = TripScheduleFactory(trip=self.trip, date_from=today_date)
+        trip_schedules = self.trip.trip_schedule.all()
+        self.assertEqual(trip_schedules.all().count(), 1)
+        self.assertEqual(trip_schedules.get().date_from, today_date)
+
+    def test_trip_availability(self):
+        """Test available manager of trip schedule"""
+        future_trip_date = datetime.now(UTC) + timedelta(days=7)
+        past_trip = TripScheduleFactory(trip=self.trip)
+        self.assertEqual(TripSchedule.available.all().count(), 0)
+        future_trip = TripScheduleFactory(trip=self.trip, date_from=future_trip_date)
+        self.assertEqual(TripSchedule.available.all().count(), 1)
+        self.assertEqual(TripSchedule.objects.all().count(), 2)
