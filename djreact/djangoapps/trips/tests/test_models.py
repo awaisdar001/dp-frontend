@@ -7,6 +7,9 @@ from djangoapps.trips.models import (
 
 
 class TestHost(TestCase):
+    """
+    Test Suite for verifying various operations on Host model.
+    """
 
     def setUp(self):
         self.host = Host(name="Arbisoft")
@@ -53,6 +56,9 @@ class TestHost(TestCase):
 
 
 class TestLocation(TestCase):
+    """
+    Test Suite to verify Location model w.r.t CRUD Operations.
+    """
 
     def setUp(self):
         self.location = Location(name="Lahore")
@@ -85,6 +91,9 @@ class TestLocation(TestCase):
 
 
 class TestActivity(TestCase):
+    """
+    To test CRUD operations on Activity model.
+    """
 
     def setUp(self):
         self.activity = Activity(name="Snow Fights")
@@ -116,6 +125,9 @@ class TestActivity(TestCase):
 
 
 class TestFacility(TestCase):
+    """
+    Verify CRUD operations for Facility model.
+    """
 
     def setUp(self):
         self.facility = Facility(name="Food")
