@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.test import TestCase
+
 from djangoapps.trips.models import (
-Host, Location, Activity, Facility
+    Host, Location, Activity, Facility
 )
 
 
@@ -108,6 +110,7 @@ class TestActivity(TestCase):
         """
         Test the activity object is not longer persisted after delete.
         """
+        self.assertEqual(1, len(Activity.objects.all()))
         self.activity.delete()
         self.assertEqual(0, len(Activity.objects.all()))
 
@@ -138,5 +141,6 @@ class TestFacility(TestCase):
         """
         Test the facility object is not longer persisted after delete.
         """
+        self.assertEqual(1, len(Facility.objects.all()))
         self.facility.delete()
         self.assertEqual(0, len(Facility.objects.all()))
