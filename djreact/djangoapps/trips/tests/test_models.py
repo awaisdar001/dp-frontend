@@ -166,9 +166,7 @@ class TestTrip(TestCase):
 
     def setUp(self):
         """Setup objects for testing"""
-
-        location_1 = LocationFactory()
-        self.trip = TripFactory.create(locations_included=[location_1], starting_location=location_1)
+        self.trip = TripFactory.create(locations_included=['Lahore', 'Gilgit'])
 
     def test_create(self):
         """Checks if setup has created model object"""
