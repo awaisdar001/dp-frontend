@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from pytz import UTC
 
 
 class AvailableTripsManager(models.Manager):
@@ -16,6 +17,6 @@ class AvailableTripsManager(models.Manager):
         Usage:
             >>> TripSchedule.available.all()
         """
-        return super(AvailableTripsManager).get_queryset().filter(
-            date_from__gt=datetime.now()
+        return super(AvailableTripsManager, self).get_queryset().filter(
+            date_from__gt=datetime.now(tz=UTC)
         )
