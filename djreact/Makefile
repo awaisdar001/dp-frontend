@@ -23,3 +23,6 @@ help: ## display this help message
 
 test: ## Run unit tests for Trips app
 	python manage.py test djangoapps/trips/tests
+
+import: ## Import the mysql data into database
+	mysql -uroot -p -h localhost djreact < ../data/djreact_2019-04-17.sql

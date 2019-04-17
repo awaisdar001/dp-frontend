@@ -41,6 +41,7 @@ class HostFactory(DjangoModelFactory):
         model = Host
 
     name = factory.Sequence(u'Host - {0}'.format)
+    cancelation_policy = factory.Sequence(u'Cancelation Policy - {0}'.format)
 
 
 class FacilityFactory(DjangoModelFactory):
@@ -85,7 +86,6 @@ class TripFactory(DjangoModelFactory):
     name = factory.Sequence(u'My awsome trip - {0}'.format)
     slug = factory.Sequence(u'my-awsome-trip-{0}'.format)
     description = factory.Sequence(u'awsome trip description- {}'.format)
-    cancelation_policy = factory.Sequence(u'Cancelation Policy - {0}'.format)
 
     locations_included = factory.SubFactory(LocationFactory)
     starting_location = factory.SubFactory(LocationFactory)
