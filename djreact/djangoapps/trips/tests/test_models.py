@@ -5,11 +5,11 @@ from django.test import TestCase
 from pytz import UTC
 
 from djangoapps.trips.models import (
-    Host, Location, Activity, Facility, Trip, TripSchedule
+    Activity, Facility, Host, Location, Trip, TripSchedule
 )
 from djangoapps.trips.tests.factories import (
-    TripFactory, LocationFactory, HostFactory, ActivityFactory,
-    FacilityFactory, TripScheduleFactory, TripItineraryFactory
+    ActivityFactory, FacilityFactory, HostFactory, LocationFactory,
+    TripFactory, TripItineraryFactory, TripScheduleFactory
 )
 
 
