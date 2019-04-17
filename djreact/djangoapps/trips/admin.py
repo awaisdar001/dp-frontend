@@ -19,6 +19,7 @@ class TripItineraryAdminInline(admin.StackedInline):
     extra = 0
 
 
+@admin.register(Trip)
 class TripAdmin(admin.ModelAdmin):
     """Trip modal admin configuration"""
     inlines = [TripItineraryAdminInline, TripScheduleAdminInline]
@@ -30,6 +31,7 @@ class TripAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description', 'locations_included']
 
 
+@admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):
     """Activity modal admin configuration"""
     prepopulated_fields = {'slug': ('name',)}
@@ -38,6 +40,7 @@ class ActivityAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(Facility)
 class FacilityAdmin(admin.ModelAdmin):
     """Facility modal admin configuration"""
     prepopulated_fields = {'slug': ('name',)}
@@ -46,6 +49,7 @@ class FacilityAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     """Location modal admin configuration"""
     prepopulated_fields = {'slug': ('name',)}
@@ -54,6 +58,7 @@ class LocationAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(TripItinerary)
 class TripItineraryAdmin(admin.ModelAdmin):
     """Trip itinerary modal admin configuration"""
     list_display = ('trip', 'description')
@@ -61,6 +66,7 @@ class TripItineraryAdmin(admin.ModelAdmin):
     search_fields = ['trip']
 
 
+@admin.register(TripSchedule)
 class TripScheduleAdmin(admin.ModelAdmin):
     """Trip schedule admin configuration"""
     list_display = ('trip', 'date_from')
@@ -68,6 +74,7 @@ class TripScheduleAdmin(admin.ModelAdmin):
     search_fields = ['trip']
 
 
+@admin.register(Host)
 class HostAdmin(admin.ModelAdmin):
     """Host modal admin configuration"""
     list_display = (
@@ -75,12 +82,3 @@ class HostAdmin(admin.ModelAdmin):
     )
     list_filter = ('verified',)
     search_fields = ['name', 'description']
-
-
-admin.site.register(Trip, TripAdmin)
-admin.site.register(Activity, ActivityAdmin)
-admin.site.register(Facility, FacilityAdmin)
-admin.site.register(Location, LocationAdmin)
-admin.site.register(TripItinerary, TripItineraryAdmin)
-admin.site.register(TripSchedule, TripScheduleAdmin)
-admin.site.register(Host, HostAdmin)
