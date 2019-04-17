@@ -13,10 +13,18 @@ class Host(models.Model):
     This model contains the information for the trip hosts who are organizing
     trips.
     """
-    name = models.CharField(max_length=30)
-    slug = models.SlugField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=70, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    cancelation_policy = models.TextField(null=True, blank=True)
     verified = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['name', 'verified']
+
+    def __unicode__(self):
+        """Unicode representation of model instance"""
+        return u"{0}".format(self.name)
 
 
 class Location(models.Model):
@@ -30,6 +38,13 @@ class Location(models.Model):
     slug = models.SlugField(max_length=50, null=True, blank=True)
     coordinates = models.CharField(max_length=40, null=True, blank=True)
 
+    class Meta:
+        ordering = ['name']
+
+    def __unicode__(self):
+        """Unicode representation of model instance"""
+        return u"{0}".format(self.name)
+
 
 class Activity(models.Model):
     """
@@ -40,6 +55,14 @@ class Activity(models.Model):
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=50, null=True, blank=True)
 
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Activities'
+
+    def __unicode__(self):
+        """Unicode representation of model instance"""
+        return u"{0}".format(self.name)
+
 
 class Facility(models.Model):
     """
@@ -48,8 +71,16 @@ class Facility(models.Model):
     This model contains information all the available facilities that can be
     provided in a trip.
     """
-    name = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=70)
+    slug = models.SlugField(max_length=85, null=True, blank=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Facilities'
+
+    def __unicode__(self):
+        """Unicode representation of model instance"""
+        return u"{0}".format(self.name)
 
 
 class Trip(models.Model):
@@ -62,7 +93,7 @@ class Trip(models.Model):
     objects = models.Manager()
 
     name = models.CharField("Title", max_length=500, null=True, blank=True)
-    slug = models.SlugField(max_length=50, null=True, blank=True)
+    slug = models.SlugField(max_length=100, null=True, blank=True)
     description = models.TextField("Description", null=True, blank=True)
     # meta includes tinyurl, poster
     _metadata = models.TextField(default='{}', null=True, blank=True)
@@ -75,7 +106,7 @@ class Trip(models.Model):
     activities = models.ManyToManyField(Activity)
     facilities = models.ManyToManyField(Facility)
 
-    cancelation_policy = models.TextField(null=True, blank=True)
+    _cancelation_policy = models.TextField("Cancelation Policy Override", null=True, blank=True)
     gear = models.TextField("Recommended Gear", null=True, blank=True)
 
     deleted = models.BooleanField(default=False)
@@ -88,7 +119,7 @@ class Trip(models.Model):
 
     def __unicode__(self):
         """Unicode representation of model instance"""
-        return self.name
+        return u"{0} - {1}".format(self.name, self.host)
 
     class Meta:
         ordering = ['-created_at', '-id']
@@ -99,7 +130,16 @@ class Trip(models.Model):
 
     @property
     def metadata(self):
+        """Parse the internal metadata field into python object"""
         return json.loads(self._metadata)
+
+    @property
+    def cancelation_policy(self):
+        """
+        Trip's cancelation policy should be given preference over the
+        generic host cancelation (all-host-trips) policy.
+        """
+        return self._cancelation_policy or self.host.cancelation_policy
 
 
 class TripItinerary(models.Model):
@@ -110,8 +150,7 @@ class TripItinerary(models.Model):
     """
     trip = models.ForeignKey(Trip, related_name="trip_itinerary")
     day = models.SmallIntegerField(default=0)
-    title = models.TextField(max_length=100)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(default='')
 
     def __unicode__(self):
         """Unicode representation of model instance"""
@@ -119,6 +158,7 @@ class TripItinerary(models.Model):
 
     class Meta:
         ordering = ['trip', 'day']
+        verbose_name_plural = 'Trip Itineraries'
 
 
 class TripSchedule(models.Model):
@@ -133,3 +173,7 @@ class TripSchedule(models.Model):
     trip = models.ForeignKey(Trip, related_name="trip_schedule")
     date_from = models.DateTimeField()
     price_override = models.SmallIntegerField(default=0, null=True, blank=True)
+
+    def __unicode__(self):
+        """Unicode representation of model instance"""
+        return u"{0} - {1}".format(self.trip, self.date_from)
