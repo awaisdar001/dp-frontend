@@ -100,7 +100,7 @@ class Trip(models.Model):
 
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
     price = models.SmallIntegerField(default=0, null=True, blank=True)
-    starting_location = models.OneToOneField(Location, related_name="trip_starting_location")
+    starting_location = models.ForeignKey(Location, related_name="trip_starting_location")
 
     locations_included = models.ManyToManyField(Location, related_name="trip_locations")
     activities = models.ManyToManyField(Activity)
