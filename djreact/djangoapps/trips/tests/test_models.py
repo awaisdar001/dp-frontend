@@ -168,16 +168,22 @@ class TestTrip(TestCase):
         """Setup objects for testing"""
         self.trip = TripFactory.create(locations_included=['Lahore', 'Gilgit'])
 
+    def _update_trip_field(self, field, value):
+        """Updates a field in trip object"""
+        setattr(self.trip, field, value)
+        self.trip.save()
+
     def test_create(self):
         """Checks if setup has created model object"""
         self.assertIsNotNone(self.trip.id)
 
     def test_update(self):
         """Test update trip method."""
-        self.trip.description = 'This is my dummy description'
-        self.trip.save()
+        new_description = u'This is my dummy description'
+        self._update_trip_field('description', new_description)
+
         trip = Trip.objects.get(id=self.trip.id)
-        self.assertEqual(trip.description, self.trip.description)
+        self.assertEqual(new_description, trip.description)
 
     def test_delete(self):
         """Test Trip delete"""
@@ -187,9 +193,8 @@ class TestTrip(TestCase):
 
     def test_gear_update(self):
         """Test update gear"""
-        new_gear = "My test gear"
-        self.trip.gear = new_gear
-        self.trip.save()
+        new_gear = u'My test gear'
+        self._update_trip_field('gear', new_gear)
         self.assertEqual(Trip.objects.get(id=self.trip.id).gear, new_gear)
 
     def test_trip_itinerary(self):
@@ -216,3 +221,19 @@ class TestTrip(TestCase):
         future_trip = TripScheduleFactory(trip=self.trip, date_from=future_trip_date)
         self.assertEqual(TripSchedule.available.all().count(), 1)
         self.assertEqual(TripSchedule.objects.all().count(), 2)
+
+    def test_cancelation_policy(self):
+        """
+        Tests cancelation policy override.
+
+        When trip object has cancelation policy, it should be given perfernce
+        over host cancelation policy.
+        """
+        new_cancelation_policy = u'new cancelation policy'
+        host_cancelation_policy = self.trip.host.cancelation_policy
+
+        self.assertEqual(self.trip.cancelation_policy, host_cancelation_policy)
+        self.assertNotEqual(host_cancelation_policy, new_cancelation_policy)
+
+        self._update_trip_field('_cancelation_policy', new_cancelation_policy)
+        self.assertEqual(self.trip.cancelation_policy, new_cancelation_policy)
