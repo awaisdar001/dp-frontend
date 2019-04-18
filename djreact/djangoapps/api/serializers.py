@@ -61,19 +61,44 @@ class TripScheduleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TripSerializer(serializers.ModelSerializer):
-    """Trip Modal Serializer"""
+class TripDetailSerializer(serializers.ModelSerializer):
+    """
+    Trip Detail Modal Serializer
+
+    This Serializer is used for trip object retrieval as it requires all
+    the details of the object
+    """
     trip_schedule = TripScheduleSerializer(many=True)
     trip_itinerary = TripItinerarySerializer(many=True)
 
     activities = ActivitySerializer(many=True)
     cancelation_policy = serializers.CharField(read_only=True)
     facilities = FacilitySerializer(many=True)
-    locations_included = LocationSerializer(many=True)
     starting_location = LocationSerializer()
+    locations_included = LocationSerializer(many=True)
     host = HostSerializer()
     created_by = UserSerializer()
 
     class Meta:
         exclude = ('_cancelation_policy',)
+        model = Trip
+
+
+class TripListSerializer(serializers.ModelSerializer):
+    """
+    Trip List Modal Serializer
+
+    This Serializer is used for the trips listing as it requires
+    minimal information
+    """
+    activities = ActivitySerializer(many=True)
+    facilities = FacilitySerializer(many=True)
+    starting_location = LocationSerializer()
+    locations_included = LocationSerializer(many=True)
+
+    class Meta:
+        exclude = (
+            '_cancelation_policy', 'host', 'created_by', 'created_at', 'updated_at',
+            'deleted', 'gear'
+        )
         model = Trip
