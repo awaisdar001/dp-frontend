@@ -27,3 +27,16 @@ export function request(url, options, success, error400, error, failure) {
       return failure(ex);
     });
 }
+
+export function formatDigit(value) {
+  return value.toLocaleString(navigator.language, {
+    minimumFractionDigits: 0
+  });
+}
+
+/////////////////////////////////////////////////////////////
+//                  NOTES                                 //
+///////////////////////////////////////////////////////////
+// const { twitter: tweet, facebook: fb } = wes.links.social;
+// The above code will pull the wes.links.social.twitter into a
+// variable called tweet and similarly for facebook.
