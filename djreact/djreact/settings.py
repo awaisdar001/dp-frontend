@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'djangoapps.trips',
+    'rest_framework',
+    'djangoapps.api'
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')

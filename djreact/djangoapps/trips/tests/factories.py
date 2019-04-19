@@ -1,11 +1,13 @@
 from datetime import datetime
 
 import factory
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group, User
 from factory.django import DjangoModelFactory
 from pytz import UTC
 
-from djangoapps.trips.models import Trip, Location, Facility, Host, Activity, TripSchedule, TripItinerary
+from djangoapps.trips.models import (
+    Activity, Facility, Host, Location, Trip, TripItinerary, TripSchedule
+)
 
 
 class GroupFactory(DjangoModelFactory):
