@@ -1,6 +1,6 @@
-# Django React Project
+# Django React Redux Frontend (DRRF)
 
-This project is for testing purposes and with a goal to be integrated with DestinationPak.com
+microfrontend for DestinationPak.com
 
 ## Project Setup
 
