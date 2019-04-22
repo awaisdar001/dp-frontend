@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from rest_framework import permissions, viewsets
 
 from djangoapps.api import serializers
+from djangoapps.api.paginators import CustomResponsePagination
 from djangoapps.trips.models import Trip
 
 
@@ -11,6 +12,7 @@ class TripViewSet(viewsets.ReadOnlyModelViewSet):
     """Trip Viewset"""
     queryset = Trip.objects.all()
     serializer_class = serializers.TripDetailSerializer
+    pagination_class = CustomResponsePagination
     permission_classes = [
         permissions.AllowAny
     ]
