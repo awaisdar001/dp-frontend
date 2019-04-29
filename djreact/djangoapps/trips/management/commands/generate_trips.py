@@ -12,11 +12,29 @@ from djangoapps.trips.models import (Activity, Facility, Host, Location, Trip, T
 
 
 class Command(BaseCommand):
+    """
+    This command will generate batch of trips with random data.
+
+    By running this command, the trips generated will have random data
+    from a pre-defined list of data. The data selection is done at the
+    random to ensure that trips will have diverse data, which will provide
+    help for filtering & searching.
+
+    EXAMPLE USAGE:
+        ./manage.py generate_trips --batch_size=100
+    OR
+        ./manage.py generate_trips
+
+    If batch size is not provided, the command will generate 10 trips
+
+    """
 
     help = "Generate batches of trip with pre-populated random data"
 
     def add_arguments(self, parser):
-
+        """
+        Defining the arguments to be used by the command.
+        """
         parser.add_argument(
             '--batch_size',
             type=int,
@@ -103,26 +121,50 @@ class Command(BaseCommand):
         """
         get random schedules datetime objects separated by appropriate trip duration.
         """
-        duration_list = []
-        for j in range(1, random.choice(range(3, 6))):
-            duration_list.append(datetime.now() + timedelta(days=trip_duration + (j*7)))
-        return duration_list
+        schedules_list = []
+        for data_range in range(1, random.choice(range(3, 6))):
+            schedule = datetime.now() + timedelta(days=trip_duration + (data_range*7))
+            schedules_list.append(schedule)
+        return schedules_list
 
     @staticmethod
     def get_random_itineraries():
-
+        """
+        generate random itineraries for a trip with a defined format
+        """
         itineraries_list = []
-        for j in range(1, random.choice(range(4, 7))):
-            day = j
+        for day_number in range(1, random.choice(range(4, 7))):
+            day = day_number
             description = "Itinerary for Day: {}".format(day)
             itineraries_list.append((day, description))
         return itineraries_list
 
-    def handle(self, *args, **options):
+    @staticmethod
+    def get_random_gear():
+        """
+        get random number of gears for a trip.
 
+        returns a comma-separated string of gears from a pre-defined
+        list of gears
+        """
+        gears_list = [
+            'Mountain Climber', 'Shoes', 'Stick', 'Coat', 'Camp',
+            'Inhaler', 'Lighter'
+        ]
+        selected_gear = random.sample(gears_list, random.choice(range(1,4)))
+        return ','.join(selected_gear)
+
+    def handle(self, *args, **options):
+        """
+        Generating trip based on the input.
+        """
         batch_size = options['batch_size']
         # user required to create a trip
-        created_by_user = User.objects.get(username='admin')
+        user = User.objects.get(username='admin')
+        if not user:
+            raise CommandError(
+                "Username: admin doesn't exist. Run 'make import' to populate base data"
+            )
 
         for count in range(0, batch_size):
             trip = Trip(name="Trip : {}".format(count))
@@ -130,7 +172,9 @@ class Command(BaseCommand):
             trip.price = random.choice([1000, 5000, 6000, 9000])
             trip.starting_location = self.get_random_locations(0)
             trip.host = self.get_random_host()
-            trip.created_by = created_by_user
+            trip.gear = self.get_random_gear()
+            trip.description = "This is the description for trip: {}".format(count+1)
+            trip.created_by = user
 
             # Initial Save
             try:
