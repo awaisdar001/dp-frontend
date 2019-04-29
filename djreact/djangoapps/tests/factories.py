@@ -1,13 +1,13 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import factory
 from django.contrib.auth.models import Group, User
+from django.utils.timezone import get_current_timezone
 from factory.django import DjangoModelFactory
 from pytz import UTC
 
-from djangoapps.trips.models import (
-    Activity, Facility, Host, Location, Trip, TripItinerary, TripSchedule
-)
+from djangoapps.trips.models import (Activity, Facility, Host, Location, Trip,
+                                     TripItinerary, TripSchedule)
 
 
 class GroupFactory(DjangoModelFactory):
@@ -22,6 +22,7 @@ class GroupFactory(DjangoModelFactory):
 
 class UserFactory(DjangoModelFactory):
     """User factory"""
+    username = factory.Sequence(u'User - {0}'.format)
 
     class Meta:
         model = User
@@ -66,11 +67,10 @@ class LocationFactory(DjangoModelFactory):
 
 class TripScheduleFactory(DjangoModelFactory):
     """TripSchedule factory"""
+    date_from = datetime.now(tz=get_current_timezone()) + timedelta(days=7)
 
     class Meta:
         model = TripSchedule
-
-    date_from = datetime(2012, 1, 1, tzinfo=UTC)
 
 
 class TripItineraryFactory(DjangoModelFactory):
@@ -93,6 +93,7 @@ class TripFactory(DjangoModelFactory):
     starting_location = factory.SubFactory(LocationFactory)
     activities = factory.SubFactory(ActivityFactory)
     facilities = factory.SubFactory(FacilityFactory)
+    trip_schedule = factory.SubFactory(TripScheduleFactory)
 
     gear = factory.Sequence(u'Trip gear - {0}'.format)
 
@@ -100,7 +101,7 @@ class TripFactory(DjangoModelFactory):
     host = factory.SubFactory(HostFactory)
 
     created_at = datetime(2012, 1, 1, tzinfo=UTC)
-    updated_at = datetime(2011, 1, 1, tzinfo=UTC)
+    updated_at = datetime(2013, 1, 1, tzinfo=UTC)
 
     @factory.post_generation
     def locations_included(self, create, extracted, **kwargs):
@@ -137,3 +138,10 @@ class TripFactory(DjangoModelFactory):
 
         for group_name in extracted:
             self.facilities.add(FacilityFactory.simple_generate(create, name=group_name))
+
+    @factory.post_generation
+    def trip_schedule(self, create, number, **kwargs):
+        """The post_generation decorator performs actions once the model object has been generated."""
+        if number is None:
+            return
+        TripScheduleFactory.simple_generate_batch(create, trip=self, size=number)

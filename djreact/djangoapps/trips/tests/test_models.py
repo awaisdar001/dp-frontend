@@ -2,15 +2,15 @@
 from datetime import datetime, timedelta
 
 from django.test import TestCase
+from django.utils import timezone
 from pytz import UTC
 
-from djangoapps.trips.models import (
-    Activity, Facility, Host, Location, Trip, TripSchedule
-)
-from djangoapps.trips.tests.factories import (
-    ActivityFactory, FacilityFactory, HostFactory, LocationFactory,
-    TripFactory, TripItineraryFactory, TripScheduleFactory
-)
+from djangoapps.tests.factories import (ActivityFactory, FacilityFactory,
+                                        HostFactory, LocationFactory,
+                                        TripFactory, TripItineraryFactory,
+                                        TripScheduleFactory)
+from djangoapps.trips.models import (Activity, Facility, Host, Location, Trip,
+                                     TripSchedule)
 
 
 class TestHost(TestCase):
@@ -215,9 +215,12 @@ class TestTrip(TestCase):
 
     def test_trip_availability(self):
         """Test available manager of trip schedule"""
-        future_trip_date = datetime.now(UTC) + timedelta(days=7)
-        past_trip = TripScheduleFactory(trip=self.trip)
+        future_trip_date = timezone.now() + timedelta(days=7)
+        past_trip_date = timezone.now() - timedelta(days=7)
+
+        past_trip = TripScheduleFactory(trip=self.trip, date_from=past_trip_date)
         self.assertEqual(TripSchedule.available.all().count(), 0)
+
         future_trip = TripScheduleFactory(trip=self.trip, date_from=future_trip_date)
         self.assertEqual(TripSchedule.available.all().count(), 1)
         self.assertEqual(TripSchedule.objects.all().count(), 2)
