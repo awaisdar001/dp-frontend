@@ -1,12 +1,6 @@
-import React from "react"
-import {render} from "react-dom"
-import {Provider} from "react-redux"
-import APP from "./containers/CounterApp"
-import store from "./store"
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
-render(
-    <Provider store={store}>
-        <APP />
-    </Provider>,
-    document.getElementById('app')
-)
+render(<Provider store={store} />, document.getElementById('app'));
