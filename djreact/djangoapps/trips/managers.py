@@ -24,7 +24,7 @@ class AvailableTripScheduleManager(models.Manager):
 
 class ActiveTripManager(models.Manager):
     """
-    Trip schedule safe queryset manager. 
+    Trip schedule safe queryset manager.
 
     Usage:
         >>> Trip.active.all()
