@@ -3,7 +3,7 @@ import json
 from django.db import models
 from django.db.models import permalink
 
-from managers import AvailableTripsManager
+from managers import ActiveTripManager, AvailableTripScheduleManager
 
 
 class Host(models.Model):
@@ -91,6 +91,7 @@ class Trip(models.Model):
     end users.
     """
     objects = models.Manager()
+    active = ActiveTripManager()
 
     name = models.CharField("Title", max_length=500, null=True, blank=True)
     slug = models.SlugField(max_length=100, null=True, blank=True)
@@ -100,18 +101,22 @@ class Trip(models.Model):
 
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
     price = models.SmallIntegerField(default=0, null=True, blank=True)
-    starting_location = models.ForeignKey(Location, related_name="trip_starting_location")
+    starting_location = models.ForeignKey(
+        Location, related_name="trip_starting_location")
 
-    locations_included = models.ManyToManyField(Location, related_name="trip_locations")
+    locations_included = models.ManyToManyField(
+        Location, related_name="trip_locations")
     activities = models.ManyToManyField(Activity)
     facilities = models.ManyToManyField(Facility)
 
-    _cancelation_policy = models.TextField("Cancelation Policy Override", null=True, blank=True)
+    _cancelation_policy = models.TextField(
+        "Cancelation Policy Override", null=True, blank=True)
     gear = models.TextField("Recommended Gear", null=True, blank=True)
 
     deleted = models.BooleanField(default=False)
 
-    created_by = models.ForeignKey('auth.User', related_name="created_by_trips")
+    created_by = models.ForeignKey(
+        'auth.User', related_name="created_by_trips")
     host = models.ForeignKey(Host, related_name="host_trips")
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -167,8 +172,8 @@ class TripSchedule(models.Model):
 
     This model contains information of upcoming trips
     """
-    objects = models.Manager()  # The default manager.
-    available = AvailableTripsManager()  # Available Trips manager
+    objects = models.Manager()
+    available = AvailableTripScheduleManager()
 
     trip = models.ForeignKey(Trip, related_name="trip_schedule")
     date_from = models.DateTimeField()

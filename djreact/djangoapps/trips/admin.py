@@ -30,6 +30,12 @@ class TripAdmin(admin.ModelAdmin):
     list_filter = ('starting_location',)
     search_fields = ['name', 'description', 'locations_included']
 
+    def save_model(self, request, obj, form, change):
+        import pdb
+        pdb.set_trace()
+        obj.added_by = request.user
+        super().save_model(request, obj, form, change)
+
 
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):
