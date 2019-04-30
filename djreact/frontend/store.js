@@ -1,15 +1,9 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunk from "redux-thunk";
-import {counters, subtract} from "./reducers/counters";
-import githubReducer from "./reducers/github"
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
 
-let middleware = applyMiddleware(thunk)
+let middleware = applyMiddleware(thunk);
 
-let reducer = combineReducers({
-    counter: counters,
-    subtract: subtract,
-    githubReducer: githubReducer,
-})
+let reducer = combineReducers({});
 
-let store = createStore(reducer, middleware)
-export default store
+let store = createStore(reducer, middleware);
+export default store;

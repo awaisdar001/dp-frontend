@@ -1,6 +1,40 @@
-*.pyc
-db.sqlite3.
-node_modules/*
-.idea/*
+# IDEs
+.project
+.pydevproject
+.idea
+.vscode
+.settings
+
+# Random files
+*~
+\#*
+
+#
 .venv/*
+
+# Python compiled byte code
+*.pyc
+# SQLite3 database
+*.sqlite
+
+# Node modules
+node_modules/
+yarn.lock
+npm-debug.log
+
+# Webpack
 webpack-stats*.json
+
+# Coverage 
+coverage/
+.coverage
+.cache
+
+# static validation files
+.eslintrc
+.sass-lint.yml
+.prospector.yml
+.coveragerc
+
+#Folders
+.DS_Store
