@@ -68,16 +68,22 @@ class TripDetailSerializer(serializers.ModelSerializer):
     This Serializer is used for trip object retrieval as it requires all
     the details of the object
     """
-    trip_schedule = TripScheduleSerializer(many=True)
+    trip_schedule = serializers.SerializerMethodField()
     trip_itinerary = TripItinerarySerializer(many=True)
 
     activities = ActivitySerializer(many=True)
     cancelation_policy = serializers.CharField(read_only=True)
+    metadata = serializers.JSONField()
     facilities = FacilitySerializer(many=True)
     starting_location = LocationSerializer()
     locations_included = LocationSerializer(many=True)
     host = HostSerializer()
     created_by = UserSerializer()
+
+    def get_trip_schedule(self, trip):
+        qs = TripSchedule.available.filter(trip=trip)
+        serializer = TripScheduleSerializer(instance=qs, many=True)
+        return serializer.data
 
     class Meta:
         exclude = ('_cancelation_policy',)
@@ -91,10 +97,18 @@ class TripListSerializer(serializers.ModelSerializer):
     This Serializer is used for the trips listing as it requires
     minimal information
     """
+
+    trip_schedule = serializers.SerializerMethodField()
     activities = ActivitySerializer(many=True)
     facilities = FacilitySerializer(many=True)
     starting_location = LocationSerializer()
+    metadata = serializers.JSONField()
     locations_included = LocationSerializer(many=True)
+
+    def get_trip_schedule(self, trip):
+        qs = TripSchedule.available.filter(trip=trip)
+        serializer = TripScheduleSerializer(instance=qs, many=True)
+        return serializer.data
 
     class Meta:
         exclude = (

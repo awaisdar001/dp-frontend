@@ -10,9 +10,8 @@ from djangoapps.trips.models import Trip
 
 class TripViewSet(viewsets.ReadOnlyModelViewSet):
     """Trip Viewset"""
-    queryset = Trip.objects.all()
-    serializer_class = serializers.TripDetailSerializer
     pagination_class = CustomResponsePagination
+    queryset = Trip.active.all()
     permission_classes = [
         permissions.AllowAny
     ]
