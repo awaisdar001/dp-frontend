@@ -1,9 +1,13 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://www.destinationpak.com/static/css/combined.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="{%static 'css/combined.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugin/nouislider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
   </head>
   <body>
     {% block main %}{% endblock %}
