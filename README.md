@@ -1,48 +1,65 @@
-# Django React Redux Frontend (DRRF)
+# DestinationPakistan MFE(MicoFrontEnd)
 
 microfrontend for DestinationPak.com
 
+
 ## Project Setup
-
-1. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install virtualenv.
-
+1. In order to use the app, make sure you have installed docker and docker compose.
+2. Clone the repo 
 ```bash
-pip install virtualenv
+git clone {git-clone-repo-url}
 ```
-2. Create a virtual env & make sure you have `virtualenv` installed
+3. Change the directory to the project folder. 
 ```bash
-virtualenv venv
+cd {project-dir}/djreact
 ```
-3. Enable virtualenv
+4. Build the docker image. 
 ```bash
-source venv/bin/activate
+make build
 ```
-4. Install requirements
-```bash
-make requirements
-```
-5. Install Node Modules this will create node modules
-```bash
-make static
-```
-6. Run Djnago server
+5. Run the docker container
 ```bash
 make run
 ```
-7. Run Webpack Watcher
+
+6. Once that is done, you should be able to ssh/log/attach the docker container. 
+6.1 Get logs
 ```bash
-npm run hot
+make logs
+```
+6.2 Attach container
+```bash
+make app-attach
+```
+
+6.3 Restart container
+```bash
+make app-restart
+```
+
+6.4 Open container bash
+```bash
+make app-shell
+```
+6.4 Stop container
+```bash
+make stop
+```
+
+6.5 Destory container. Use with care, this will remove all devstack-related containers, networks, and volumes
+```bash
+make destroy
 ```
 
 ## Run Project
-Running project is easy.
-1. Run Django Server
-```python
-make run
-```
-2. Run Webpack watcher
+1. The `make` file contains most of the commands to be run the container. 
+`make run`
+
+2. Run the frontend by following.
 ```bash
-npm run hot
+make app-shell
+cd mfe
+npm run
 ```
 
 
