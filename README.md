@@ -54,6 +54,7 @@ make destroy
 ## Run Project
 1. The `make` file contains most of the commands to be run the container. 
 `make run`
+Once the app has been run, it should be available at `http://localhost:9990/api/trips/`
 
 2. Run the frontend by following.
 ```bash
@@ -61,7 +62,7 @@ make app-shell
 cd mfe
 npm run
 ```
-
+The MFE is available at `http://localhost:3002/`
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
