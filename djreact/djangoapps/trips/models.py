@@ -1,9 +1,7 @@
 import json
 
 from django.db import models
-from django.db.models import permalink
-
-from managers import ActiveTripManager, AvailableTripScheduleManager
+from djangoapps.trips.managers import ActiveTripManager, AvailableTripScheduleManager
 
 
 class Host(models.Model):
@@ -102,7 +100,7 @@ class Trip(models.Model):
     duration = models.SmallIntegerField(default=0, null=True, blank=True)
     price = models.SmallIntegerField(default=0, null=True, blank=True)
     starting_location = models.ForeignKey(
-        Location, related_name="trip_starting_location")
+        Location, related_name="trip_starting_location", on_delete=models.CASCADE)
 
     locations_included = models.ManyToManyField(
         Location, related_name="trip_locations")
@@ -116,8 +114,8 @@ class Trip(models.Model):
     deleted = models.BooleanField(default=False)
 
     created_by = models.ForeignKey(
-        'auth.User', related_name="created_by_trips")
-    host = models.ForeignKey(Host, related_name="host_trips")
+        'auth.User', related_name="created_by_trips", on_delete=models.CASCADE)
+    host = models.ForeignKey(Host, related_name="host_trips", on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -129,9 +127,10 @@ class Trip(models.Model):
     class Meta:
         ordering = ['-created_at', '-id']
 
-    @permalink
+    
     def get_absolute_url(self):
-        return ["view_trip", (), {'slug': self.slug}]
+        return reverse('view_trip', {'slug': self.slug})
+        
 
     @property
     def metadata(self):
@@ -153,7 +152,7 @@ class TripItinerary(models.Model):
 
     This model describes a trip with respect to each day.
     """
-    trip = models.ForeignKey(Trip, related_name="trip_itinerary")
+    trip = models.ForeignKey(Trip, related_name="trip_itinerary", on_delete=models.CASCADE)
     day = models.SmallIntegerField(default=0)
     description = models.TextField(default='')
 
@@ -175,7 +174,7 @@ class TripSchedule(models.Model):
     objects = models.Manager()
     available = AvailableTripScheduleManager()
 
-    trip = models.ForeignKey(Trip, related_name="trip_schedule")
+    trip = models.ForeignKey(Trip, related_name="trip_schedule", on_delete=models.CASCADE)
     date_from = models.DateTimeField()
     price_override = models.SmallIntegerField(default=0, null=True, blank=True)
 

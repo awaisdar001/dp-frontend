@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'webpack_loader',
     'djangoapps.trips',
     'rest_framework',
-    'djangoapps.api'
+    'djangoapps.api',
+    'corsheaders'
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
@@ -58,13 +59,14 @@ WEBPACK_LOADER = {
     }
 }
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -93,10 +95,10 @@ WSGI_APPLICATION = 'djreact.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djreact',
+        'NAME': 'db',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'PASSWORD': 'db',
+        'HOST': 'mysql',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
@@ -136,3 +138,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = ['*']
