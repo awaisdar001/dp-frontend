@@ -1,4 +1,4 @@
-# Django React Redux Frontend (DRRF)
+# DestinationPakistan MFE(MicoFrontEnd)
 
 microfrontend for DestinationPak.com
 
