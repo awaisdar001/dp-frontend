@@ -33,6 +33,8 @@ RUN apt-get install nodejs -y
 RUN node -v
 # npm installs automatically
 RUN npm -v
+# Install npm packages
+RUN npm install
 
 
 # Switching to a non-root user, please refer to https://aka.ms/vscode-docker-python-user-rights
