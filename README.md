@@ -1,68 +1,41 @@
-# DestinationPakistan MFE(MicoFrontEnd)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-microfrontend for DestinationPak.com
+## Micro-frontend for Django Trips
 
+In the project directory, you can run:
 
-## Project Setup
-1. In order to use the app, make sure you have installed docker and docker compose.
-2. Clone the repo 
-```bash
-git clone {git-clone-repo-url}
-```
-3. Change the directory to the project folder. 
-```bash
-cd {project-dir}/djreact
-```
-4. Build the docker image. 
-```bash
-make build
-```
-5. Run the docker container
-```bash
-make run
-```
+### `npm install`
+Installs the project dependencies and creates `node_modules`. 
+### `npm start`
 
-6. Once that is done, you should be able to ssh/log/attach the docker container. 
-6.1 Get logs
-```bash
-make logs
-```
-6.2 Attach container
-```bash
-make app-attach
-```
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-6.3 Restart container
-```bash
-make app-restart
-```
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-6.4 Open container bash
-```bash
-make app-shell
-```
-6.4 Stop container
-```bash
-make stop
-```
+### `npm test`
 
-6.5 Destory container. Use with care, this will remove all devstack-related containers, networks, and volumes
-```bash
-make destroy
-```
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Run Project
-1. The `make` file contains most of the commands to be run the container. 
-`make run`
-Once the app has been run, it should be available at `http://localhost:9990/api/trips/`
+### `npm run build`
 
-2. Run the frontend by following.
-```bash
-make app-shell
-cd mfe
-npm run
-```
-The MFE is available at `http://localhost:3002/`
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+

@@ -1,0 +1,50 @@
+@mixin mb($amount) {
+  margin-bottom: $amount;
+}
+@mixin margin-top($amount) {
+  margin-top: $amount;
+}
+@mixin margin-right($amount) {
+  margin-right: $amount;
+}
+@mixin ml($amount) {
+  margin-left: $amount;
+}
+@mixin mxmargin($amount) {
+  margin: $amount;
+}
+@mixin heading-small() {
+  text-transform: none;
+  font-size: 65%;
+  font-weight: 400;
+  line-height: 1;
+  color: $subhead-gray;
+}
+@mixin heading-font-style() {
+  color: $text-color;
+  @include margin-top(5px);
+  @include mb(10px);
+
+  text-shadow: none;
+  font-weight: normal;
+}
+@mixin heading-class-style() {
+  margin: 0 0 -2px 0;
+  padding-bottom: 5px;
+  display: inline-block;
+  border-bottom: 2px solid $theme-green-d1;
+}
+
+$color-white: #fff;
+$subhead-gray: #999;
+$color-gray: #eeeeee;
+$text-color-lg: #777;
+$background-grey: #f3f3f3;
+$border-color: #ddd;
+$text-color: #555;
+$theme-gray: #515151;
+$footer-color: #272727;
+$theme-green: #7ed12d;
+$theme-green-d1: #72c02c;
+$theme-green-dark: #5fb611;
+$font-lato-serif: "Lato", sans-serif;

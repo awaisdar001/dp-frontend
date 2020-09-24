@@ -1,0 +1,67 @@
+@import "./Config.scss";
+/*Panel Group*/
+#filter-feeds {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  #filter-by-block {
+    h1 {
+      color: $color-white;
+      width: 100%;
+      font-size: 24px;
+      padding: 7px 10px;
+      text-align: center;
+      margin-bottom: 5px;
+      background: $theme-green;
+      text-transform: uppercase;
+    }
+    .card-header {
+      border-color: #dedede;
+      overflow: hidden;
+      border-bottom: 1px solid #dedede;
+      padding: 10px 15px;
+      color: #687074;
+    }
+    .card-title {
+      font-size: 20px;
+      :hover {
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    .card-body {
+      padding: 15px 0px 15px 20px;
+    }
+    svg {
+      font-size: 18px;
+    }
+    .form-check {
+      cursor: pointer;
+      label {
+        width: 100%;
+      }
+      svg {
+        font-size: 15px;
+      }
+      * {
+        cursor: pointer;
+      }
+    }
+
+    .accordion {
+      margin-bottom: 20px;
+    }
+    #btn-reset {
+      background: 0;
+      color: #555;
+      border: solid 1px $theme-green;
+      border-radius: 0;
+      margin-bottom: 30px;
+    }
+    #btn-reset:hover {
+      background: $theme-green-dark;
+      color: #fff;
+    }
+  }
+}

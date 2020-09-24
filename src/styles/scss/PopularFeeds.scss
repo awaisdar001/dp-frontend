@@ -1,0 +1,209 @@
+@import "./Config.scss";
+
+#tl-popular-feeds {
+  overflow: scroll;
+}
+.gallery-list,
+.rmb-placeholder {
+  padding-right: 15px;
+  padding-left: 15px;
+
+  div.list-item-sm {
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #e1e4e8;
+  }
+  div.list-item-md {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #e1e4e8;
+  }
+  div.list-item-md > a {
+    position: relative;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+  }
+  .pop-image {
+    padding-right: 10px;
+    padding-left: 0;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .fav-image-element {
+    padding-right: 10px;
+    padding-left: 0;
+    height: 110px;
+    width: auto;
+    overflow: hidden;
+    margin-bottom: 0.7rem;
+    img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .img-responsive {
+    height: 100%;
+  }
+}
+
+// Pop Videos
+//
+.video-without-caption {
+  article {
+    &:hover {
+      .full-img-thumb {
+        opacity: 0.7;
+      }
+    }
+    .full-img-thumb.video_thumb {
+      height: auto !important;
+    }
+    .full-img-thumb {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      position: relative;
+      img {
+        position: relative;
+        margin: auto;
+        height: auto;
+        width: 100%;
+        min-height: 140px;
+      }
+      .icon-post-format {
+        position: absolute;
+        z-index: 2;
+        text-align: center;
+        display: inline-block;
+        width: 42px;
+        height: 42px;
+        line-height: 38px;
+        top: 50%;
+        left: 50%;
+        margin: -21px 0 0 -21px;
+        font-size: 16px;
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        svg {
+          @include ml(2px);
+        }
+      }
+    }
+  }
+}
+
+.video-with-caption {
+  @extend .video-without-caption;
+  article {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom: 3px solid rgb(238, 238, 238);
+    transition-timing-function: linear;
+    transition-duration: 0.3s;
+    &:hover {
+      border-color: #72c02c !important;
+    }
+    .full-img-thumb.video_thumb {
+      margin: 0 auto 10px;
+    }
+    .video-caption {
+      background-color: #f3f3f3 !important;
+      padding: 15px;
+      margin-top: -10px;
+      h5 {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+// Popular blogs
+.posts {
+  .dl-horizontal {
+    display: flex;
+    dt {
+      img {
+        width: 60px;
+        height: 60px;
+        padding: 2px;
+        margin-top: 2px;
+        border: solid 1px $border-color;
+        &:hover {
+          border-color: $theme-green;
+        }
+      }
+    }
+    dd {
+      width: 100%;
+      margin-top: 2px;
+      margin-left: 10px;
+    }
+  }
+}
+
+// Pop Updates
+ul.dp-updates {
+  li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $color-gray;
+  }
+  h3 {
+    font-size: 14px;
+    margin: 0 0 5px;
+    line-height: 17px;
+  }
+  small {
+    color: $text-color-lg;
+    a {
+      color: $text-color-lg;
+    }
+  }
+  small + small::before {
+    padding: 0 5px;
+    content: "/\00a0";
+  }
+}
+
+// Pop Questions
+ul.pop-questions-list {
+  padding-left: 0;
+  .question-item {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ecedee;
+    margin-bottom: 15px;
+    .questions-div {
+      svg {
+        margin: 0 10px 0 0;
+      }
+      small.post-meta {
+        color: $text-color-lg;
+        display: block;
+
+        a {
+          color: $text-color-lg;
+        }
+        span + span::before {
+          padding: 0 5px;
+          content: "/\00a0";
+        }
+      }
+    }
+  }
+}
