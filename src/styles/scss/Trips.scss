@@ -1,0 +1,735 @@
+@import "./Config.scss";
+
+@font-face {
+  font-family: "NYCDR";
+  src: url("/static/media/NYCDR.woff2") format("woff2"),
+    url("/static/media/NYCDR.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// Slider hack
+.MuiSlider-valueLabel > span {
+  width: 36px;
+  height: 36px;
+}
+.MuiSlider-valueLabel > span > span {
+  width: auto;
+  height: auto;
+}
+
+.dp-trips {
+  .tripcrum {
+    padding: 175px 0;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 0;
+    h3 {
+      font-size: 80px;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 0;
+      line-height: 90px;
+      text-transform: capitalize;
+      font-family: "NYCDR";
+    }
+    p {
+      font-size: 18px;
+      color: #fff;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #040e27;
+      opacity: 0.1;
+      z-index: -1;
+      content: "";
+    }
+  }
+  .bg-1 {
+    background-image: url(/static/media/kumrat-valley-poster.jpg);
+  }
+}
+
+.dp-trips {
+  .search-trips {
+    background: #272727;
+    padding: 50px 0;
+    .search-heading {
+      h3 {
+        font-size: 24px;
+        color: #fff;
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .search_form {
+    display: flex;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+
+    .input_field {
+      input {
+        width: 100%;
+        height: 50px;
+        background: 0 0;
+        border: 1px solid #363e52;
+        padding-left: 15px;
+        color: #fff;
+        &::placeholder {
+          font-size: 16px;
+          color: #aab1b7;
+          font-weight: 300;
+        }
+        &:focus,
+        &:active {
+          outline: none;
+        }
+      }
+    }
+    #id-search-keyword {
+      height: 50px;
+    }
+  }
+}
+
+.dp-trips {
+  .search-page {
+    margin-top: 50px;
+    position: relative;
+  }
+}
+
+.dp-trips {
+  .results-wrapper {
+    .search-results {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      .trip-item {
+        margin: 0 0 4px;
+        .trip-item-container {
+          display: table;
+          width: 100%;
+          padding-bottom: 50px;
+          .item-poster {
+            position: relative;
+            display: table-cell;
+            width: 31%;
+            padding-right: 20px;
+            box-sizing: border-box;
+            .item-poster-inner {
+              height: 100%;
+              a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                img {
+                  display: none;
+                }
+              }
+            }
+            .item-label-overlay {
+              .item-label-container {
+                font-family: "NYCDR";
+                color: $theme-green;
+                font-size: 2rem;
+                position: absolute;
+                bottom: 40px;
+                left: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .search-results.loading {
+      opacity: 0.2;
+    }
+  }
+}
+
+.dp-trips {
+  .results-wrapper {
+    margin: 30px 0 30px;
+  }
+  aside.sidebar {
+    .search-filter {
+      padding: 30px 20px 35px;
+      background-color: #f9f9f9;
+      position: relative;
+      background-image: url(https://wanderers.qodeinteractive.com/wp-content/plugins/mkdf-tours/assets/img/booking-sidebar-image.png);
+      .search-filter-title {
+        margin-bottom: 19px;
+        text-align: left;
+        h4 {
+          margin: 0;
+        }
+      }
+      .title {
+        color: #555;
+        font-size: 16px;
+        font-weight: 400;
+        display: block;
+      }
+      .range-input {
+        margin-bottom: 15px;
+      }
+
+      button {
+        padding: 11px 35px !important;
+        text-transform: capitalize;
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+// Trips
+.search-trips {
+  .input_field {
+    input {
+      width: 100%;
+      height: 50px;
+      background: 0 0;
+      border: 1px solid #363e52;
+      padding-left: 15px;
+
+      color: #fff;
+      &::placeholder {
+        font-size: 16px;
+        color: #aab1b7;
+        font-weight: 300;
+      }
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+}
+.dp-trips {
+  .item-detail {
+    display: block;
+    padding-left: 30px;
+    box-sizing: border-box;
+
+    .item-heading {
+      position: relative;
+      top: -5px;
+      transition: color 0.3s ease-out;
+      .trip-title {
+        margin: 0 0 4px;
+      }
+    }
+  }
+  .item-price {
+    font-size: 2rem;
+    .item-price-desc {
+      font-size: 1rem;
+      color: #c2c2c2;
+    }
+  }
+  .item-description {
+    margin: 20px 0;
+  }
+  .item-rating {
+    .rating-wrapper {
+      font-size: 18px;
+      padding-left: 0;
+      i,
+      svg {
+        margin-right: 4px;
+        color: $theme-green;
+      }
+      .rating-review-summary {
+        color: #c2c2c2;
+        font-size: 1rem;
+        display: inline-block;
+        &:before {
+          content: "(";
+        }
+        &::after {
+          content: ")";
+        }
+      }
+    }
+  }
+  .item-metadata {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    line-height: 1;
+    color: #c2c2c2;
+    font-size: 15px;
+    box-sizing: border-box;
+    .meta-item {
+      float: left;
+      margin-right: 15px;
+      line-height: 2em;
+      &:last-child {
+        margin-right: 0;
+      }
+      .meta-icon {
+        color: $theme-green;
+      }
+      .meta-description {
+        a {
+          color: #c2c2c2;
+          &:hover {
+            color: $theme-green;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dp-trips {
+  .trip-wrapper {
+    margin: 30px 0 30px;
+  }
+}
+.header-wrapper {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  .header-list {
+    border: 1px solid #f6f6f6;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    vertical-align: middle;
+    li {
+      vertical-align: middle;
+      text-transform: uppercase;
+      a {
+        position: relative;
+        display: block;
+        margin: 0;
+        padding: 20px 25px;
+        width: auto;
+        font-size: 12px;
+        font-weight: 600;
+        color: #808285;
+        background-color: #f6f6f6;
+        border: none;
+        border-right: 1px solid #eaeaea;
+        text-align: left;
+        box-sizing: border-box;
+        -webkit-transition: color 0.2s ease-in-out,
+          background-color 0.2s ease-in-out, margin 0.2s ease-in-out,
+          padding 0.2s ease-in-out;
+        -moz-transition: color 0.2s ease-in-out,
+          background-color 0.2s ease-in-out, margin 0.2s ease-in-out,
+          padding 0.2s ease-in-out;
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+          margin 0.2s ease-in-out, padding 0.2s ease-in-out;
+        &:before {
+          display: block;
+        }
+      }
+    }
+    li.active {
+      a {
+        background-color: #fff;
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+.header-wrapper.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dp-trips .wrapper-block {
+  margin-top: 50px;
+}
+
+.dp-trips .trip-facilities-wrapper {
+  .trip-facilities {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li.item:last-child {
+      border-bottom: 1px solid #ebebeb;
+    }
+    li.item {
+      border-top: 1px solid #ebebeb;
+      padding: 18px 0 22px;
+      &:hover {
+        .facility-heading {
+          color: $theme-green;
+        }
+      }
+
+      .facility-heading {
+        vertical-align: middle;
+        transition: color 0.3s ease-out;
+        -webkit-transition: color 0.3s ease-out;
+        -moz-transition: color 0.3s ease-out;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:hover {
+          color: $theme-green;
+        }
+      }
+      .facility-value {
+        display: inline-block;
+        margin-top: 5px;
+        ul {
+          padding: 0;
+        }
+        li {
+          display: inline-block;
+        }
+        li.tick {
+          @extend .li-tick;
+        }
+        li.circle {
+          @extend .li-circle;
+        }
+        .value {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
+// Media Queries
+@media (max-width: 767px) {
+  .dp-trips {
+    .tripcrum {
+      padding: 150px 0;
+      h3 {
+        font-size: 40px;
+      }
+    }
+    .search-trips {
+      .search-heading h3 {
+        margin-bottom: 15px;
+      }
+      .search_form {
+        display: block !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .dp-trips {
+    .tripcrum {
+      padding: 120px 0;
+    }
+    .search-trips .search-heading h3 {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .search-trips .search-heading h3 {
+    font-size: 18px;
+  }
+}
+
+.li-circle {
+  &::before {
+    width: 8px;
+    height: 8px;
+    background: $theme-green;
+    content: "";
+    display: inline-block;
+    border-radius: 20px;
+    margin: 0 5px 0 15px;
+  }
+}
+.li-tick {
+  &::before {
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    content: "\2713";
+    color: $theme-green;
+    margin: 0 5px 0 15px;
+  }
+}
+
+// DPCustom.scss
+.input-with-icon-default {
+  position: relative;
+  width: 100%;
+  height: inherit;
+  margin: 0;
+  padding: 13px 20px 13px 35px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: inherit;
+  color: #808285;
+  border: 1px solid #ebebeb;
+  background-color: #fff;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: border-color 175ms cubic-bezier(0.18, 0.43, 0.58, 1);
+  -moz-transition: border-color 175ms cubic-bezier(0.18, 0.43, 0.58, 1);
+  transition: border-color 175ms cubic-bezier(0.18, 0.43, 0.58, 1);
+  &:focus {
+    outline: none;
+  }
+}
+
+.input-with-icon {
+  position: relative;
+  margin-bottom: 15px;
+  .input-icon {
+    position: absolute;
+    left: 11px;
+    top: 25px;
+    width: auto;
+    font-size: 15px;
+    color: $theme-green;
+    z-index: 1;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+.input-with-icon input[type="text"] {
+  @extend .input-with-icon-default;
+  text-transform: capitalize;
+  &:focus {
+    color: #303030;
+  }
+  &:-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+  }
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+}
+.input-with-icon input[type="email"] {
+  @extend .input-with-icon-default;
+  &:focus {
+    color: #303030;
+  }
+  &:-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+  }
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+}
+.input-with-icon input[type="password"] {
+  @extend .input-with-icon-default;
+  &:focus {
+    color: #303030;
+  }
+  &:-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+  }
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+}
+.input-with-icon input[type="number"] {
+  @extend .input-with-icon-default;
+  &:focus {
+    color: #303030;
+  }
+  &:-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+  }
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+}
+.input-with-icon textarea {
+  display: block;
+  padding: 10px;
+  resize: vertical;
+
+  @extend .input-with-icon-default;
+  &:focus {
+    color: #303030;
+  }
+  &:-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+  }
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+}
+
+.carousel {
+  /* any dimensions are fine, it can be responsive with max-width */
+
+  height: 350px;
+}
+
+.carousel-inner {
+  /* make sure your .items will get correct height */
+  height: 100%;
+}
+
+.carousel-item {
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-caption {
+  top: 1%;
+  * {
+    color: white;
+  }
+}
+
+.timeline-with-label {
+  position: relative;
+  &:before {
+    // Line
+    top: 0;
+    bottom: 0;
+    left: 80px;
+    width: 4px;
+    content: "";
+    background: $background-grey;
+    position: absolute;
+  }
+  .item {
+    position: relative;
+    padding-left: 95px;
+    &:before {
+      /* The icon */
+      top: 25px;
+      left: 77px;
+      cursor: pointer;
+      content: " ";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      background: $theme-green;
+      color: $theme-green;
+      box-shadow: 0 0 0 4px $background-grey;
+      border-radius: 50%;
+      -webkit-font-smoothing: antialiased;
+    }
+    .itinerary-day {
+      position: absolute;
+      color: $color-white;
+      left: 0;
+      top: 17px;
+      .description {
+        position: relative;
+        padding: 0 5px;
+      }
+    }
+    .cbp_tmlabel {
+      @extend .cbp_tmlabel;
+      border-radius: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.rating-average {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center !important;
+  .average {
+    color: $theme-green;
+    margin-top: 25px;
+    font-size: 60px;
+    line-height: 1em;
+    font-weight: 700;
+  }
+  .average-description {
+    margin: 2px 0 0;
+  }
+}
+.rating-percentage {
+  font-size: 1.1rem;
+  .falt-progress {
+    border-radius: unset;
+    height: 0.6rem;
+  }
+  .percent {
+    &::after {
+      content: "%";
+    }
+  }
+}
+
+#form-trip-comment {
+  .comment-rating {
+    display: inline-block;
+    padding-left: 0;
+    label.rating-label {
+      margin-right: 9px;
+      font-size: 15px;
+      line-height: 1.667em;
+      color: #303030;
+      font-weight: 700;
+    }
+    .rating-wrapper {
+      color: $theme-green;
+      vertical-align: middle;
+    }
+  }
+}
