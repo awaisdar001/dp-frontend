@@ -21,7 +21,6 @@ const ProAccordion = () => {
 
   useEffect(() => {
     updateTimelineProsInLocalStorage(proItems);
-
   }, [proItems]);
 
   const handleProCheckbox = useCallback(

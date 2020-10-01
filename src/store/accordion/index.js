@@ -1,5 +1,5 @@
-import {createAction, createReducer} from "@reduxjs/toolkit";
-import {createSelector} from "reselect";
+import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 import {
   feedTypesData,
   pros as proStaticData,
@@ -9,12 +9,12 @@ import {
   getTimelineProsFromLocalStorage,
 } from "../../storage";
 
-const proItems = getTimelineProsFromLocalStorage(proStaticData);
-const feedTypesItems = getTimelineFeedsFromLocalStorage(feedTypesData);
+const proStateInStorage = getTimelineProsFromLocalStorage();
+const feedsStateInStorage = getTimelineFeedsFromLocalStorage();
 
 const defaultState = {
-  proItems,
-  feedTypesItems,
+  proItems: proStateInStorage || proStaticData,
+  feedTypesItems: feedsStateInStorage || feedTypesData,
   count: 1,
 };
 
