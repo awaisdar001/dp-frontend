@@ -25,17 +25,12 @@ const setTimelienStorage = (localStorageData) => {
  * @returns {object} => Item value in the storage
  **/
 const getItemFromLocalStorage = (key, parse = false, defaultData = null) => {
-  try {
-    const localStorage = getTimelienStorage();
-    let localStorageData = localStorage[key] || defaultData;
-    if (localStorageData && parse) {
-      localStorageData = JSON.parse(localStorageData);
-    }
-    return localStorageData;
-  } catch (e) {
-    console.log('=>Error: getting object from storage', e);
-    return defaultData
+  const localStorage = getTimelienStorage();
+  let localStorageData = localStorage[key] || defaultData;
+  if (localStorageData && parse) {
+    localStorageData = JSON.parse(localStorageData);
   }
+  return localStorageData;
 };
 
 const updateTimelineLocalStorage = (key, value) => {
@@ -48,14 +43,14 @@ export const updateTimelineProsInLocalStorage = (value) => {
   updateTimelineLocalStorage(TimelineProLocalStorageKey, value);
 };
 
-export const getTimelineProsFromLocalStorage = (defaultData) => {
-  return getItemFromLocalStorage(TimelineProLocalStorageKey, false, defaultData);
+export const getTimelineProsFromLocalStorage = () => {
+  return getItemFromLocalStorage(TimelineProLocalStorageKey, false);
 };
 
 export const updateTimelineFeedTypesInLocalStorage = (value) => {
   updateTimelineLocalStorage(TimelineFeedTypesLocalStorageKey, value);
 };
 
-export const getTimelineFeedsFromLocalStorage = (defaultData) => {
-  return getItemFromLocalStorage(TimelineFeedTypesLocalStorageKey, false, defaultData);
+export const getTimelineFeedsFromLocalStorage = () => {
+  return getItemFromLocalStorage(TimelineFeedTypesLocalStorageKey, false);
 };
