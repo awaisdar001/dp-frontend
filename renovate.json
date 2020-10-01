@@ -1,5 +1,12 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeMinor",
+    ":noUnscheduledUpdates"
+  ],
+  "rebaseStalePrs": true,
+  "schedule": ["after 12am and before 08:30am on Monday"],
+  "timezone": "Asia/Karachi"
 }
