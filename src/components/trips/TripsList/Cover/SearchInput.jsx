@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateTripsByKeyword } from "../../../../store/features/trips";
 
 const MainSearchInput = () => {
-  const [keyword, setKeyword] = React.useState();
+  const [keyword, setKeyword] = React.useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {

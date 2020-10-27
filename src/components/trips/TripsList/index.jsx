@@ -1,14 +1,24 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import TripsHeader from "../../common/TripHeader";
 import Content from "./Content";
 import Cover from "./Cover/";
+import TripsListHeader from "./TripsListHeader";
 
 export default function Trips() {
   const items = [
-    { id: 1, label: "Date", icon: "calendar" },
-    { id: 2, label: "Price Low to High", icon: "arrow-circle-up" },
-    { id: 3, label: "Price High to Low", icon: "arrow-circle-down" },
+    { id: 1, label: "Date", slug: "date", icon: "calendar" },
+    {
+      id: 2,
+      label: "Price Low to High",
+      slug: "price-low-to-high",
+      icon: "arrow-circle-up",
+    },
+    {
+      id: 3,
+      label: "Price High to Low",
+      slug: "price-high-to-low",
+      icon: "arrow-circle-down",
+    },
     { id: 4, label: "Name (A - Z)", icon: "pencil-alt" },
   ];
   return (
@@ -17,7 +27,7 @@ export default function Trips() {
       <Container fluid>
         <div className="dp-trips">
           <div className="search-page">
-            <TripsHeader items={items} />
+            <TripsListHeader items={items} activeItem={1} />
             <Content />
           </div>
         </div>

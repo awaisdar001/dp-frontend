@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := test
 NODE_BIN=$(CURDIR)/node_modules/.bin
 
-.PHONY:static run
+.PHONY: help build _build stop run restart attach logs shell destroy
 
 help: ## display this help message
 	@echo "Please use \`make <target>' where <target> is one of"

@@ -23,7 +23,7 @@ describe("Timeline Items", () => {
   const getFeedItemsFromState = () => store.getState().entities.timeline;
 
   it("should add the feed items to store when fetched", async () => {
-    fakeAxios.onGet("/feeds").reply(200, {
+    fakeAxios.onGet("/api/feeds").reply(200, {
       next: {},
       per_page_items: 10,
       results: [],
@@ -36,7 +36,7 @@ describe("Timeline Items", () => {
   });
 
   it("should not add the feed items to store when fetched fails", async () => {
-    fakeAxios.onGet("/feeds").reply(500);
+    fakeAxios.onGet("/api/feeds").reply(500);
 
     await store.dispatch(fetchTimelineItems());
 
@@ -45,7 +45,7 @@ describe("Timeline Items", () => {
 
   describe("Loading indicator", () => {
     it("should be true when fetching the items", () => {
-      fakeAxios.onGet("/feeds").reply(() => {
+      fakeAxios.onGet("/api/feeds").reply(() => {
         expect(getFeedItemsFromState().loading).toBe(true);
         return [200, { items: [] }];
       });
@@ -54,7 +54,7 @@ describe("Timeline Items", () => {
     });
 
     it("should be false after fetching the items", async () => {
-      fakeAxios.onGet("/feeds").reply(200, { items: [{ id: 1 }] });
+      fakeAxios.onGet("/api//feeds").reply(200, { items: [{ id: 1 }] });
 
       await store.dispatch(fetchTimelineItems());
 
@@ -62,7 +62,7 @@ describe("Timeline Items", () => {
     });
 
     it("should be false if the server return an error", async () => {
-      fakeAxios.onGet("/feeds").reply(500);
+      fakeAxios.onGet("/api/feeds").reply(500);
 
       await store.dispatch(fetchTimelineItems());
 

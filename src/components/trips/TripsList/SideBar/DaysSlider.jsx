@@ -1,15 +1,21 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectSearchDays } from "../../../../store/features/trips";
+import { useStore } from "react-redux";
+import {
+  selectSearchDays,
+  selectSearchState,
+} from "../../../../store/features/trips";
 import DPSlider from "../../../common/sliders/DPSlider";
 
 const id = "id-days-slider";
+
 function DaysSlider({ commitChange }) {
-  const handleValueLabelFormat = (number) => `${number} Days`;
-  const daysInState = useSelector(selectSearchDays);
-  const [days, setDays] = React.useState(daysInState);
-  const handleChange = (e, value) => setDays(value);
+  const store = useStore();
+  const [minDay, maxDay] = selectSearchState(store.getState()).initial.days;
+  const [days, setDays] = React.useState([minDay, maxDay]);
+
+  const handleValueLabelFormat = (days) => `${days[0]} Days — ${days[1]} Days`;
+  const commitChangesToStore = (days) => commitChange("days", days);
 
   return (
     <>
@@ -19,13 +25,13 @@ function DaysSlider({ commitChange }) {
       <DPSlider
         name="days"
         aria-labelledby={id}
-        min={1}
-        max={20}
+        min={minDay}
+        max={maxDay}
         value={days}
         getAriaValueText={handleValueLabelFormat}
         valueLabelFormat={handleValueLabelFormat}
-        onChange={handleChange}
-        onChangeCommitted={(e, value) => commitChange("days", value)}
+        onChange={(e, newDays) => setDays(newDays)}
+        onChangeCommitted={(e, newDays) => commitChangesToStore(newDays)}
       />
     </>
   );

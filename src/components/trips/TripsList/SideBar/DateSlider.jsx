@@ -1,22 +1,29 @@
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import moment from "moment";
-import React from "react";
+import React, { useEffect } from "react";
+import { useStore } from "react-redux";
 import { getDateFromMilliSec } from "../../../../Utils";
 import DPSlider from "../../../common/sliders/DPSlider";
+import {
+  selectSearchDates,
+  selectSearchState,
+} from "../../../../store/features/trips";
 
 const id = "id-date-sliders";
 const step = 86400000;
-const minDate = moment().startOf("day").valueOf();
-const maxDate = moment(minDate).add(1, "M").valueOf();
 
 const DateSlider = ({ commitChange }) => {
+  const store = useStore();
+  const [minDate, maxDate] = selectSearchState(store.getState()).initial.dates;
   const [dates, setDates] = React.useState([minDate, maxDate]);
-  const handleChange = (e, newDates) => setDates(newDates);
-  const handleAriaValueText = (number, index) => getDateFromMilliSec(number);
 
+  const handleAriaValueText = (number, index) => getDateFromMilliSec(number);
   const getHeadding = () =>
     `Date ${getDateFromMilliSec(dates[0])} — ${getDateFromMilliSec(dates[1])}`;
+
+  const commitChangesToStore = (unSavedDates) =>
+    commitChange("dates", unSavedDates);
+
   return (
     <div>
       <Typography id={id} gutterBottom>
@@ -31,10 +38,10 @@ const DateSlider = ({ commitChange }) => {
             max={maxDate}
             step={step}
             value={dates}
-            onChange={handleChange}
+            onChange={(e, newDates) => setDates(newDates)}
             getAriaValueText={handleAriaValueText}
             valueLabelFormat={handleAriaValueText}
-            onChangeCommitted={(e, number) => commitChange("dates", number)}
+            onChangeCommitted={(e, newDates) => commitChangesToStore(newDates)}
           />
         </Grid>
       </Grid>

@@ -40,5 +40,6 @@ library.add(
   FA.faStarHalf,
   FA.faStarHalfAlt,
   FA.faUserFriends,
-  FA.faIdCard
+  FA.faIdCard,
+  FA.faSync
 );

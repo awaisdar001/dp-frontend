@@ -1,16 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { tripDestinations } from "../../components/common/enumData";
+import moment from "moment";
+import { getQueryString, getDateFromMilliSec, DateFormats } from "../../Utils";
+import { apiCallBegan } from "../api";
+import Destinations from "../../components/trips/TripsList/SideBar/Destinations";
+import Results from "../../components/trips/TripsList/Content/index";
+
+const minDay = 1;
+const maxDay = 20;
+const minDate = moment().startOf("day").valueOf();
+const maxDate = moment(minDate).add(1, "M").valueOf();
+const minPrice = 1 * 1000;
+const maxPrice = 50 * 1000;
 
 const defaultState = {
-  trips: [],
+  trips: [1],
+  tripsMeta: {},
   nextPage: {},
   previousPage: {},
   destinations: tripDestinations,
   search: {
+    initial: {
+      days: [minDay, maxDay],
+      dates: [minDate, maxDate],
+      prices: [minPrice, maxPrice],
+    },
     keyword: "",
-    days: 2,
-    dates: [-1, -1],
-    prices: [1000, 50000],
+    days: [minDay, maxDay],
+    dates: [minDate, maxDate],
+    prices: [minPrice, maxPrice],
   },
   loading: false,
   counter: 1,
@@ -20,6 +38,17 @@ const tripsSlice = createSlice({
   name: "trips",
   initialState: defaultState,
   reducers: {
+    tripsItemsRequested: (state, action) => {
+      state.loading = true;
+    },
+    tripsItemsReceived: (state, action) => {
+      state.loading = false;
+      state.trips = action.payload.results;
+      state.tripsMeta = { ...action.payload, results: [] };
+    },
+    tripsItemsRequestFailed: (state, action) => {
+      state.loading = false;
+    },
     searchDestinationChanged: (state, action) => {
       const stateDestinatoins = state.destinations;
       const destinationItemIndex = stateDestinatoins.findIndex(
@@ -29,7 +58,6 @@ const tripsSlice = createSlice({
       );
       stateDestinatoins[destinationItemIndex].selected =
         action.payload.selected;
-      state.loading = !state.loading;
     },
     searchSliderChanged: (trips, action) => {
       const { payload } = action;
@@ -52,8 +80,8 @@ const tripsSlice = createSlice({
 });
 
 // Selectors
-const selectSearchState = (state) => state.entities.trips.search;
 const selectTrips = (state) => state.entities.trips;
+export const selectSearchState = (state) => state.entities.trips.search;
 export const selectSearchKeyword = (state) => selectSearchState(state).keyword;
 export const selectSearchDays = (state) => selectSearchState(state).days;
 export const selectSearchDates = (state) => selectSearchState(state).dates;
@@ -70,6 +98,11 @@ const {
   searchSliderChanged,
   counterUpdated,
   searchKeywordChanged,
+
+  // API request actions
+  tripsItemsRequested,
+  tripsItemsReceived,
+  tripsItemsRequestFailed,
 } = tripsSlice.actions;
 
 export const updateTripsByDestination = (payload) =>
@@ -79,6 +112,21 @@ export const updateTripsByKeyword = (keyword) =>
   searchKeywordChanged({ keyword });
 
 export const updateTripsCounter = (value) => counterUpdated({ value });
+
+export const loadTripFromState = () => (dispatch, getState) => {
+  const url = getTripsListURLFromState(getState());
+  console.log("API: URL:", url);
+  debugger;
+
+  return dispatch(
+    apiCallBegan({
+      url,
+      onStart: tripsItemsRequested.type,
+      onSuccess: tripsItemsReceived.type,
+      onError: tripsItemsRequestFailed.type,
+    })
+  );
+};
 
 export default tripsSlice.reducer;
 
@@ -98,3 +146,35 @@ export default tripsSlice.reducer;
 // const getTax = (amount) => return apiCall('gettaxpercentage') * amount
 // input > output
 // reselect =>
+
+// Local
+const getTripsListURLFromState = (state) => {
+  const search = selectSearchState(state);
+  const destinations = selectSidebarDestinations(state);
+  const dateFormat = DateFormats.YearMonthDate;
+  const selectedDestinations = destinations
+    .filter((destination) => destination.selected === true)
+    .reduce((acc, d) => `${acc.value ? acc.value : acc},${d.value}`);
+
+  const daysFrom = search.days[0];
+  const daysTo = search.days[1];
+  const dateFrom = getDateFromMilliSec(search.dates[0], dateFormat);
+  const dateTo = getDateFromMilliSec(search.dates[1], dateFormat);
+  const priceFrom = search.prices[0];
+  const priceTo = search.prices[1];
+
+  const nameQuery = `name=${search.keyword}`;
+  const destinationQuery = `destination=${selectedDestinations}`;
+  const daysQuery = `duration_from=${daysFrom}&duration_to=${daysTo}`;
+  const priceQuery = `price_from=${priceFrom}&price_to=${priceTo}`;
+  const dateQuery = `date_from=${dateFrom}&date_to=${dateTo}`;
+
+  const queryString = [
+    nameQuery,
+    daysQuery,
+    destinationQuery,
+    priceQuery,
+    dateQuery,
+  ].join("&");
+  return `/api/trips?${queryString}`;
+};

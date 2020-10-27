@@ -1,11 +1,11 @@
-import React from "react";
-import DPCheckbox from "../../../common/dpCheckbox";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  loadTripFromState,
   selectSidebarDestinations,
   updateTripsByDestination,
 } from "../../../../store/features/trips";
-
+import DPCheckbox from "../../../common/dpCheckbox";
 function Destinations() {
   console.log("rerendring destiantions. ");
   const destinations = useSelector(selectSidebarDestinations);
@@ -16,6 +16,11 @@ function Destinations() {
     const payload = { value: target.value, selected: target.checked };
     dispatch(updateTripsByDestination(payload));
   };
+
+  useEffect(() => {
+    console.log("[useEffect]: Trips-API Call here.");
+    dispatch(loadTripFromState());
+  }, [destinations, dispatch]);
 
   return (
     <div className="destinations dp-checkbox">
