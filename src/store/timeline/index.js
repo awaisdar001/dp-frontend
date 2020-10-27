@@ -1,7 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { apiCallBegan } from "../api";
-import { getQueryString } from "../../Utils";
+import { buildQueryString } from "../../Utils";
 import { getSelectedPros, getSelectedFeedTypes } from "../accordion";
 
 const defaultState = {
@@ -49,13 +49,13 @@ export default createReducer(defaultState, {
 });
 
 // Action Creators
-const feedsUrl = "/feeds";
+const feedsUrl = "/api/feeds";
 export const fetchTimelineItems = () => (dispatch, getState) => {
   const state = getState();
   const url = getFeedsURLFromState(state);
   return dispatch(
     apiCallBegan({
-      url: url,
+      url,
       onStart: timelineItemsRequested.type,
       onSuccess: timelineItemsReceived.type,
       onError: timelineItemsRequestFailed.type,
@@ -71,6 +71,7 @@ export const fetchTimelineNextPage = (url) =>
   });
 
 export const loadTimelineItemsFromState = () => (dispatch, getState) => {
+  console.log("api call here");
   const state = getState();
   const url = getFeedsURLFromState(state);
   return dispatch(
@@ -108,8 +109,8 @@ export const getPaginatoinPreviousParams = createSelector(
 const getFeedsURLFromState = (state) => {
   const selectedProps = getSelectedPros(state);
   const selectedFeedTypes = getSelectedFeedTypes(state);
-  const prosQueryString = getQueryString(selectedProps, "pro");
-  const feedQueryString = getQueryString(selectedFeedTypes, "type");
+  const prosQueryString = buildQueryString(selectedProps, "pro");
+  const feedQueryString = buildQueryString(selectedFeedTypes, "type");
   const queryString = [prosQueryString, feedQueryString].join("&");
   return feedsUrl + "?" + queryString;
 };

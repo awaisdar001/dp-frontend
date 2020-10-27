@@ -34,7 +34,7 @@ export default createReducer(defaultState, {
 });
 
 // Action Creators
-const url = "feeds/popular-items";
+const url = "/api/feeds/popular-items";
 export const fetchPopularTimelineItems = () => {
   return apiCallBegan({
     url: url,

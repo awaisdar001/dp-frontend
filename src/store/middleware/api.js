@@ -12,7 +12,10 @@ const api = ({ dispatch }) => (next) => async (action) => {
 
   try {
     const response = await axios.get(url, {
-      baseURL: "http://localhost:8003/api",
+      baseURL: "http://localhost:8003/",
+      headers: {
+        Authorization: `Basic YWRtaW46YXJiaXNvZnQx`,
+      },
     });
     dispatch(actions.apiCallSuccess(response.data));
     if (onSuccess) dispatch({ type: onSuccess, payload: response.data });

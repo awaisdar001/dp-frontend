@@ -1,11 +1,12 @@
 import React from "react";
 import moment from "moment";
 
-export const getDateFromMilliSec = (number) => moment(number).format("DD MMM");
-
-export const newLinesWithReact = (text) => {
-  return text.replace(/(?:\r\n|\r|\n)/g, "<br />");
+export const DateFormats = {
+  DayMonth: "DD MMM", // 10 Oct
+  YearMonthDate: "YYYY-MM-DD", // 2020-10-10
 };
+export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
+  moment(number).format(format);
 
 export const NewLineToBr = ({ children = "" }) => {
   return children.split("\n").reduce((arr, line, index) => {
@@ -36,6 +37,38 @@ export const renameKeys = (instance) => {
   }, {});
 };
 
-export const getQueryString = (dataArray, name, key = "name") => {
-  return dataArray.map((item) => `${name}=${item[key]}`).join("&");
+export const buildQueryString = (dataArray, name, key = "name") =>
+  /*
+    Given a list object, builds querystring
+
+    dataArray ([]): list containg dict objects. [{key: "value"}, {key: "value2"}]
+    name (str): keyword name to be used while building querystring. name=value&name=value2
+    key(str): key to be used for getting the data from dataArray. 
+
+    */
+
+  dataArray.map((item) => `${name}=${item[key]}`).join("&");
+
+export const getQueryStringFromParams = (params) =>
+  new URLSearchParams(params).toString();
+
+export const getQueryStringParams = (query) => {
+  /* 
+    Get querystring object from the url.
+
+    query (str): querystring part of the url. 
+    Returns: dictionary object with key-value pairs.
+  */
+
+  return query
+    ? (/^[?#]/.test(query) ? query.slice(1) : query)
+        .split("&")
+        .reduce((params, param) => {
+          let [key, value] = param.split("=");
+          params[key] = value
+            ? decodeURIComponent(value.replace(/\+/g, " "))
+            : "";
+          return params;
+        }, {})
+    : {};
 };

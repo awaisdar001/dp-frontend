@@ -2,19 +2,24 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Humanize from "humanize-plus";
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectSearchPrices } from "../../../../store/features/trips";
+import { useStore } from "react-redux";
+import {
+  selectSearchPrices,
+  selectSearchState,
+} from "../../../../store/features/trips";
 import DPSlider from "../../../common/sliders/DPSlider";
 
 const id = "id-price-slider";
 const step = 1000;
-const min = 1000;
-const max = 50000;
-const PriceSlider = ({ commitChange }) => {
-  const pricesInState = useSelector(selectSearchPrices);
-  const [prices, setPrices] = React.useState(pricesInState);
 
-  const handleChange = (e, newPrices) => setPrices(newPrices);
+const PriceSlider = ({ commitChange }) => {
+  const store = useStore();
+  const [minPrice, maxPrice] = selectSearchState(
+    store.getState()
+  ).initial.prices;
+  // const [minUserPrice, maxUserPrice] = selectSearchPrices(store.getState());
+  const [prices, setPrices] = React.useState([minPrice, maxPrice]);
+
   const handleLabelFormat = (number, index) =>
     `Rs. ${Humanize.compactInteger(number)}`;
   const getHeadding = () =>
@@ -31,13 +36,15 @@ const PriceSlider = ({ commitChange }) => {
             name="price-range"
             aria-labelledby={id}
             value={prices}
-            min={min}
-            max={max}
+            min={minPrice}
+            max={maxPrice}
             step={step}
             getAriaValueText={handleLabelFormat}
             valueLabelFormat={handleLabelFormat}
-            onChangeCommitted={(e, number) => commitChange("prices", number)}
-            onChange={handleChange}
+            onChangeCommitted={(e, newPrice) =>
+              commitChange("prices", newPrice)
+            }
+            onChange={(e, newPrice) => setPrices(newPrice)}
           />
         </Grid>
       </Grid>
