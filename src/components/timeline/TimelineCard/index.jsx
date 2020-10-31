@@ -1,9 +1,9 @@
-import React from "react";
-import CardBlog from "./Types/Blog";
-import CardImage from "./Types/Image";
-import CardQuestion from "./Types/Question";
-import CardUpdate from "./Types/Update";
-import CardVideo from "./Types/Video";
+import React from 'react';
+import CardBlog from './Types/Blog';
+import CardImage from './Types/Image';
+import CardQuestion from './Types/Question';
+import CardUpdate from './Types/Update';
+import CardVideo from './Types/Video';
 
 export default function TimelineCard(props) {
   const getCardFromType = (type) => {

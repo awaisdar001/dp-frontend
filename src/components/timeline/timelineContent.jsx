@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Col, Row } from "react-bootstrap";
-import { useDispatch, useStore, useSelector } from "react-redux";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useStore, useSelector } from 'react-redux';
 import {
   fetchTimelineItems,
   fetchTimelineNextPage,
   getAllFeedResults,
   getPaginatoinNextParams,
   getPaginatoinPreviousParams,
-} from "../../store/timeline";
-import { getLoading } from "../../store/timeline/index";
+} from '../../store/timeline';
+import { getLoading } from '../../store/timeline/index';
 import ResetFeedsPlaceholder, {
   LoadingNewFeeds,
-} from "../Placeholders/feedsPlaceholder";
-import TimelinePagination from "./pagination";
-import RenderCards from "./renderCards";
+} from '../Placeholders/feedsPlaceholder';
+import TimelinePagination from './pagination';
+import RenderCards from './renderCards';
 
 const TimelineContent = () => {
   const observer = useRef();

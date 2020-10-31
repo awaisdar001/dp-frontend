@@ -1,16 +1,16 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { Title, TitlePrice } from "../TripCommon";
-import Metadata from "../TripsList/Content/Metadata";
-import BookingSideBar from "./BookingSideBar";
-import CancellationPolicy from "./CancellationPolicy";
-import Carousel from "./carousel";
-import Facilities from "./Facilities";
-import Location from "./Location";
-import PostComment from "./PostComment";
-import ReviewsAndRatings from "./ReviewsAndRatings";
-import TourPlan from "./TourPlan";
-import TripHeader from "./TripHeader";
+import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Title, TitlePrice } from '../TripCommon';
+import Metadata from '../TripsList/Content/Metadata';
+import BookingSideBar from './BookingSideBar';
+import CancellationPolicy from './CancellationPolicy';
+import Carousel from './carousel';
+import Facilities from './Facilities';
+import Location from './Location';
+import PostComment from './PostComment';
+import ReviewsAndRatings from './ReviewsAndRatings';
+import TourPlan from './TourPlan';
+import TripHeader from './TripHeader';
 
 export default function TripItem() {
   return (
@@ -28,7 +28,7 @@ export default function TripItem() {
                   url="/"
                 />
 
-                <TitlePrice className={"float-right"} price="Rs 14,449" />
+                <TitlePrice className={'float-right'} price="Rs 14,449" />
                 <Metadata />
                 <hr />
                 <div className="item-description">

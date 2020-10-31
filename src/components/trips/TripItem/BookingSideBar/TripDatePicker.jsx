@@ -1,39 +1,39 @@
-import DateFnsUtils from "@date-io/moment"; // choose your lib
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createMuiTheme, MuiThemeProvider, TextField } from "@material-ui/core";
-import lightGreen from "@material-ui/core/colors/lightGreen";
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import React, { useState } from "react";
+import DateFnsUtils from '@date-io/moment'; // choose your lib
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createMuiTheme, MuiThemeProvider, TextField } from '@material-ui/core';
+import lightGreen from '@material-ui/core/colors/lightGreen';
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import React, { useState } from 'react';
 
 const customTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
       toolbar: {
-        backgroundColor: "#7ed12d",
+        backgroundColor: '#7ed12d',
       },
     },
     MuiPickersDay: {
       daySelected: {
-        backgroundColor: lightGreen["400"],
-        "&:hover": {
-          backgroundColor: lightGreen["400"],
+        backgroundColor: lightGreen['400'],
+        '&:hover': {
+          backgroundColor: lightGreen['400'],
         },
       },
       current: {
-        backgroundColor: lightGreen["100"],
-        color: "black",
+        backgroundColor: lightGreen['100'],
+        color: 'black',
       },
     },
 
     MuiPickersModal: {
       dialogAction: {
-        color: lightGreen["400"],
+        color: lightGreen['400'],
       },
     },
     MuiButton: {
       textPrimary: {
-        color: "black",
+        color: 'black',
       },
     },
   },

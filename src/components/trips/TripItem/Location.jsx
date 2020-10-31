@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Location() {
   return (
@@ -11,7 +11,7 @@ function Location() {
           height="580"
           border="0"
           style={{
-            border: "none",
+            border: 'none',
           }}
         ></iframe>
       </div>

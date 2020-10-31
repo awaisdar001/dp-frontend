@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
-import { Row, Col } from "react-bootstrap";
+import React, { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import { Row, Col } from 'react-bootstrap';
 
 export default function ControlledCarousel() {
   const [index, setIndex] = useState(0);
@@ -10,7 +10,7 @@ export default function ControlledCarousel() {
   };
 
   return (
-    <Row style={{ marginTop: "-50px" }}>
+    <Row style={{ marginTop: '-50px' }}>
       <Col lg={12}>
         <Carousel
           activeIndex={index}

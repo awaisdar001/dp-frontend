@@ -1,15 +1,15 @@
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Humanize from "humanize-plus";
-import React from "react";
-import { useStore } from "react-redux";
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Humanize from 'humanize-plus';
+import React from 'react';
+import { useStore } from 'react-redux';
 import {
   selectSearchPrices,
   selectSearchState,
-} from "../../../../store/features/trips";
-import DPSlider from "../../../common/sliders/DPSlider";
+} from '../../../../store/features/trips';
+import DPSlider from '../../../common/sliders/DPSlider';
 
-const id = "id-price-slider";
+const id = 'id-price-slider';
 const step = 1000;
 
 const PriceSlider = ({ commitChange }) => {
@@ -42,7 +42,7 @@ const PriceSlider = ({ commitChange }) => {
             getAriaValueText={handleLabelFormat}
             valueLabelFormat={handleLabelFormat}
             onChangeCommitted={(e, newPrice) =>
-              commitChange("prices", newPrice)
+              commitChange('prices', newPrice)
             }
             onChange={(e, newPrice) => setPrices(newPrice)}
           />

@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { tripDestinations } from "../../components/common/enumData";
-import moment from "moment";
-import { getQueryString, getDateFromMilliSec, DateFormats } from "../../Utils";
-import { apiCallBegan } from "../api";
-import Destinations from "../../components/trips/TripsList/SideBar/Destinations";
-import Results from "../../components/trips/TripsList/Content/index";
+import { createSlice } from '@reduxjs/toolkit';
+import { tripDestinations } from '../../components/common/enumData';
+import moment from 'moment';
+import { getQueryString, getDateFromMilliSec, DateFormats } from '../../Utils';
+import { apiCallBegan } from '../api';
+import Destinations from '../../components/trips/TripsList/SideBar/Destinations';
+import Results from '../../components/trips/TripsList/Content/index';
 
 const minDay = 1;
 const maxDay = 20;
-const minDate = moment().startOf("day").valueOf();
-const maxDate = moment(minDate).add(1, "M").valueOf();
+const minDate = moment().startOf('day').valueOf();
+const maxDate = moment(minDate).add(1, 'M').valueOf();
 const minPrice = 1 * 1000;
 const maxPrice = 50 * 1000;
 
@@ -25,7 +25,7 @@ const defaultState = {
       dates: [minDate, maxDate],
       prices: [minPrice, maxPrice],
     },
-    keyword: "",
+    keyword: '',
     days: [minDay, maxDay],
     dates: [minDate, maxDate],
     prices: [minPrice, maxPrice],
@@ -35,7 +35,7 @@ const defaultState = {
 };
 
 const tripsSlice = createSlice({
-  name: "trips",
+  name: 'trips',
   initialState: defaultState,
   reducers: {
     tripsItemsRequested: (state, action) => {
@@ -61,7 +61,7 @@ const tripsSlice = createSlice({
     },
     searchSliderChanged: (trips, action) => {
       const { payload } = action;
-      if (typeof action.payload.number === "number") {
+      if (typeof action.payload.number === 'number') {
         trips.search[payload.type] = action.payload.number;
       } else {
         const [min, max] = action.payload.number;
@@ -73,7 +73,7 @@ const tripsSlice = createSlice({
       trips.search.keyword = payload.keyword;
     },
     counterUpdated: (trips, { payload }) => {
-      console.log("updating counter from", trips.counter);
+      console.log('updating counter from', trips.counter);
       trips.counter += payload.value;
     },
   },
@@ -115,7 +115,7 @@ export const updateTripsCounter = (value) => counterUpdated({ value });
 
 export const loadTripFromState = () => (dispatch, getState) => {
   const url = getTripsListURLFromState(getState());
-  console.log("API: URL:", url);
+  console.log('API: URL:', url);
   debugger;
 
   return dispatch(
@@ -175,6 +175,6 @@ const getTripsListURLFromState = (state) => {
     destinationQuery,
     priceQuery,
     dateQuery,
-  ].join("&");
+  ].join('&');
   return `/api/trips?${queryString}`;
 };

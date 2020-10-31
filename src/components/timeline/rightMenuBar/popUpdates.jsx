@@ -1,9 +1,9 @@
-import React from "react";
-import Skeleton from "react-loading-skeleton";
-import { MomentTime } from "../../common/momentTime";
-import { useStore, useSelector } from "react-redux";
-import { getPopularUpdates } from "../../../store/popularFeeds";
-import { getLoading } from "../../../store/popularFeeds/index";
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import { MomentTime } from '../../common/momentTime';
+import { useStore, useSelector } from 'react-redux';
+import { getPopularUpdates } from '../../../store/popularFeeds';
+import { getLoading } from '../../../store/popularFeeds/index';
 
 const PopUpdatesPlaceholder = (props) => {
   const { count } = props;

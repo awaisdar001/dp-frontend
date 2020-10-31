@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import * as Scroll from "react-scroll";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import * as Scroll from 'react-scroll';
 
 import {
   Link,
@@ -11,11 +11,11 @@ import {
   animateScroll as scroll,
   scrollSpy,
   scroller,
-} from "react-scroll";
+} from 'react-scroll';
 
 const TripsHeader = ({ items, handleOnClick, activeItem }) => {
   const TripHeaderItem = ({ slug, label, icon }) => (
-    <Col as="li" className={"p-0" + (slug === activeItem ? " active" : "")}>
+    <Col as="li" className={'p-0' + (slug === activeItem ? ' active' : '')}>
       <Link
         to={slug}
         spy={true}
@@ -41,7 +41,7 @@ const TripsHeader = ({ items, handleOnClick, activeItem }) => {
               <TripHeaderItem
                 {...sortItem}
                 id={id}
-                key={"sorting-item-" + slug}
+                key={'sorting-item-' + slug}
               />
             );
           })}

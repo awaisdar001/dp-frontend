@@ -1,10 +1,10 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import ProgressiveImage from "../../../../common/progressiveImage";
-import CardFooter from "../../cardFooter";
-import CardHeader from "../../cardHeader";
-import CardTags from "../../cardTags";
-import CardDescription from "./cardDescription";
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import ProgressiveImage from '../../../../common/progressiveImage';
+import CardFooter from '../../cardFooter';
+import CardHeader from '../../cardHeader';
+import CardTags from '../../cardTags';
+import CardDescription from './cardDescription';
 
 export default function CardImage(props) {
   const { instance, card } = props;
@@ -20,7 +20,7 @@ export default function CardImage(props) {
     seen_count: seenCount,
   } = instance;
   const { profileURL, nodeURL, is_new } = card;
-  const propsHeader = { profileURL, nodeURL, is_new, icon: "image" };
+  const propsHeader = { profileURL, nodeURL, is_new, icon: 'image' };
   const propsTags = { city, pro, tags };
   const propsFooter = { absUrl, createdAt, seenCount };
 

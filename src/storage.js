@@ -1,13 +1,13 @@
-export const TimelineProLocalStorageKey = "timeline-acc-pro";
-export const TimelineFeedTypesLocalStorageKey = "timeline-acc-feed-types";
+export const TimelineProLocalStorageKey = 'timeline-acc-pro';
+export const TimelineFeedTypesLocalStorageKey = 'timeline-acc-feed-types';
 
-const LocalStorageKey = "dp-storage";
+const LocalStorageKey = 'dp-storage';
 
 export const hasLocalStorage = () => {
   return Boolean(localStorage.getItem(LocalStorageKey));
 };
 const getTimelienStorage = () => {
-  const lStorage = localStorage.getItem(LocalStorageKey) || "{}";
+  const lStorage = localStorage.getItem(LocalStorageKey) || '{}';
   return JSON.parse(lStorage);
 };
 

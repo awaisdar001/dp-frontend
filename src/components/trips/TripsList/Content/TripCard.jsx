@@ -1,12 +1,12 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import Metadata from "./Metadata";
-import Rating from "./Rating";
-import { Title, TitlePrice } from "../../TripCommon";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Row } from 'react-bootstrap';
+import Metadata from './Metadata';
+import Rating from './Rating';
+import { Title, TitlePrice } from '../../TripCommon';
+import { Link } from 'react-router-dom';
 let backgroundPoster = {
   backgroundImage:
-    "url(https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg)",
+    'url(https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg)',
 };
 const ResultItem = () => {
   return (

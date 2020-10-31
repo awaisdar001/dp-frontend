@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect } from "react";
-import { Accordion, Card, Col, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { updateTimelineProsInLocalStorage } from "../../storage";
-import { updateProCheckboxState } from "../../store/accordion";
-import CardHeader from "../timeline/TimelineCard/cardHeader";
+import React, { useCallback, useEffect } from 'react';
+import { Accordion, Card, Col, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTimelineProsInLocalStorage } from '../../storage';
+import { updateProCheckboxState } from '../../store/accordion';
+import CardHeader from '../timeline/TimelineCard/cardHeader';
 
 export default function Temp1() {
-  console.log("Rendering temp1");
+  console.log('Rendering temp1');
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.entities.accordion.proItems);
@@ -22,7 +22,7 @@ export default function Temp1() {
   useEffect(() => {
     updateTimelineProsInLocalStorage(state);
   }, [state]);
-  const id = "collapse-pro";
+  const id = 'collapse-pro';
 
   return (
     <div>
@@ -39,13 +39,13 @@ export default function Temp1() {
                       return (
                         <div key={`div-${pro.slug}`}>
                           <label
-                            key={pro.slug + "label"}
+                            key={pro.slug + 'label'}
                             className="form-check-label"
                           >
                             {pro.name}
                           </label>
                           <input
-                            key={pro.slug + "in"}
+                            key={pro.slug + 'in'}
                             name={pro.name}
                             type="checkbox"
                             data-slug={pro.slug}

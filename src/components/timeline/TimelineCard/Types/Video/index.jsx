@@ -1,10 +1,10 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import CardFooter from "../../cardFooter";
-import CardHeader from "../../cardHeader";
-import CardTags from "../../cardTags";
-import VideoPreview from "./preview";
-import VideoDescription from "./description";
+import React from 'react';
+import { Row } from 'react-bootstrap';
+import CardFooter from '../../cardFooter';
+import CardHeader from '../../cardHeader';
+import CardTags from '../../cardTags';
+import VideoPreview from './preview';
+import VideoDescription from './description';
 
 export default function CardVideo(props) {
   const { instance, card } = props;

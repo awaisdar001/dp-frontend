@@ -1,5 +1,5 @@
-import React from "react";
-import PlaceHolder from "./timelinePlaceHolder";
+import React from 'react';
+import PlaceHolder from './timelinePlaceHolder';
 
 const ResetFeedsPlaceholder = () => {
   return (

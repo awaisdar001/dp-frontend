@@ -1,9 +1,9 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import CardFooter from "../../cardFooter";
-import CardHeader from "../../cardHeader";
-import CardTags from "../../cardTags";
-import QuestionTitle from "./cardDescription";
+import React from 'react';
+import { Row } from 'react-bootstrap';
+import CardFooter from '../../cardFooter';
+import CardHeader from '../../cardHeader';
+import CardTags from '../../cardTags';
+import QuestionTitle from './cardDescription';
 
 export default function CardQuestion({ card, instance }) {
   const {
@@ -16,7 +16,7 @@ export default function CardQuestion({ card, instance }) {
   } = instance;
   const { nodeURL, is_new, profileURL } = card;
 
-  const propsHeader = { profileURL, nodeURL, is_new, icon: "question-circle" };
+  const propsHeader = { profileURL, nodeURL, is_new, icon: 'question-circle' };
   const propsTags = { city, pro, map: false };
   const propsFooter = { absUrl, createdAt, seenCount };
   return (

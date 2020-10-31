@@ -1,8 +1,8 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
-import { createSelector } from "reselect";
-import { apiCallBegan } from "../api";
-import { buildQueryString } from "../../Utils";
-import { getSelectedPros, getSelectedFeedTypes } from "../accordion";
+import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
+import { apiCallBegan } from '../api';
+import { buildQueryString } from '../../Utils';
+import { getSelectedPros, getSelectedFeedTypes } from '../accordion';
 
 const defaultState = {
   feedItems: [],
@@ -12,12 +12,12 @@ const defaultState = {
 };
 
 // Action Creators
-const timelineItemsRequested = createAction("timeline/ItemsRequested");
-const timelineItemsReceived = createAction("timeline/ItemsReceived");
-const timelineItemsRequestFailed = createAction("timeline/ItemsRequestFailed");
+const timelineItemsRequested = createAction('timeline/ItemsRequested');
+const timelineItemsReceived = createAction('timeline/ItemsReceived');
+const timelineItemsRequestFailed = createAction('timeline/ItemsRequestFailed');
 
-const timelineRestItemsRequested = createAction("timeline/RestItemsRequested");
-const timelineRestItemsReceived = createAction("timeline/RestItemsReceived");
+const timelineRestItemsRequested = createAction('timeline/RestItemsRequested');
+const timelineRestItemsReceived = createAction('timeline/RestItemsReceived');
 
 // Reducer
 export default createReducer(defaultState, {
@@ -49,7 +49,7 @@ export default createReducer(defaultState, {
 });
 
 // Action Creators
-const feedsUrl = "/api/feeds";
+const feedsUrl = '/api/feeds';
 export const fetchTimelineItems = () => (dispatch, getState) => {
   const state = getState();
   const url = getFeedsURLFromState(state);
@@ -71,7 +71,7 @@ export const fetchTimelineNextPage = (url) =>
   });
 
 export const loadTimelineItemsFromState = () => (dispatch, getState) => {
-  console.log("api call here");
+  console.log('api call here');
   const state = getState();
   const url = getFeedsURLFromState(state);
   return dispatch(
@@ -109,8 +109,8 @@ export const getPaginatoinPreviousParams = createSelector(
 const getFeedsURLFromState = (state) => {
   const selectedProps = getSelectedPros(state);
   const selectedFeedTypes = getSelectedFeedTypes(state);
-  const prosQueryString = buildQueryString(selectedProps, "pro");
-  const feedQueryString = buildQueryString(selectedFeedTypes, "type");
-  const queryString = [prosQueryString, feedQueryString].join("&");
-  return feedsUrl + "?" + queryString;
+  const prosQueryString = buildQueryString(selectedProps, 'pro');
+  const feedQueryString = buildQueryString(selectedFeedTypes, 'type');
+  const queryString = [prosQueryString, feedQueryString].join('&');
+  return feedsUrl + '?' + queryString;
 };

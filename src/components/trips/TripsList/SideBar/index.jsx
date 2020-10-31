@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import {
   loadTripFromState,
   updateTripsBySlider,
   selectSearchState,
-} from "../../../../store/features/trips";
-import withSidebar from "../../../common/hoc/withSidebar";
-import DateSlider from "./DateSlider";
-import DaysSlider from "./DaysSlider";
-import Destinations from "./Destinations";
-import PriceSlider from "./PriceSlider";
+} from '../../../../store/features/trips';
+import withSidebar from '../../../common/hoc/withSidebar';
+import DateSlider from './DateSlider';
+import DaysSlider from './DaysSlider';
+import Destinations from './Destinations';
+import PriceSlider from './PriceSlider';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Sidebar = () => {
     dispatch(updateTripsBySlider({ type, number }));
   };
   useEffect(() => {
-    console.log("[useEffect]: Trips-API Call here.", search);
+    console.log('[useEffect]: Trips-API Call here.', search);
     dispatch(loadTripFromState());
   }, [search, dispatch]);
 
@@ -36,4 +36,4 @@ const Sidebar = () => {
   );
 };
 
-export default withSidebar(Sidebar, "Filter your Trip");
+export default withSidebar(Sidebar, 'Filter your Trip');

@@ -1,6 +1,6 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const PlaceHolder = () => {
   return (
@@ -13,7 +13,7 @@ const PlaceHolder = () => {
                 count={1}
                 duration={2}
                 height={40}
-                style={{ marginBottom: "10px" }}
+                style={{ marginBottom: '10px' }}
               />
             </Col>
             <Col md={12}>
@@ -24,7 +24,7 @@ const PlaceHolder = () => {
                 count={1}
                 duration={2}
                 height={400}
-                style={{ marginTop: "10px", marginBottom: "10px" }}
+                style={{ marginTop: '10px', marginBottom: '10px' }}
               />
             </Col>
             <Col>

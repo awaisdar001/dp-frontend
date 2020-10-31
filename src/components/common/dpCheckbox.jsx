@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 function DPCheckbox({ label, selected, ...props }) {
-  const id = "id-" + props.value;
+  const id = 'id-' + props.value;
   const isSelected = selected ? true : false;
   return (
     <div className="checkbox-item">

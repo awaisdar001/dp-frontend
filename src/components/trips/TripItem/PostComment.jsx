@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Col, Row, Form } from "react-bootstrap";
-import { RatingPlugin } from "../TripCommon";
+import React from 'react';
+import { Button, Col, Row, Form } from 'react-bootstrap';
+import { RatingPlugin } from '../TripCommon';
 
 const RenderInput = (props) => {
   const id = `id-${props.name}`;

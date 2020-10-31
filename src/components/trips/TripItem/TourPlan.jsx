@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const TripItem = ({ description }) => {
   return (
@@ -10,7 +10,7 @@ const TripItem = ({ description }) => {
           height="100%"
           viewBox="0 0 150 100"
           preserveAspectRatio="none"
-          style={{ position: "absolute" }}
+          style={{ position: 'absolute' }}
         >
           <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="#6ED901" />
         </svg>

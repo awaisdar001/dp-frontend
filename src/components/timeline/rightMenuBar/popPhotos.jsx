@@ -1,9 +1,9 @@
-import React from "react";
-import { Col } from "react-bootstrap";
-import Skeleton from "react-loading-skeleton";
-import { useSelector, useStore } from "react-redux";
-import { getLoading, getPopularPhotos } from "../../../store/popularFeeds";
-import ProgressiveImage from "../../common/progressiveImage";
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import Skeleton from 'react-loading-skeleton';
+import { useSelector, useStore } from 'react-redux';
+import { getLoading, getPopularPhotos } from '../../../store/popularFeeds';
+import ProgressiveImage from '../../common/progressiveImage';
 
 const FavPhoto = ({ image_urls: imageUrls, name, abs_url: absUrl }) => {
   return (
@@ -33,7 +33,7 @@ const PhotoPlaceHolder = () => {
               count={1}
               duration={2}
               height={40}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: '10px' }}
             />
           </Col>
         ))}

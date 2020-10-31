@@ -1,5 +1,5 @@
 const logger = (logType) => (store) => (next) => (action) => {
-  if (logType === "console") {
+  if (logType === 'console') {
   }
   return next(action);
 };

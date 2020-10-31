@@ -2,12 +2,12 @@ import {
   faEdit,
   faEnvelope,
   faIdCard,
-} from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import NumberFormat from "react-number-format";
-import withSidebar from "../../../common/hoc/withSidebar";
-import TripDatePicker from "./TripDatePicker";
+} from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import NumberFormat from 'react-number-format';
+import withSidebar from '../../../common/hoc/withSidebar';
+import TripDatePicker from './TripDatePicker';
 
 function BookingSideBar() {
   return (
@@ -63,4 +63,4 @@ function BookingSideBar() {
   );
 }
 
-export default withSidebar(BookingSideBar, "Book You Trip");
+export default withSidebar(BookingSideBar, 'Book You Trip');
