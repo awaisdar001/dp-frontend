@@ -1,5 +1,5 @@
-import axios from "axios";
-import * as actions from "../api";
+import axios from 'axios';
+import * as actions from '../api';
 
 const api = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) {
@@ -12,9 +12,9 @@ const api = ({ dispatch }) => (next) => async (action) => {
 
   try {
     const response = await axios.get(url, {
-      baseURL: "http://localhost:8003/",
+      baseURL: 'http://localhost:8003/',
       headers: {
-        Authorization: `Basic YWRtaW46YXJiaXNvZnQx`,
+        Authorization: `Basic YWRtaW46YXJiaXNvZnQx`, //todo
       },
     });
     dispatch(actions.apiCallSuccess(response.data));

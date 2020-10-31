@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { Accordion, Card, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { updateTimelineFeedTypesInLocalStorage } from "../../../storage";
+import React, { useEffect } from 'react';
+import { Accordion, Card, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTimelineFeedTypesInLocalStorage } from '../../../storage';
 import {
   getFeedItems,
-  updateFeedsCheckboxState
-} from "../../../store/accordion";
-import { getLoading } from "../../../store/timeline";
-import Checkbox from "./checkbox";
-import Header from "./header";
+  updateFeedsCheckboxState,
+} from '../../../store/accordion';
+import { getLoading } from '../../../store/timeline';
+import Checkbox from './checkbox';
+import Header from './header';
 
-const id = "collapse-feed-types";
+const id = 'collapse-feed-types';
 
 const FeedAccordion = () => {
   const dispatch = useDispatch();

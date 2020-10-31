@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import { useSelector, useStore } from "react-redux";
-import { selectLoading } from "../../../../store/features/trips";
-import Sidebar from "../SideBar";
-import TripCard from "./TripCard";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useSelector, useStore } from 'react-redux';
+import { selectLoading } from '../../../../store/features/trips';
+import Sidebar from '../SideBar';
+import TripCard from './TripCard';
 
 const Results = () => {
   const loading = useSelector(selectLoading);
@@ -12,7 +12,7 @@ const Results = () => {
   const state = store.getState();
   const { trips } = state.entities.trips;
   const { tripsMeta } = state.entities.trips;
-  const loadingClass = loading ? "loading" : "";
+  const loadingClass = loading ? 'loading' : '';
   debugger;
 
   return (
@@ -25,7 +25,7 @@ const Results = () => {
           <p>
             Trips: {trips.length} -- {state.entities.trips.tripsMeta.count}
           </p>
-          <div className={"search-results " + loadingClass}>
+          <div className={'search-results ' + loadingClass}>
             {trips.map(() => (
               <TripCard />
             ))}

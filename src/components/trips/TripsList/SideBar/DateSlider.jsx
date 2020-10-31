@@ -1,15 +1,15 @@
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import React, { useEffect } from "react";
-import { useStore } from "react-redux";
-import { getDateFromMilliSec } from "../../../../Utils";
-import DPSlider from "../../../common/sliders/DPSlider";
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import React, { useEffect } from 'react';
+import { useStore } from 'react-redux';
+import { getDateFromMilliSec } from '../../../../Utils';
+import DPSlider from '../../../common/sliders/DPSlider';
 import {
   selectSearchDates,
   selectSearchState,
-} from "../../../../store/features/trips";
+} from '../../../../store/features/trips';
 
-const id = "id-date-sliders";
+const id = 'id-date-sliders';
 const step = 86400000;
 
 const DateSlider = ({ commitChange }) => {
@@ -22,7 +22,7 @@ const DateSlider = ({ commitChange }) => {
     `Date ${getDateFromMilliSec(dates[0])} — ${getDateFromMilliSec(dates[1])}`;
 
   const commitChangesToStore = (unSavedDates) =>
-    commitChange("dates", unSavedDates);
+    commitChange('dates', unSavedDates);
 
   return (
     <div>

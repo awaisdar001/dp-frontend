@@ -1,9 +1,9 @@
-import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
-import CardDescription from "./cardDescription";
-import CardFooter from "../../cardFooter";
-import CardTags from "./cardTags";
-import CardHeader from "../../cardHeader";
+import React from 'react';
+import { Col, Image, Row } from 'react-bootstrap';
+import CardDescription from './cardDescription';
+import CardFooter from '../../cardFooter';
+import CardTags from './cardTags';
+import CardHeader from '../../cardHeader';
 
 export default function CardBlog({ instance, card }) {
   const {
@@ -38,7 +38,7 @@ export default function CardBlog({ instance, card }) {
         <Col md={12}>
           <a href={absUrl} title={description}>
             <Image
-              src={"https://destinationpak.com/" + instance.banner}
+              src={'https://destinationpak.com/' + instance.banner}
               rounded
               fluid
             />

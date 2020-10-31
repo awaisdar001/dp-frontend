@@ -1,10 +1,10 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 
-export default React.memo(function ({ className = "" }) {
+export default React.memo(function ({ className = '' }) {
   return (
-    <div className={"item-metadata " + className}>
+    <div className={'item-metadata ' + className}>
       <div className="meta-item">
         <span className="meta-icon">
           <FontAwesomeIcon icon={faClock} className="mr-1" />

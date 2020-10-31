@@ -1,15 +1,15 @@
-import React from "react";
-import moment from "moment";
+import React from 'react';
+import moment from 'moment';
 
 export const DateFormats = {
-  DayMonth: "DD MMM", // 10 Oct
-  YearMonthDate: "YYYY-MM-DD", // 2020-10-10
+  DayMonth: 'DD MMM', // 10 Oct
+  YearMonthDate: 'YYYY-MM-DD', // 2020-10-10
 };
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
-export const NewLineToBr = ({ children = "" }) => {
-  return children.split("\n").reduce((arr, line, index) => {
+export const NewLineToBr = ({ children = '' }) => {
+  return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
       return arr.concat(addP);
@@ -22,14 +22,14 @@ export const NewLineToBr = ({ children = "" }) => {
 export const renameKeys = (instance) => {
   return Object.keys(instance).reduce((acc, key) => {
     const cambleCaseKey = key
-      .split("_")
+      .split('_')
       .map(function (name, i) {
         if (i > 0) {
           return name.charAt(0).toUpperCase() + name.substr(1);
         }
         return name;
       })
-      .join("");
+      .join('');
     return {
       ...acc,
       ...{ [cambleCaseKey]: instance[key] },
@@ -37,7 +37,7 @@ export const renameKeys = (instance) => {
   }, {});
 };
 
-export const buildQueryString = (dataArray, name, key = "name") =>
+export const buildQueryString = (dataArray, name, key = 'name') =>
   /*
     Given a list object, builds querystring
 
@@ -47,7 +47,7 @@ export const buildQueryString = (dataArray, name, key = "name") =>
 
     */
 
-  dataArray.map((item) => `${name}=${item[key]}`).join("&");
+  dataArray.map((item) => `${name}=${item[key]}`).join('&');
 
 export const getQueryStringFromParams = (params) =>
   new URLSearchParams(params).toString();
@@ -62,12 +62,12 @@ export const getQueryStringParams = (query) => {
 
   return query
     ? (/^[?#]/.test(query) ? query.slice(1) : query)
-        .split("&")
+        .split('&')
         .reduce((params, param) => {
-          let [key, value] = param.split("=");
+          let [key, value] = param.split('=');
           params[key] = value
-            ? decodeURIComponent(value.replace(/\+/g, " "))
-            : "";
+            ? decodeURIComponent(value.replace(/\+/g, ' '))
+            : '';
           return params;
         }, {})
     : {};

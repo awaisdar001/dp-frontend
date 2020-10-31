@@ -1,5 +1,5 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 export default function Facilities() {
   return (
@@ -70,7 +70,7 @@ export default function Facilities() {
         </li>
         <li className="item">
           <Row>
-            {" "}
+            {' '}
             <Col lg={2} as="h5" className="facility-heading">
               Category
             </Col>

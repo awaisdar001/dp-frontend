@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const thumbnailStyles = {
-  minWidth: "100%",
+  minWidth: '100%',
   // filter: "blur(3px)",
   // transition: "opacity ease-in 1000ms",
   // clipPath: "inset(0)",
@@ -15,7 +15,7 @@ export default function ProgressiveImage(props) {
     <span>
       <img
         className={`${className} img-hq`}
-        style={{ display: highResImageLoaded ? "block" : "none" }}
+        style={{ display: highResImageLoaded ? 'block' : 'none' }}
         onLoad={() => {
           setHighResImageLoaded(true);
         }}

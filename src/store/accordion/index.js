@@ -1,13 +1,13 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
-import { createSelector } from "reselect";
+import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 import {
   feedTypesData,
   pros as proStaticData,
-} from "../../components/common/enumData";
+} from '../../components/common/enumData';
 import {
   getTimelineFeedsFromLocalStorage,
   getTimelineProsFromLocalStorage,
-} from "../../storage";
+} from '../../storage';
 
 const proStateInStorage = getTimelineProsFromLocalStorage();
 const feedsStateInStorage = getTimelineFeedsFromLocalStorage();
@@ -19,13 +19,13 @@ const defaultState = {
 };
 
 const accordionProCheckStateChanged = createAction(
-  "accordion/proCheckStateChanged"
+  'accordion/proCheckStateChanged'
 );
 const accordionFeedCheckStateChanged = createAction(
-  "accordion/feedCheckStateChanged"
+  'accordion/feedCheckStateChanged'
 );
-const accordionItemsRest = createAction("accordion/itemsRest");
-const accordionUpdateCount = createAction("accordion/updateCount");
+const accordionItemsRest = createAction('accordion/itemsRest');
+const accordionUpdateCount = createAction('accordion/updateCount');
 
 // Reducer
 export default createReducer(defaultState, {

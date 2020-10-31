@@ -1,5 +1,5 @@
-import React from "react";
-import { Col, ResponsiveEmbed } from "react-bootstrap";
+import React from 'react';
+import { Col, ResponsiveEmbed } from 'react-bootstrap';
 
 export default function VideoEmbed({ source, videoUrl }) {
   const sourceToUrls = (source, videoUrl) => {
@@ -12,7 +12,7 @@ export default function VideoEmbed({ source, videoUrl }) {
 
   return (
     <Col md={12}>
-      <div style={{ width: "100%", height: "auto" }}>
+      <div style={{ width: '100%', height: 'auto' }}>
         {source && videoUrl && (
           <ResponsiveEmbed aspectRatio="16by9">
             <embed src={sourceToUrls(source, videoUrl)} />

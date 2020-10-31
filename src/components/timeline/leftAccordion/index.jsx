@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { Button, Col } from "react-bootstrap";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import React, { useEffect, useRef } from 'react';
+import { Button, Col } from 'react-bootstrap';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import {
   getFeedItems,
   getProsItems,
   restAllItems,
-  shouldResetItems
-} from "../../../store/accordion";
-import { loadTimelineItemsFromState } from "../../../store/timeline";
-import FeedsAccordion from "../../timeline/leftAccordion/feedAccordion";
-import ProAccordion from "../../timeline/leftAccordion/proAccordion";
+  shouldResetItems,
+} from '../../../store/accordion';
+import { loadTimelineItemsFromState } from '../../../store/timeline';
+import FeedsAccordion from '../../timeline/leftAccordion/feedAccordion';
+import ProAccordion from '../../timeline/leftAccordion/proAccordion';
 
 /**
  * Accordion component for showing checkboxes for quick filtering of timelne

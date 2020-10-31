@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateFeedsCheckboxState } from "../../store/accordion";
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateFeedsCheckboxState } from '../../store/accordion';
 
 export default function Temp1() {
-  console.log("Rendering temp2");
+  console.log('Rendering temp2');
   const dispatch = useDispatch();
   const state = useSelector((state) => state.entities.accordion.feedTypesItems);
   debugger;
@@ -20,11 +20,11 @@ export default function Temp1() {
       {state.map((pro) => {
         return (
           <div key={`div-${pro.slug}`}>
-            <label key={pro.slug + "label"} className="form-check-label">
+            <label key={pro.slug + 'label'} className="form-check-label">
               {pro.name}
             </label>
             <input
-              key={pro.slug + "in"}
+              key={pro.slug + 'in'}
               name={pro.name}
               type="checkbox"
               data-slug={pro.slug}

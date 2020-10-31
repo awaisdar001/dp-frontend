@@ -1,11 +1,11 @@
-import Rating from "@material-ui/lab/Rating";
-import React, { useState } from "react";
-import { Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Rating from '@material-ui/lab/Rating';
+import React, { useState } from 'react';
+import { Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export function Title({ className, name, url }) {
   return (
-    <div className={"item-heading " + className}>
+    <div className={'item-heading ' + className}>
       <h2 className="h2 trip-title">
         <Link to={url}>{name}</Link>
       </h2>
@@ -15,7 +15,7 @@ export function Title({ className, name, url }) {
 
 export function TitlePrice({ className, price }) {
   return (
-    <div className={"item-price " + className}>
+    <div className={'item-price ' + className}>
       <div className="item-price-container">
         <span className="item-price">{price}</span>
         <span className="item-price-desc">/ per person</span>

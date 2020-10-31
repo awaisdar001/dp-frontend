@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loadTripFromState,
   selectSidebarDestinations,
   updateTripsByDestination,
-} from "../../../../store/features/trips";
-import DPCheckbox from "../../../common/dpCheckbox";
+} from '../../../../store/features/trips';
+import DPCheckbox from '../../../common/dpCheckbox';
 function Destinations() {
-  console.log("rerendring destiantions. ");
+  console.log('rerendring destiantions. ');
   const destinations = useSelector(selectSidebarDestinations);
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function Destinations() {
   };
 
   useEffect(() => {
-    console.log("[useEffect]: Trips-API Call here.");
+    console.log('[useEffect]: Trips-API Call here.');
     dispatch(loadTripFromState());
   }, [destinations, dispatch]);
 
@@ -27,7 +27,7 @@ function Destinations() {
       <span className="title mb-3">Destinations</span>
       {destinations.map((destination) => (
         <DPCheckbox
-          key={"destination-" + destination.value}
+          key={'destination-' + destination.value}
           value={destination.value}
           name="destination[]"
           label={destination.label}

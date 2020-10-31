@@ -1,5 +1,5 @@
-import React from "react";
-import TimelineCard from "./TimelineCard/index";
+import React from 'react';
+import TimelineCard from './TimelineCard/index';
 
 const RenderCards = ({ items }) => {
   return items.map((item) => {

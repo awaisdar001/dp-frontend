@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Col } from "react-bootstrap";
-import Skeleton from "react-loading-skeleton";
-import ProgressiveImage from "../../common/progressiveImage";
-import { useStore, useSelector } from "react-redux";
-import { getPopularVideos, getLoading } from "../../../store/popularFeeds";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import Skeleton from 'react-loading-skeleton';
+import ProgressiveImage from '../../common/progressiveImage';
+import { useStore, useSelector } from 'react-redux';
+import { getPopularVideos, getLoading } from '../../../store/popularFeeds';
 
 const PopVideoPlaceHolder = () => {
   return (
@@ -17,7 +17,7 @@ const PopVideoPlaceHolder = () => {
               count={1}
               duration={2}
               height={60}
-              style={{ marginBottom: "30px" }}
+              style={{ marginBottom: '30px' }}
             />
           </Col>
         ))}

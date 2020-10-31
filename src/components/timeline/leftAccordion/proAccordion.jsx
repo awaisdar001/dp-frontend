@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from "react";
-import { Accordion, Card, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { updateTimelineProsInLocalStorage } from "../../../storage";
-import { getProsItems } from "../../../store/accordion";
-import { updateProCheckboxState } from "../../../store/accordion/index";
-import { getLoading } from "../../../store/timeline";
-import Checkbox from "./checkbox";
-import Header from "./header";
+import React, { useCallback, useEffect } from 'react';
+import { Accordion, Card, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTimelineProsInLocalStorage } from '../../../storage';
+import { getProsItems } from '../../../store/accordion';
+import { updateProCheckboxState } from '../../../store/accordion/index';
+import { getLoading } from '../../../store/timeline';
+import Checkbox from './checkbox';
+import Header from './header';
 
-const id = "collapse-pro";
+const id = 'collapse-pro';
 
 // Re-Rendring:
 // 1. Change checkbox state => checked/unchecked (2)

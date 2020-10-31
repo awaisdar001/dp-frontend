@@ -73,22 +73,26 @@
   height: 100%;
 }
 
-.video-without-caption article:hover .full-img-thumb, .video-with-caption article:hover .full-img-thumb {
+.video-without-caption article:hover .full-img-thumb,
+.video-with-caption article:hover .full-img-thumb {
   opacity: 0.7;
 }
 
-.video-without-caption article .full-img-thumb.video_thumb, .video-with-caption article .full-img-thumb.video_thumb {
+.video-without-caption article .full-img-thumb.video_thumb,
+.video-with-caption article .full-img-thumb.video_thumb {
   height: auto !important;
 }
 
-.video-without-caption article .full-img-thumb, .video-with-caption article .full-img-thumb {
+.video-without-caption article .full-img-thumb,
+.video-with-caption article .full-img-thumb {
   width: 100%;
   height: 140px;
   overflow: hidden;
   position: relative;
 }
 
-.video-without-caption article .full-img-thumb img, .video-with-caption article .full-img-thumb img {
+.video-without-caption article .full-img-thumb img,
+.video-with-caption article .full-img-thumb img {
   position: relative;
   margin: auto;
   height: auto;
@@ -96,7 +100,8 @@
   min-height: 140px;
 }
 
-.video-without-caption article .full-img-thumb .icon-post-format, .video-with-caption article .full-img-thumb .icon-post-format {
+.video-without-caption article .full-img-thumb .icon-post-format,
+.video-with-caption article .full-img-thumb .icon-post-format {
   position: absolute;
   z-index: 2;
   text-align: center;
@@ -115,7 +120,8 @@
   border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
-.video-without-caption article .full-img-thumb .icon-post-format svg, .video-with-caption article .full-img-thumb .icon-post-format svg {
+.video-without-caption article .full-img-thumb .icon-post-format svg,
+.video-with-caption article .full-img-thumb .icon-post-format svg {
   margin-left: 2px;
 }
 
@@ -189,7 +195,7 @@ ul.dp-updates small a {
 
 ul.dp-updates small + small::before {
   padding: 0 5px;
-  content: "/\00a0";
+  content: '/\00a0';
 }
 
 ul.pop-questions-list {
@@ -215,7 +221,12 @@ ul.pop-questions-list .question-item .questions-div small.post-meta a {
   color: #777;
 }
 
-ul.pop-questions-list .question-item .questions-div small.post-meta span + span::before {
+ul.pop-questions-list
+  .question-item
+  .questions-div
+  small.post-meta
+  span
+  + span::before {
   padding: 0 5px;
-  content: "/\00a0";
+  content: '/\00a0';
 }
