@@ -1,5 +1,3 @@
-import React from 'react';
-
 function withSidebar(Component, title) {
   return function withSidebar() {
     return (

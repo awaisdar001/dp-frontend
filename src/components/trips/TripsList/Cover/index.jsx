@@ -1,4 +1,3 @@
-import React from 'react';
 import TripCrums from './TripCrum';
 import SearchInput from './SearchInput';
 

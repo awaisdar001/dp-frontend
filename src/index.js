@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -8,9 +8,9 @@ import './styles/css/App.css';
 console.log(process.env);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />,
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('react-container')
 );
 

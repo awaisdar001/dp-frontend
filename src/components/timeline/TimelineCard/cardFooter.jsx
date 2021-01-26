@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'moment-timezone';
-import React from 'react';
 import { Col } from 'react-bootstrap';
 import FBComments from '../../common/facebookComment';
 import { MomentTime } from '../../common/momentTime';

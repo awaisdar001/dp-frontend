@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Col, Row, Form } from 'react-bootstrap';
 import { RatingPlugin } from '../TripCommon';
 

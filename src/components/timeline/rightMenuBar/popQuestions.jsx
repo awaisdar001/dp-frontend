@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useStore, useSelector } from 'react-redux';
 import { getPopularQuestions, getLoading } from '../../../store/popularFeeds';

@@ -1,6 +1,6 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import React, { useEffect } from 'react';
+import { useState, memo, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { getDateFromMilliSec } from '../../../../Utils';
 import DPSlider from '../../../common/sliders/DPSlider';
@@ -15,7 +15,7 @@ const step = 86400000;
 const DateSlider = ({ commitChange }) => {
   const store = useStore();
   const [minDate, maxDate] = selectSearchState(store.getState()).initial.dates;
-  const [dates, setDates] = React.useState([minDate, maxDate]);
+  const [dates, setDates] = useState([minDate, maxDate]);
 
   const handleAriaValueText = (number, index) => getDateFromMilliSec(number);
   const getHeadding = () =>
@@ -49,4 +49,4 @@ const DateSlider = ({ commitChange }) => {
   );
 };
 
-export default React.memo(DateSlider);
+export default memo(DateSlider);

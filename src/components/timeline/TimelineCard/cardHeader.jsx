@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 
 export default function CardHeader(props) {
   const { username, title, icon, is_new, profileURL, nodeURL } = props;

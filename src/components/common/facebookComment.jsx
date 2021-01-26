@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'moment-timezone';
-import React from 'react';
 import { default as NumberFormat } from 'react-number-format';
 
 export default ({ absUrl }) => {

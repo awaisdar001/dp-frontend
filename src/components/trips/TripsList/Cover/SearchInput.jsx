@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { updateTripsByKeyword } from '../../../../store/features/trips';
 
 const MainSearchInput = () => {
-  const [keyword, setKeyword] = React.useState('');
+  const [keyword, setKeyword] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {

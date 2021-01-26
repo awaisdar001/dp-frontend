@@ -1,4 +1,3 @@
-import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { getPopularBlogs } from '../../../store/popularFeeds';
 import { useSelector, useStore } from 'react-redux';

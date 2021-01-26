@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col, ResponsiveEmbed } from 'react-bootstrap';
 
 export default function VideoEmbed({ source, videoUrl }) {

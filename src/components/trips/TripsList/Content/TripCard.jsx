@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Row } from 'react-bootstrap';
 import Metadata from './Metadata';
 import Rating from './Rating';
@@ -57,4 +57,4 @@ const ResultItem = () => {
     </Row>
   );
 };
-export default React.memo(ResultItem);
+export default memo(ResultItem);

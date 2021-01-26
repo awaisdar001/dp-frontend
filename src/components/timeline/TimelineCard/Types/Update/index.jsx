@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row } from 'react-bootstrap';
 import CardFooter from '../../cardFooter';
 import CardHeader from '../../cardHeader';

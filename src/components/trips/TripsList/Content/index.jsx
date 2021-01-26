@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useStore } from 'react-redux';
 import { selectLoading } from '../../../../store/features/trips';

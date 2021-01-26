@@ -1,8 +1,8 @@
-import React from 'react';
+import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
-export default React.memo(function () {
+export default memo(function () {
   return (
     <div className="item-rating wrapper-block">
       <h3 className="h3">Reviews and Ratings</h3>

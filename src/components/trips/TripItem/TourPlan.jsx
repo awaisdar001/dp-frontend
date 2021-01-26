@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TripItem = ({ description }) => {
   return (
     <div className="item">

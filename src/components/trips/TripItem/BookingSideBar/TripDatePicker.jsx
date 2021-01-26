@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createMuiTheme, MuiThemeProvider, TextField } from '@material-ui/core';
 import lightGreen from '@material-ui/core/colors/lightGreen';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const customTheme = createMuiTheme({
   overrides: {

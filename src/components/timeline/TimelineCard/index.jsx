@@ -1,4 +1,3 @@
-import React from 'react';
 import CardBlog from './Types/Blog';
 import CardImage from './Types/Image';
 import CardQuestion from './Types/Question';

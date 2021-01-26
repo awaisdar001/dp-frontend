@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from 'react-bootstrap';
 import Content from './Content';
 import Cover from './Cover/';

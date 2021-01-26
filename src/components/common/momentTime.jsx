@@ -1,4 +1,3 @@
-import React from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 import momentDurationFormatSetup from 'moment-duration-format';

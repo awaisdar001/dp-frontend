@@ -1,4 +1,3 @@
-import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Row, Col } from 'react-bootstrap';
 

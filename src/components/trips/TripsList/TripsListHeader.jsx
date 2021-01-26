@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
 const TripsListHeader = ({ items, activeItem }) => {
-  const [activeLink, setActiveLink] = React.useState(activeItem);
+  const [activeLink, setActiveLink] = useState(activeItem);
   const handleOnClick = (e, id) => {
     setActiveLink(id);
   };

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineProsInLocalStorage } from '../../../storage';
@@ -61,4 +61,4 @@ const ProAccordion = () => {
     </Accordion>
   );
 };
-export default React.memo(ProAccordion);
+export default memo(ProAccordion);

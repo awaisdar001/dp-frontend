@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { fetchPopularTimelineItems } from '../../../store/popularFeeds';

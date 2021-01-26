@@ -1,5 +1,5 @@
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import { useState, memo } from 'react';
 import { useStore } from 'react-redux';
 import {
   selectSearchDays,
@@ -12,7 +12,7 @@ const id = 'id-days-slider';
 function DaysSlider({ commitChange }) {
   const store = useStore();
   const [minDay, maxDay] = selectSearchState(store.getState()).initial.days;
-  const [days, setDays] = React.useState([minDay, maxDay]);
+  const [days, setDays] = useState([minDay, maxDay]);
 
   const handleValueLabelFormat = (days) => `${days[0]} Days — ${days[1]} Days`;
   const commitChangesToStore = (days) => commitChange('days', days);
@@ -37,4 +37,4 @@ function DaysSlider({ commitChange }) {
   );
 }
 
-export default React.memo(DaysSlider);
+export default memo(DaysSlider);

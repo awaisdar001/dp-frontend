@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineFeedTypesInLocalStorage } from '../../../storage';
@@ -58,4 +58,4 @@ const FeedAccordion = () => {
   );
 };
 
-export default React.memo(FeedAccordion);
+export default memo(FeedAccordion);

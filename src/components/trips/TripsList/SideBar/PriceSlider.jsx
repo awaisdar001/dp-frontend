@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Humanize from 'humanize-plus';
-import React from 'react';
+import { useState, memo } from 'react';
 import { useStore } from 'react-redux';
 import {
   selectSearchPrices,
@@ -18,7 +18,7 @@ const PriceSlider = ({ commitChange }) => {
     store.getState()
   ).initial.prices;
   // const [minUserPrice, maxUserPrice] = selectSearchPrices(store.getState());
-  const [prices, setPrices] = React.useState([minPrice, maxPrice]);
+  const [prices, setPrices] = useState([minPrice, maxPrice]);
 
   const handleLabelFormat = (number, index) =>
     `Rs. ${Humanize.compactInteger(number)}`;
@@ -52,4 +52,4 @@ const PriceSlider = ({ commitChange }) => {
   );
 };
 
-export default React.memo(PriceSlider);
+export default memo(PriceSlider);

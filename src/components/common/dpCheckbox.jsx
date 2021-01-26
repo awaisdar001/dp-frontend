@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 function DPCheckbox({ label, selected, ...props }) {
   const id = 'id-' + props.value;
@@ -13,4 +13,4 @@ function DPCheckbox({ label, selected, ...props }) {
   );
 }
 
-export default React.memo(DPCheckbox);
+export default memo(DPCheckbox);

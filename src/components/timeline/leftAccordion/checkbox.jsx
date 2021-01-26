@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import { memo } from 'react';
 
 const Checkbox = ({ name, slug, ico, ...rest }) => {
   const id = `id-${slug}`;
@@ -15,4 +15,4 @@ const Checkbox = ({ name, slug, ico, ...rest }) => {
     </div>
   );
 };
-export default React.memo(Checkbox);
+export default memo(Checkbox);

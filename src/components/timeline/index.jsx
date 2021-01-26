@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import DPAccordion from './leftAccordion';
 import TimelineContent from './timelineContent';

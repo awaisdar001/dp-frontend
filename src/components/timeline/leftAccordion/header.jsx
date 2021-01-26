@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import { memo } from 'react';
 import { Accordion, Card } from 'react-bootstrap';
 
 const Header = ({ title }) => {
@@ -14,4 +14,4 @@ const Header = ({ title }) => {
     </Accordion.Toggle>
   );
 };
-export default React.memo(Header);
+export default memo(Header);

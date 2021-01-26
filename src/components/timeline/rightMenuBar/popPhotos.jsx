@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector, useStore } from 'react-redux';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { MomentTime } from '../../common/momentTime';
 import { useStore, useSelector } from 'react-redux';

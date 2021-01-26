@@ -1,5 +1,3 @@
-import React from 'react';
-
 function CancellationPolicy() {
   return (
     <div className="wrapper-block">

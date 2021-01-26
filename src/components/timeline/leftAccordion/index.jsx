@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import {
