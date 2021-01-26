@@ -72,3 +72,5 @@ export const getQueryStringParams = (query) => {
         }, {})
     : {};
 };
+
+export const getDictLength = (d) => Object.keys(d).length;

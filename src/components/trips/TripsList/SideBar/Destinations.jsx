@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import {
-  loadTripFromState,
+  fetchTripsFromAPI,
+  resetAllDestinations,
   selectSidebarDestinations,
+  shouldRestDestinationItems,
   updateTripsByDestination,
 } from '../../../../store/features/trips';
 import DPCheckbox from '../../../common/dpCheckbox';
+
 function Destinations() {
-  console.log('rerendring destiantions. ');
   const destinations = useSelector(selectSidebarDestinations);
   const dispatch = useDispatch();
+  const store = useStore();
+
+  const resetAllItems = () => dispatch(resetAllDestinations());
+  const refreshTripsResult = () => dispatch(fetchTripsFromAPI());
 
   const handleChange = (event) => {
     const target = event.target;
@@ -17,9 +23,17 @@ function Destinations() {
     dispatch(updateTripsByDestination(payload));
   };
 
+  const handleResetItems = (event) => {
+    event.preventDefault();
+    resetAllItems();
+  };
+
   useEffect(() => {
-    console.log('[useEffect]: Trips-API Call here.');
-    dispatch(loadTripFromState());
+    if (shouldRestDestinationItems(store.getState()) === true) {
+      resetAllItems();
+    } else {
+      refreshTripsResult();
+    }
   }, [destinations, dispatch]);
 
   return (
@@ -35,6 +49,13 @@ function Destinations() {
           onChange={handleChange}
         />
       ))}
+      <button
+        type="submit"
+        className="btn btn-success btn-block btn-lg mt-4"
+        onClick={handleResetItems}
+      >
+        RESET
+      </button>
     </div>
   );
 }

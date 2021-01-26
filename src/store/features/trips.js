@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { tripDestinations } from '../../components/common/enumData';
 import moment from 'moment';
-import { getQueryString, getDateFromMilliSec, DateFormats } from '../../Utils';
+import { createSelector } from 'reselect';
+import { tripDestinations as InitialTripDestinations } from '../../components/common/enumData';
+import { DateFormats, getDateFromMilliSec, getDictLength } from '../../Utils';
 import { apiCallBegan } from '../api';
-import Destinations from '../../components/trips/TripsList/SideBar/Destinations';
-import Results from '../../components/trips/TripsList/Content/index';
 
 const minDay = 1;
 const maxDay = 20;
@@ -18,7 +17,7 @@ const defaultState = {
   tripsMeta: {},
   nextPage: {},
   previousPage: {},
-  destinations: tripDestinations,
+  destinations: InitialTripDestinations,
   search: {
     initial: {
       days: [minDay, maxDay],
@@ -72,6 +71,9 @@ const tripsSlice = createSlice({
     searchKeywordChanged: (trips, { payload }) => {
       trips.search.keyword = payload.keyword;
     },
+    resetDestinations: (trips, action) => {
+      trips.destinations = InitialTripDestinations;
+    },
     counterUpdated: (trips, { payload }) => {
       console.log('updating counter from', trips.counter);
       trips.counter += payload.value;
@@ -92,12 +94,39 @@ export const selectSidebarDestinations = (state) => {
 export const selectLoading = (state) => selectTrips(state).loading;
 export const selectCounter = (state) => selectTrips(state).counter;
 
+export const getSelectedDestinations = createSelector(
+  selectSidebarDestinations,
+  (destinations) => destinations.filter((d) => d.selected === true)
+);
+
+export const shouldRestDestinationItems = (state) =>
+  getDictLength(getSelectedDestinations(state)) === 0;
+
+export const getSelectedDestinationsQuery = createSelector(
+  getSelectedDestinations,
+  (selectedDestinations) => {
+    const selectedCount = getDictLength(selectedDestinations);
+    const allCount = getDictLength(InitialTripDestinations);
+
+    if (selectedCount === 0 || selectedCount === allCount) {
+      return '';
+    } else if (selectedCount === 1) {
+      return selectedDestinations[0].value;
+    } else {
+      return selectedDestinations.reduce(
+        (acc, d) => `${acc.value ? acc.value : acc},${d.value}`
+      );
+    }
+  }
+);
+
 // Helper to Action Creators
 const {
   searchDestinationChanged,
   searchSliderChanged,
   counterUpdated,
   searchKeywordChanged,
+  resetDestinations,
 
   // API request actions
   tripsItemsRequested,
@@ -105,6 +134,7 @@ const {
   tripsItemsRequestFailed,
 } = tripsSlice.actions;
 
+export const resetAllDestinations = () => resetDestinations({});
 export const updateTripsByDestination = (payload) =>
   searchDestinationChanged(payload);
 export const updateTripsBySlider = (payload) => searchSliderChanged(payload);
@@ -113,10 +143,9 @@ export const updateTripsByKeyword = (keyword) =>
 
 export const updateTripsCounter = (value) => counterUpdated({ value });
 
-export const loadTripFromState = () => (dispatch, getState) => {
+export const fetchTripsFromAPI = () => (dispatch, getState) => {
   const url = getTripsListURLFromState(getState());
   console.log('API: URL:', url);
-  debugger;
 
   return dispatch(
     apiCallBegan({
@@ -150,11 +179,8 @@ export default tripsSlice.reducer;
 // Local
 const getTripsListURLFromState = (state) => {
   const search = selectSearchState(state);
-  const destinations = selectSidebarDestinations(state);
   const dateFormat = DateFormats.YearMonthDate;
-  const selectedDestinations = destinations
-    .filter((destination) => destination.selected === true)
-    .reduce((acc, d) => `${acc.value ? acc.value : acc},${d.value}`);
+  const selectedDestinations = getSelectedDestinationsQuery(state);
 
   const daysFrom = search.days[0];
   const daysTo = search.days[1];
@@ -176,5 +202,5 @@ const getTripsListURLFromState = (state) => {
     priceQuery,
     dateQuery,
   ].join('&');
-  return `/api/trips?${queryString}`;
+  return `/api/trips/?${queryString}`;
 };
