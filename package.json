@@ -31,7 +31,7 @@
     "bootstrap": "^4.5.0",
     "date-fns": "^2.16.1",
     "humanize-plus": "^1.8.2",
-    "moment": "^2.27.0",
+    "moment": "2.29.1",
     "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.31",
     "query-string": "^6.13.1",
