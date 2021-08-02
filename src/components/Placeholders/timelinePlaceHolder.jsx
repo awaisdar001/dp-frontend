@@ -37,7 +37,4 @@ const PlaceHolder = () => {
   );
 };
 
-export const LoadingNewFeeds = () => {
-  return <PlaceHolder />;
-};
 export default PlaceHolder;
