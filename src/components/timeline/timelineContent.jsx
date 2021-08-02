@@ -8,10 +8,10 @@ import {
   getPaginatoinNextParams,
   getPaginatoinPreviousParams,
 } from '../../store/timeline';
-import { getLoading } from '../../store/timeline/index';
-import ResetFeedsPlaceholder, {
-  LoadingNewFeeds,
-} from '../placeholders/FeedsPlaceholder';
+import { getLoading } from '../../store/timeline';
+import {
+  FeedsPlaceholder, LoadingNewFeeds,
+} from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 
@@ -55,7 +55,7 @@ const TimelineContent = () => {
 
   return (
     <Col sm={12} lg={6} as="main" id="dp-timeline">
-      {loading ? <ResetFeedsPlaceholder /> : null}
+      {loading ? <FeedsPlaceholder /> : null}
       {results.length !== 0 && <TimelineCards items={results} />}
 
       {loading && loadingNewFeeds && <LoadingNewFeeds />}

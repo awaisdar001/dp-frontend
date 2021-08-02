@@ -19,6 +19,8 @@
 
 # Node modules
 node_modules/
+build/
+build-dist/
 yarn.lock
 npm-debug.log
 

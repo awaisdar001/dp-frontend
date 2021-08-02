@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-const PlaceHolder = () => {
+const TimelinePlaceHolder = () => {
   return (
     <SkeletonTheme color="#ddd" highlightColor="#eeeeee">
       <div className="item" key={`placeholder`}>
@@ -37,7 +37,4 @@ const PlaceHolder = () => {
   );
 };
 
-export const LoadingNewFeeds = () => {
-  return <PlaceHolder />;
-};
-export default PlaceHolder;
+export default TimelinePlaceHolder;
