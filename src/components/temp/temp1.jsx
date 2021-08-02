@@ -10,9 +10,8 @@ export default function Temp1() {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.entities.accordion.proItems);
-  debugger;
+
   const handleProCheckbox = useCallback((e) => {
-    debugger;
     const target = e.target;
     const checked = target.checked;
     const slug = target.dataset.slug;

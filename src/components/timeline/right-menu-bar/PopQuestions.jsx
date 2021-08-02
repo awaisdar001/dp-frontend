@@ -3,7 +3,7 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useStore, useSelector } from 'react-redux';
 import { getPopularQuestions, getLoading } from '../../../store/popular-feeds';
-import { MomentTime } from '../../common/MomentTime';
+import { MomentTime } from '../../common';
 
 const PopQuestionPlaceholder = (props) => {
   const { count } = props;

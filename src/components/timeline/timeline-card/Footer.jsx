@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'moment-timezone';
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import FBComments from '../../common/facebookComment';
-import { MomentTime } from '../../common/MomentTime';
+import { FacebookComment, MomentTime } from '../../common';
 
 export default function Footer({ absUrl, createdAt, seenCount }) {
   return (
@@ -16,7 +15,7 @@ export default function Footer({ absUrl, createdAt, seenCount }) {
           </a>
         </span>
         <span>
-          <FBComments absUrl={absUrl} />
+          <FacebookComment absUrl={absUrl} />
         </span>
         <span className="auto-margin-left">
           <a href={absUrl}>

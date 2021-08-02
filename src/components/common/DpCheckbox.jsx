@@ -1,8 +1,9 @@
 import React from 'react';
 
-function DPCheckbox({ label, selected, ...props }) {
-  const id = 'id-' + props.value;
-  const isSelected = selected ? true : false;
+function DpCheckbox({ label, selected, ...props }) {
+  const id = `id-${props.value}`
+  const isSelected = !!selected;
+
   return (
     <div className="checkbox-item">
       <input id={id} type="checkbox" checked={isSelected} {...props} />
@@ -13,4 +14,4 @@ function DPCheckbox({ label, selected, ...props }) {
   );
 }
 
-export default React.memo(DPCheckbox);
+export default React.memo(DpCheckbox);

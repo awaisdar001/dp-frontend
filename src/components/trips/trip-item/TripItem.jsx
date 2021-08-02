@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Title, TitlePrice } from '../TripCommon';
-import Metadata from '../TripsList/Content/Metadata';
+import Metadata from '../trips-list/content/Metadata';
 import BookingSideBar from './booking-sidebar';
 import CancellationPolicy from './CancellationPolicy';
 import Carousel from './Carousel';

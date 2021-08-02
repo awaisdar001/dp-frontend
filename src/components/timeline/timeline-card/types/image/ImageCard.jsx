@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import ProgressiveImage from '../../../../common/ProgressiveImage';
+import { ProgressiveImage } from '../../../../common';
 import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
