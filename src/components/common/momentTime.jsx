@@ -2,22 +2,24 @@ import React from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 import momentDurationFormatSetup from 'moment-duration-format';
-export const ReactFEFormat = 'MMM DD, YYYY';
 
 momentDurationFormatSetup(moment);
+
+export const ReactFEFormat = 'MMM DD, YYYY';
 const FEFormats = {
   s: 'MMM DD, YYYY',
 };
-export const MomentTime = (props) => {
-  const { propDateTime } = props;
+
+export const MomentTime = ({ dateTime }) => {
   const format = FEFormats.s;
-  const diff = moment().diff(moment(propDateTime));
+  const diff = moment().diff(moment(dateTime));
   const duration = moment
     .duration(diff, 'milliseconds')
     .format('y [years], M [months ago]');
+
   return (
-    <time dateTime={moment(propDateTime).format(format)} title={duration}>
-      {moment(propDateTime).format(format)}
+    <time dateTime={moment(dateTime).format(format)} title={duration}>
+      {moment(dateTime).format(format)}
     </time>
   );
 };

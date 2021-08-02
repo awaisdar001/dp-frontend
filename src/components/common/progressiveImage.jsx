@@ -7,9 +7,8 @@ const thumbnailStyles = {
   // clipPath: "inset(0)",
 };
 
-export default function ProgressiveImage(props) {
+export default function ProgressiveImage({ alt, thumbnailSMSrc, thumbnailHDSrc, className }) {
   const [highResImageLoaded, setHighResImageLoaded] = useState(false);
-  const { alt, thumbnailSMSrc, thumbnailHDSrc, className } = props;
 
   return (
     <span>

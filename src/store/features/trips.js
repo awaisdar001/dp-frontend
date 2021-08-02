@@ -116,7 +116,6 @@ export const updateTripsCounter = (value) => counterUpdated({ value });
 export const loadTripFromState = () => (dispatch, getState) => {
   const url = getTripsListURLFromState(getState());
   console.log('API: URL:', url);
-  debugger;
 
   return dispatch(
     apiCallBegan({
