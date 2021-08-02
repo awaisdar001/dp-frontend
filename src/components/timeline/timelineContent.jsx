@@ -8,8 +8,10 @@ import {
   getPaginatoinNextParams,
   getPaginatoinPreviousParams,
 } from '../../store/timeline';
-import { getLoading } from '../../store/timeline/index';
-import {FeedsPlaceholder, LoadingNewFeeds} from '../placeholders/';
+import { getLoading } from '../../store/timeline';
+import {
+  FeedsPlaceholder, LoadingNewFeeds,
+} from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 

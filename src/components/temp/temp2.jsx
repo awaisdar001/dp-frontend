@@ -6,7 +6,9 @@ export default function Temp1() {
   console.log('Rendering temp2');
   const dispatch = useDispatch();
   const state = useSelector((state) => state.entities.accordion.feedTypesItems);
+  debugger;
   const handleProCheckbox = useCallback((e) => {
+    debugger;
     const target = e.target;
     const checked = target.checked;
     const slug = target.dataset.slug;

@@ -1,7 +1,7 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { apiCallBegan } from '../api';
-import { buildQueryString } from '../../Utils';
+import { buildQueryString } from '../../utils';
 import { getSelectedPros, getSelectedFeedTypes } from '../accordion';
 
 const defaultState = {
