@@ -1,7 +1,7 @@
 import React from 'react';
-import PlaceHolder from './timelinePlaceHolder';
+import PlaceHolder from './TimelinePlaceHolder';
 
-const ResetFeedsPlaceholder = () => {
+const FeedsPlaceholder = () => {
   return (
     <div className="reset-feeds">
       <PlaceHolder />;
@@ -17,4 +17,4 @@ export const LoadingNewFeeds = () => {
     </div>
   );
 };
-export default ResetFeedsPlaceholder;
+export default FeedsPlaceholder;

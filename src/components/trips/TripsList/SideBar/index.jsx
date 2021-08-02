@@ -14,9 +14,9 @@ import PriceSlider from './PriceSlider';
 const Sidebar = () => {
   const dispatch = useDispatch();
   const store = useStore();
+  const price = store.getState();
 
   const search = useSelector(selectSearchState);
-  const price = store.getState();
 
   const commitChange = (type, number) => {
     dispatch(updateTripsBySlider({ type, number }));

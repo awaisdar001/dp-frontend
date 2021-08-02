@@ -11,9 +11,9 @@ import {
 import { getLoading } from '../../store/timeline/index';
 import ResetFeedsPlaceholder, {
   LoadingNewFeeds,
-} from '../Placeholders/feedsPlaceholder';
-import TimelinePagination from './pagination';
-import RenderCards from './renderCards';
+} from '../placeholders/FeedsPlaceholder';
+import TimelinePagination from './Pagination';
+import TimelineCards from './TimelineCards';
 
 const TimelineContent = () => {
   const observer = useRef();
@@ -56,7 +56,7 @@ const TimelineContent = () => {
   return (
     <Col sm={12} lg={6} as="main" id="dp-timeline">
       {loading ? <ResetFeedsPlaceholder /> : null}
-      {results.length !== 0 && <RenderCards items={results} />}
+      {results.length !== 0 && <TimelineCards items={results} />}
 
       {loading && loadingNewFeeds && <LoadingNewFeeds />}
       {results.length !== 0 && (

@@ -3,7 +3,7 @@ import { Accordion, Card, Col, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineProsInLocalStorage } from '../../storage';
 import { updateProCheckboxState } from '../../store/accordion';
-import CardHeader from '../timeline/TimelineCard/cardHeader';
+import Header from '../timeline/timeline-card/cardHeader';
 
 export default function Temp1() {
   console.log('Rendering temp1');
@@ -29,7 +29,7 @@ export default function Temp1() {
       <h1>Temp 1</h1>
       <Accordion defaultActiveKey="0">
         <Card>
-          <CardHeader title="Provinces" />
+          <Header title="Provinces" />
           <Accordion.Collapse eventKey="0">
             <Card.Body id={id}>
               <Form name="pros">
