@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector, useStore } from 'react-redux';
 import { getLoading, getPopularPhotos } from '../../../store/popular-feeds';
-import ProgressiveImage from '../../common/ProgressiveImage';
+import { ProgressiveImage } from '../../common';
 
 const FavPhoto = ({ image_urls: imageUrls, name, abs_url: absUrl }) => {
   return (

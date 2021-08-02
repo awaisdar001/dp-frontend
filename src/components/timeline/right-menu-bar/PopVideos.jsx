@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import ProgressiveImage from '../../common/ProgressiveImage';
+import { ProgressiveImage } from '../../common';
 import { useStore, useSelector } from 'react-redux';
 import { getPopularVideos, getLoading } from '../../../store/popular-feeds';
 

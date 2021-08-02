@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import {
   feedTypesData,
   pros as proStaticData,
-} from '../../components/common/enumData';
+} from '../../components/common';
 import {
   getTimelineFeedsFromLocalStorage,
   getTimelineProsFromLocalStorage,

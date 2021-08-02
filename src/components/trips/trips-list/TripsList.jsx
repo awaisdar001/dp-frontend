@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Content from './Content';
-import Cover from './Cover/';
+import Content from './content';
+import Cover from './cover/';
 import TripsListHeader from './TripsListHeader';
 
 export default function Trips() {

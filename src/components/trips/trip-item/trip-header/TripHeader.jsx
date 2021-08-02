@@ -1,53 +1,25 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import * as Scroll from 'react-scroll';
-
-import {
-  Link,
-  Element,
-  Button,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from 'react-scroll';
-
-const TripsHeader = ({ items, handleOnClick, activeItem }) => {
-  const TripHeaderItem = ({ slug, label, icon }) => (
-    <Col as="li" className={'p-0' + (slug === activeItem ? ' active' : '')}>
-      <Link
-        to={slug}
-        spy={true}
-        smooth={true}
-        offset={-100}
-        duration={500}
-        onSetActive={handleOnClick}
-      >
-        <FontAwesomeIcon icon={icon} className="mr-2" />
-        <span>{label}</span>
-      </Link>
-    </Col>
-  );
+import TripsHeader from './TripHeader';
+const headerItems = [
+  { slug: 'facilities', label: 'Facilities', icon: 'arrow-circle-up' },
+  { slug: 'tour-plan', label: 'Tour Plan', icon: 'calendar' },
+  { slug: 'location', label: 'Location', icon: 'arrow-circle-down' },
+  { slug: 'reviews', label: 'Reviews', icon: 'pencil-alt' },
+  { slug: 'gallery', label: 'Gallery', icon: 'pencil-alt' },
+];
+function TripHeader() {
+  const [activeLink, setActiveLink] = React.useState(headerItems[0].slug);
+  const handleOnClick = (slug, e) => {
+    setActiveLink(slug);
+  };
 
   return (
-    <div className="header-wrapper sticky">
-      <div className="header-params">
-        <Row as="ul" className="header-list p-0">
-          {items.map((sortItem) => {
-            const { slug } = sortItem;
-            const id = `id-${slug}`;
-            return (
-              <TripHeaderItem
-                {...sortItem}
-                id={id}
-                key={'sorting-item-' + slug}
-              />
-            );
-          })}
-        </Row>
-      </div>
-    </div>
+    <TripsHeader
+      items={headerItems}
+      handleOnClick={handleOnClick}
+      activeItem={activeLink}
+    />
   );
-};
-export default TripsHeader;
+}
+
+export default TripHeader;

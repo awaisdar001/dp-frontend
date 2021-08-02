@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useStore } from 'react-redux';
 import { selectLoading } from '../../../../store/features/trips';
-import Sidebar from '../SideBar';
+import Sidebar from '../side-bar';
 import TripCard from './TripCard';
 
 const Results = () => {
@@ -13,7 +13,6 @@ const Results = () => {
   const { trips } = state.entities.trips;
   const { tripsMeta } = state.entities.trips;
   const loadingClass = loading ? 'loading' : '';
-  debugger;
 
   return (
     <div className="results-wrapper">

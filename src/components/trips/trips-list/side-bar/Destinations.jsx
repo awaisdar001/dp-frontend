@@ -5,7 +5,7 @@ import {
   selectSidebarDestinations,
   updateTripsByDestination,
 } from '../../../../store/features/trips';
-import DPCheckbox from '../../../common/dpCheckbox';
+import { DpCheckbox } from '../../../common';
 function Destinations() {
   console.log('rerendring destiantions. ');
   const destinations = useSelector(selectSidebarDestinations);
@@ -26,7 +26,7 @@ function Destinations() {
     <div className="destinations dp-checkbox">
       <span className="title mb-3">Destinations</span>
       {destinations.map((destination) => (
-        <DPCheckbox
+        <DpCheckbox
           key={'destination-' + destination.value}
           value={destination.value}
           name="destination[]"

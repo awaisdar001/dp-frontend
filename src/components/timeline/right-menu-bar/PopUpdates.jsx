@@ -1,6 +1,6 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { MomentTime } from '../../common/MomentTime';
+import { MomentTime } from '../../common';
 import { useStore, useSelector } from 'react-redux';
 import { getPopularUpdates } from '../../../store/popular-feeds';
 import { getLoading } from '../../../store/popular-feeds/index';
