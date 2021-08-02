@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loadTripFromState,
   updateTripsBySlider,
@@ -13,9 +13,6 @@ import PriceSlider from './PriceSlider';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const store = useStore();
-  const price = store.getState();
-
   const search = useSelector(selectSearchState);
 
   const commitChange = (type, number) => {

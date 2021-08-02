@@ -13,6 +13,7 @@ const Results = () => {
   const { trips } = state.entities.trips;
   const { tripsMeta } = state.entities.trips;
   const loadingClass = loading ? 'loading' : '';
+  debugger;
 
   return (
     <div className="results-wrapper">

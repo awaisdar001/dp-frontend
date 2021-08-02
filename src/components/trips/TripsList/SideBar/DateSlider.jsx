@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React, { useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { getDateFromMilliSec } from '../../../../Utils';
+import { getDateFromMilliSec } from '../../../../utils';
 import DPSlider from '../../../common/sliders/DPSlider';
 import {
   selectSearchDates,

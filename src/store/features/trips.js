@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { tripDestinations } from '../../components/common/enumData';
 import moment from 'moment';
-import { getQueryString, getDateFromMilliSec, DateFormats } from '../../Utils';
+import { getQueryString, getDateFromMilliSec, DateFormats } from '../../utils';
 import { apiCallBegan } from '../api';
-import Destinations from '../../components/trips/TripsList/SideBar/Destinations';
-import Results from '../../components/trips/TripsList/Content/index';
 
 const minDay = 1;
 const maxDay = 20;
@@ -116,6 +114,7 @@ export const updateTripsCounter = (value) => counterUpdated({ value });
 export const loadTripFromState = () => (dispatch, getState) => {
   const url = getTripsListURLFromState(getState());
   console.log('API: URL:', url);
+  debugger;
 
   return dispatch(
     apiCallBegan({
