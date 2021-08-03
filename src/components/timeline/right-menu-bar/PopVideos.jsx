@@ -6,25 +6,24 @@ import { ProgressiveImage } from '../../common';
 import { useStore, useSelector } from 'react-redux';
 import { getPopularVideos, getLoading } from '../../../store/popular-feeds';
 
-const PopVideoPlaceHolder = () => {
-  return (
-    <div className="rmb-placeholder" key={`placeholder`}>
-      <div className="row">
-        {Array.from({ length: 3 }, (_, _key) => (
-          <Col key={`pop-videos-skeleton-${_key}`} xs={12} className="p-0">
-            <Skeleton count={1} duration={2} height={180} />
-            <Skeleton
-              count={1}
-              duration={2}
-              height={60}
-              style={{ marginBottom: '30px' }}
-            />
-          </Col>
-        ))}
-      </div>
+const PopVideoPlaceHolder = () => (
+  <div className="rmb-placeholder" key={`placeholder`}>
+    <div className="row">
+      {Array.from({ length: 3 }, (_, _key) => (
+        <Col key={`pop-videos-skeleton-${_key}`} xs={12} className="p-0">
+          <Skeleton count={1} duration={2} height={180} />
+          <Skeleton
+            count={1}
+            duration={2}
+            height={60}
+            style={{ marginBottom: '30px' }}
+          />
+        </Col>
+      ))}
     </div>
-  );
-};
+  </div>
+);
+
 
 const PopVideo = ({ name, abs_url: absUrl, poster_urls: posterUrls }) => {
   return (

@@ -9,9 +9,7 @@ import {
   getPaginatoinPreviousParams,
 } from '../../store/timeline';
 import { getLoading } from '../../store/timeline';
-import {
-  FeedsPlaceholder, LoadingNewFeeds,
-} from '../placeholders';
+import { FeedsPlaceholder, LoadingNewFeeds } from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 

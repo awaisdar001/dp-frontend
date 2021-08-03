@@ -23,24 +23,22 @@ const FavPhoto = ({ image_urls: imageUrls, name, abs_url: absUrl }) => {
   );
 };
 
-const PhotoPlaceHolder = () => {
-  return (
-    <div className="rmb-placeholder">
-      <div className="row">
-        {Array.from({ length: 9 }, (_, _key) => (
-          <Col key={`pop-photos-skeleton-${_key}`} xs={4} className="pop-image">
-            <Skeleton
-              count={1}
-              duration={2}
-              height={40}
-              style={{ marginBottom: '10px' }}
-            />
-          </Col>
-        ))}
-      </div>
+const PhotoPlaceHolder = () => (
+  <div className="rmb-placeholder">
+    <div className="row">
+      {Array.from({ length: 9 }, (_, _key) => (
+        <Col key={`pop-photos-skeleton-${_key}`} xs={4} className="pop-image">
+          <Skeleton
+            count={1}
+            duration={2}
+            height={40}
+            style={{ marginBottom: '10px' }}
+          />
+        </Col>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 const PopularPhotos = ({ data }) => {
   return (

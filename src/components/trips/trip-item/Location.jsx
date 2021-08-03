@@ -6,6 +6,7 @@ function Location() {
       <h3 class="h3">Location</h3>
       <div>
         <iframe
+          title="LocationMapOnGoogle"
           src="https://www.google.com/maps/d/embed?mid=1sIu8IYEHlajFo04FGb_AyXkyYbG9Djcn"
           width="100%"
           height="580"

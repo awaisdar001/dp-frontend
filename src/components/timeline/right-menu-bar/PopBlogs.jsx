@@ -9,6 +9,7 @@ const FavBlog = ({ abs_url: absURL, banner, name }) => {
     <dl className="dl-horizontal">
       <dt>
         <a href={absURL}>
+          {/* todo: use process.env.baseurl */}
           <img src={`http://destinationpak.com/${banner}`} alt={name} />
         </a>
       </dt>

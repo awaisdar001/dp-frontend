@@ -24,6 +24,7 @@ const PopQuestionPlaceholder = (props) => {
     </>
   );
 };
+
 const PopQuestion = (question) => {
   return (
     <li className="question-item">

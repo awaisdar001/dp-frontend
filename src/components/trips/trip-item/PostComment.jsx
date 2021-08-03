@@ -2,18 +2,16 @@ import React from 'react';
 import { Button, Col, Row, Form } from 'react-bootstrap';
 import { RatingPlugin } from '../TripCommon';
 
-const RenderInput = (props) => {
-  const id = `id-${props.name}`;
-  return (
-    <input
-      id={id}
-      className="theme-input"
-      type="text"
-      aria-required="true"
-      {...props}
-    />
-  );
-};
+const RenderInput = (props) => (
+  <input
+    id={`id-${props.name}`}
+    className="theme-input"
+    type="text"
+    aria-required="true"
+    {...props}
+  />
+);
+
 function PostComment() {
   return (
     <div className="trip-comment-wrapper wrapper-block">
