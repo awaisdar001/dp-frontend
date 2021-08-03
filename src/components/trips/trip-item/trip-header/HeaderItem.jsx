@@ -1,17 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import * as Scroll from 'react-scroll';
 
-import {
-  Link,
-  Element,
-  Button,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from 'react-scroll';
+import { Link } from 'react-scroll';
 
 const TripsHeader = ({ items, handleOnClick, activeItem }) => {
   const TripHeaderItem = ({ slug, label, icon }) => (
