@@ -8,7 +8,6 @@ import { accordionUpdateProvinceState } from './data/slice';
 import Checkbox from './Checkbox';
 import Header from './Header';
 
-
 const id = 'collapse-pro';
 
 // Re-Rendring:

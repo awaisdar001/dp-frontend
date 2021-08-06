@@ -53,7 +53,6 @@ const PopularUpdates = ({ data }) => {
 export default () => {
   const popUpdates = useSelector(getPopularUpdates);
   const loading = useSelector(getLoading);
-  debugger;
 
   return (
     <div id="pop-updates" className=" margin-bottom-40">

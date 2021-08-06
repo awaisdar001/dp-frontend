@@ -16,12 +16,15 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'global-require': 'off',
     'no-template-curly-in-string': 'off',
-    'jsx-a11y/label-has-associated-control': [2, {
-      'controlComponents': ['Input'],
-    }],
+    'react/prop-types': 0,
   },
   'parserOptions': {
-    'sourceType': 'module'
+    ecmaVersion: 2020,
+    parser: "babel-eslint",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   }
 
 }
