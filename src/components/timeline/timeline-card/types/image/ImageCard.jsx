@@ -6,21 +6,20 @@ import Header from '../../Header';
 import Tags from '../../Tags';
 import Description from './Description';
 
-export default function ImageCard(props) {
-  const { instance, card } = props;
+export default function ImageCard( { instance, card } ) {
   const {
     name,
     description,
     city,
     pro,
     tags,
-    abs_url: absUrl,
-    image_urls: imageUrls,
-    created_at: createdAt,
-    seen_count: seenCount,
+    absUrl,
+    imageUrls,
+    createdAt,
+    seenCount,
   } = instance;
-  const { profileURL, nodeURL, is_new } = card;
-  const propsHeader = { profileURL, nodeURL, is_new, icon: 'image' };
+  const { profileURL, nodeURL, isNew } = card;
+  const propsHeader = { profileURL, nodeURL, isNew, icon: 'image' };
   const propsTags = { city, pro, tags };
   const propsFooter = { absUrl, createdAt, seenCount };
 

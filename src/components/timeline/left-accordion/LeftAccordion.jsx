@@ -1,13 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import {
-  getFeedItems,
-  getProsItems,
-  restAllItems,
-  shouldResetItems,
-} from '../../../store/accordion';
-import { loadTimelineItemsFromState } from '../../../store/timeline';
+import {shouldResetItems, getProsItems, getFeedItems, resetAllItems } from '../../../store_old/accordion';
+import { loadTimelineItemsFromState,  } from '../../../store_old/timeline';
 import FeedsAccordion from './Feed';
 import ProAccordion from './Province';
 
@@ -35,7 +30,7 @@ export default function DPAccordion() {
     } else mounted.current = true;
   }, [proItems, feedTypesItems, dispatch, store]);
 
-  const handleRestButtonClick = () => dispatch(restAllItems());
+  const handleRestButtonClick = () => dispatch(resetAllItems());
 
   return (
     <Col id="filter-feeds" sm={12} lg={3}>

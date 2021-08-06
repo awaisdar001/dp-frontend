@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useStore } from 'react-redux';
-import { selectLoading } from '../../../../store/features/trips';
+// import { selectLoading } from '../../../../store_old/features/trips';
 import Sidebar from '../side-bar';
 import TripCard from './TripCard';
 
 const Results = () => {
-  const loading = useSelector(selectLoading);
+  const loading = false;
   const store = useStore();
   const state = store.getState();
   const { trips } = state.entities.trips;

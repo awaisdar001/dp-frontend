@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { updateTripsByKeyword } from '../../../../store/features/trips';
+// import { updateTripsByKeyword } from '../../../../store_old/features/trips';
 
 const MainSearchInput = () => {
   const [keyword, setKeyword] = React.useState('');
@@ -9,7 +9,7 @@ const MainSearchInput = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateTripsByKeyword(keyword));
+    // dispatch(updateTripsByKeyword(keyword));
   };
 
   return (

@@ -4,7 +4,7 @@ import {
   loadTripFromState,
   selectSidebarDestinations,
   updateTripsByDestination,
-} from '../../../../store/features/trips';
+} from '../../../../store_old/features/trips';
 import { DpCheckbox } from '../../../common';
 function Destinations() {
   console.log('rerendring destiantions. ');

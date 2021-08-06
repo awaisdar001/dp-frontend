@@ -7,7 +7,7 @@ import DPSlider from '../../../common/sliders/DPSlider';
 import {
   selectSearchDates,
   selectSearchState,
-} from '../../../../store/features/trips';
+} from '../../../../store_old/features/trips';
 
 const id = 'id-date-sliders';
 const step = 86400000;

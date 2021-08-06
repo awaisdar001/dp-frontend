@@ -1,8 +1,7 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { getPopularBlogs } from '../../../store/popular-feeds';
+import { getPopularBlogs, getLoading } from '../../../store_old/popular-feeds';
 import { useSelector, useStore } from 'react-redux';
-import { getLoading } from '../../../store/popular-feeds/index';
 
 const FavBlog = ({ abs_url: absURL, banner, name }) => {
   return (

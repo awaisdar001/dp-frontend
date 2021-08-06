@@ -3,8 +3,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { ProgressiveImage } from '../../../../common';
 
-export default function VideoPreview(instance) {
-  const { name, abs_url: absUrl, poster_urls: posterUrls } = instance;
+export default function VideoPreview({ name, absUrl, posterUrls }) {
   return (
     <Col md={12} className="video-without-caption">
       <article>
@@ -14,8 +13,8 @@ export default function VideoPreview(instance) {
               <ProgressiveImage
                 className="img-fluid rounded"
                 alt={name}
-                thumbnailHDSrc={posterUrls.thumbnail_lg}
-                thumbnailSMSrc={posterUrls.thumbnail_md}
+                thumbnailHDSrc={posterUrls.thumbnailLg}
+                thumbnailSMSrc={posterUrls.thumbnailMd}
               />
             </a>
             <a className="icon-post-format" href={absUrl}>

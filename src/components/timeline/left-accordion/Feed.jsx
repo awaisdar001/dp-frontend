@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineFeedTypesInLocalStorage } from '../../../storage';
-import {
-  getFeedItems,
-  updateFeedsCheckboxState,
-} from '../../../store/accordion';
-import { getLoading } from '../../../store/timeline';
+import { getFeedItems, updateFeedsCheckboxState } from '../../../store_old/accordion';
+import { getLoading } from '../../../store_old/timeline';
 import Checkbox from './Checkbox';
 import Header from './Header';
 

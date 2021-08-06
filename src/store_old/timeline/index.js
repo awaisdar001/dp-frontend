@@ -50,25 +50,7 @@ export default createReducer(defaultState, {
 
 // Action Creators
 const feedsUrl = '/api/feeds';
-export const fetchTimelineItems = () => (dispatch, getState) => {
-  const state = getState();
-  const url = getFeedsURLFromState(state);
-  return dispatch(
-    apiCallBegan({
-      url,
-      onStart: timelineItemsRequested.type,
-      onSuccess: timelineItemsReceived.type,
-      onError: timelineItemsRequestFailed.type,
-    })
-  );
-};
-export const fetchTimelineNextPage = (url) =>
-  apiCallBegan({
-    url: url,
-    onStart: timelineItemsRequested.type,
-    onSuccess: timelineItemsReceived.type,
-    onError: timelineItemsRequestFailed.type,
-  });
+
 
 export const loadTimelineItemsFromState = () => (dispatch, getState) => {
   console.log('api call here');
@@ -94,15 +76,6 @@ export const getLoading = createSelector(
   (timeline) => {
     return timeline.loading;
   }
-);
-
-export const getPaginatoinNextParams = createSelector(
-  (state) => state.entities.timeline,
-  (timeline) => timeline.nextPage
-);
-export const getPaginatoinPreviousParams = createSelector(
-  (state) => state.entities.timeline,
-  (timeline) => timeline.previousPage
 );
 
 // local

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { fetchPopularTimelineItems } from '../../../store/popular-feeds';
+import { fetchPopularTimelineItems } from '../../../store_old/popular-feeds';
 import PopBlogs from './PopBlogs';
 import PopPhotos from './PopPhotos';
 import PopQuestions from './PopQuestions';

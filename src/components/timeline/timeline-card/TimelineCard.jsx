@@ -5,7 +5,7 @@ import QuestionCard from './types/question';
 import UpdateCard from './types/update';
 import VideoCard from './types/video';
 
-export default function TimelineCard(props) {
+export default function TimelineCard({ card, instance }) {
   const getCardFromType = (type) => {
     return {
       picture: ImageCard,
@@ -15,7 +15,7 @@ export default function TimelineCard(props) {
       blog: BlogCard,
     }[type];
   };
-  const { card, instance } = props;
+
   const Card = getCardFromType(card.type);
   return (
     <div className="item">

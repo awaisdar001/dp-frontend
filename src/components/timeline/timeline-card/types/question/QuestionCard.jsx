@@ -10,13 +10,13 @@ export default function CardQuestion({ card, instance }) {
     name,
     city,
     pro,
-    abs_url: absUrl,
-    created_at: createdAt,
-    seen_count: seenCount,
+    absUrl,
+    createdAt,
+    seenCount,
   } = instance;
-  const { nodeURL, is_new, profileURL } = card;
+  const { nodeURL, isNew, profileURL } = card;
 
-  const propsHeader = { profileURL, nodeURL, is_new, icon: 'question-circle' };
+  const propsHeader = { profileURL, nodeURL, isNew, icon: 'question-circle' };
   const propsTags = { city, pro, map: false };
   const propsFooter = { absUrl, createdAt, seenCount };
   return (

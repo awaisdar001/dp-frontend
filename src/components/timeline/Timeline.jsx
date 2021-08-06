@@ -1,16 +1,16 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
-import DPAccordion from './left-accordion';
+// import DPAccordion from './left-accordion';
 import TimelineContent from './TimelineContent';
-import RightMenuBar from './right-menu-bar';
+// import RightMenuBar from './right-menu-bar';
 
 export default function Timeline() {
   return (
     <Container fluid>
       <Row className="flex-xl-nowrap flex-container">
-        <DPAccordion />
+        {/*<DPAccordion />*/}
         <TimelineContent />
-        <RightMenuBar />
+        {/*<RightMenuBar />*/}
       </Row>
     </Container>
   );

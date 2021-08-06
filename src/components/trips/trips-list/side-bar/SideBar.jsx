@@ -4,7 +4,7 @@ import {
   loadTripFromState,
   updateTripsBySlider,
   selectSearchState,
-} from '../../../../store/features/trips';
+} from '../../../../store_old/features/trips';
 import withSidebar from '../../../common/hoc/withSidebar';
 import DateSlider from './DateSlider';
 import DaysSlider from './DaysSlider';

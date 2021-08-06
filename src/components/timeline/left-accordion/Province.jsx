@@ -2,9 +2,8 @@ import React, { useCallback, useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineProsInLocalStorage } from '../../../storage';
-import { getProsItems } from '../../../store/accordion';
-import { updateProCheckboxState } from '../../../store/accordion/index';
-import { getLoading } from '../../../store/timeline';
+import { getProsItems , updateProCheckboxState} from '../../../store_old/accordion';
+import { getLoading } from '../../../store_old/timeline';
 import Checkbox from './Checkbox';
 import Header from './Header';
 

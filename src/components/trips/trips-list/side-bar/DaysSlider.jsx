@@ -4,7 +4,7 @@ import { useStore } from 'react-redux';
 import {
   selectSearchDays,
   selectSearchState,
-} from '../../../../store/features/trips';
+} from '../../../../store_old/features/trips';
 import DPSlider from '../../../common/sliders/DPSlider';
 
 const id = 'id-days-slider';

@@ -6,7 +6,7 @@ import { useStore } from 'react-redux';
 import {
   selectSearchPrices,
   selectSearchState,
-} from '../../../../store/features/trips';
+} from '../../../../store_old/features/trips';
 import DPSlider from '../../../common/sliders/DPSlider';
 
 const id = 'id-price-slider';

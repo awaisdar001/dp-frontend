@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-export default function Header(props) {
-  const { username, title, icon, is_new, profileURL, nodeURL } = props;
+export default function Header({ username, title, icon, isNew, profileURL, nodeURL }) {
   return (
     <h2>
       {icon && <FontAwesomeIcon icon={icon} />}
@@ -13,7 +12,7 @@ export default function Header(props) {
       <a href={nodeURL} className="small margin-right-5">
         {title}
       </a>
-      {is_new && <span className="badge badge-u">New</span>}
+      {isNew && <span className="badge badge-u">New</span>}
     </h2>
   );
 }

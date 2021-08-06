@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFeedsCheckboxState } from '../../store/accordion';
+// import { updateFeedsCheckboxState } from '../../store_old/accordion';
 
 export default function Temp1() {
   console.log('Rendering temp2');

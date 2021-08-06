@@ -1,67 +1,66 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { useDispatch, useStore, useSelector } from 'react-redux';
-import {
-  fetchTimelineItems,
-  fetchTimelineNextPage,
-  getAllFeedResults,
-  getPaginatoinNextParams,
-  getPaginatoinPreviousParams,
-} from '../../store/timeline';
-import { getLoading } from '../../store/timeline';
-import { FeedsPlaceholder, LoadingNewFeeds } from '../placeholders';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {Col, Row} from 'react-bootstrap';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchTimelineItems} from './data/thunks';
+
+import {FeedsPlaceholder, LoadingNewFeeds} from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
+import {
+  getLoadingStatus,
+  getNextPage,
+  getPreviousPage,
+  getSelectedFeedTypes,
+  getSelectedPros,
+  getTimelineFeeds,
+} from './data/selectors';
 
 const TimelineContent = () => {
-  const observer = useRef();
-  const store = useStore();
-  const state = store.getState();
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => getLoading(state));
-
-  // Selectors
-  const results = getAllFeedResults(state);
-  const nextPage = getPaginatoinNextParams(state);
-  const previousPage = getPaginatoinPreviousParams(state);
-
-  // local state
   const [loadingNewFeeds, setLoadingNewFeeds] = useState(false);
+  const observer = useRef();
+
+  const loading = useSelector(getLoadingStatus);
+  const items = useSelector(getTimelineFeeds);
+  const nextPage = useSelector(getNextPage);
+  const previousPage = useSelector(getPreviousPage);
+  const selectedPros = useSelector(getSelectedPros);
+  const selectedFeedTypes = useSelector(getSelectedFeedTypes);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTimelineItems(selectedPros, selectedFeedTypes));
+  }, [selectedPros, selectedFeedTypes]);
 
   const nextPageElement = useCallback(
     (node) => {
       if (loading) return;
+
       if (observer.current) observer.current.disconnect();
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          const newURL = entries[0].target.href;
           setLoadingNewFeeds(true);
-          dispatch(fetchTimelineNextPage(newURL));
+          dispatch(fetchTimelineItems(selectedPros, selectedFeedTypes, nextPage.pageNumber))
         }
       });
       if (node) {
         observer.current.observe(node);
       }
     },
-    [loading, dispatch]
+    [loading],
   );
-
-  useEffect(() => {
-    dispatch(fetchTimelineItems());
-  }, [dispatch]);
 
   return (
     <Col sm={12} lg={6} as="main" id="dp-timeline">
-      {loading ? <FeedsPlaceholder /> : null}
-      {results.length !== 0 && <TimelineCards items={results} />}
+      {loading ? <FeedsPlaceholder/> : null}
+      {items && <TimelineCards items={items}/>}
 
-      {loading && loadingNewFeeds && <LoadingNewFeeds />}
-      {results.length !== 0 && (
+      {loading && loadingNewFeeds && <LoadingNewFeeds/>}
+      {items && (
         <div className="d-flex justify-content-center bd-highlight mb-3">
           <Row>
             <Col md={12}>
-              {nextPage && nextPage.has_next ? (
+              {nextPage ? (
                 <TimelinePagination
                   next={nextPage}
                   previous={previousPage}

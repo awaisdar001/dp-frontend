@@ -12,13 +12,13 @@ export default function BlogCard({ instance, card }) {
     category,
     pro,
     tags,
-    abs_url: absUrl,
-    created_at: createdAt,
-    seen_count: seenCount,
+    absUrl,
+    createdAt,
+    seenCount,
   } = instance;
-  const { nodeURL, is_new, profileURL } = card;
+  const { nodeURL, isNew, profileURL } = card;
 
-  const propsHeader = { profileURL, nodeURL, is_new };
+  const propsHeader = { profileURL, nodeURL, isNew };
   const propsDescription = { name, description, nodeURL };
   const propsTags = { category, pro, tags };
   const propsFooter = { createdAt, seenCount, absUrl };

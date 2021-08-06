@@ -54,6 +54,7 @@ export default createReducer(defaultState, {
 
 // Action Creators
 export const restAllItems = () => accordionItemsRest();
+
 export const updateProCheckboxState = (payload) =>
   accordionProCheckStateChanged(payload);
 export const updateFeedsCheckboxState = (payload) =>

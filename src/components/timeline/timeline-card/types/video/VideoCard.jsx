@@ -6,28 +6,24 @@ import Tags from '../../Tags';
 import VideoPreview from './Preview';
 import VideoDescription from './Description';
 
-export default function CardVideo(props) {
-  const { instance, card } = props;
+export default function CardVideo({ instance, card }) {
   const {
-    // CardFooter
-    abs_url: absUrl,
-    created_at: createdAt,
-    seen_count: seenCount,
-    // VideoTags
+    absUrl,
+    createdAt,
+    seenCount,
     city,
     pro,
     tags,
-    // VideoDescription
     name,
     description,
   } = instance;
-  const { nodeURL, is_new, profileURL } = card;
+  const { nodeURL, isNew, profileURL } = card;
 
   const propsFooter = { absUrl, createdAt, seenCount };
   const propsTags = { city, pro, tags };
 
   const propsVideoDescription = { name, description, nodeURL };
-  const propsHeader = { profileURL, nodeURL, is_new };
+  const propsHeader = { profileURL, nodeURL, isNew };
 
   return (
     <div className="cbp_tmlabel">

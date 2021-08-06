@@ -2,8 +2,8 @@ import React, { useCallback, useEffect } from 'react';
 import { Accordion, Card, Col, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineProsInLocalStorage } from '../../storage';
-import { updateProCheckboxState } from '../../store/accordion';
-import Header from '../timeline/timeline-card/cardHeader';
+// import { updateProCheckboxState } from '../../store_old/accordion';
+import Header from '../timeline/timeline-card/Header';
 
 export default function Temp1() {
   console.log('Rendering temp1');

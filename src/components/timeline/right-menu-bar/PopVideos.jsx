@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 import { ProgressiveImage } from '../../common';
 import { useStore, useSelector } from 'react-redux';
-import { getPopularVideos, getLoading } from '../../../store/popular-feeds';
+import { getPopularVideos, getLoading } from '../../../store_old/popular-feeds';
 
 const PopVideoPlaceHolder = () => (
   <div className="rmb-placeholder" key={`placeholder`}>
