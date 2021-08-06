@@ -7,11 +7,14 @@ import {FeedsPlaceholder, LoadingNewFeeds} from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 import {
+  getSelectedFeedTypes,
+  getSelectedPros,
+
+} from './left-accordion/data/selectors';
+import {
   getLoadingStatus,
   getNextPage,
   getPreviousPage,
-  getSelectedFeedTypes,
-  getSelectedPros,
   getTimelineFeeds,
 } from './data/selectors';
 
@@ -27,14 +30,9 @@ const TimelineContent = () => {
   const selectedFeedTypes = useSelector(getSelectedFeedTypes);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchTimelineItems(selectedPros, selectedFeedTypes));
-  }, [selectedPros, selectedFeedTypes]);
-
   const nextPageElement = useCallback(
     (node) => {
       if (loading) return;
-
       if (observer.current) observer.current.disconnect();
 
       observer.current = new IntersectionObserver((entries) => {

@@ -1,35 +1,33 @@
-import React, { useEffect } from 'react';
-import { Accordion, Card, Form } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateTimelineFeedTypesInLocalStorage } from '../../../storage';
-import { getFeedItems, updateFeedsCheckboxState } from '../../../store_old/accordion';
-import { getLoading } from '../../../store_old/timeline';
+import React, {useEffect} from 'react';
+import {Accordion, Card, Form} from 'react-bootstrap';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateTimelineFeedTypesInLocalStorage} from '../../../storage';
 import Checkbox from './Checkbox';
 import Header from './Header';
+import {getFeedTypeItems} from "./data/selectors";
+import {getLoadingStatus} from "../data/selectors";
+import {accordionUpdateFeedTypeState} from "./data/slice";
 
 const id = 'collapse-feed-types';
 
 const Feed = () => {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => getLoading(state));
-  const feedItems = useSelector(getFeedItems);
+  const loading = useSelector(getLoadingStatus);
+  const feedItems = useSelector(getFeedTypeItems);
 
   useEffect(() => {
     updateTimelineFeedTypesInLocalStorage(feedItems);
   }, [feedItems]);
 
-  const handleFeedCheckbox = (e) => {
-    const target = e.target;
-    const targetState = target.checked;
-    const payload = { slug: target.dataset.slug, checked: targetState };
-    return dispatch(updateFeedsCheckboxState(payload));
+  const handleFeedCheckbox = ({target}, slug) => {
+    dispatch(accordionUpdateFeedTypeState({slug, checked: target.checked}))
   };
 
-  const getFeedTypeCheckboxs = () =>
+  const FeedTypeCheckBoxes = () =>
     feedItems.map((feed) => {
       const checkboxProps = {
         ...feed,
-        onChange: handleFeedCheckbox,
+        onChange: (event) => handleFeedCheckbox(event, feed.slug),
         checked: feed.selected,
         disabled: loading,
         key: `id-${feed.slug}`,
@@ -40,12 +38,14 @@ const Feed = () => {
   return (
     <Accordion defaultActiveKey="0">
       <Card>
-        <Header title="Feeds" />
+        <Header title="Feeds"/>
         <Accordion.Collapse eventKey="0">
           <Card.Body id={id}>
             <Form name="feeds">
               <Form.Group controlId={`formControl-${id}`}>
-                <div className="dp-checkbox">{getFeedTypeCheckboxs()}</div>
+                <div className="dp-checkbox">
+                  <FeedTypeCheckBoxes/>
+                </div>
               </Form.Group>
             </Form>
           </Card.Body>

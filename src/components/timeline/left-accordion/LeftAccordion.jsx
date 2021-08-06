@@ -1,10 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import { Button, Col } from 'react-bootstrap';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import {shouldResetItems, getProsItems, getFeedItems, resetAllItems } from '../../../store_old/accordion';
-import { loadTimelineItemsFromState,  } from '../../../store_old/timeline';
+import React, {useEffect, useRef} from 'react';
+import {Button, Col} from 'react-bootstrap';
+import {useDispatch, useSelector, useStore} from 'react-redux';
+// import {shouldResetItems, restAllItems} from '../../../store_old/accordion';
+// import {loadTimelineItemsFromState,} from '../../../store_old/timeline';
+import {getFeedTypeItems, getProItems, getSelectedFeedTypes, getSelectedPros} from './data/selectors'
 import FeedsAccordion from './Feed';
 import ProAccordion from './Province';
+import {accordionRestProvinces, accordionRestFeedTypes, accordionRestAllFilters} from "./data/slice";
+import {fetchAndRestTimelineItems, fetchTimelineItems} from "../data/thunks";
+import _ from 'lodash';
 
 /**
  * Accordion component for showing checkboxes for quick filtering of timelne
@@ -12,32 +16,31 @@ import ProAccordion from './Province';
  */
 export default function DPAccordion() {
   const dispatch = useDispatch();
-  const mounted = useRef();
-  const store = useStore();
-
-  const proItems = useSelector(getProsItems);
-  const feedTypesItems = useSelector(getFeedItems);
+  const selectedProvinces = useSelector(getSelectedPros);
+  const selectedFeedTypes = useSelector(getSelectedFeedTypes);
 
   // Rest timeline items when pro/feed items change
   useEffect(() => {
-    if (mounted.current) {
-      const shouldReset = shouldResetItems(store.getState());
-      if (shouldReset === true) {
-        dispatch(restAllItems());
-      } else {
-        dispatch(loadTimelineItemsFromState());
-      }
-    } else mounted.current = true;
-  }, [proItems, feedTypesItems, dispatch, store]);
+    const selectedProvinceCount = _.size(selectedProvinces)
+    const selectedFeedCount = _.size(selectedFeedTypes)
 
-  const handleRestButtonClick = () => dispatch(resetAllItems());
+    if (!selectedProvinceCount) {
+      dispatch(accordionRestProvinces())
+    } else if (!selectedFeedCount) {
+      dispatch(accordionRestFeedTypes())
+    } else {
+      dispatch(fetchAndRestTimelineItems(selectedProvinces, selectedFeedTypes));
+    }
+  }, [selectedProvinces, selectedFeedTypes]);
+
+  const handleRestButtonClick = () => dispatch(accordionRestAllFilters());
 
   return (
     <Col id="filter-feeds" sm={12} lg={3}>
       <div id="filter-by-block">
         <h1>Filter By</h1>
-        <ProAccordion />
-        <FeedsAccordion />
+        <ProAccordion/>
+        <FeedsAccordion/>
         <Button
           id="btn-reset"
           variant="success"

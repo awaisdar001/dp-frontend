@@ -10,18 +10,20 @@ const slice = createSlice({
     loadingStatus: true,
   },
   reducers: {
-    timelineItemsRequested: (state, {payload}) => {
+    itemsRequested: (state, {payload}) => {
       state.loadingStatus = true;
     },
     updateLoadingStatus: (state, { payload }) => {
       state.loadingStatus = payload.status;
     },
     timelineItemsReceived: (state, {payload}) => {
-      debugger;
       state.loadingStatus = false;
       state.feedItems = [...state.feedItems, ...payload.results];
       state.nextPage = payload.next;
       state.previousPage = payload.previous;
+    },
+    timelineRestItems: (state, {payload}) => {
+      state.feedItems = []
     },
     timelineItemsRequestFailed: (state, {payload}) => {
       state.loadingStatus = false;
@@ -35,8 +37,9 @@ const slice = createSlice({
 });
 console.log('slice', slice);
 export const {
-  timelineItemsRequested,
+  itemsRequested,
   timelineItemsReceived,
+  timelineRestItems,
   timelineItemsRequestFailed,
   timelineRestItemsRequested,
   updateLoadingStatus,

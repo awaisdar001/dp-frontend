@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import { ProgressiveImage } from '../../common';
-import { useStore, useSelector } from 'react-redux';
-import { getPopularVideos, getLoading } from '../../../store_old/popular-feeds';
+import {ProgressiveImage} from '../../common';
+import {useSelector} from 'react-redux';
+import {getLoading, getPopularVideos} from "./data/selectors";
 
 const PopVideoPlaceHolder = () => (
   <div className="rmb-placeholder" key={`placeholder`}>
@@ -25,7 +25,7 @@ const PopVideoPlaceHolder = () => (
 );
 
 
-const PopVideo = ({ name, abs_url: absUrl, poster_urls: posterUrls }) => {
+const PopVideo = ({ name, absUrl, posterUrls }) => {
   return (
     <Col xs={12}>
       <article className="item margin-bottom-15">
@@ -34,8 +34,8 @@ const PopVideo = ({ name, abs_url: absUrl, poster_urls: posterUrls }) => {
             <a className="normal" title={name} href={absUrl}>
               <ProgressiveImage
                 className="img-fluid"
-                thumbnailHDSrc={posterUrls.thumbnail_lg}
-                thumbnailSMSrc={posterUrls.thumbnail_md}
+                thumbnailHDSrc={posterUrls.thumbnailLg}
+                thumbnailSMSrc={posterUrls.thumbnailMd}
                 alt={name}
               />
             </a>
@@ -65,17 +65,15 @@ const PopularVideos = ({ data }) => {
   );
 };
 export default () => {
-  const store = useStore();
-  const popVideos = getPopularVideos(store.getState());
-  const loading = useSelector((state) => getLoading(state));
+  const popVideos = useSelector(getPopularVideos);
+  const loading = useSelector(getLoading);
 
   return (
     <div id="pop-videos">
       <div className="headline">
         <h2>Popular videos</h2>
       </div>
-      {loading && <PopVideoPlaceHolder />}
-      {!loading && popVideos && <PopularVideos data={popVideos} />}
+      {loading ? <PopVideoPlaceHolder /> : popVideos && <PopularVideos data={popVideos} />}
     </div>
   );
-};
+}

@@ -1,72 +1,66 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { MomentTime } from '../../common';
-import { useStore, useSelector } from 'react-redux';
-import { getPopularUpdates, getLoading } from '../../../store_old/popular-feeds';
+import {MomentTime} from '../../common';
+import {useSelector} from "react-redux";
+import {getLoading, getPopularUpdates} from "./data/selectors";
 
 const PopUpdatesPlaceholder = (props) => {
-  const { count } = props;
+  const {count} = props;
   return (
     <ul className="list-unstyled dp-updates">
-      {Array.from({ length: count }, (_, _key) => {
+      {Array.from({length: count}, (_, _key) => {
         return (
           <li key={`pop-updates-skeleton-${_key}`}>
-            <Skeleton count={3} />
+            <Skeleton count={3}/>
           </li>
         );
       })}
     </ul>
   );
 };
-const PopUpdate = ({
-  abs_url: absURL,
-  created_by: createdBy,
-  name,
-  pro,
-  created_at: createdAt,
-}) => {
+const PopUpdate = ({absUrl, createdBy, name, pro, createdAt, ...rest}) => {
+
   return (
     <li>
       <h3>
-        <a href={absURL}>{name}</a>
+        <a href={absUrl}>{name}</a>
       </h3>
       <small>
-        <a href={pro.abs_url}>{pro.name}</a>
+        <a href={pro.absUrl}>{pro.name}</a>
       </small>
 
       <small>
-        <a href={absURL}>
-          <MomentTime propDateTime={createdAt} />
+        <a href={absUrl}>
+          <MomentTime propDateTime={createdAt}/>
         </a>
       </small>
 
       <small>
-        <a href={createdBy.profile_url}>{createdBy.full_name}</a>
+        <a href={createdBy.profileUrl}>{createdBy.fullName}</a>
       </small>
     </li>
   );
 };
-const PopularUpdates = ({ data }) => {
-  return data.map((update, index) => {
-    return <PopUpdate key={`fav-updates-${index}`} {...update} />;
-  });
-};
+const PopularUpdates = ({data}) => {
+  return (
+    <ul className="list-unstyled dp-updates">
+      {data.map((update, index) => <PopUpdate key={`fav-updates-${index}`} {...update} />)}
+    </ul>
+  )
+}
 
 export default () => {
-  const store = useStore();
-  const popUpdates = getPopularUpdates(store.getState());
-  const loading = useSelector((state) => getLoading(state));
+  const popUpdates = useSelector(getPopularUpdates);
+  const loading = useSelector(getLoading);
+  debugger;
 
   return (
     <div id="pop-updates" className=" margin-bottom-40">
       <div className="headline">
         <h2>Popular updates</h2>
       </div>
-
-      {loading && <PopUpdatesPlaceholder count={2} />}
-      <ul className="list-unstyled dp-updates">
-        {!loading && popUpdates && <PopularUpdates data={popUpdates} />}
-      </ul>
+      {loading ? <PopUpdatesPlaceholder count={2}/> : popUpdates && <PopularUpdates data={popUpdates}/>}
     </div>
   );
-};
+}
+;

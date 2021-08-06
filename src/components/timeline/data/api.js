@@ -22,16 +22,3 @@ export async function getTimelineItems(selectedPros, selectedFeedTypes, pageNumb
   const { data } = await getAuthenticatedHttpClient().get(getFeedsURL(selectedPros, selectedFeedTypes, pageNumber));
   return camelCaseObject(data)
 }
-// export async function getCourseApps(courseId) {
-//   const { data } = await getAuthenticatedHttpClient()
-//     .get(`${courseAppsApiUrl}/${courseId}`);
-//   return camelCaseObject(data);
-// }
-
-/**
- * Updates the status of a course app.
- * @param {string} courseId Course ID for the course to operate on
- * @param {string} appId ID for the application to operate on
- * @param {boolean} state The new state
- */
-

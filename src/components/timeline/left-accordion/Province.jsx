@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
-import { Accordion, Card, Form } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateTimelineProsInLocalStorage } from '../../../storage';
-import { getProsItems , updateProCheckboxState} from '../../../store_old/accordion';
-import { getLoading } from '../../../store_old/timeline';
+import React, {useEffect} from 'react';
+import {Accordion, Card, Form} from 'react-bootstrap';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateTimelineProsInLocalStorage} from '../../../storage';
 import Checkbox from './Checkbox';
 import Header from './Header';
+import {getLoadingStatus} from "../data/selectors";
+import {getProItems} from './data/selectors'
+import {accordionUpdateProvinceState} from './data/slice'
 
 const id = 'collapse-pro';
 
@@ -15,27 +16,20 @@ const id = 'collapse-pro';
 // 3. Mark the all checkboxes available both Pro/FeedTypes (2)
 const Province = () => {
   const dispatch = useDispatch();
-  const proItems = useSelector(getProsItems);
-  const loading = useSelector((state) => getLoading(state));
+  const proItems = useSelector(getProItems);
+  const loading = useSelector(getLoadingStatus);
 
   useEffect(() => {
     updateTimelineProsInLocalStorage(proItems);
   }, [proItems]);
 
-  const handleProCheckbox = useCallback(
-    (e) => {
-      const checked = e.target.checked;
-      const slug = e.target.dataset.slug;
-      return dispatch(updateProCheckboxState({ slug, checked }));
-    },
-    [dispatch]
-  );
+  const handleProCheckbox = ({target}, slug) => dispatch(accordionUpdateProvinceState({slug, checked: target.checked}));
 
-  const getProCheckboxes = () =>
+  const ProvinceCheckBoxes = () =>
     proItems.map((pro) => {
       const checkboxProps = {
         ...pro,
-        onChange: handleProCheckbox,
+        onChange: (event) => handleProCheckbox(event, pro.slug),
         checked: pro.selected,
         disabled: loading,
         key: `id-${pro.slug}`,
@@ -43,15 +37,18 @@ const Province = () => {
       return <Checkbox {...checkboxProps} />;
     });
 
+
   return (
     <Accordion defaultActiveKey="0">
       <Card>
-        <Header title="Provinces" />
+        <Header title="Provinces"/>
         <Accordion.Collapse eventKey="0">
           <Card.Body id={id}>
             <Form name="pros">
               <Form.Group controlId={`formControl-${id}`}>
-                <div className="dp-checkbox">{getProCheckboxes()}</div>
+                <div className="dp-checkbox">
+                  <ProvinceCheckBoxes/>
+                </div>
               </Form.Group>
             </Form>
           </Card.Body>

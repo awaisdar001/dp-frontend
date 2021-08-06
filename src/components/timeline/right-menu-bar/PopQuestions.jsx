@@ -1,22 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { useStore, useSelector } from 'react-redux';
-import { getPopularQuestions, getLoading } from '../../../store_old/popular-feeds';
-import { MomentTime } from '../../common';
+import {useStore, useSelector} from 'react-redux';
+import {MomentTime} from '../../common';
+import {getPopularQuestions, getLoading} from "./data/selectors";
 
 const PopQuestionPlaceholder = (props) => {
-  const { count } = props;
+  const {count} = props;
   return (
     <>
-      {Array.from({ length: count }, (_, _key) => {
+      {Array.from({length: count}, (_, _key) => {
         return (
           <ul
             key={`pop-question-skeleton-${_key}`}
             className="pop-questions-list list-unstyled"
           >
             <li className="question-item">
-              <Skeleton count={3} />
+              <Skeleton count={3}/>
             </li>
           </ul>
         );
@@ -25,20 +25,20 @@ const PopQuestionPlaceholder = (props) => {
   );
 };
 
-const PopQuestion = (question) => {
+const PopQuestion = ({absUrl, name, city, publishedAt}) => {
   return (
     <li className="question-item">
       <div className="questions-div">
-        <a href={question.abs_url}>
-          <FontAwesomeIcon icon="bars" /> {question.name}
+        <a href={absUrl}>
+          <FontAwesomeIcon icon="bars"/> {name}
         </a>
         <small className="post-meta">
           <span>
-            <a href={question.city.url}>{question.city.name}</a>
+            <a href={city.url}>{city.name}</a>
           </span>
 
           <span>
-            <MomentTime propDateTime={question.published_at} />
+            <MomentTime propDateTime={publishedAt}/>
           </span>
         </small>
       </div>
@@ -46,7 +46,7 @@ const PopQuestion = (question) => {
   );
 };
 
-const PopularQuestions = ({ data }) => {
+const PopularQuestions = ({data}) => {
   return (
     <ul className="pop-questions-list list-unstyled">
       {data.map((question, index) => {
@@ -57,17 +57,15 @@ const PopularQuestions = ({ data }) => {
 };
 
 export default () => {
-  const store = useStore();
-  const popQuestions = getPopularQuestions(store.getState());
-  const loading = useSelector((state) => getLoading(state));
+  const popQuestions = useSelector(getPopularQuestions);
+  const loading = useSelector(getLoading);
 
   return (
     <div id="pop-questions" className="margin-bottom-40">
       <div className="headline">
         <h2>Popular questions</h2>
       </div>
-      {loading && <PopQuestionPlaceholder count={2} />}
-      {!loading && popQuestions && <PopularQuestions data={popQuestions} />}
+      {loading ? <PopQuestionPlaceholder count={2}/> : popQuestions && <PopularQuestions data={popQuestions}/>}
     </div>
   );
 };
