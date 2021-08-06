@@ -3,7 +3,7 @@ import TimelineCard from './timeline-card';
 
 const TimelineCards = ({ items }) => {
   return items.map((item) => {
-    const {instance, displayUser} = item;
+    const { instance, displayUser } = item;
 
     const feedCardData = {
       type: item.type,

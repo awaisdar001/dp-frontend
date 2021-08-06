@@ -6,14 +6,7 @@ import Tags from '../../Tags';
 import QuestionTitle from './Description';
 
 export default function CardQuestion({ card, instance }) {
-  const {
-    name,
-    city,
-    pro,
-    absUrl,
-    createdAt,
-    seenCount,
-  } = instance;
+  const { name, city, pro, absUrl, createdAt, seenCount } = instance;
   const { nodeURL, isNew, profileURL } = card;
 
   const propsHeader = { profileURL, nodeURL, isNew, icon: 'question-circle' };

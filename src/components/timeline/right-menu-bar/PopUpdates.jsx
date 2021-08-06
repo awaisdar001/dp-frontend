@@ -1,25 +1,24 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import {MomentTime} from '../../common';
-import {useSelector} from "react-redux";
-import {getLoading, getPopularUpdates} from "./data/selectors";
+import { MomentTime } from '../../common';
+import { useSelector } from 'react-redux';
+import { getLoading, getPopularUpdates } from './data/selectors';
 
 const PopUpdatesPlaceholder = (props) => {
-  const {count} = props;
+  const { count } = props;
   return (
     <ul className="list-unstyled dp-updates">
-      {Array.from({length: count}, (_, _key) => {
+      {Array.from({ length: count }, (_, _key) => {
         return (
           <li key={`pop-updates-skeleton-${_key}`}>
-            <Skeleton count={3}/>
+            <Skeleton count={3} />
           </li>
         );
       })}
     </ul>
   );
 };
-const PopUpdate = ({absUrl, createdBy, name, pro, createdAt, ...rest}) => {
-
+const PopUpdate = ({ absUrl, createdBy, name, pro, createdAt, ...rest }) => {
   return (
     <li>
       <h3>
@@ -31,7 +30,7 @@ const PopUpdate = ({absUrl, createdBy, name, pro, createdAt, ...rest}) => {
 
       <small>
         <a href={absUrl}>
-          <MomentTime propDateTime={createdAt}/>
+          <MomentTime propDateTime={createdAt} />
         </a>
       </small>
 
@@ -41,13 +40,15 @@ const PopUpdate = ({absUrl, createdBy, name, pro, createdAt, ...rest}) => {
     </li>
   );
 };
-const PopularUpdates = ({data}) => {
+const PopularUpdates = ({ data }) => {
   return (
     <ul className="list-unstyled dp-updates">
-      {data.map((update, index) => <PopUpdate key={`fav-updates-${index}`} {...update} />)}
+      {data.map((update, index) => (
+        <PopUpdate key={`fav-updates-${index}`} {...update} />
+      ))}
     </ul>
-  )
-}
+  );
+};
 
 export default () => {
   const popUpdates = useSelector(getPopularUpdates);
@@ -59,8 +60,11 @@ export default () => {
       <div className="headline">
         <h2>Popular updates</h2>
       </div>
-      {loading ? <PopUpdatesPlaceholder count={2}/> : popUpdates && <PopularUpdates data={popUpdates}/>}
+      {loading ? (
+        <PopUpdatesPlaceholder count={2} />
+      ) : (
+        popUpdates && <PopularUpdates data={popUpdates} />
+      )}
     </div>
   );
-}
-;
+};

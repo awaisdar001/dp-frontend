@@ -1,11 +1,11 @@
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
-export default function Description({description}) {
+export default function Description({ description }) {
   return (
     <Col md={12}>
       <div className="description">
-        <p dangerouslySetInnerHTML={{__html: description}}></p>
+        <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
     </Col>
   );

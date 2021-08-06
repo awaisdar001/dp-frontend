@@ -1,6 +1,4 @@
-/* eslint-disable no-param-reassign */
-import {createSlice} from '@reduxjs/toolkit';
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'popular',
@@ -12,7 +10,7 @@ const slice = createSlice({
     itemsRequested: (popularItems, action) => {
       popularItems.loading = true;
     },
-    itemsReceived: (popularItems, {payload}) => {
+    itemsReceived: (popularItems, { payload }) => {
       popularItems.items = payload;
       popularItems.loading = false;
     },
@@ -22,12 +20,7 @@ const slice = createSlice({
   },
 });
 
-export const {
-  itemsRequested,
-  itemsReceived,
-  itemsRequestFailed,
-} = slice.actions;
+export const { itemsRequested, itemsReceived, itemsRequestFailed } =
+  slice.actions;
 
-export const {
-  reducer,
-} = slice;
+export const { reducer } = slice;

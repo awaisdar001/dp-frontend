@@ -1,15 +1,14 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Col, Row} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchTimelineItems} from './data/thunks';
+import React, { useCallback, useRef, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTimelineItems } from './data/thunks';
 
-import {FeedsPlaceholder, LoadingNewFeeds} from '../placeholders';
+import { FeedsPlaceholder, LoadingNewFeeds } from '../placeholders';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 import {
   getSelectedFeedTypes,
   getSelectedPros,
-
 } from './left-accordion/data/selectors';
 import {
   getLoadingStatus,
@@ -38,7 +37,13 @@ const TimelineContent = () => {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
           setLoadingNewFeeds(true);
-          dispatch(fetchTimelineItems(selectedPros, selectedFeedTypes, nextPage.pageNumber))
+          dispatch(
+            fetchTimelineItems(
+              selectedPros,
+              selectedFeedTypes,
+              nextPage.pageNumber,
+            ),
+          );
         }
       });
       if (node) {
@@ -50,10 +55,10 @@ const TimelineContent = () => {
 
   return (
     <Col sm={12} lg={6} as="main" id="dp-timeline">
-      {loading ? <FeedsPlaceholder/> : null}
-      {items && <TimelineCards items={items}/>}
+      {loading ? <FeedsPlaceholder /> : null}
+      {items && <TimelineCards items={items} />}
 
-      {loading && loadingNewFeeds && <LoadingNewFeeds/>}
+      {loading && loadingNewFeeds && <LoadingNewFeeds />}
       {items && (
         <div className="d-flex justify-content-center bd-highlight mb-3">
           <Row>

@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react';
-import {Accordion, Card, Form} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import {updateTimelineFeedTypesInLocalStorage} from '../../../storage';
+import React, { useEffect } from 'react';
+import { Accordion, Card, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { updateTimelineFeedTypesInLocalStorage } from '../../../storage';
+import { getFeedTypeItems } from './data/selectors';
+import { getLoadingStatus } from '../data/selectors';
+import { accordionUpdateFeedTypeState } from './data/slice';
 import Checkbox from './Checkbox';
 import Header from './Header';
-import {getFeedTypeItems} from "./data/selectors";
-import {getLoadingStatus} from "../data/selectors";
-import {accordionUpdateFeedTypeState} from "./data/slice";
 
 const id = 'collapse-feed-types';
 
@@ -19,8 +20,8 @@ const Feed = () => {
     updateTimelineFeedTypesInLocalStorage(feedItems);
   }, [feedItems]);
 
-  const handleFeedCheckbox = ({target}, slug) => {
-    dispatch(accordionUpdateFeedTypeState({slug, checked: target.checked}))
+  const handleFeedCheckbox = ({ target }, slug) => {
+    dispatch(accordionUpdateFeedTypeState({ slug, checked: target.checked }));
   };
 
   const FeedTypeCheckBoxes = () =>
@@ -38,13 +39,13 @@ const Feed = () => {
   return (
     <Accordion defaultActiveKey="0">
       <Card>
-        <Header title="Feeds"/>
+        <Header title="Feeds" />
         <Accordion.Collapse eventKey="0">
           <Card.Body id={id}>
             <Form name="feeds">
               <Form.Group controlId={`formControl-${id}`}>
                 <div className="dp-checkbox">
-                  <FeedTypeCheckBoxes/>
+                  <FeedTypeCheckBoxes />
                 </div>
               </Form.Group>
             </Form>

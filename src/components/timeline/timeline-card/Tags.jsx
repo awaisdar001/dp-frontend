@@ -1,22 +1,22 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
-export default function Tags({city, pro, tags}) {
+export default function Tags({ city, pro, tags }) {
   const faMap = (
-    <FontAwesomeIcon className="margin-right-3" icon="map-marker-alt"/>
+    <FontAwesomeIcon className="margin-right-3" icon="map-marker-alt" />
   );
-  const Tags = ({tags}) => {
+  const Tags = ({ tags }) => {
     return tags
       ? tags.map((tag, index) => (
-        <a key={`tag-${tag.name}-${index}`} href={tag.url}>
-          <FontAwesomeIcon icon="tags"/> {tag.name}
-        </a>
-      ))
+          <a key={`tag-${tag.name}-${index}`} href={tag.url}>
+            <FontAwesomeIcon icon="tags" /> {tag.name}
+          </a>
+        ))
       : null;
   };
 
-  const TagPro = ({pro}) => {
+  const TagPro = ({ pro }) => {
     return pro && pro.slug && pro.name ? (
       <a id="tag-pro" href={pro.absUrl}>
         {faMap}
@@ -25,7 +25,7 @@ export default function Tags({city, pro, tags}) {
     ) : null;
   };
 
-  const TagCity = ({city}) => {
+  const TagCity = ({ city }) => {
     return city && city.absUrl && city.name ? (
       <a id="tag-city" href={city.absUrl}>
         {faMap}
@@ -34,10 +34,10 @@ export default function Tags({city, pro, tags}) {
     ) : null;
   };
 
-  const TagMap = ({map}) => {
+  const TagMap = ({ map }) => {
     return map ? (
       <a href="/">
-        <FontAwesomeIcon className="margin-right-3" icon="map-marked-alt"/>
+        <FontAwesomeIcon className="margin-right-3" icon="map-marked-alt" />
       </a>
     ) : null;
   };
@@ -45,10 +45,10 @@ export default function Tags({city, pro, tags}) {
   return (
     <Col md={12}>
       <p className="timeline-tags">
-        <TagCity city={city}/>
-        <TagPro pro={pro}/>
-        <Tags tags={tags}/>
-        <TagMap/>
+        <TagCity city={city} />
+        <TagPro pro={pro} />
+        <Tags tags={tags} />
+        <TagMap />
       </p>
     </Col>
   );

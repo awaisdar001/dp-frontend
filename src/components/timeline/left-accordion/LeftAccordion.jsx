@@ -1,13 +1,15 @@
-import React, {useEffect, useRef} from 'react';
-import {Button, Col} from 'react-bootstrap';
-import {useDispatch, useSelector, useStore} from 'react-redux';
-// import {shouldResetItems, restAllItems} from '../../../store_old/accordion';
-// import {loadTimelineItemsFromState,} from '../../../store_old/timeline';
-import {getFeedTypeItems, getProItems, getSelectedFeedTypes, getSelectedPros} from './data/selectors'
+import React, { useEffect } from 'react';
+import { Button, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSelectedFeedTypes, getSelectedPros } from './data/selectors';
 import FeedsAccordion from './Feed';
 import ProAccordion from './Province';
-import {accordionRestProvinces, accordionRestFeedTypes, accordionRestAllFilters} from "./data/slice";
-import {fetchAndRestTimelineItems, fetchTimelineItems} from "../data/thunks";
+import {
+  accordionRestAllFilters,
+  accordionRestFeedTypes,
+  accordionRestProvinces,
+} from './data/slice';
+import { fetchAndRestTimelineItems } from '../data/thunks';
 import _ from 'lodash';
 
 /**
@@ -21,13 +23,13 @@ export default function DPAccordion() {
 
   // Rest timeline items when pro/feed items change
   useEffect(() => {
-    const selectedProvinceCount = _.size(selectedProvinces)
-    const selectedFeedCount = _.size(selectedFeedTypes)
+    const selectedProvinceCount = _.size(selectedProvinces);
+    const selectedFeedCount = _.size(selectedFeedTypes);
 
     if (!selectedProvinceCount) {
-      dispatch(accordionRestProvinces())
+      dispatch(accordionRestProvinces());
     } else if (!selectedFeedCount) {
-      dispatch(accordionRestFeedTypes())
+      dispatch(accordionRestFeedTypes());
     } else {
       dispatch(fetchAndRestTimelineItems(selectedProvinces, selectedFeedTypes));
     }
@@ -39,8 +41,8 @@ export default function DPAccordion() {
     <Col id="filter-feeds" sm={12} lg={3}>
       <div id="filter-by-block">
         <h1>Filter By</h1>
-        <ProAccordion/>
-        <FeedsAccordion/>
+        <ProAccordion />
+        <FeedsAccordion />
         <Button
           id="btn-reset"
           variant="success"

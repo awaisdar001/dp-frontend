@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
@@ -10,26 +9,26 @@ const slice = createSlice({
     loadingStatus: true,
   },
   reducers: {
-    itemsRequested: (state, {payload}) => {
+    itemsRequested: (state, { payload }) => {
       state.loadingStatus = true;
     },
     updateLoadingStatus: (state, { payload }) => {
       state.loadingStatus = payload.status;
     },
-    timelineItemsReceived: (state, {payload}) => {
+    timelineItemsReceived: (state, { payload }) => {
       state.loadingStatus = false;
       state.feedItems = [...state.feedItems, ...payload.results];
       state.nextPage = payload.next;
       state.previousPage = payload.previous;
     },
-    timelineRestItems: (state, {payload}) => {
-      state.feedItems = []
+    timelineRestItems: (state, { payload }) => {
+      state.feedItems = [];
     },
-    timelineItemsRequestFailed: (state, {payload}) => {
+    timelineItemsRequestFailed: (state, { payload }) => {
       state.loadingStatus = false;
       state.error = payload.error;
     },
-    timelineRestItemsRequested: (state, {payload}) => {
+    timelineRestItemsRequested: (state, { payload }) => {
       state.loadingStatus = true;
       state.feedItems = [];
     },
@@ -45,6 +44,4 @@ export const {
   updateLoadingStatus,
 } = slice.actions;
 
-export const {
-  reducer,
-} = slice;
+export const { reducer } = slice;

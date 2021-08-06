@@ -1,10 +1,10 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import {ProgressiveImage} from '../../common';
-import {useSelector} from 'react-redux';
-import {getLoading, getPopularVideos} from "./data/selectors";
+import { ProgressiveImage } from '../../common';
+import { useSelector } from 'react-redux';
+import { getLoading, getPopularVideos } from './data/selectors';
 
 const PopVideoPlaceHolder = () => (
   <div className="rmb-placeholder" key={`placeholder`}>
@@ -23,7 +23,6 @@ const PopVideoPlaceHolder = () => (
     </div>
   </div>
 );
-
 
 const PopVideo = ({ name, absUrl, posterUrls }) => {
   return (
@@ -73,7 +72,11 @@ export default () => {
       <div className="headline">
         <h2>Popular videos</h2>
       </div>
-      {loading ? <PopVideoPlaceHolder /> : popVideos && <PopularVideos data={popVideos} />}
+      {loading ? (
+        <PopVideoPlaceHolder />
+      ) : (
+        popVideos && <PopularVideos data={popVideos} />
+      )}
     </div>
   );
-}
+};

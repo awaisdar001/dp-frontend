@@ -1,12 +1,11 @@
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import {useSelector, useStore} from 'react-redux';
-// import { getLoading, getPopularPhotos } from '../../../store_old/popular-feeds';
-import {ProgressiveImage} from '../../common';
-import {getLoading, getPopularPhotos} from "./data/selectors";
+import { useSelector } from 'react-redux';
+import { ProgressiveImage } from '../../common';
+import { getLoading, getPopularPhotos } from './data/selectors';
 
-const FavPhoto = ({imageUrls, name, absUrl}) => {
+const FavPhoto = ({ imageUrls, name, absUrl }) => {
   return (
     <Col xs={4} className="pop-image">
       <div className="list-item-sm">
@@ -27,13 +26,13 @@ const FavPhoto = ({imageUrls, name, absUrl}) => {
 const PhotoPlaceHolder = () => (
   <div className="rmb-placeholder">
     <div className="row">
-      {Array.from({length: 9}, (_, _key) => (
+      {Array.from({ length: 9 }, (_, _key) => (
         <Col key={`pop-photos-skeleton-${_key}`} xs={4} className="pop-image">
           <Skeleton
             count={1}
             duration={2}
             height={40}
-            style={{marginBottom: '10px'}}
+            style={{ marginBottom: '10px' }}
           />
         </Col>
       ))}
@@ -41,7 +40,7 @@ const PhotoPlaceHolder = () => (
   </div>
 );
 
-const PopularPhotos = ({data}) => {
+const PopularPhotos = ({ data }) => {
   return (
     <div className="row gallery-list mb-5">
       {data.map((photo, index) => {
@@ -60,7 +59,11 @@ export default () => {
       <div className="headline">
         <h2>Popular photos</h2>
       </div>
-      {loading ? <PhotoPlaceHolder /> : popPhotos && <PopularPhotos data={popPhotos} />}
+      {loading ? (
+        <PhotoPlaceHolder />
+      ) : (
+        popPhotos && <PopularPhotos data={popPhotos} />
+      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import Header from '../../Header';
 import Tags from '../../Tags';
 import Description from './Description';
 
-export default function ImageCard( { instance, card } ) {
+export default function ImageCard({ instance, card }) {
   const {
     name,
     description,

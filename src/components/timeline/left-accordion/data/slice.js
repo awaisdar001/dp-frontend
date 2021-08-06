@@ -1,7 +1,9 @@
-/* eslint-disable no-param-reassign */
-import {createSlice} from '@reduxjs/toolkit';
-import {feedTypesData, pros as proStaticData} from "../../../common";
-import {getTimelineFeedsFromLocalStorage, getTimelineProsFromLocalStorage} from "../../../../storage";
+import { createSlice } from '@reduxjs/toolkit';
+import { feedTypesData, pros as proStaticData } from '../../../common';
+import {
+  getTimelineFeedsFromLocalStorage,
+  getTimelineProsFromLocalStorage,
+} from '../../../../storage';
 
 const proStateInStorage = getTimelineProsFromLocalStorage();
 const feedsStateInStorage = getTimelineFeedsFromLocalStorage();
@@ -16,30 +18,28 @@ const slice = createSlice({
   name: 'accordion',
   initialState: defaultState,
   reducers: {
-    accordionUpdateProvinceState: (accordion, {payload}) => {
+    accordionUpdateProvinceState: (accordion, { payload }) => {
       const proItemIndex = accordion.proItems.findIndex((pro) => {
         return pro.slug === payload.slug;
       });
       accordion.proItems[proItemIndex].selected = payload.checked;
     },
-    accordionUpdateFeedTypeState: (accordion, {payload}) => {
+    accordionUpdateFeedTypeState: (accordion, { payload }) => {
       const feedTypeItemIndex = accordion.feedTypesItems.findIndex((feed) => {
         return feed.slug === payload.slug;
       });
-      accordion.feedTypesItems[feedTypeItemIndex].selected =
-        payload.checked;
+      accordion.feedTypesItems[feedTypeItemIndex].selected = payload.checked;
     },
-    accordionRestProvinces: (accordion, {payload}) => {
+    accordionRestProvinces: (accordion, { payload }) => {
       accordion.proItems = proStaticData;
     },
-    accordionRestFeedTypes: (accordion, {payload}) => {
+    accordionRestFeedTypes: (accordion, { payload }) => {
       accordion.feedTypesItems = feedTypesData;
     },
-    accordionRestAllFilters: (accordion, {payload}) => {
+    accordionRestAllFilters: (accordion, { payload }) => {
       accordion.feedTypesItems = feedTypesData;
       accordion.proItems = proStaticData;
     },
-
   },
 });
 
@@ -51,6 +51,4 @@ export const {
   accordionRestAllFilters,
 } = slice.actions;
 
-export const {
-  reducer,
-} = slice;
+export const { reducer } = slice;

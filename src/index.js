@@ -8,7 +8,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />,
   </React.StrictMode>,
-  document.getElementById('react-container')
+  document.getElementById('react-container'),
 );
 
 // If you want your app to work offline and load faster, you can change

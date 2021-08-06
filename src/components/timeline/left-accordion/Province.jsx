@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react';
-import {Accordion, Card, Form} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import {updateTimelineProsInLocalStorage} from '../../../storage';
+import React, { useEffect } from 'react';
+import { Accordion, Card, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTimelineProsInLocalStorage } from '../../../storage';
+import { getLoadingStatus } from '../data/selectors';
+import { getProItems } from './data/selectors';
+import { accordionUpdateProvinceState } from './data/slice';
 import Checkbox from './Checkbox';
 import Header from './Header';
-import {getLoadingStatus} from "../data/selectors";
-import {getProItems} from './data/selectors'
-import {accordionUpdateProvinceState} from './data/slice'
+
 
 const id = 'collapse-pro';
 
@@ -23,7 +24,8 @@ const Province = () => {
     updateTimelineProsInLocalStorage(proItems);
   }, [proItems]);
 
-  const handleProCheckbox = ({target}, slug) => dispatch(accordionUpdateProvinceState({slug, checked: target.checked}));
+  const handleProCheckbox = ({ target }, slug) =>
+    dispatch(accordionUpdateProvinceState({ slug, checked: target.checked }));
 
   const ProvinceCheckBoxes = () =>
     proItems.map((pro) => {
@@ -37,17 +39,16 @@ const Province = () => {
       return <Checkbox {...checkboxProps} />;
     });
 
-
   return (
     <Accordion defaultActiveKey="0">
       <Card>
-        <Header title="Provinces"/>
+        <Header title="Provinces" />
         <Accordion.Collapse eventKey="0">
           <Card.Body id={id}>
             <Form name="pros">
               <Form.Group controlId={`formControl-${id}`}>
                 <div className="dp-checkbox">
-                  <ProvinceCheckBoxes/>
+                  <ProvinceCheckBoxes />
                 </div>
               </Form.Group>
             </Form>

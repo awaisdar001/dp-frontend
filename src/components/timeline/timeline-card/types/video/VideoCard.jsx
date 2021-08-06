@@ -7,16 +7,8 @@ import VideoPreview from './Preview';
 import VideoDescription from './Description';
 
 export default function CardVideo({ instance, card }) {
-  const {
-    absUrl,
-    createdAt,
-    seenCount,
-    city,
-    pro,
-    tags,
-    name,
-    description,
-  } = instance;
+  const { absUrl, createdAt, seenCount, city, pro, tags, name, description } =
+    instance;
   const { nodeURL, isNew, profileURL } = card;
 
   const propsFooter = { absUrl, createdAt, seenCount };
