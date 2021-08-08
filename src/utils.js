@@ -35,6 +35,7 @@ export function modifyObjectKeys(object, modify) {
   });
   return result;
 }
+
 /*
  * @param {Array|Object} object
  * @returns {Array|Object}
@@ -42,6 +43,7 @@ export function modifyObjectKeys(object, modify) {
 export function camelCaseObject(object) {
   return modifyObjectKeys(object, camelCase);
 }
+
 /*
  * @param {Array|Object} object
  * @returns {Array|Object}
@@ -53,7 +55,7 @@ export function snakeCaseObject(object) {
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
-export const NewLineToBr = ({ children = '' }) => {
+export const NewLineToBr = ({children = ''}) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
@@ -77,16 +79,19 @@ export const renameKeys = (instance) => {
       .join('');
     return {
       ...acc,
-      ...{ [cambleCaseKey]: instance[key] },
+      ...{[cambleCaseKey]: instance[key]},
     };
   }, {});
 };
 
+export const transformQueryString = (queryArray) => queryArray
+  .map((keywords) => `${keywords[0]}=${keywords[1]}`)
+  .reduce((queryItem, result) => `${queryItem}&${result}`);
 export const buildQueryString = (dataArray, name, key = 'name') =>
   /*
     Given a list object, builds querystring
 
-    dataArray ([]): list containg dict objects. [{key: "value"}, {key: "value2"}]
+    dataArray ([]): list which contains dict objects. [{key: "value"}, {key: "value2"}]
     name (str): keyword name to be used while building querystring. name=value&name=value2
     key(str): key to be used for getting the data from dataArray. 
 
@@ -107,13 +112,13 @@ export const getQueryStringParams = (query) => {
 
   return query
     ? (/^[?#]/.test(query) ? query.slice(1) : query)
-        .split('&')
-        .reduce((params, param) => {
-          let [key, value] = param.split('=');
-          params[key] = value
-            ? decodeURIComponent(value.replace(/\+/g, ' '))
-            : '';
-          return params;
-        }, {})
+      .split('&')
+      .reduce((params, param) => {
+        let [key, value] = param.split('=');
+        params[key] = value
+          ? decodeURIComponent(value.replace(/\+/g, ' '))
+          : '';
+        return params;
+      }, {})
     : {};
 };

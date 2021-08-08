@@ -1,5 +1,5 @@
 import React from 'react';
-import TripItem from '../components/trips/trip-item';
+import TripItem from '../trips/trip-item';
 
 export default function TripsPage() {
   return <TripItem />;

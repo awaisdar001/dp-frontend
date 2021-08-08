@@ -29,6 +29,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
+    "classnames": "^2.3.1",
     "date-fns": "^2.16.1",
     "humanize-plus": "^1.8.2",
     "lodash": "4.17.21",
@@ -50,7 +51,7 @@
     "react-scroll": "^1.8.1",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
+    "redux-devtools-extension": "^2.13.9",
     "reselect": "^4.0.0"
   },
   "eslintConfig": {

@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
 
-import { reducer as timelineReducer } from './components/timeline';
-import { reducer as accordionReducer } from './components/timeline/left-accordion';
-import { reducer as PopularReducer } from './components/timeline/right-menu-bar';
-// import TripsListReducer from './store_old/features/trips';
+import { reducer as timelineReducer } from './timeline';
+import { reducer as accordionReducer } from './timeline/left-accordion';
+import { reducer as PopularReducer } from './timeline/right-menu-bar';
+import { reducer as TripsListReducer } from './trips';
 
 
 export default function initializeStore() {
@@ -12,7 +12,7 @@ export default function initializeStore() {
       accordion: accordionReducer,
       timeline: timelineReducer,
       popular: PopularReducer,
-      // trips: TripsListReducer,
+      trips: TripsListReducer,
     },
   });
 }
