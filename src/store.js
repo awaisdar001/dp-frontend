@@ -4,6 +4,7 @@ import { reducer as timelineReducer } from './timeline';
 import { reducer as accordionReducer } from './timeline/left-accordion';
 import { reducer as PopularReducer } from './timeline/right-menu-bar';
 import { reducer as TripsListReducer } from './trips';
+import { reducer as TripsListListReducer } from './trips/trips-list';
 
 
 export default function initializeStore() {
@@ -13,6 +14,7 @@ export default function initializeStore() {
       timeline: timelineReducer,
       popular: PopularReducer,
       trips: TripsListReducer,
+      tripslist: TripsListListReducer,
     },
   });
 }

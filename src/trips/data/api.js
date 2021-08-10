@@ -15,7 +15,7 @@ export async function getTripItems(searchParams) {
 
 
 const getTripsListURLFromState = ({searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations}) => {
-  const destinations = selectedDestinations.reduce((acc, d) => `${acc.value ? acc.value : acc},${d.value}`);
+  const destinations = selectedDestinations.reduce((acc, d) => `${acc.slug ? acc.slug : acc},${d.slug}`);
   const dateFormat = DateFormats.YearMonthDate;
   const queryString = transformQueryString([
       ['name', searchKeyword],

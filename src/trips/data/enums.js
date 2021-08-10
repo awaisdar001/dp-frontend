@@ -1,3 +1,4 @@
+// todo delete
 export const tripDestinations = [
   {label: 'Chitral', value: 'chitral', selected: true},
   {label: 'Galiyat (Nathiagali | Murree)', value: 'galiyat', selected: true},

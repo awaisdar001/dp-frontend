@@ -9,12 +9,12 @@ function Destinations({items: destinations, onChange}) {
       <span className="title mb-3">Destinations</span>
       {destinations.map((destination) => (
         <DpCheckbox
-          key={'destination-' + destination.value}
-          value={destination.value}
+          key={'destination-' + destination.slug}
+          value={destination.slug}
           name="destination[]"
-          label={destination.label}
+          label={destination.name}
           selected={destination.selected}
-          onChange={(event) => onChange(event, destination.value)}
+          onChange={(event) => onChange(event, destination.slug)}
         />
       ))}
     </div>

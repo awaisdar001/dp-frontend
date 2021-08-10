@@ -6,7 +6,6 @@ export function fetchTripItems(searchParams) {
     await dispatch(itemsRequested());
     try {
       const tripItems = await getTripItems(searchParams);
-      debugger;
       dispatch(itemsReceived(tripItems));
     } catch (error) {
       console.log('=>error', error);

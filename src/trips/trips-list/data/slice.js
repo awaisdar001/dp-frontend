@@ -8,54 +8,57 @@ const maxDate = moment(minDate).add(1, 'M').valueOf();
 const minPrice = 1 * 1000;
 const maxPrice = 50 * 1000;
 
-const defaultState = {
-  headingItems: {},
-  loadingStatus: false,
-  counter: 1,
-};
-
 const slice = createSlice({
-  name: 'triplist',
-  initialState: defaultState,
+  name: 'tripslist',
+  initialState: {
+    destinations: [],
+    loadingStatus: false,
+    search: {
+      initial: {
+        days: [minDay, maxDay],
+        dates: [minDate, maxDate],
+        prices: [minPrice, maxPrice],
+      },
+      keyword: '',
+      days: [minDay, maxDay],
+      dates: [minDate, maxDate],
+      prices: [minPrice, maxPrice],
+    },
+
+  },
   reducers: {
-    itemsRequested: (state, {payload}) => {
+    destinationsRequested: (state, {payload}) => {
       state.loadingStatus = true;
     },
-    itemsReceived: (state, {payload}) => {
+    destinationsReceived: (state, {payload}) => {
       state.loadingStatus = false;
-      state.trips = payload.results;
-      state.tripsMeta = {...payload, results: []};
+      state.destinations = payload.destinations
     },
-    itemsRequestFailed: (state, {payload}) => {
+    destinationsRequestFailed: (state, {payload}) => {
       state.loadingStatus = false;
       state.error = payload.error;
     },
     updateDestination: (state, {payload}) => {
+      state.loadingStatus = !state.loadingStatus;
       state.destinations[payload.index].selected = payload.selected;
     },
     searchSliderChanged: (trips, {payload}) => {
-      trips.search[payload.type] = payload.number
+      trips.search[payload.type] = [...payload.number];
       trips.loadingStatus = !trips.loadingStatus;
     },
     searchKeywordChanged: (trips, {payload}) => {
       trips.search.keyword = payload.keyword;
     },
-    counterUpdated: (trips, {payload}) => {
-      console.log('updating counter from', trips.counter);
-      trips.counter += payload.value;
-    },
   },
 });
 
 export const {
-  itemsRequested,
-  itemsReceived,
-  itemsRequestFailed,
+  destinationsRequested,
+  destinationsReceived,
+  destinationsRequestFailed,
   updateDestination,
   searchSliderChanged,
   searchKeywordChanged,
-  counterUpdated,
-
 } = slice.actions;
 
 export const {

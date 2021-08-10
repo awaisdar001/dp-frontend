@@ -1,6 +1,6 @@
 import React from 'react';
 
-function withSidebar(Component, title) {
+const withSidebar = (Component, title) => {
   return function withSidebar() {
     return (
       <aside className="sidebar">
@@ -10,7 +10,7 @@ function withSidebar(Component, title) {
               <h4>{title}</h4>
             </div>
             <div className="filters-fields">
-              <Component />
+              <Component/>
             </div>
           </form>
         </div>

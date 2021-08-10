@@ -10,8 +10,8 @@ import {
   getInitialSearchDays,
   getInitialSearchPrices,
   getSidebarDestinations
-} from "../../data/selectors";
-import {updateDestination, searchSliderChanged} from "../../data/slice";
+} from "../data/selectors";
+import {searchSliderChanged, updateDestination} from "../data/slice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -19,12 +19,14 @@ const Sidebar = () => {
   const [minPrice, maxPrice] = useSelector(getInitialSearchPrices)
   const [minDay, maxDay] = useSelector(getInitialSearchDays);
   const destinations = useSelector(getSidebarDestinations);
+  console.log('Rendering SideBar.....')
+
 
   const handleSliderChange = ({type, number}) => {
     dispatch(searchSliderChanged({type, number}));
   };
   const handleDestinationChange = ({target}, value) => {
-    const destinationIndex = destinations.findIndex(destination => destination.value === value);
+    const destinationIndex = destinations.findIndex(destination => destination.slug === value);
     dispatch(updateDestination({index: destinationIndex, selected: target.checked}));
   };
 
