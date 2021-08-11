@@ -3,7 +3,13 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+const dotenv = require('dotenv');
+const fs = require('fs');
 
+const testEnvFile = path.resolve(process.cwd(), '.env.test');
+if (fs.existsSync(testEnvFile)) {
+  dotenv.config({ path: testEnvFile });
+}
 // const searchButtonClickHandler = (event) => {
 //   setNavState({
 //     ...navState,

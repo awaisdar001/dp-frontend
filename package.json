@@ -29,8 +29,12 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
+    "classnames": "^2.3.1",
     "date-fns": "^2.16.1",
     "humanize-plus": "^1.8.2",
+    "lodash": "4.17.21",
+    "lodash.camelcase": "4.3.0",
+    "lodash.snakecase": "4.1.1",
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.31",
@@ -47,7 +51,7 @@
     "react-scroll": "^1.8.1",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
+    "redux-devtools-extension": "^2.13.9",
     "reselect": "^4.0.0"
   },
   "eslintConfig": {
@@ -99,7 +103,7 @@
     "axios-mock-adapter": "^1.18.2",
     "copyfiles": "^2.2.0",
     "create-react-app": "^3.4.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "renamer": "^2.0.1"
   }
 }
