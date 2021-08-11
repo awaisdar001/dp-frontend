@@ -1,5 +1,5 @@
 import React from 'react';
-import {DpCheckbox} from '../../../components/common';
+import {DpCheckbox} from '../../../common';
 
 function Destinations({items: destinations, onChange}) {
   console.log('rerendring destiantions. ');
@@ -21,4 +21,4 @@ function Destinations({items: destinations, onChange}) {
   );
 }
 
-export default Destinations;
+export default React.memo(Destinations);

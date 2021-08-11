@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import DPSlider from '../../../components/common/sliders/DPSlider';
+import {DpSlider} from '../../common';
 
 const id = 'id-days-slider';
 
@@ -17,7 +17,7 @@ function DaysSlider({minDay, maxDay, onChange}) {
   return (
     <>
       <Heading/>
-      <DPSlider
+      <DpSlider
         name="days"
         aria-labelledby={id}
         min={minDay}

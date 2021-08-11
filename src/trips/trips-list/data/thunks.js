@@ -1,4 +1,4 @@
-import {destinationsRequested, destinationsReceived, destinationsRequestFailed} from "./slice";
+import {destinationsReceived, destinationsRequested, destinationsRequestFailed} from "./slice";
 import {getTripDestinations} from "./api";
 
 export function fetchTripDestinations() {

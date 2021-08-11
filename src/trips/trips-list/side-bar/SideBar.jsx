@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import withSidebar from '../../../components/common/hoc/withSidebar';
+import {withSidebar} from '../../../common';
 import DateSlider from './DateSlider';
 import DaysSlider from './DaysSlider';
 import Destinations from './Destinations';
@@ -40,4 +40,4 @@ const Sidebar = () => {
   );
 };
 
-export default withSidebar(Sidebar, 'Filter your Trip');
+export default React.memo(withSidebar(Sidebar, 'Filter your Trip'));

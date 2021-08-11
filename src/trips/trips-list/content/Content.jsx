@@ -7,7 +7,7 @@ import {getTrips, getTripsMetaData} from "../../data/selectors";
 import classNames from 'classnames';
 import {getLoadingStatus} from "../data/selectors";
 
-const Results = () => {
+const Content = () => {
   const isLoading = useSelector(getLoadingStatus);
   const trips = useSelector(getTrips);
   const tripsMeta = useSelector(getTripsMetaData);
@@ -40,4 +40,4 @@ const Results = () => {
     </div>
   );
 };
-export default Results;
+export default Content;

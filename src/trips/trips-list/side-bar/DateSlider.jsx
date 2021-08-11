@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import {getDateFromMilliSec} from '../../../utils';
-import DPSlider from '../../../components/common/sliders/DPSlider';
+import {DpSlider} from '../../../common';
 
 const id = 'id-date-sliders';
 const step = 86400000;
@@ -23,7 +23,7 @@ const DateSlider = ({minDate, maxDate, onChange}) => {
       <Heading/>
       <Grid container spacing={2}>
         <Grid item xs>
-          <DPSlider
+          <DpSlider
             name="date"
             aria-labelledby={id}
             min={minDate}

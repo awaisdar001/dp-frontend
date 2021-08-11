@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
-import { MomentTime } from '../../components/common';
+import { MomentTime } from '../../common';
 import { getPopularQuestions, getLoading } from './data/selectors';
 
 const PopQuestionPlaceholder = (props) => {

@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Humanize from 'humanize-plus';
 import React, {useState} from 'react';
-import DPSlider from '../../../components/common/sliders/DPSlider';
+import {DpSlider} from '../../../common';
 
 const id = 'id-price-slider';
 const step = 1000;
@@ -22,7 +22,7 @@ const PriceSlider = ({minPrice, maxPrice, onChange}) => {
       <Heading/>
       <Grid container spacing={2}>
         <Grid item xs>
-          <DPSlider
+          <DpSlider
             name="price-range"
             aria-labelledby={id}
             value={prices}

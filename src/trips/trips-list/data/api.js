@@ -1,7 +1,6 @@
 import {camelCaseObject} from "../../../utils";
 import {getAuthenticatedHttpClient} from "../../../data/api";
 
-
 /**
  * Fetches timeline items.
  * @returns {Promise<[{}]>}
@@ -23,7 +22,7 @@ export async function getTripDestinations() {
 
 function normalizeDestinations(destinations) {
   const selectedDestinations = destinations.map((destination) => {
-    destination.selected=true
+    destination.selected = true
     return destination;
   });
   return camelCaseObject(selectedDestinations);

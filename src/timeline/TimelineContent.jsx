@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTimelineItems } from './data/thunks';
 
-import { FeedsPlaceholder, LoadingNewFeeds } from '../components/placeholders';
+import { FeedsPlaceholder, LoadingNewFeeds } from '../common';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
 import {

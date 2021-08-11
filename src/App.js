@@ -1,7 +1,7 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
-import './components/common/FontAwsome';
+import './common/FontAwsome';
 import AppRouter from './routes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

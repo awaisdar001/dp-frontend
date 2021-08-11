@@ -2,7 +2,7 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faClock} from '@fortawesome/free-regular-svg-icons';
 
-export default React.memo(function ({ageLimit, category, duration, tripDestination, className = ''}) {
+const Metadata = function ({ageLimit, category, duration, tripDestination, className = ''}) {
 
   return (
     <div className={'item-metadata ' + className}>
@@ -40,4 +40,6 @@ export default React.memo(function ({ageLimit, category, duration, tripDestinati
       </div>
     </div>
   );
-});
+};
+
+export default React.memo(Metadata);

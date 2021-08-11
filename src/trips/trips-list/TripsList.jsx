@@ -16,7 +16,7 @@ import {
   getSelectedDestinations,
 } from "./data/selectors";
 import {fetchTripItems} from "../data/thunks";
-import Sidebar from "./side-bar/SideBar";
+import Sidebar from "./side-bar";
 import {fetchTripDestinations} from "./data/thunks";
 
 
@@ -31,7 +31,6 @@ export default function TripList() {
   const searchPrices = useSelector(getSearchPrices);
   const searchKeyword = useSelector(getSearchKeyword);
   const selectedDestinations = useSelector(getSelectedDestinations);
-
 
   useEffect(() => {
     dispatch(fetchTripDestinations())
@@ -52,7 +51,7 @@ export default function TripList() {
             <div className="results-wrapper">
               <Row>
                 <Col lg={3}>
-                  <Sidebar/>
+                  <Sidebar />
                 </Col>
                 <Col lg={9}>
                   <Content/>

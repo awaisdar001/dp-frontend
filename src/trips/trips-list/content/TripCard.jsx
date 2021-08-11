@@ -9,13 +9,11 @@ let backgroundPoster = {
   backgroundImage:
     'url(https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg)',
 };
-const ResultItem = ({trip}) => {
+const TripCard = ({trip}) => {
   const tripUrl = `/trip/${trip.slug}`;
   const tripMinPrice = trip.tripSchedule.reduce(function (prev, curr) {
     return prev.price < curr.price ? prev : curr;
   }).price;
-
-
   const tripCategory = trip.category;
 
   return (
@@ -73,4 +71,4 @@ const ResultItem = ({trip}) => {
     </Row>
   );
 };
-export default React.memo(ResultItem);
+export default React.memo(TripCard);

@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NumberFormat from 'react-number-format';
-import withSidebar from '../../../components/common/hoc/withSidebar';
+import {withSidebar} from '../../../common';
 import TripDatePicker from './TripDatePicker';
 
 function BookingSideBar() {
