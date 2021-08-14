@@ -5,8 +5,8 @@ import QuestionCard from './types/question';
 import UpdateCard from './types/update';
 import VideoCard from './types/video';
 
-export default function TimelineCard({ card, instance }) {
-  const getCardFromType = (type) => {
+export default function TimelineCard({ cardProps, instance }) {
+  const getCard = (type) => {
     return {
       picture: ImageCard,
       video: VideoCard,
@@ -16,11 +16,11 @@ export default function TimelineCard({ card, instance }) {
     }[type];
   };
 
-  const Card = getCardFromType(card.type);
+  const Card = getCard(cardProps.state);
   return (
     <div className="item">
       <div className="timeline-icon" />
-      <Card card={card} instance={instance} />
+      <Card card={cardProps} instance={instance} />
     </div>
   );
 }

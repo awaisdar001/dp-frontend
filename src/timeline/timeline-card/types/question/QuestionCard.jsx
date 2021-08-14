@@ -4,19 +4,32 @@ import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
 import QuestionTitle from './Description';
+import { useModel } from '../../../../generic/model-store';
 
 export default function CardQuestion({ card, instance }) {
-  const { name, city, pro, absUrl, createdAt, seenCount } = instance;
-  const { nodeURL, isNew, profileURL } = card;
+  const { name, absUrl, createdAt, seenCount } = instance;
+  const { isNew } = card;
 
-  const propsHeader = { profileURL, nodeURL, isNew, icon: 'question-circle' };
+  const { fullName, profileURL } = useModel('user', card.user);
+  const { name: title } = useModel('state', card.state);
+  const city = useModel('city', instance.city);
+  const pro = useModel('pro', instance.pro);
+
+  const propsHeader = {
+    title,
+    profileURL,
+    absUrl,
+    isNew,
+    icon: 'question-circle',
+    username: fullName,
+  };
   const propsTags = { city, pro, map: false };
   const propsFooter = { absUrl, createdAt, seenCount };
   return (
     <div className="cbp_tmlabel">
-      <Header title={card.name} username={card.fullName} {...propsHeader} />
+      <Header {...propsHeader} />
       <Row>
-        <QuestionTitle name={name} nodeURL={nodeURL} />
+        <QuestionTitle name={name} absUrl={absUrl} />
         <Tags {...propsTags} />
         <Footer {...propsFooter} />
       </Row>

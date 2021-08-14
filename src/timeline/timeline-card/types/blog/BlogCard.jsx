@@ -4,33 +4,25 @@ import Description from './Description';
 import Footer from '../../Footer';
 import Tags from './Tags';
 import Header from '../../Header';
+import { useModel } from '../../../../generic/model-store';
 
 export default function BlogCard({ instance, card }) {
-  const {
-    name,
-    description,
-    category,
-    pro,
-    tags,
-    absUrl,
-    createdAt,
-    seenCount,
-  } = instance;
-  const { nodeURL, isNew, profileURL } = card;
+  const { name, description, category, tags, absUrl, createdAt, seenCount } =
+    instance;
+  const { isNew } = card;
 
-  const propsHeader = { profileURL, nodeURL, isNew };
-  const propsDescription = { name, description, nodeURL };
+  const { fullName, profileURL } = useModel('user', card.user);
+  const { name: title } = useModel('state', card.state);
+  const pro = useModel('pro', instance.pro);
+
+  const propsHeader = { profileURL, absUrl, isNew };
+  const propsDescription = { name, description, absUrl };
   const propsTags = { category, pro, tags };
   const propsFooter = { createdAt, seenCount, absUrl };
 
   return (
     <div className="cbp_tmlabel">
-      <Header
-        title={card.name}
-        username={card.fullName}
-        icon="book"
-        {...propsHeader}
-      />
+      <Header title={title} username={fullName} icon="book" {...propsHeader} />
 
       <Row>
         <Description {...propsDescription} />

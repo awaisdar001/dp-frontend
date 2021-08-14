@@ -9,7 +9,7 @@ export function fetchTripItems(searchParams) {
       dispatch(itemsReceived(tripItems));
     } catch (error) {
       console.log('=>error', error);
-      dispatch(itemsRequestFailed({error}));
+      dispatch(itemsRequestFailed({ error: error.toString() }));
     }
   };
 }

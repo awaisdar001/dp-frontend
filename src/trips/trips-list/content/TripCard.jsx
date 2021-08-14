@@ -1,15 +1,15 @@
 import React from 'react';
-import {Row} from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Metadata from './Metadata';
 import Rating from './Rating';
-import {Title, TitlePrice} from '../../TripCommon';
-import {Link} from 'react-router-dom';
+import { Title, TitlePrice } from '../../TripCommon';
+import { Link } from 'react-router-dom';
 
 let backgroundPoster = {
   backgroundImage:
-    'url(https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg)',
+    'url(https://fma-trips.s3-ap-southeast-1.amazonaws.com/trips-photos/2acdc23d-d2b6-485c-9706-93e72bc10128.png)',
 };
-const TripCard = ({trip}) => {
+const TripCard = ({ trip }) => {
   const tripUrl = `/trip/${trip.slug}`;
   const tripMinPrice = trip.tripSchedule.reduce(function (prev, curr) {
     return prev.price < curr.price ? prev : curr;
@@ -25,9 +25,10 @@ const TripCard = ({trip}) => {
               <Link to={tripUrl} className="img-fluid" style={backgroundPoster}>
                 {/* <a href="/" className="img-fluid" style={backgroundPoster}> */}
                 <img
-                  src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg"
-                  className="img-fluid"
-                  alt="Trips poster"
+                // src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg"
+                // src="https://fma-trips.s3-ap-southeast-1.amazonaws.com/trips-photos/2acdc23d-d2b6-485c-9706-93e72bc10128.png"
+                // className="img-fluid"
+                // alt="Trips poster"
                 />
               </Link>
 
@@ -39,32 +40,21 @@ const TripCard = ({trip}) => {
             </div>
           </div>
           <div className="item-detail">
-            <Title name={trip.name} url={tripUrl}/>
-            <TitlePrice price={trip.tripSchedule && tripMinPrice}/>
+            <Title name={trip.name} url={tripUrl} />
+            <TitlePrice price={trip.tripSchedule && tripMinPrice} />
             <div className="item-description">
-              <p>
-                {trip.description} </p>
-              <p>
-                Hunza is a mountainous valley in the Gilgit–Baltistan region of
-                Pakistan. The Hunza is situated north/west of the Hunza River,
-                at an elevation of around 2,500 meters (8,200 ft). The territory
-                of Hunza is about 7,900 square kilometers (3,100 sq mi). Aliabad
-                is the main town while Baltit is a popular tourist destination
-                because of the spectacular scenery of the surrounding mountains
-                like Ultar Sar, Rakaposhi, Bojahagur Duanasir II, Ghenta Peak,
-                Hunza Peak, Passu Peak, Diran Peak and Bublimotin (Ladyfinger
-                Peak), all 6,000 meters (19,685 ft) or higher.
-              </p>
+              <p>{trip.description.substring(0, 500)} </p>
             </div>
 
-            <Rating/>
+            <Rating />
 
             <Metadata
               className="mt-4"
               duration={trip.duration}
               ageLimit={trip.ageLimit}
               category={tripCategory}
-              tripDestination={trip.destination.name}/>
+              tripDestination={trip.destination.name}
+            />
           </div>
         </div>
       </div>

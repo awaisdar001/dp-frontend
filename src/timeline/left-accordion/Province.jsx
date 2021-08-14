@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineProsInStorage } from '../../storage';
 import { getLoadingStatus } from '../data/selectors';
 import { getProItems } from './data/selectors';
-import { updateProvinces } from './data/slice';
+import { provinceSelectionChanged } from './data/slice';
 import Checkbox from './Checkbox';
 import Header from './Header';
 
@@ -24,10 +24,9 @@ const Province = () => {
   }, [proItems]);
 
   const handleProCheckbox = ({ target }, slug) => {
-    const proItemIndex = proItems.findIndex(pro => pro.slug === slug);
-    proItems[proItemIndex].selected = payload.checked;
-    dispatch(updateProvinces({ proItems }));
-  }
+    const index = proItems.findIndex((pro) => pro.slug === slug);
+    dispatch(provinceSelectionChanged({ index, selected: target.checked }));
+  };
 
   const ProvinceCheckBoxes = () =>
     proItems.map((pro) => {

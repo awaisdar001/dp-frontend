@@ -18,11 +18,12 @@ const slice = createSlice({
   name: 'accordion',
   initialState: defaultState,
   reducers: {
-    updateProvinces: (accordion, { payload }) => {
-      accordion.proItems = payload.proItems;
+    provinceSelectionChanged: (accordion, { payload }) => {
+      accordion.proItems[payload.index].selected = payload.selected;
     },
-    updateFeedTypes: (accordion, { payload }) => {
-      accordion.feedTypesItems= payload.feedTypesItems;
+
+    feedTypeSelectionChanged: (accordion, { payload }) => {
+      accordion.feedTypesItems[payload.index].selected = payload.selected;
     },
     restProvinces: (accordion, { payload }) => {
       accordion.proItems = proStaticData;
@@ -38,8 +39,8 @@ const slice = createSlice({
 });
 
 export const {
-  updateProvinces,
-  updateFeedTypes,
+  provinceSelectionChanged,
+  feedTypeSelectionChanged,
   restProvinces,
   restFeedTypes,
   restAllFilters,

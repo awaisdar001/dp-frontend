@@ -3,10 +3,10 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
 import { MomentTime } from '../../common';
-import { getPopularQuestions, getLoading } from './data/selectors';
+import { getLoading, getPopularQuestions } from './data/selectors';
+import { useModel } from '../../generic/model-store';
 
-const PopQuestionPlaceholder = (props) => {
-  const { count } = props;
+const PopQuestionPlaceholder = ({ count }) => {
   return (
     <>
       {Array.from({ length: count }, (_, _key) => {
@@ -26,6 +26,7 @@ const PopQuestionPlaceholder = (props) => {
 };
 
 const PopQuestion = ({ absUrl, name, city, publishedAt }) => {
+  const questionCity = useModel('city', city);
   return (
     <li className="question-item">
       <div className="questions-div">
@@ -34,9 +35,8 @@ const PopQuestion = ({ absUrl, name, city, publishedAt }) => {
         </a>
         <small className="post-meta">
           <span>
-            <a href={city.url}>{city.name}</a>
+            <a href={questionCity.absUrl}>{questionCity.name}</a>
           </span>
-
           <span>
             <MomentTime propDateTime={publishedAt} />
           </span>

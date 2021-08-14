@@ -5,26 +5,33 @@ import Header from '../../Header';
 import Tags from '../../Tags';
 import VideoPreview from './Preview';
 import VideoDescription from './Description';
+import { useModel } from '../../../../generic/model-store';
 
-export default function CardVideo({ instance, card }) {
-  const { absUrl, createdAt, seenCount, city, pro, tags, name, description } =
-    instance;
-  const { nodeURL, isNew, profileURL } = card;
+export default function VideoCard({ instance, card }) {
+  const { absUrl, createdAt, seenCount, tags, name, description } = instance;
+  // const { nodeURL, isNew, profileURL } = card;
+  const { isNew } = card;
 
-  const propsFooter = { absUrl, createdAt, seenCount };
+  const { fullName, profileURL } = useModel('user', card.user);
+  const { name: title } = useModel('state', card.state);
+  const city = useModel('city', instance.city);
+  const pro = useModel('pro', instance.pro);
+
+  const propsVideoDescription = { name, description, absUrl };
+  const propsHeader = {
+    title,
+    profileURL,
+    absUrl,
+    isNew,
+    username: fullName,
+    icon: 'video',
+  };
   const propsTags = { city, pro, tags };
-
-  const propsVideoDescription = { name, description, nodeURL };
-  const propsHeader = { profileURL, nodeURL, isNew };
+  const propsFooter = { absUrl, createdAt, seenCount };
 
   return (
     <div className="cbp_tmlabel">
-      <Header
-        title={card.name}
-        username={card.fullName}
-        icon="video"
-        {...propsHeader}
-      />
+      <Header {...propsHeader} />
       <Row>
         <VideoDescription {...propsVideoDescription} />
         <Tags {...propsTags} map={false} />

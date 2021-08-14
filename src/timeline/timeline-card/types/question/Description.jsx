@@ -1,14 +1,13 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
-const QuestionTitle = ({ name, nodeURL }) => {
+export default ({ name, absUrl }) => {
   return (
     <Col md={12}>
       <h4>
-        <a href={nodeURL}>{name}</a>
+        <a href={absUrl}>{name}</a>
       </h4>
     </Col>
   );
 };
 
-export default QuestionTitle;

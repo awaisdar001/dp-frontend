@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateTimelineFeedTypesInStorage } from '../../storage';
 import { getFeedTypeItems } from './data/selectors';
 import { getLoadingStatus } from '../data/selectors';
-import { updateFeedTypes } from './data/slice';
+import { feedTypeSelectionChanged } from './data/slice';
 import Checkbox from './Checkbox';
 import Header from './Header';
 
@@ -21,9 +21,8 @@ const Feed = () => {
   }, [feedItems]);
 
   const handleFeedCheckbox = ({ target }, slug) => {
-    const feedItemIndex = feedItems.findIndex(feed => feed.slug === slug);
-    feedItems[feedItemIndex].selected = payload.checked;
-    dispatch(updateFeedTypes({ feedTypesItems: feedItems }));
+    const index = feedItems.findIndex((feed) => feed.slug === slug);
+    dispatch(feedTypeSelectionChanged({ index, selected: target.checked }));
   };
 
   const FeedTypeCheckBoxes = () =>

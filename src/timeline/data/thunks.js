@@ -5,6 +5,7 @@ import {
   itemsRequestFailed,
   restItems,
 } from './slice';
+import { addModels } from '../../generic/model-store';
 
 export function fetchTimelineItems(
   selectedProps,
@@ -14,15 +15,17 @@ export function fetchTimelineItems(
   return async (dispatch) => {
     await dispatch(itemsRequested());
     try {
-      const timelineItems = await getTimelineItems(
-        selectedProps,
-        selectedFeedTypes,
-        pageNumber,
-      );
-      dispatch(itemsReceived(timelineItems));
+      const { items, users, pro, city, states, metaData } =
+        await getTimelineItems(selectedProps, selectedFeedTypes, pageNumber);
+      // dispatch(addModels({modelType: 'items', models: items}));
+      dispatch(addModels({ modelType: 'user', models: users }));
+      dispatch(addModels({ modelType: 'pro', models: pro }));
+      dispatch(addModels({ modelType: 'city', models: city }));
+      dispatch(addModels({ modelType: 'state', models: states }));
+      dispatch(itemsReceived({ items, metaData }));
     } catch (error) {
       console.log('=>error', error);
-      dispatch(itemsRequestFailed({ error }));
+      dispatch(itemsRequestFailed({ error: error.toString() }));
     }
   };
 }
@@ -33,18 +36,9 @@ export function fetchAndRestTimelineItems(
   pageNumber = 0,
 ) {
   return async (dispatch) => {
-    await dispatch(itemsRequested());
-    try {
-      const timelineItems = await getTimelineItems(
-        selectedProps,
-        selectedFeedTypes,
-        pageNumber,
-      );
-      dispatch(restItems());
-      dispatch(itemsReceived(timelineItems));
-    } catch (error) {
-      console.log('=>error', error);
-      dispatch(itemsRequestFailed({ error }));
-    }
+    dispatch(restItems());
+    await dispatch(
+      fetchTimelineItems(selectedProps, selectedFeedTypes, pageNumber),
+    );
   };
 }

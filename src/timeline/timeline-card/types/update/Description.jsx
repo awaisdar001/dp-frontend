@@ -1,12 +1,12 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
-export default function UpdateBody({ name, description, nodeURL }) {
+export default function UpdateBody({ name, description, absUrl }) {
   return (
     <>
       <Col md={12}>
         <h4>
-          <a href={nodeURL}>{name}</a>
+          <a href={absUrl}>{name}</a>
         </h4>
       </Col>
       <Col md={12}>
