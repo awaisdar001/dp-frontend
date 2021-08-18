@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { feedTypesData, pros as proStaticData } from '../../data/enums';
-import {
-  getTimelineFeedsFromStorage,
-  getTimelineProsFromStorage,
-} from '../../../storage';
+import Storage from '../../../storage';
 
-const proStateInStorage = getTimelineProsFromStorage();
-const feedsStateInStorage = getTimelineFeedsFromStorage();
+const proStateInStorage = Storage.getTimelinePros();
+const feedsStateInStorage = Storage.getTimelineFeedTypes();
 
 const defaultState = {
   proItems: proStateInStorage || proStaticData,

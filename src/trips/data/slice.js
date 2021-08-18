@@ -17,8 +17,8 @@ const slice = createSlice({
     },
     itemsReceived: (state, {payload}) => {
       state.loadingStatus = false;
-      state.trips = payload.results;
-      state.tripsMeta = {...payload, results: []};
+      state.trips = payload.items;
+      state.tripsMeta = payload.metaData;
     },
     itemsRequestFailed: (state, {payload}) => {
       state.loadingStatus = false;

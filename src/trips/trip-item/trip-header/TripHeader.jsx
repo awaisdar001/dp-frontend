@@ -1,5 +1,6 @@
 import React from 'react';
-import TripsHeader from './TripHeader';
+import TripHeaderItem from './HeaderItem';
+
 const headerItems = [
   { slug: 'facilities', label: 'Facilities', icon: 'arrow-circle-up' },
   { slug: 'tour-plan', label: 'Tour Plan', icon: 'calendar' },
@@ -14,7 +15,7 @@ function TripHeader() {
   };
 
   return (
-    <TripsHeader
+    <TripHeaderItem
       items={headerItems}
       handleOnClick={handleOnClick}
       activeItem={activeLink}

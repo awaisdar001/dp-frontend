@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: "NYCDR";
-  src: url("/static/media/NYCDR.woff2") format("woff2"),
-    url("/static/media/NYCDR.woff2") format("woff");
+  src: url("../fonts/NYCDR.woff2") format("woff2"),
+    url("../fonts/NYCDR.woff2") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -55,7 +55,7 @@
     }
   }
   .bg-1 {
-    background-image: url(/static/media/kumrat-valley-poster.jpg);
+    background-image: url("../../media/kumrat-valley-poster.jpg");
   }
 }
 

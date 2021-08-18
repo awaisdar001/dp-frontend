@@ -4,17 +4,33 @@ import Metadata from './Metadata';
 import Rating from './Rating';
 import { Title, TitlePrice } from '../../TripCommon';
 import { Link } from 'react-router-dom';
+import { useModel } from "../../../generic/model-store";
 
 let backgroundPoster = {
   backgroundImage:
     'url(https://fma-trips.s3-ap-southeast-1.amazonaws.com/trips-photos/2acdc23d-d2b6-485c-9706-93e72bc10128.png)',
 };
+const limitDescriptionToChars = 600;
 const TripCard = ({ trip }) => {
+  const TripDescription = () => {
+    let description = trip.description;
+    if (trip.description.length > limitDescriptionToChars) {
+      description = `${trip.description.substring(
+        0,
+        limitDescriptionToChars,
+      )} ...`;
+    }
+    return <p>{description}</p>;
+  };
   const tripUrl = `/trip/${trip.slug}`;
-  const tripMinPrice = trip.tripSchedule.reduce(function (prev, curr) {
-    return prev.price < curr.price ? prev : curr;
-  }).price;
-  const tripCategory = trip.category;
+  const tripMinPrice =
+    trip.tripSchedule &&
+    trip.tripSchedule.reduce((prev, curr) =>
+      prev.price < curr.price ? prev : curr,
+    ).price;
+
+  const primaryCategory = useModel('category', trip.category);
+  const tripDestination = useModel('location', trip.destination);
 
   return (
     <Row className="m-0">
@@ -43,7 +59,7 @@ const TripCard = ({ trip }) => {
             <Title name={trip.name} url={tripUrl} />
             <TitlePrice price={trip.tripSchedule && tripMinPrice} />
             <div className="item-description">
-              <p>{trip.description.substring(0, 500)} </p>
+              <TripDescription />
             </div>
 
             <Rating />
@@ -52,8 +68,8 @@ const TripCard = ({ trip }) => {
               className="mt-4"
               duration={trip.duration}
               ageLimit={trip.ageLimit}
-              category={tripCategory}
-              tripDestination={trip.destination.name}
+              category={primaryCategory}
+              destination={tripDestination}
             />
           </div>
         </div>

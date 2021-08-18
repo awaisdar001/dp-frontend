@@ -52,7 +52,7 @@
   top: -50px;
   bottom: 0;
   width: 4px;
-  content: '';
+  content: "";
   background: #f3f3f3;
   position: absolute;
   margin-left: -14px;
@@ -74,7 +74,7 @@
   /* The triangle */
   right: 100%;
   border: solid transparent;
-  content: ' ';
+  content: " ";
   height: 0;
   width: 0;
   position: absolute;

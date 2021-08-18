@@ -122,3 +122,12 @@ export const getQueryStringParams = (query) => {
       }, {})
     : {};
 };
+
+export const normalizeBySlug = (data) => ({
+  id: data.slug,
+  ...data,
+});
+export const normalizeUser = (data, key) => ({
+  id: data[key].username,
+  ...data[key],
+});

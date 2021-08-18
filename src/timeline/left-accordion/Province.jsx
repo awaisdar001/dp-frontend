@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTimelineProsInStorage } from '../../storage';
+import Storage from '../../storage';
+
 import { getLoadingStatus } from '../data/selectors';
 import { getProItems } from './data/selectors';
 import { provinceSelectionChanged } from './data/slice';
@@ -20,7 +21,7 @@ const Province = () => {
   const isLoading = useSelector(getLoadingStatus);
 
   useEffect(() => {
-    updateTimelineProsInStorage(proItems);
+    Storage.updateTimelinePros(proItems);
   }, [proItems]);
 
   const handleProCheckbox = ({ target }, slug) => {

@@ -1,6 +1,6 @@
 import { getAuthenticatedHttpClient } from '../../../data/api';
-import { camelCaseObject } from '../../../utils';
-import { normalizeBySlug, normalizeUser } from '../../data';
+import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../../utils';
+
 
 /**
  * Fetches timeline items.
@@ -15,14 +15,12 @@ export async function getPopularItems() {
 
 const normalizeTimelinePopularItems = (data) => {
   const blogUsers = data.blog.map((blog) => normalizeUser(blog, 'created_by'));
-  const questionUsers = data.question.map((question) =>
-    normalizeUser(question, 'user'),
-  );
+  const questionUsers = data.question.map((question) => normalizeUser(question, 'user'));
   const updateUsers = data.updates.map((update) =>
     normalizeUser(update, 'created_by'),
   );
   const blogPro = data.blog.map((blog) => normalizeBySlug(blog.pro));
-  const updatePro = data.updates.map((udpate) => normalizeBySlug(udpate.pro));
+  const updatePro = data.updates.map((update) => normalizeBySlug(update.pro));
 
   const normalizedData = {
     items: {

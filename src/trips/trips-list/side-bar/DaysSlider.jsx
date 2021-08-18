@@ -8,9 +8,7 @@ function DaysSlider({ minDay, maxDay, onChange }) {
   const [days, setDays] = React.useState([minDay, maxDay]);
 
   const formatValue = (days) => `${days[0]} Days — ${days[1]} Days`;
-  var myLink = { img: 'btn.gif' },
-    local = true,
-    initial = -1;
+
   const Heading = () => (
     <Typography id={id} gutterBottom>
       {'Duration ' + formatValue(days)}
