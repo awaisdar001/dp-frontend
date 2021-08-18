@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import React, {useState} from "react";
+import React from "react";
 import {Col, Row} from "react-bootstrap";
 import classNames from "classnames";
 
@@ -12,7 +12,7 @@ const TripsListHeader = ({items, active, onChange}) => {
     <div className="header-wrapper">
       <div className="header-params">
         <Row as="ul" className="header-list p-0">
-          {items.map(({id, label, icon}) => (
+          {items.map(({id, label, icon, slug}) => (
             <Col as="li"
                  key={`sorting-item-${id}`}
                  className={
@@ -23,7 +23,7 @@ const TripsListHeader = ({items, active, onChange}) => {
                  }
                  onClick={() => handleClick(id)}
             >
-              <a href={`#${id}`}>
+              <a href={`#${slug}`}>
                 <FontAwesomeIcon icon={icon} className="mr-2"/>
                 <span>{label}</span>
               </a>

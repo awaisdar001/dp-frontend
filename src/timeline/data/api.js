@@ -1,7 +1,6 @@
 import { getAuthenticatedHttpClient } from '../../data/api';
-import { camelCaseObject } from '../../utils';
+import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../utils';
 import DpApiService from '../../data/services/DpService';
-
 /**
  * Fetches timeline items.
  * @returns {Promise<[{}]>}
@@ -20,24 +19,7 @@ export async function getTimelineItems(
   return normalizeTimelineItems(data);
 }
 
-export const normalizeUser = (data, key) => {
-  return {
-    id: data[key].username,
-    ...data[key],
-  };
-};
-export const normalizeBySlug = (data) => ({
-  id: data.slug,
-  ...data,
-});
 const normalizeTimelineItems = (data) => {
-  const createdByUsers = data.results.map((item) =>
-    normalizeUser(item.instance, 'created_by'),
-  );
-  const displayUsers = data.results.map((item) =>
-    normalizeUser(item, 'display_user'),
-  );
-
   const normalizedData = {
     items: data.results.map((item) => ({
       ...item,
@@ -54,7 +36,10 @@ const normalizeTimelineItems = (data) => {
       id: item.type,
       name: item.state.name,
     })),
-    users: [...displayUsers, ...createdByUsers],
+    users: [
+      ...data.results.map((item) => normalizeUser(item.instance, 'created_by')),
+      ...data.results.map((item) => normalizeUser(item, 'display_user')),
+    ],
     city: data.results.map(
       (item) => item.instance.city && normalizeBySlug(item.instance.city),
     ),

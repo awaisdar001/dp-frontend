@@ -40,14 +40,14 @@
     "moment-timezone": "^0.5.31",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.0.1",
+    "react-bootstrap": "1.6.1",
     "react-dom": "^16.13.1",
     "react-infinite-scroll-component": "^5.0.5",
     "react-loading-skeleton": "^2.1.1",
     "react-number-format": "^4.4.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "4.0.3",
     "react-scroll": "^1.8.1",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
@@ -55,7 +55,10 @@
     "reselect": "^4.0.0"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -102,7 +105,7 @@
     "@types/jest": "^26.0.9",
     "axios-mock-adapter": "^1.18.2",
     "copyfiles": "^2.2.0",
-    "create-react-app": "^3.4.1",
+    "create-react-app": "4.0.3",
     "node-sass": "^6.0.1",
     "renamer": "^2.0.1"
   }

@@ -9,7 +9,7 @@ const AppRouter = () => {
     <Switch>
       <Route path="/" exact component={Homepage} />
       <Route path="/trips/" exact component={TripsPage} />
-      {/*<Route path="/trip/1" exact component={TripItem} />*/}
+      <Route path={["/trip/:slug", '*']} exact component={TripItem} />
     </Switch>
   );
 };

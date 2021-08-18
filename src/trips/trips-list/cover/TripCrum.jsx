@@ -1,8 +1,12 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+// import KumratBackground from '../public/static/media/kumrat-valley-poster.jpg'
+// background-image: url(/static/media/kumrat-valley-poster.jpg);
 
 export default function tripCrums() {
+
   return (
+    // <div className="tripcrum bg-1" style={{ 'background-image': `url(${KumratBackground})` }}>
     <div className="tripcrum bg-1">
       <Container>
         <Row>

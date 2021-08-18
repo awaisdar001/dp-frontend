@@ -11,8 +11,11 @@ import PostComment from './PostComment';
 import ReviewsAndRatings from './ReviewsAndRatings';
 import TourPlan from './TourPlan';
 import TripHeader from './trip-header';
+import { useParams } from 'react-router-dom'
 
 export default function TripItem() {
+  let { slug } = useParams();
+  console.log(slug);
   return (
     <div className="dp-trips">
       <Carousel />
@@ -21,15 +24,21 @@ export default function TripItem() {
         <div className="trip-wrapper">
           <Row>
             <Col lg={9}>
-              <div class="item-detail">
+              <div className="item-detail">
                 <Title
                   className="float-left"
-                  name="Trip To Naran & Hunza: Khunjerab Pass"
+                  name="Trip To Naran & Hunza: Khunjerab Pass "
                   url="/"
                 />
 
-                <TitlePrice className={'float-right'} price="Rs 14,449" />
-                <Metadata />
+                <TitlePrice className={'float-right'} price="14449" />
+                <Metadata
+                  className="mt-4"
+                  duration={2}
+                  ageLimit={42}
+                  category={{ name: 'Road Trip' , slug: 'road'}}
+                  destination={{ name: 'Gilgit' }}
+                />
                 <hr />
                 <div className="item-description">
                   <p>

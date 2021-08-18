@@ -1,5 +1,5 @@
 export const tripHeadingItems = [
-  {id: 1, label: 'Date', slug: 'date', icon: 'calendar'},
+  { id: 1, label: 'Date', slug: 'date', icon: 'calendar' },
   {
     id: 2,
     label: 'Price Low to High',
@@ -12,5 +12,5 @@ export const tripHeadingItems = [
     slug: 'price-high-to-low',
     icon: 'arrow-circle-down',
   },
-  {id: 4, label: 'Name (A - Z)', icon: 'pencil-alt'},
+  { id: 4, label: 'Name (A - Z)', slug: 'name', icon: 'pencil-alt' },
 ];

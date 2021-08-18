@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateTimelineFeedTypesInStorage } from '../../storage';
+import Storage from '../../storage';
 import { getFeedTypeItems } from './data/selectors';
 import { getLoadingStatus } from '../data/selectors';
 import { feedTypeSelectionChanged } from './data/slice';
@@ -17,7 +17,7 @@ const Feed = () => {
   const feedItems = useSelector(getFeedTypeItems);
 
   useEffect(() => {
-    updateTimelineFeedTypesInStorage(feedItems);
+    Storage.updateTimelineFeedTypes(feedItems);
   }, [feedItems]);
 
   const handleFeedCheckbox = ({ target }, slug) => {

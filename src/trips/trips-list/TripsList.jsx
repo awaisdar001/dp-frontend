@@ -5,7 +5,7 @@ import {Col, Row} from 'react-bootstrap';
 import Cover from './cover/';
 import TripsListHeader from './TripsListHeader';
 import {tripHeadingItems} from "./data/enums";
-import {getTripsActiveSortingFromStorage, updateTripsActiveSortingFromStorage} from "../../storage";
+import Storage from "../../storage";
 import {useDispatch, useSelector} from "react-redux";
 import {
   getSearchDates,
@@ -21,8 +21,8 @@ import {fetchTripDestinations} from "./data/thunks";
 
 
 export default function TripList() {
-  const handleActiveItem = (id) => updateTripsActiveSortingFromStorage(id);
-  const activeItem = getTripsActiveSortingFromStorage(1)
+  const handleActiveItem = (id) => Storage.updateTripsActiveSorting(id);
+  const activeItem = Storage.getTripsActiveSorting(1);
 
   const dispatch = useDispatch();
   const search = useSelector(getSearchState);
