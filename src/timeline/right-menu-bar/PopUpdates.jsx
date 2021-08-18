@@ -3,6 +3,7 @@ import Skeleton from 'react-loading-skeleton';
 import { MomentTime } from '../../common';
 import { useSelector } from 'react-redux';
 import { getLoading, getPopularUpdates } from './data/selectors';
+import { useModel } from '../../generic/model-store';
 
 const PopUpdatesPlaceholder = (props) => {
   const { count } = props;
@@ -19,13 +20,15 @@ const PopUpdatesPlaceholder = (props) => {
   );
 };
 const PopUpdate = ({ absUrl, createdBy, name, pro, createdAt, ...rest }) => {
+  const updatePro = useModel('pro', pro);
+  const updateCreatedBy = useModel('user', createdBy);
   return (
     <li>
       <h3>
         <a href={absUrl}>{name}</a>
       </h3>
       <small>
-        <a href={pro.absUrl}>{pro.name}</a>
+        <a href={updatePro.absUrl}>{updatePro.name}</a>
       </small>
 
       <small>
@@ -35,7 +38,7 @@ const PopUpdate = ({ absUrl, createdBy, name, pro, createdAt, ...rest }) => {
       </small>
 
       <small>
-        <a href={createdBy.profileUrl}>{createdBy.fullName}</a>
+        <a href={updateCreatedBy.profileUrl}>{updateCreatedBy.fullName}</a>
       </small>
     </li>
   );

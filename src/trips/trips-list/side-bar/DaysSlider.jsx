@@ -1,22 +1,25 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import {DpSlider} from '../../common';
+import { DpSlider } from '../../../common';
 
 const id = 'id-days-slider';
 
-function DaysSlider({minDay, maxDay, onChange}) {
+function DaysSlider({ minDay, maxDay, onChange }) {
   const [days, setDays] = React.useState([minDay, maxDay]);
 
   const formatValue = (days) => `${days[0]} Days — ${days[1]} Days`;
-
+  var myLink = { img: 'btn.gif' },
+    local = true,
+    initial = -1;
   const Heading = () => (
     <Typography id={id} gutterBottom>
       {'Duration ' + formatValue(days)}
-    </Typography>)
+    </Typography>
+  );
 
   return (
     <>
-      <Heading/>
+      <Heading />
       <DpSlider
         name="days"
         aria-labelledby={id}
@@ -26,7 +29,9 @@ function DaysSlider({minDay, maxDay, onChange}) {
         getAriaValueText={formatValue}
         valueLabelFormat={formatValue}
         onChange={(e, newDays) => setDays([...newDays])}
-        onChangeCommitted={(e, newDays) => onChange({type: 'days', number: newDays})}
+        onChangeCommitted={(e, newDays) =>
+          onChange({ type: 'days', number: newDays })
+        }
       />
     </>
   );

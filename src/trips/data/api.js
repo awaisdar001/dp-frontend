@@ -28,5 +28,5 @@ const getTripsListURLFromState = ({searchDays, searchDates, searchPrices, search
       ['date_to', getDateFromMilliSec(searchDates[1], dateFormat)],
     ]
   )
-  return `/api/trips?${queryString}`;
+  return `/api/trips/?${queryString}`;
 };

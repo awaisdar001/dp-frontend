@@ -1,21 +1,20 @@
-// Action Creators
-
 import { itemsRequested, itemsReceived, itemsRequestFailed } from './slice';
 import { getPopularItems } from './api';
+import { addModels } from '../../../generic/model-store';
 
-export function fetchPopularTimelineItems(
-  selectedProps,
-  selectedFeedTypes,
-  pageNumber = 0,
-) {
+export function fetchPopularTimelineItems() {
   return async (dispatch) => {
     await dispatch(itemsRequested());
     try {
-      const popularItems = await getPopularItems();
-      dispatch(itemsReceived(popularItems));
+      const { items, category, city, pro, users } = await getPopularItems();
+      await dispatch(addModels({ modelType: 'user', models: users }));
+      await dispatch(addModels({ modelType: 'pro', models: pro }));
+      await dispatch(addModels({ modelType: 'category', models: category }));
+      await dispatch(addModels({ modelType: 'city', models: city }));
+      await dispatch(itemsReceived(items));
     } catch (error) {
-      console.log('=>error', error);
-      dispatch(itemsRequestFailed({ error }));
+      console.log('=>Error: fetchPopularTimelineItems', error);
+      dispatch(itemsRequestFailed({ error: error.toString() }));
     }
   };
 }

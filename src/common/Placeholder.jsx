@@ -1,6 +1,6 @@
 import React from 'react';
-import {Col, Row} from 'react-bootstrap';
-import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+import { Col, Row } from 'react-bootstrap';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 export const TimelinePlaceHolder = () => {
   return (
@@ -13,22 +13,22 @@ export const TimelinePlaceHolder = () => {
                 count={1}
                 duration={2}
                 height={40}
-                style={{marginBottom: '10px'}}
+                style={{ marginBottom: '10px' }}
               />
             </Col>
             <Col md={12}>
-              <Skeleton count={6} duration={2}/>
+              <Skeleton count={6} duration={2} />
             </Col>
             <Col md={12}>
               <Skeleton
                 count={1}
                 duration={2}
                 height={400}
-                style={{marginTop: '10px', marginBottom: '10px'}}
+                style={{ marginTop: '10px', marginBottom: '10px' }}
               />
             </Col>
             <Col>
-              <Skeleton count={1} duration={2} height={40}/>
+              <Skeleton count={1} duration={2} height={40} />
             </Col>
           </Row>
         </div>
@@ -37,16 +37,15 @@ export const TimelinePlaceHolder = () => {
   );
 };
 
-
 export const FeedsPlaceholder = () => (
   <div className="reset-feeds">
-    <PlaceHolder/>;
-    <PlaceHolder/>
+    <TimelinePlaceHolder />;
+    <TimelinePlaceHolder />
   </div>
 );
 
 export const LoadingNewFeeds = () => (
   <div className="loading-feeds">
-    <PlaceHolder/>
+    <TimelinePlaceHolder />
   </div>
 );

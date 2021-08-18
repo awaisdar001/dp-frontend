@@ -15,4 +15,4 @@ const Checkbox = ({ name, slug, ico, ...rest }) => {
     </div>
   );
 };
-export default React.memo(Checkbox);
+export default Checkbox;

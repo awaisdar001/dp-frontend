@@ -5,33 +5,38 @@ import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
 import Description from './Description';
+import { useModel } from '../../../../generic/model-store';
 
 export default function ImageCard({ instance, card }) {
-  const {
-    name,
-    description,
-    city,
-    pro,
-    tags,
+  const { tags, absUrl, imageUrls, createdAt, seenCount } = instance;
+  // const { profileURL, nodeURL, isNew } = card;
+  const { isNew } = card;
+
+  const { fullName, profileURL } = useModel('user', card.user);
+  const { name: headerTitle } = useModel('state', card.state);
+  const city = useModel('city', instance.city);
+  const pro = useModel('pro', instance.pro);
+
+  const propsHeader = {
+    profileURL,
     absUrl,
-    imageUrls,
-    createdAt,
-    seenCount,
-  } = instance;
-  const { profileURL, nodeURL, isNew } = card;
-  const propsHeader = { profileURL, nodeURL, isNew, icon: 'image' };
-  const propsTags = { city, pro, tags };
+    isNew,
+    title: headerTitle,
+    username: fullName,
+    icon: 'image',
+  };
   const propsFooter = { absUrl, createdAt, seenCount };
+  const propsTags = { city, pro, tags };
 
   return (
     <div className="cbp_tmlabel">
-      <Header title={card.name} username={card.fullName} {...propsHeader} />
+      <Header {...propsHeader} />
 
       <Row>
-        <Description description={name} />
+        <Description description={instance.name} />
         <Tags {...propsTags} />
         <Col md={12}>
-          <a href={absUrl} title={description}>
+          <a href={absUrl} title={instance.description}>
             <ProgressiveImage
               className="img-fluid rounded"
               thumbnailSMSrc={imageUrls.thumbnail}

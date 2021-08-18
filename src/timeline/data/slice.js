@@ -4,8 +4,7 @@ const slice = createSlice({
   name: 'timeline',
   initialState: {
     feedItems: [],
-    nextPage: {},
-    previousPage: {},
+    metaData: {},
     loadingStatus: true,
   },
   reducers: {
@@ -17,9 +16,8 @@ const slice = createSlice({
     },
     itemsReceived: (state, { payload }) => {
       state.loadingStatus = false;
-      state.feedItems = [...state.feedItems, ...payload.results];
-      state.nextPage = payload.next;
-      state.previousPage = payload.previous;
+      state.feedItems = [...state.feedItems, ...payload.items];
+      state.metaData = payload.metaData;
     },
     restItems: (state, { payload }) => {
       state.feedItems = [];

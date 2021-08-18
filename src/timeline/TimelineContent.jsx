@@ -18,8 +18,10 @@ import {
 } from './data/selectors';
 
 const TimelineContent = () => {
-  const [loadingNewFeeds, setLoadingNewFeeds] = useState(false);
   const observer = useRef();
+  const dispatch = useDispatch();
+
+  const [loadingNewFeeds, setLoadingNewFeeds] = useState(false);
 
   const isLoading = useSelector(getLoadingStatus);
   const items = useSelector(getTimelineFeeds);
@@ -28,7 +30,6 @@ const TimelineContent = () => {
   const selectedPros = useSelector(getSelectedPros);
   const selectedFeedTypes = useSelector(getSelectedFeedTypes);
 
-  const dispatch = useDispatch();
   const nextPageElement = useCallback(
     (node) => {
       if (isLoading) return;
@@ -41,7 +42,7 @@ const TimelineContent = () => {
             fetchTimelineItems(
               selectedPros,
               selectedFeedTypes,
-              nextPage.pageNumber,
+              nextPage.number,
             ),
           );
         }
