@@ -34,11 +34,12 @@ const Metadata = function ({
         <span className="meta-icon">
           <FontAwesomeIcon icon="book" className="mr-1" />
         </span>
-        <span className="meta-description">
+        {category && <span className="meta-description">
           <a href={`/trip/category/${category.slug}`}>
             {category.name}
           </a>
         </span>
+        }
       </div>
       <div className="meta-item">
         <span className="meta-icon">

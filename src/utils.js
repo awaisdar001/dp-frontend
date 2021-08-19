@@ -55,7 +55,7 @@ export function snakeCaseObject(object) {
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
-export const NewLineToBr = ({children = ''}) => {
+export const NewLineToBr = ({ children = '' }) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
@@ -79,7 +79,7 @@ export const renameKeys = (instance) => {
       .join('');
     return {
       ...acc,
-      ...{[cambleCaseKey]: instance[key]},
+      ...{ [cambleCaseKey]: instance[key] },
     };
   }, {});
 };
@@ -131,3 +131,6 @@ export const normalizeUser = (data, key) => ({
   id: data[key].username,
   ...data[key],
 });
+
+export const createMarkup = (html) => ({ __html: html })
+

@@ -417,6 +417,15 @@
   display: inline-block;
 }
 
+.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.tick::before {
+  content: "\2713";
+}
+
+.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.arrow-fw::before {
+  content: "\2192";
+  margin: 0 15px !important;
+}
+
 .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value .value {
   margin-left: 15px;
 }
@@ -461,11 +470,10 @@
   margin: 0 5px 0 15px;
 }
 
-.li-tick::before, .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.tick::before {
+.li-content::before, .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.tick::before, .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.arrow-fw::before {
   margin-right: 5px;
   position: relative;
   top: 2px;
-  content: "\2713";
   color: #7ed12d;
   margin: 0 5px 0 15px;
 }
@@ -684,6 +692,11 @@
 
 .timeline-with-label .item .cbp_tmlabel::after {
   display: none;
+}
+
+.timeline-with-label .item .cbp_tmlabel p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .rating-average {

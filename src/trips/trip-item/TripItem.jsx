@@ -12,10 +12,26 @@ import ReviewsAndRatings from './ReviewsAndRatings';
 import TourPlan from './TourPlan';
 import TripHeader from './trip-header';
 import { useParams } from 'react-router-dom'
+import { useSelector } from "react-redux";
+import { getTrip } from "../data/selectors";
+import { useModel } from "../../generic/model-store";
+import { createMarkup } from "../../utils";
 
 export default function TripItem() {
   let { slug } = useParams();
   console.log(slug);
+  const [trip] = useSelector(getTrip(slug))
+  console.log(trip);
+
+  // #todo move this to a util so that trip item & trip list can use it. Or maybe to api.js
+  const tripMinPrice =
+    trip.tripSchedule &&
+    trip.tripSchedule.reduce((prev, curr) =>
+      prev.price < curr.price ? prev : curr,
+    ).price;
+  const primaryCategory = useModel('category', trip.primaryCategory);
+  const tripDestination = useModel('location', trip.destination);
+
   return (
     <div className="dp-trips">
       <Carousel />
@@ -27,40 +43,27 @@ export default function TripItem() {
               <div className="item-detail">
                 <Title
                   className="float-left"
-                  name="Trip To Naran & Hunza: Khunjerab Pass "
+                  name={trip.name}
                   url="/"
                 />
 
-                <TitlePrice className={'float-right'} price="14449" />
+                <TitlePrice className={'float-right'} price={tripMinPrice} />
                 <Metadata
-                  className="mt-4"
-                  duration={2}
-                  ageLimit={42}
-                  category={{ name: 'Road Trip' , slug: 'road'}}
-                  destination={{ name: 'Gilgit' }}
+                  className="mt-2"
+                  duration={trip.duration}
+                  ageLimit={trip.ageLimit}
+                  category={primaryCategory}
+                  destination={tripDestination}
                 />
                 <hr />
                 <div className="item-description">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris a dolor sit rutrum arcu.
-                  </p>
-                  <p>
-                    Hunza is a mountainous valley in the Gilgit–Baltistan region
-                    of Pakistan. The Hunza is situated north/west of the Hunza
-                    River, at an elevation of around 2,500 meters (8,200 ft).
-                    The territory of Hunza is about 7,900 square kilometers
-                    (3,100 sq mi). Aliabad is the main town while Baltit is a
-                    popular tourist destination because of the spectacular
-                    scenery of the surrounding mountains like Ultar Sar,
-                    Rakaposhi, Bojahagur Duanasir II, Ghenta Peak, Hunza Peak,
-                    Passu Peak, Diran Peak and Bublimotin (Ladyfinger Peak), all
-                    6,000 meters (19,685 ft) or higher.
+                    <div dangerouslySetInnerHTML={createMarkup(trip.description)} />
                   </p>
                 </div>
-                <Facilities />
-                <TourPlan />
-                <CancellationPolicy />
+                <Facilities trip={trip} />
+                <TourPlan trip={trip}/>
+                <CancellationPolicy trip={trip}/>
                 <Location />
                 <ReviewsAndRatings />
                 <PostComment />
