@@ -7,26 +7,35 @@ class Storage {
    *  TRIPS_ACTIVE_SORTING: {}
    *  },
    *}
-   * @type {string}
+   * @type {number}
    */
+  VERSION = 2;
   BASE_KEY = 'dp-storage';
-  TIMELINE_PROS = 'timeline-acc-pro';
-  TIMELINE_FEED_TYPES = 'timeline-acc-feed-types';
-  TRIPS_ACTIVE_SORTING = 'trips-header-active-sorting';
-
 
   hasStorage() {
     return localStorage.getItem(this.BASE_KEY);
   }
 
-  getStorage() {
+  resetStorage() {
+    this.updateStorage({});
+  }
+
+  validateStorage() {
     const lStorage = localStorage.getItem(this.BASE_KEY) || '{}';
-    return JSON.parse(lStorage);
+    if (lStorage['VERSION'] !== this.VERSION) {
+      this.resetStorage();
+    }
+  }
+
+  getStorage() {
+    this.validateStorage();
+    return JSON.parse(localStorage.getItem(this.BASE_KEY) || '{}');
   }
 
   updateStorage(storageData) {
+    storageData.VERSION = this.VERSION;
     localStorage.setItem(this.BASE_KEY, JSON.stringify(storageData));
-  };
+  }
 
   /**
    * Method to get data from the localstorage using the key.
@@ -42,38 +51,43 @@ class Storage {
       localStorageData = JSON.parse(localStorageData);
     }
     return localStorageData;
-  };
-
+  }
 
   updateItem(key, value) {
-    let localStorageData = this.getStorage();
+    const localStorageData = this.getStorage();
     localStorageData[key] = value;
     this.updateStorage(localStorageData);
-  };
+  }
+}
+
+class FrontendStorage extends Storage {
+  TIMELINE_PROS = 'timeline-acc-pro';
+  TIMELINE_FEED_TYPES = 'timeline-acc-feed-types';
+  TRIPS_ACTIVE_SORTING = 'trips-header-active-sorting';
 
   updateTimelinePros(value) {
-    this.updateItem(this.TIMELINE_PROS, value)
-  };
+    this.updateItem(this.TIMELINE_PROS, value);
+  }
 
   getTimelinePros() {
     return this.getItem(this.TIMELINE_PROS);
-  };
+  }
 
   updateTimelineFeedTypes(value) {
     this.updateItem(this.TIMELINE_FEED_TYPES, value);
-  };
+  }
 
   getTimelineFeedTypes() {
     return this.getItem(this.TIMELINE_FEED_TYPES);
-  };
+  }
 
   getTripsActiveSorting(defaultValue) {
-    return this.getItem(this.TRIPS_ACTIVE_SORTING, defaultValue)
-  };
+    return this.getItem(this.TRIPS_ACTIVE_SORTING, defaultValue);
+  }
 
   updateTripsActiveSorting(value) {
     this.updateItem(this.TRIPS_ACTIVE_SORTING, value);
-  };
+  }
 }
 
-export default new Storage();
+export default new FrontendStorage();
