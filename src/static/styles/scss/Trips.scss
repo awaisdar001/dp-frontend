@@ -1,4 +1,4 @@
-@import "./Config.scss";
+@import "config";
 
 @font-face {
   font-family: "NYCDR";
@@ -374,8 +374,8 @@
   margin-top: 50px;
 }
 
-.dp-trips .trip-facilities-wrapper {
-  .trip-facilities {
+.dp-trips .trip-details-wrapper {
+  ul.trip-details {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -386,12 +386,12 @@
       border-top: 1px solid #ebebeb;
       padding: 18px 0 22px;
       &:hover {
-        .facility-heading {
+        .item-heading {
           color: $theme-green;
         }
       }
 
-      .facility-heading {
+      .item-heading {
         vertical-align: middle;
         transition: color 0.3s ease-out;
         -webkit-transition: color 0.3s ease-out;
@@ -402,7 +402,7 @@
           color: $theme-green;
         }
       }
-      .facility-value {
+      .item-value {
         display: inline-block;
         margin-top: 5px;
         ul {
@@ -412,7 +412,18 @@
           display: inline-block;
         }
         li.tick {
-          @extend .li-tick;
+          @extend .li-content;
+          &::before {
+            content: "\2713";
+          }
+        }
+        li.arrow-fw {
+          @extend .li-content;
+          &::before {
+            content: "\2192";
+            margin: 0 15px !important;
+          }
+          
         }
         li.circle {
           @extend .li-circle;
@@ -472,12 +483,11 @@
     margin: 0 5px 0 15px;
   }
 }
-.li-tick {
+.li-content {
   &::before {
     margin-right: 5px;
     position: relative;
     top: 2px;
-    content: "\2713";
     color: $theme-green;
     margin: 0 5px 0 15px;
   }
@@ -682,6 +692,10 @@
       border-radius: 0;
       &::after {
         display: none;
+      }
+      p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
       }
     }
   }

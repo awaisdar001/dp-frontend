@@ -15,10 +15,9 @@ import {
   getSearchState,
   getSelectedDestinations,
 } from "./data/selectors";
-import {fetchTripItems} from "../data/thunks";
-import Sidebar from "./side-bar";
-import {fetchTripDestinations} from "./data/thunks";
-
+import { fetchTripsList } from '../data/thunks';
+import Sidebar from './side-bar';
+import { fetchTripDestinations } from './data/thunks';
 
 export default function TripList() {
   const handleActiveItem = (id) => Storage.updateTripsActiveSorting(id);
@@ -33,28 +32,40 @@ export default function TripList() {
   const selectedDestinations = useSelector(getSelectedDestinations);
 
   useEffect(() => {
-    dispatch(fetchTripDestinations())
-  }, [])
+    dispatch(fetchTripDestinations());
+  }, []);
 
   useEffect(() => {
     console.log('[useEffect]: TripsList-API Call here.');
-    dispatch(fetchTripItems({searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations}));
+    dispatch(
+      fetchTripsList({
+        searchDays,
+        searchDates,
+        searchPrices,
+        searchKeyword,
+        selectedDestinations,
+      }),
+    );
   }, [searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations, search]);
 
   return (
     <>
-      <Cover/>
+      <Cover />
       <Container fluid>
         <div className="dp-trips">
           <div className="search-page">
-            <TripsListHeader items={tripHeadingItems} active={activeItem} onChange={handleActiveItem}/>
+            <TripsListHeader
+              items={tripHeadingItems}
+              active={activeItem}
+              onChange={handleActiveItem}
+            />
             <div className="results-wrapper">
               <Row>
                 <Col lg={3}>
                   <Sidebar />
                 </Col>
                 <Col lg={9}>
-                  <Content/>
+                  <Content />
                 </Col>
               </Row>
             </div>

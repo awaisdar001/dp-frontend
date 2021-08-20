@@ -1,77 +1,85 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Title, TitlePrice } from '../TripCommon';
-import Metadata from '../trips-list/content/Metadata';
 import BookingSideBar from './booking-sidebar';
-import CancellationPolicy from './CancellationPolicy';
-import Carousel from './Carousel';
-import Facilities from './Facilities';
-import Location from './Location';
-import PostComment from './PostComment';
-import ReviewsAndRatings from './ReviewsAndRatings';
-import TourPlan from './TourPlan';
-import TripHeader from './trip-header';
-import { useParams } from 'react-router-dom'
 
-export default function TripItem() {
-  let { slug } = useParams();
-  console.log(slug);
-  return (
-    <div className="dp-trips">
-      <Carousel />
-      <Container fluid>
-        <TripHeader />
-        <div className="trip-wrapper">
-          <Row>
-            <Col lg={9}>
-              <div className="item-detail">
-                <Title
-                  className="float-left"
-                  name="Trip To Naran & Hunza: Khunjerab Pass "
-                  url="/"
-                />
+import { fetchTrip } from './data/thunks';
+import { Title, TitlePrice } from '../TripCommon';
+import { createMarkup } from '../../utils';
 
-                <TitlePrice className={'float-right'} price="14449" />
-                <Metadata
-                  className="mt-4"
-                  duration={2}
-                  ageLimit={42}
-                  category={{ name: 'Road Trip' , slug: 'road'}}
-                  destination={{ name: 'Gilgit' }}
-                />
-                <hr />
-                <div className="item-description">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris a dolor sit rutrum arcu.
-                  </p>
-                  <p>
-                    Hunza is a mountainous valley in the Gilgit–Baltistan region
-                    of Pakistan. The Hunza is situated north/west of the Hunza
-                    River, at an elevation of around 2,500 meters (8,200 ft).
-                    The territory of Hunza is about 7,900 square kilometers
-                    (3,100 sq mi). Aliabad is the main town while Baltit is a
-                    popular tourist destination because of the spectacular
-                    scenery of the surrounding mountains like Ultar Sar,
-                    Rakaposhi, Bojahagur Duanasir II, Ghenta Peak, Hunza Peak,
-                    Passu Peak, Diran Peak and Bublimotin (Ladyfinger Peak), all
-                    6,000 meters (19,685 ft) or higher.
-                  </p>
+import { TripDetails } from './trip-details';
+import {
+  CancellationPolicy,
+  Carousel,
+  Location,
+  PostComment,
+  ReviewsAndRatings,
+  TourPlan,
+  TripHeader,
+  TripHighlights,
+} from './index';
+import { TripItemPlaceholder } from '../Placeholders';
+
+export default function TripItem({ slug }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTrip(slug));
+  }, [slug]);
+
+  const isLoading = useSelector((state) => state.tripItem.loadingStatus);
+  const trip = useSelector((state) => state.tripItem.trip);
+
+  if (isLoading) {
+    return <TripItemPlaceholder />;
+  } else {
+    const tripDetail = {
+      destination: trip.destination,
+      startingLocation: trip.startingLocation,
+      locations: trip.locations,
+      facilities: trip.facilities,
+      gear: trip.gear,
+      categories: trip.categories,
+      primaryCategory: trip.primaryCategory,
+    };
+    const tripHighlights = {
+      duration: trip.duration,
+      ageLimit: trip.ageLimit,
+      primaryCategory: trip.primaryCategory,
+      destination: trip.destination,
+    };
+
+    return (
+      <div className="dp-trips">
+        <Carousel />
+        <Container fluid>
+          <TripHeader />
+          <div className="trip-wrapper">
+            <Row>
+              <Col lg={9}>
+                <div className="item-detail">
+                  <Title className="float-left" name={trip.name} url="#" />
+                  <TitlePrice className={'float-right'} price={trip.minPrice} />
+                  <TripHighlights trip={tripHighlights} />
+                  <hr />
+                  <div className="item-description">
+                    <p dangerouslySetInnerHTML={createMarkup(trip.description)} />
+                  </div>
+                  <TripDetails trip={tripDetail} />
+                  {<TourPlan tripItinerary={trip.tripItinerary} />}
+                  {<CancellationPolicy cancellationPolicy={trip.cancellationPolicy} />}
+                  {/*<Location />*/}
+                  <ReviewsAndRatings host={trip.host} />
+                  <PostComment />
                 </div>
-                <Facilities />
-                <TourPlan />
-                <CancellationPolicy />
-                <Location />
-                <ReviewsAndRatings />
-                <PostComment />
-              </div>
-            </Col>
-            <Col lg={3}>
-              <BookingSideBar />
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </div>
-  );
+              </Col>
+              <Col lg={3}>
+                <BookingSideBar />
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 }

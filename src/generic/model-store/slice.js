@@ -30,7 +30,7 @@ const slice = createSlice({
   reducers: {
     addModel: (state, { payload }) => {
       const { modelType, model } = payload;
-      add(state, modelType, model);
+      model && add(state, modelType, model);
     },
     addModels: (state, { payload }) => {
       const { modelType, models } = payload;

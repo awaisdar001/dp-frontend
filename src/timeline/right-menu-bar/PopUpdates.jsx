@@ -53,7 +53,7 @@ const PopularUpdates = ({ data }) => {
   );
 };
 
-export default () => {
+export default function PopularUpdate() {
   const popUpdates = useSelector(getPopularUpdates);
   const isLoading = useSelector(getLoading);
 

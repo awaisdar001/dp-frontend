@@ -56,7 +56,7 @@ const PopularQuestions = ({ data }) => {
   );
 };
 
-export default () => {
+export default function PopQuestions() {
   const popQuestions = useSelector(getPopularQuestions);
   const isLoading = useSelector(getLoading);
 

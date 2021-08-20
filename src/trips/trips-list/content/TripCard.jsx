@@ -29,7 +29,7 @@ const TripCard = ({ trip }) => {
       prev.price < curr.price ? prev : curr,
     ).price;
 
-  const primaryCategory = useModel('category', trip.category);
+  const primaryCategory = useModel('category', trip.primaryCategory);
   const tripDestination = useModel('location', trip.destination);
 
   return (

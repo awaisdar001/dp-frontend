@@ -1,6 +1,7 @@
 import React from 'react';
+import { createMarkup } from "../../utils";
 
-const TripItem = ({ description }) => (
+const TripItem = ({ day, setHeading }) => (
   <div className="item">
     <div className="itinerary-day">
       <svg
@@ -13,34 +14,25 @@ const TripItem = ({ description }) => (
       >
         <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="#6ED901" />
       </svg>
-      <div className="description">Day 1</div>
+      <div className="description">Day {day.day}</div>
     </div>
 
     <div className="cbp_tmlabel">
-      <h2>Day 1: Departure</h2>
-      <p>09:00 pm Departure from Lahore - (PSO Pump Thokar Niaz Baig)</p>
-      <p>{description}</p>
+      {setHeading && <h2>{day.heading}</h2>}
+      <p dangerouslySetInnerHTML={createMarkup(day.description)} />
     </div>
   </div>
 );
 
-
-function TourPlan() {
+function TourPlan({ tripItinerary }) {
   return (
-    <div id="tour-plan" name="tour-plan" className="wrapper-block">
+    <div id="tour-plan" className="wrapper-block">
       <h3 className="h3">Tour Plan</h3>
       <div id="plan-timeline" className="timeline-with-label">
-        <TripItem />
-        <TripItem
-          description="03:00 am Pick Islamabad members
-10:00 am Breakfast at Balakot
-Continue journey
-Short stay in Naran , Lulusar Lake & Babusar Pass
-05:00 pm Arrival in Chillas
-Transfer to hotel
-08:00 pm Dinner
-Overnight stay in Chillas / Gonar Farm / Bunji"
-        />
+        {tripItinerary.map((day, idx) => (
+          <TripItem key={`plan-${idx}`} day={day} setHeading={false} />
+        ))}
+        ;
       </div>
     </div>
   );

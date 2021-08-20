@@ -38,20 +38,14 @@ const TimelineContent = () => {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
           setLoadingNewFeeds(true);
-          dispatch(
-            fetchTimelineItems(
-              selectedPros,
-              selectedFeedTypes,
-              nextPage.number,
-            ),
-          );
+          dispatch(fetchTimelineItems(selectedPros, selectedFeedTypes, nextPage.number));
         }
       });
       if (node) {
         observer.current.observe(node);
       }
     },
-    [isLoading],
+    [isLoading, selectedPros, selectedFeedTypes, nextPage.number],
   );
 
   return (

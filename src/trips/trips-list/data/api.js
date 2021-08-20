@@ -25,5 +25,6 @@ function normalizeDestinations(destinations) {
     destination.selected = true
     return destination;
   });
+  const destinationIds = destinations.map((destination) => destination.slug);
   return camelCaseObject(selectedDestinations);
 }

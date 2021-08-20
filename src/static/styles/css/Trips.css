@@ -372,26 +372,26 @@
   margin-top: 50px;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities {
+.dp-trips .trip-details-wrapper ul.trip-details {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item:last-child {
+.dp-trips .trip-details-wrapper ul.trip-details li.item:last-child {
   border-bottom: 1px solid #ebebeb;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item {
+.dp-trips .trip-details-wrapper ul.trip-details li.item {
   border-top: 1px solid #ebebeb;
   padding: 18px 0 22px;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item:hover .facility-heading {
+.dp-trips .trip-details-wrapper ul.trip-details li.item:hover .item-heading {
   color: #7ed12d;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-heading {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-heading {
   vertical-align: middle;
   transition: color 0.3s ease-out;
   -webkit-transition: color 0.3s ease-out;
@@ -400,24 +400,33 @@
   font-weight: bold;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-heading:hover {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-heading:hover {
   color: #7ed12d;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value {
   display: inline-block;
   margin-top: 5px;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value ul {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value ul {
   padding: 0;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li {
   display: inline-block;
 }
 
-.dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value .value {
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.tick::before {
+  content: "\2713";
+}
+
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.arrow-fw::before {
+  content: "\2192";
+  margin: 0 15px !important;
+}
+
+.dp-trips .trip-details-wrapper ul.trip-details li.item .item-value .value {
   margin-left: 15px;
 }
 
@@ -451,7 +460,7 @@
   }
 }
 
-.li-circle::before, .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.circle::before {
+.li-circle::before, .dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.circle::before {
   width: 8px;
   height: 8px;
   background: #7ed12d;
@@ -461,11 +470,10 @@
   margin: 0 5px 0 15px;
 }
 
-.li-tick::before, .dp-trips .trip-facilities-wrapper .trip-facilities li.item .facility-value li.tick::before {
+.li-content::before, .dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.tick::before, .dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.arrow-fw::before {
   margin-right: 5px;
   position: relative;
   top: 2px;
-  content: "\2713";
   color: #7ed12d;
   margin: 0 5px 0 15px;
 }
@@ -684,6 +692,11 @@
 
 .timeline-with-label .item .cbp_tmlabel::after {
   display: none;
+}
+
+.timeline-with-label .item .cbp_tmlabel p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .rating-average {

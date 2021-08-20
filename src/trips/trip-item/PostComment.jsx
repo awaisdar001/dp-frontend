@@ -15,19 +15,19 @@ const RenderInput = (props) => (
 function PostComment() {
   return (
     <div className="trip-comment-wrapper wrapper-block">
-      <h3 class="h3 comment-title">Post a Comment</h3>
+      <h3 className="h3 comment-title">Post a Comment</h3>
       <Row>
         <Col lg={{ span: 11, offset: 1 }}>
           <form id="form-trip-comment">
             <RatingPlugin title="Overall" name="overall" rating={2} />
-            <RatingPlugin title="Meals" name="meals" rating={3} />
-            <RatingPlugin
-              title="Accommodation"
-              name="accommodation"
-              rating={4}
-            />
-            <RatingPlugin title="Transport" name="transport" rating={3} />
-            <RatingPlugin title="Value For Money" name="vfmoney" rating={5} />
+            {/*<RatingPlugin title="Meals" name="meals" rating={3} />*/}
+            {/*<RatingPlugin*/}
+            {/*  title="Accommodation"*/}
+            {/*  name="accommodation"*/}
+            {/*  rating={4}*/}
+            {/*/>*/}
+            {/*<RatingPlugin title="Transport" name="transport" rating={3} />*/}
+            {/*<RatingPlugin title="Value For Money" name="vfmoney" rating={5} />*/}
             <textarea
               id="comment"
               className="theme-textarea"
@@ -37,21 +37,13 @@ function PostComment() {
               rows="6"
               required={true}
               aria-required="true"
-            ></textarea>
+            />
             <Form.Row>
               <Col>
-                <RenderInput
-                  name="author"
-                  placeholder="Your Name"
-                  required={true}
-                />
+                <RenderInput name="author" placeholder="Your Name" required={true} />
               </Col>
               <Col>
-                <RenderInput
-                  name="email"
-                  placeholder="Your Email"
-                  required={true}
-                />
+                <RenderInput name="email" placeholder="Your Email" required={true} />
               </Col>
             </Form.Row>
             <Button className="d-block" type="submit" variant="dp-success">

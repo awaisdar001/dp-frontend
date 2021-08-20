@@ -63,7 +63,8 @@ const PopularVideos = ({ data }) => {
     </div>
   );
 };
-export default () => {
+
+export default function PopularVideo() {
   const popVideos = useSelector(getPopularVideos);
   const isLoading = useSelector(getLoading);
 
@@ -72,11 +73,7 @@ export default () => {
       <div className="headline">
         <h2>Popular videos</h2>
       </div>
-      {isLoading ? (
-        <PopVideoPlaceHolder />
-      ) : (
-        popVideos && <PopularVideos data={popVideos} />
-      )}
+      {isLoading ? <PopVideoPlaceHolder /> : popVideos && <PopularVideos data={popVideos} />}
     </div>
   );
 };
