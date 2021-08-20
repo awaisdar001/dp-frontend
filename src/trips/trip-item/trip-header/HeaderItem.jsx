@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-
 import { Link } from 'react-scroll';
 
 const TripsHeader = ({ items, handleOnClick, activeItem }) => {

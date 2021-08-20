@@ -50,7 +50,7 @@ const PopularPhotos = ({ data }) => {
   );
 };
 
-export default () => {
+export default function PopPhoto() {
   const popPhotos = useSelector(getPopularPhotos);
   const isLoading = useSelector(getLoading);
 
@@ -59,11 +59,7 @@ export default () => {
       <div className="headline">
         <h2>Popular photos</h2>
       </div>
-      {isLoading ? (
-        <PhotoPlaceHolder />
-      ) : (
-        popPhotos && <PopularPhotos data={popPhotos} />
-      )}
+      {isLoading ? <PhotoPlaceHolder /> : popPhotos && <PopularPhotos data={popPhotos} />}
     </div>
   );
 };

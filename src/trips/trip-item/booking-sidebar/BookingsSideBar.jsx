@@ -22,24 +22,14 @@ function BookingSideBar() {
       </div>
 
       <div className="input-with-icon">
-        <NumberFormat
-          format="+92 (###) #######"
-          allowEmptyFormatting
-          mask="_"
-          name="phone"
-        />
+        <NumberFormat format="+92 (###) #######" allowEmptyFormatting mask="_" name="phone" />
         <span className="input-icon">
           <FontAwesomeIcon icon="phone" className="margin-right-3" />
         </span>
       </div>
 
       <div className="input-with-icon">
-        <NumberFormat
-          name="id-card"
-          format="#####-#######-#"
-          placeholder="CNIC*"
-          mask="_"
-        />
+        <NumberFormat name="id-card" format="#####-#######-#" placeholder="CNIC*" mask="_" />
         <span className="input-icon">
           <FontAwesomeIcon icon={faIdCard} className="margin-right-3" />
         </span>
@@ -53,7 +43,7 @@ function BookingSideBar() {
       </div>
 
       <div className="input-with-icon">
-        <textarea name="message" placeholder="Message" rows="7"></textarea>
+        <textarea name="message" placeholder="Message" rows="7" />
       </div>
 
       <button type="submit" className="btn btn-success btn-block btn-lg">

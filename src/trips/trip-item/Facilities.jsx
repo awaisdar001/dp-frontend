@@ -3,14 +3,10 @@ import { Col, Row } from 'react-bootstrap';
 import { useModels } from "../../generic/model-store";
 
 export default function Facilities({ trip }) {
-  debugger;
-  const tripFacilities = useModels('facility', trip.facilities)
-  console.log(trip)
+  const tripFacilities = useModels('facility', trip.facilities);
+
   return (
-    <div
-      id="id-facilities"
-      className="trip-facilities-wrapper wrapper-block"
-    >
+    <div id="id-facilities" className="trip-facilities-wrapper wrapper-block">
       <h3 className="h3">Details</h3>
       <ul className="trip-facilities">
         <li className="item">
@@ -33,7 +29,9 @@ export default function Facilities({ trip }) {
             </Col>
             <Col lg={10} className="facility-value">
               <ul>
-                {tripFacilities.map((facility) => <li className="tick">{facility.name}</li>)}
+                {tripFacilities.map((facility) => (
+                  <li className="tick">{facility.name}</li>
+                ))}
               </ul>
             </Col>
           </Row>
@@ -45,7 +43,9 @@ export default function Facilities({ trip }) {
             </Col>
             <Col lg={10} className="facility-value">
               <ul>
-                {trip.gear.map((gear) => <li className="tick">{gear}</li>)}
+                {trip.gear.map((gear) => (
+                  <li className="tick">{gear}</li>
+                ))}
               </ul>
             </Col>
           </Row>
@@ -59,7 +59,9 @@ export default function Facilities({ trip }) {
               <ul>
                 <li className="tick">{trip.startingLocation}</li>
                 <li className="tick">{trip.destination}</li>
-                {trip.locations.map((location) => <li className="tick">{location}</li>)}
+                {trip.locations.map((location) => (
+                  <li className="tick">{location}</li>
+                ))}
               </ul>
             </Col>
           </Row>
@@ -70,8 +72,11 @@ export default function Facilities({ trip }) {
               Category
             </Col>
             <Col lg={10} className="facility-value">
-
-              <ul>{trip.categories.map((location) => <li className="tick">{location}</li>)}</ul>
+              <ul>
+                {trip.categories.map((location) => (
+                  <li className="tick">{location}</li>
+                ))}
+              </ul>
             </Col>
           </Row>
         </li>

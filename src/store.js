@@ -1,12 +1,12 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import { reducer as timelineReducer } from './timeline';
 import { reducer as accordionReducer } from './timeline/left-accordion';
 import { reducer as PopularReducer } from './timeline/right-menu-bar';
 import { reducer as TripsListReducer } from './trips';
 import { reducer as TripsListListReducer } from './trips/trips-list';
+import { reducer as TripReducer } from './trips/trip-item';
 import { reducer as ModelReducer } from './generic/model-store';
-
 
 export default function initializeStore() {
   return configureStore({
@@ -15,7 +15,8 @@ export default function initializeStore() {
       timeline: timelineReducer,
       popular: PopularReducer,
       trips: TripsListReducer,
-      tripslist: TripsListListReducer,
+      tripslist: TripsListListReducer, // todo change => "tripsList"
+      tripItem: TripReducer,
       models: ModelReducer,
     },
   });

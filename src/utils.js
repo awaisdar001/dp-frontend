@@ -132,5 +132,5 @@ export const normalizeUser = (data, key) => ({
   ...data[key],
 });
 
-export const createMarkup = (html) => ({ __html: html })
+export const createMarkup = (html) => ({ __html: html });
 

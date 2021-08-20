@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMarkup } from "../../utils";
 
-const TripItem = ({ day , setHeading}) => (
+const TripItem = ({ day, setHeading }) => (
   <div className="item">
     <div className="itinerary-day">
       <svg
@@ -19,18 +19,20 @@ const TripItem = ({ day , setHeading}) => (
 
     <div className="cbp_tmlabel">
       {setHeading && <h2>{day.heading}</h2>}
-      <p><div dangerouslySetInnerHTML={createMarkup(day.description)}/></p>
+      <p dangerouslySetInnerHTML={createMarkup(day.description)} />
     </div>
   </div>
 );
 
-
-function TourPlan({ trip }) {
+function TourPlan({ tripItinerary }) {
   return (
     <div id="tour-plan" className="wrapper-block">
       <h3 className="h3">Tour Plan</h3>
       <div id="plan-timeline" className="timeline-with-label">
-        {trip.tripItinerary.map((day) => <TripItem day={day} setHeading={false}/>)}
+        {tripItinerary.map((day, idx) => (
+          <TripItem key={`plan-${idx}`} day={day} setHeading={false} />
+        ))}
+        ;
       </div>
     </div>
   );

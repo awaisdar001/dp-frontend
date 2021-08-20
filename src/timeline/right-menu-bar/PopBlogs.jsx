@@ -44,7 +44,7 @@ const PopularBlogs = ({ data }) => {
     return <FavBlog key={`fav-blog-${index}`} {...blog} />;
   });
 };
-export default () => {
+export default function PopularBlog() {
   const popBlogs = useSelector(getPopularBlogs);
   const isLoading = useSelector(getLoading);
 
@@ -53,11 +53,7 @@ export default () => {
       <div className="headline">
         <h2>Popular blogs</h2>
       </div>
-      {isLoading ? (
-        <PopBlogPlaceholder count={2} />
-      ) : (
-        popBlogs && <PopularBlogs data={popBlogs} />
-      )}
+      {isLoading ? <PopBlogPlaceholder count={2} /> : popBlogs && <PopularBlogs data={popBlogs} />}
     </div>
   );
 };
