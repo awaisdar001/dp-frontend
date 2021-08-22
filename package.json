@@ -107,6 +107,6 @@
     "copyfiles": "^2.2.0",
     "create-react-app": "4.0.3",
     "node-sass": "^6.0.1",
-    "renamer": "^2.0.1"
+    "renamer": "3.2.1"
   }
 }
