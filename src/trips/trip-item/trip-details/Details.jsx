@@ -25,9 +25,10 @@ export default function TripDetails({ trip }) {
         <TripFacilities tripFacilities={tripFacilities} />
         <TripGear tripGear={trip.gear} />
         <TripLocations
-          destination={tripDestination.name}
-          startingLocation={startingLocation.name}
-          tripLocations={tripLocations.map((location) => location.name)}
+          destination={tripDestination?.name}
+          startingLocation={startingLocation?.name}
+          tripLocations={tripLocations.map((location) => location?.name)}
+
         />
         <TripCategories tripCategories={trip.categories} primary={trip.primaryCategory} />
       </ul>

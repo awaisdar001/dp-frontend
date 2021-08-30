@@ -6,16 +6,8 @@ import { fetchTimelineItems } from './data/thunks';
 import { FeedsPlaceholder, LoadingNewFeeds } from '../common';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
-import {
-  getSelectedFeedTypes,
-  getSelectedPros,
-} from './left-accordion/data/selectors';
-import {
-  getLoadingStatus,
-  getNextPage,
-  getPreviousPage,
-  getTimelineFeeds,
-} from './data/selectors';
+import { getSelectedFeedTypes, getSelectedPros, } from './left-accordion/data/selectors';
+import { getLoadingStatus, getNextPage, getPreviousPage, getTimelineFeeds, } from './data/selectors';
 
 const TimelineContent = () => {
   const observer = useRef();
@@ -45,7 +37,7 @@ const TimelineContent = () => {
         observer.current.observe(node);
       }
     },
-    [isLoading, selectedPros, selectedFeedTypes, nextPage.number],
+    [dispatch, isLoading, selectedPros, selectedFeedTypes, nextPage?.number],
   );
 
   return (

@@ -23,14 +23,12 @@ const TripCard = ({ trip }) => {
     return <p>{description}</p>;
   };
   const tripUrl = `/trip/${trip.slug}`;
-  const tripMinPrice =
-    trip.tripSchedule &&
-    trip.tripSchedule.reduce((prev, curr) =>
-      prev.price < curr.price ? prev : curr,
-    ).price;
+  const tripMinPrice = trip.minPrice;
+  console.log('min', tripMinPrice)
 
   const primaryCategory = useModel('category', trip.primaryCategory);
   const tripDestination = useModel('location', trip.destination);
+  const tripHost = useModel('host', trip.host);
 
   return (
     <Row className="m-0">
@@ -44,7 +42,7 @@ const TripCard = ({ trip }) => {
                 // src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/02/tour-1-featured-img.jpg"
                 // src="https://fma-trips.s3-ap-southeast-1.amazonaws.com/trips-photos/2acdc23d-d2b6-485c-9706-93e72bc10128.png"
                 // className="img-fluid"
-                // alt="Trips poster"
+                alt="Trips poster"
                 />
               </Link>
 
@@ -57,7 +55,7 @@ const TripCard = ({ trip }) => {
           </div>
           <div className="item-detail">
             <Title name={trip.name} url={tripUrl} />
-            <TitlePrice price={trip.tripSchedule && tripMinPrice} />
+            <TitlePrice tripMinPrice={tripMinPrice} />
             <div className="item-description">
               <TripDescription />
             </div>
@@ -67,7 +65,7 @@ const TripCard = ({ trip }) => {
             <Metadata
               className="mt-4"
               duration={trip.duration}
-              ageLimit={trip.ageLimit}
+              tripHost={tripHost.name}
               category={primaryCategory}
               destination={tripDestination}
             />

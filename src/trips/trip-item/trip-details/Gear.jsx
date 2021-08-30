@@ -11,7 +11,7 @@ export default function TripGear({ tripGear }) {
         <Col lg={10} className="item-value">
           <ul>
             {tripGear.map((gear) => (
-              <li key={gear} className="tick">{gear}</li>
+              <li key={gear.slug} className="tick">{gear.name}</li>
             ))}
           </ul>
         </Col>

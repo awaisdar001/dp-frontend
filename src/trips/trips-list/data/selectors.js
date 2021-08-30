@@ -12,7 +12,6 @@ export const getInitialSearchPrices = (state) => state.tripslist.search.initial.
 
 export const getSearchKeyword = (state) => state.tripslist.search.keyword;
 export const getSidebarDestinations = (state) => state.tripslist.destinations;
-export const getLoadingStatus = (state) => state.tripslist.loadingStatus;
 
 export const getSelectedDestinations = createSelector(
   getSidebarDestinations,

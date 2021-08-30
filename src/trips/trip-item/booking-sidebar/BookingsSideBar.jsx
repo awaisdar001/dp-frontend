@@ -1,53 +1,48 @@
-import {
-  faEdit,
-  faEnvelope,
-  faIdCard,
-} from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faEdit, faEnvelope, faIdCard,} from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import {withSidebar} from '../../../common';
 import TripDatePicker from './TripDatePicker';
 
-function BookingSideBar() {
+const BookingSideBar = ({tripDates}) => {
   return (
     <div>
-      <TripDatePicker name="trip-date" dates={[11, 15, 18]} />
-
+      <TripDatePicker name="trip-date" tripDates={tripDates}/>
       <div className="input-with-icon">
-        <input type="text" placeholder="Name*" name="name" />
+        <input type="text" placeholder="Name*" name="name"/>
         <span className="input-icon">
-          <FontAwesomeIcon icon={faEdit} className="margin-right-3" />
+          <FontAwesomeIcon icon={faEdit} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <NumberFormat format="+92 (###) #######" allowEmptyFormatting mask="_" name="phone" />
+        <NumberFormat format="+92 (###) #######" allowEmptyFormatting mask="_" name="phone"/>
         <span className="input-icon">
-          <FontAwesomeIcon icon="phone" className="margin-right-3" />
+          <FontAwesomeIcon icon="phone" className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <NumberFormat name="id-card" format="#####-#######-#" placeholder="CNIC*" mask="_" />
+        <NumberFormat name="id-card" format="#####-#######-#" placeholder="CNIC*" mask="_"/>
         <span className="input-icon">
-          <FontAwesomeIcon icon={faIdCard} className="margin-right-3" />
+          <FontAwesomeIcon icon={faIdCard} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <input type="email" placeholder="Email*" name="email" />
+        <input type="email" placeholder="Email*" name="email"/>
         <span className="input-icon">
-          <FontAwesomeIcon icon={faEnvelope} className="margin-right-3" />
+          <FontAwesomeIcon icon={faEnvelope} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <textarea name="message" placeholder="Message" rows="7" />
+        <textarea name="message" placeholder="Message" rows="7"/>
       </div>
 
       <button type="submit" className="btn btn-success btn-block btn-lg">
-        Check Availability
+        Book My Trip
       </button>
     </div>
   );

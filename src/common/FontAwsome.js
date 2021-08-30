@@ -41,5 +41,6 @@ library.add(
   FA.faStarHalfAlt,
   FA.faUserFriends,
   FA.faIdCard,
-  FA.faSync
+  FA.faSync,
+  FA.faUserAlt
 );

@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
-import {Container} from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import Content from './content';
-import {Col, Row} from 'react-bootstrap';
 import Cover from './cover/';
 import TripsListHeader from './TripsListHeader';
-import {tripHeadingItems} from "./data/enums";
+import { tripHeadingItems } from "./data/enums";
 import Storage from "../../storage";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getSearchDates,
   getSearchDays,
@@ -33,7 +32,7 @@ export default function TripList() {
 
   useEffect(() => {
     dispatch(fetchTripDestinations());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     console.log('[useEffect]: TripsList-API Call here.');
@@ -46,7 +45,7 @@ export default function TripList() {
         selectedDestinations,
       }),
     );
-  }, [searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations, search]);
+  }, [dispatch, searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations, search]);
 
   return (
     <>

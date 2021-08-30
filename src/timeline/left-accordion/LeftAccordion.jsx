@@ -33,7 +33,7 @@ export default function DPAccordion() {
     } else {
       dispatch(fetchAndRestTimelineItems(selectedProvinces, selectedFeedTypes));
     }
-  }, [selectedProvinces, selectedFeedTypes]);
+  }, [dispatch, selectedProvinces, selectedFeedTypes]);
 
   const handleRestButtonClick = () => dispatch(restAllFilters());
 

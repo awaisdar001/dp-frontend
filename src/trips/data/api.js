@@ -1,13 +1,7 @@
 import _ from 'lodash';
-import {
-  camelCaseObject,
-  DateFormats,
-  getDateFromMilliSec,
-  normalizeBySlug,
-  normalizeUser,
-  transformQueryString,
-} from '../../utils';
+import { camelCaseObject, DateUtils, normalizeBySlug, normalizeUser, transformQueryString, } from '../../utils';
 import { getAuthenticatedHttpClient } from '../../data/api';
+import moment from 'moment';
 
 export async function getTrip(slug) {
   const { data } = await getAuthenticatedHttpClient().get(`/api/trip/${slug}/`);
@@ -15,8 +9,11 @@ export async function getTrip(slug) {
 }
 
 const normalizeTripData = (trip) => {
-  return camelCaseObject({
-    trip: normalizeTrip(trip),
+  const tripData = {
+    trip: {
+      ...normalizeTrip(trip),
+      schedules: createTripSchedules(trip.trip_availability)
+    },
     categories: [
       ...trip.categories.map((category) => normalizeBySlug(category)),
       normalizeBySlug(trip.primary_category),
@@ -29,8 +26,33 @@ const normalizeTripData = (trip) => {
       normalizeBySlug(trip.destination),
       normalizeBySlug(trip.starting_location),
     ],
-  });
+  };
+  return camelCaseObject(tripData);
+
+
 };
+
+const createTripSchedules = ({ type, options }) => {
+  if (type === 'Daily') {
+    let newSchedules = []
+    const today = moment();
+    const scheduleFrom = DateUtils.getDateFromMilliSec(options['date_from'], false)
+    const scheduleTo = DateUtils.getDateFromMilliSec(options['date_to'], false)
+
+    const upcomingScheduleDays = today.diff(scheduleTo, 'days')
+
+    const schedulesAreInProgress = today.diff(scheduleFrom, 'days') > 0;
+    const hasUpcomingSchedules = upcomingScheduleDays < 0;
+
+    if (hasUpcomingSchedules && schedulesAreInProgress) {
+      // Array(-1) (of a negative number) would fail, that's why need to multiply the number with -1.
+      newSchedules = [...Array((upcomingScheduleDays * -1) + 2)].map((_, i) => {
+        return today.clone().add(i, 'days').format('YYYY-MM-DD');
+      })
+    }
+    return newSchedules;
+  }
+}
 
 /**
  * Fetches timeline items.
@@ -78,43 +100,41 @@ const normalizeTripsListData = (data) => {
 const normalizeTrip = (trip) => ({
   ...trip,
   categories: trip.categories.map((category) => category.slug),
-  cancellation_policy: trip.cancellation_policy.split('\r\n'),
-  primary_category: trip.primary_category.slug,
+  cancellation_policy: trip.cancellation_policy,
+  primary_category: trip.primary_category?.slug,
   createdBy: trip.created_by.username,
   facilities: trip.facilities.map((facility) => facility.slug),
   host: trip.host.slug,
   locations: trip.locations.map((location) => location.slug),
-  destination: trip.destination.slug,
+  destination: trip.destination?.slug,
   starting_location: trip.starting_location?.slug,
-  gear: trip.gear.split('\r\n'),
-  minPrice: trip.trip_schedule.reduce((prev, curr) => (prev.price < curr.price ? prev : curr))
-    .price,
+  gear: trip.gear,
+  minPrice: trip.trip_availability.options.price,
 });
 
 const normalizeHost = (host) => {
   const tripHostRating = host.rating;
   const average = _.divide(tripHostRating.rating_count, tripHostRating.rated_by).toFixed(1);
-  const percent = _.multiply(_.toInteger(average), 20);
+  const percent = _.multiply(_.toInteger(average), 10);
   return {
     id: host.slug,
     ...host,
-    cancellation_policy: host.cancellation_policy.split('\r\n'),
+    cancellation_policy: host.cancellation_policy,
     rating: { ...host.rating, average, percent },
   };
 };
 
 const getTripsListURL = ({
-  searchDays,
-  searchDates,
-  searchPrices,
-  searchKeyword,
-  selectedDestinations,
-}) => {
+                           searchDays,
+                           searchDates,
+                           searchPrices,
+                           searchKeyword,
+                           selectedDestinations,
+                         }) => {
   const destinations = selectedDestinations.reduce(
     (acc, d) => `${acc.slug ? acc.slug : acc},${d.slug}`,
     '',
   );
-  const dateFormat = DateFormats.YearMonthDate;
   const queryString = transformQueryString([
     ['name', searchKeyword],
     ['destination', destinations],
@@ -122,8 +142,8 @@ const getTripsListURL = ({
     ['duration_to', searchDays[1]],
     ['price_from', searchPrices[0]],
     ['price_to', searchPrices[1]],
-    ['date_from', getDateFromMilliSec(searchDates[0], dateFormat)],
-    ['date_to', getDateFromMilliSec(searchDates[1], dateFormat)],
+    ['date_from', DateUtils.getDateFromMilliSec(searchDates[0])],
+    ['date_to', DateUtils.getDateFromMilliSec(searchDates[1])],
   ]);
   return `/api/trips/?${queryString}`;
 };
