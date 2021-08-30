@@ -13,6 +13,7 @@
 @mixin mxmargin($amount) {
   margin: $amount;
 }
+
 @mixin heading-small() {
   text-transform: none;
   font-size: 65%;

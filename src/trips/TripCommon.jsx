@@ -1,5 +1,5 @@
 import Rating from '@material-ui/lab/Rating';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import Humanize from "humanize-plus";
@@ -14,8 +14,8 @@ export function Title({className, name, url}) {
   );
 }
 
-export const TitlePrice = ({className, price}) => {
-  const formattedPrice = `Rs. ${Humanize.intComma(price)}`;
+export const TitlePrice = ({className, tripMinPrice}) => {
+  const formattedPrice = `Rs. ${Humanize.intComma(tripMinPrice)}`;
 
   return (
     <div className={'item-price ' + className}>
@@ -51,3 +51,19 @@ export const RatingPlugin = ({name, title, rating}) => {
     </Col>
   );
 };
+
+// Title.propTypes = {
+//   className: PropTypes.string,
+//   name: PropTypes.string.isRequired,
+//   url: PropTypes.string.isRequired,
+// };
+// TitlePrice.propTypes = {
+//   className: PropTypes.string,
+//   price: PropTypes.number.isRequired,
+// };
+//
+// RatingPlugin.protoTypes = {
+//   name: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   rating: PropTypes.number.isRequired,
+// };

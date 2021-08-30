@@ -1,7 +1,7 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
-export default ({ name, absUrl }) => {
+const Description = ({name, absUrl}) => {
   return (
     <Col md={12}>
       <h4>
@@ -11,3 +11,4 @@ export default ({ name, absUrl }) => {
   );
 };
 
+export default Description;

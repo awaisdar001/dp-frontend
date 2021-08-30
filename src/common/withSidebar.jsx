@@ -1,7 +1,7 @@
 import React from 'react';
 
 const withSidebar = (Component, title) => {
-  return function withSidebar() {
+  return (props) => {
     return (
       <aside className="sidebar">
         <div className="search-filter">
@@ -10,7 +10,7 @@ const withSidebar = (Component, title) => {
               <h4>{title}</h4>
             </div>
             <div className="filters-fields">
-              <Component/>
+              <Component {...props}/>
             </div>
           </form>
         </div>
@@ -20,3 +20,12 @@ const withSidebar = (Component, title) => {
 }
 
 export default withSidebar;
+
+
+export const withSidebar2 = fn => {
+  let counter = 0;
+  return (...args) => {
+    console.log(`Counter is ${++counter}`)
+    return fn(...args)
+  }
+}

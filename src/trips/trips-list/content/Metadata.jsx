@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 
-const Metadata = function ({ ageLimit, category, duration, destination, className = '' }) {
+const Metadata = function ({ hostName, category, duration, destination, className = '' }) {
   return (
     <div className={'item-metadata ' + className}>
       <div className="meta-item">
@@ -17,10 +17,10 @@ const Metadata = function ({ ageLimit, category, duration, destination, classNam
       </div>
       <div className="meta-item">
         <span className="meta-icon">
-          <FontAwesomeIcon icon="user-friends" className="mr-1" />
+          <FontAwesomeIcon icon={"user-alt"} className="mr-1" />
         </span>
         <span className="meta-description">
-          <a href="/">{ageLimit}+</a>
+          <a href="/">{hostName}</a>
         </span>
       </div>
       <div className="meta-item">
@@ -33,14 +33,15 @@ const Metadata = function ({ ageLimit, category, duration, destination, classNam
           </span>
         )}
       </div>
-      <div className="meta-item">
+      {destination && <div className="meta-item">
         <span className="meta-icon">
           <FontAwesomeIcon icon="fire-alt" className="mr-1" />
         </span>
         <span className="meta-description">
-          {destination && <a href="/">{destination.name}</a>}
+          <a href="/">{destination.name}</a>
         </span>
       </div>
+      }
     </div>
   );
 };

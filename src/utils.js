@@ -8,6 +8,23 @@ export const DateFormats = {
   YearMonthDate: 'YYYY-MM-DD', // 2020-10-10
 };
 
+export class DateUtils {
+  static getDateFromMilliSec(number, format = true) {
+    const date = moment(number);
+    if (format === true) {
+      return this.formatToYearMonthDay(date);
+    }
+    return date
+  };
+
+  static formatToYearMonthDay(date) {
+    return date.format('YYYY-MM-DD');
+  };
+
+  static formatToDayMonth(date) {
+    return date.format('DD MMM');
+  };
+}
 
 /**
  * @param {Object} object
@@ -123,7 +140,7 @@ export const getQueryStringParams = (query) => {
     : {};
 };
 
-export const normalizeBySlug = (data) => ({
+export const normalizeBySlug = (data) => (data && {
   id: data.slug,
   ...data,
 });

@@ -5,8 +5,8 @@ const minDay = 1;
 const maxDay = 20;
 const minDate = moment().startOf('day').valueOf();
 const maxDate = moment(minDate).add(1, 'M').valueOf();
-const minPrice = 1 * 1000;
-const maxPrice = 50 * 1000;
+const minPrice = 1 * 100;
+const maxPrice = 500 * 1000; //500,000
 
 const slice = createSlice({
   name: 'tripslist',
@@ -39,12 +39,10 @@ const slice = createSlice({
       state.error = payload.error;
     },
     updateDestination: (state, {payload}) => {
-      state.loadingStatus = !state.loadingStatus;
       state.destinations[payload.index].selected = payload.selected;
     },
     searchSliderChanged: (trips, {payload}) => {
       trips.search[payload.type] = [...payload.number];
-      trips.loadingStatus = !trips.loadingStatus;
     },
     searchKeywordChanged: (trips, {payload}) => {
       trips.search.keyword = payload.keyword;
