@@ -99,9 +99,9 @@
     "coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "7.12.3",
+    "@babel/plugin-transform-runtime": "7.12.1",
+    "@babel/preset-env": "7.15.0",
     "@types/jest": "^26.0.9",
     "axios-mock-adapter": "^1.18.2",
     "copyfiles": "^2.2.0",
