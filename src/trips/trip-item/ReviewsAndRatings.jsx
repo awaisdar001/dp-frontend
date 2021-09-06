@@ -1,11 +1,11 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import {Col, Row} from 'react-bootstrap';
-import {useModel} from '../../generic/model-store';
+import { Col, Row } from 'react-bootstrap';
+import { useModel } from '../../generic/model-store';
 
-const RenderProgressBar = ({title, number}) => (
+const RenderProgressBar = ({ title, number }) => (
   <div className="progress-rating">
-    <p className="rating-title" style={{margin: '10px 0 1px'}}>
+    <p className="rating-title" style={{ margin: '10px 0 1px' }}>
       <span className="title">{title}</span>
       <span className="percent float-right">{number}</span>
     </p>

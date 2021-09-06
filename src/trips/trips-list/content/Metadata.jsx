@@ -1,13 +1,13 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faClock} from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 
-const Metadata = function ({hostName, category, duration, destination, className = ''}) {
+const Metadata = function ({ hostName, category, duration, destination, className = '' }) {
   return (
     <div className={'item-metadata ' + className}>
       <div className="meta-item">
         <span className="meta-icon">
-          <FontAwesomeIcon icon={faClock} className="mr-1"/>
+          <FontAwesomeIcon icon={faClock} className="mr-1" />
         </span>
         <span className="meta-description">
           <a href="/">
@@ -23,20 +23,19 @@ const Metadata = function ({hostName, category, duration, destination, className
       </div>
       {hostName && (
         <div className="meta-item">
-        <span className="meta-icon">
-          <FontAwesomeIcon icon={'user-alt'} className="mr-1"/>
-        </span>
+          <span className="meta-icon">
+            <FontAwesomeIcon icon={'user-alt'} className="mr-1" />
+          </span>
           <span className="meta-description">
-          <a href="/">{hostName}</a>
-        </span>
+            <a href="/">{hostName}</a>
+          </span>
         </div>
       )}
-
 
       {category && (
         <div className="meta-item">
           <span className="meta-icon">
-            <FontAwesomeIcon icon="book" className="mr-1"/>
+            <FontAwesomeIcon icon="book" className="mr-1" />
           </span>
           <span className="meta-description">
             <a href={`/trip/category/${category.slug}`}>{category.name}</a>
@@ -47,7 +46,7 @@ const Metadata = function ({hostName, category, duration, destination, className
       {destination && (
         <div className="meta-item">
           <span className="meta-icon">
-            <FontAwesomeIcon icon="fire-alt" className="mr-1"/>
+            <FontAwesomeIcon icon="fire-alt" className="mr-1" />
           </span>
           <span className="meta-description">
             <a href="/">{destination.name}</a>

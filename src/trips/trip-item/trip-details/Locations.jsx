@@ -11,7 +11,11 @@ export default function TripLocations({ destination, tripLocations, startingLoca
         </Col>
         <Col lg={10} className="item-value">
           <ul>
-            {allLocations && allLocations.map((location) => <li key={location} className="tick">{location}</li>)}
+            {allLocations.map((location) => (
+              <li key={location} className="tick">
+                {location}
+              </li>
+            ))}
           </ul>
         </Col>
       </Row>
