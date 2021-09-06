@@ -22,13 +22,13 @@ export default function TripDetails({ trip }) {
           destination={tripDestination?.name}
           startingLocation={startingLocation?.name}
         />
-        <TripFacilities tripFacilities={tripFacilities} />
-        <TripGear tripGear={trip.gear} />
+
+        {tripFacilities.length > 0 && <TripFacilities tripFacilities={tripFacilities} />}
+        {trip.gear.length > 0 && <TripGear tripGear={trip.gear} />}
         <TripLocations
           destination={tripDestination?.name}
           startingLocation={startingLocation?.name}
           tripLocations={tripLocations.map((location) => location?.name)}
-
         />
         <TripCategories tripCategories={trip.categories} primary={trip.primaryCategory} />
       </ul>

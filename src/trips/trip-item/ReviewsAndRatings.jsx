@@ -10,7 +10,7 @@ const RenderProgressBar = ({ title, number }) => (
       <span className="percent float-right">{number}</span>
     </p>
     <ProgressBar
-      className="falt-progress"
+      className="flat-progress"
       now={number}
       label={`${number}%`}
       srOnly
@@ -19,21 +19,26 @@ const RenderProgressBar = ({ title, number }) => (
   </div>
 );
 
-function ReviewsAndRatings({ host }) {
-  const tripHost = useModel('host', host);
+function ReviewsAndRatings({host}) {
+  const {rating} = useModel('host', host);
 
   return (
     <div id="reviews" className="trip-review-wrapper wrapper-block">
       <h3 className="h3">Tour Review Scores And Score Breakdown</h3>
       <Row>
         <Col lg={3} className="rating-average">
-          <div className="average">{tripHost.rating.average}</div>
+          <div className="average">
+            <span>{rating.value}</span>
+            <small> / </small>
+            <span>5</span>
+          </div>
+
           <div className="average-description">
-            <h4 className="">Good </h4>
+            <h4 className="">{rating.feedback} </h4>
           </div>
         </Col>
         <Col lg={9} className="rating-percentage">
-          <RenderProgressBar title="Overall" number={tripHost.rating.percent} />
+          <RenderProgressBar title="Overall" number={rating.percent}/>
           {/*<RenderProgressBar title="Meals" number="60" />*/}
           {/*<RenderProgressBar title="Accommodation" number="50" />*/}
           {/*<RenderProgressBar title="Transport" number="90" />*/}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 export default function TripLocations({ destination, tripLocations, startingLocation }) {
+  const allLocations = [...new Set(tripLocations.concat(destination, startingLocation))]
   return (
     <li className="item">
       <Row>
@@ -10,9 +11,11 @@ export default function TripLocations({ destination, tripLocations, startingLoca
         </Col>
         <Col lg={10} className="item-value">
           <ul>
-            {startingLocation && <li className="tick">{startingLocation}</li>}
-            {destination && <li className="tick">{destination}</li>}
-            {tripLocations && tripLocations.map((location) => <li key={location} className="tick">{location}</li>)}
+            {allLocations.map((location) => (
+              <li key={location} className="tick">
+                {location}
+              </li>
+            ))}
           </ul>
         </Col>
       </Row>

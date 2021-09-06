@@ -11,37 +11,48 @@ const Metadata = function ({ hostName, category, duration, destination, classNam
         </span>
         <span className="meta-description">
           <a href="/">
-            {duration} Days & {duration - 1} Nights
+            {duration === 1 ? (
+              <span>{duration} Day</span>
+            ) : (
+              <span>
+                {duration} Days & {duration - 1} Nights
+              </span>
+            )}
           </a>
         </span>
       </div>
-      <div className="meta-item">
-        <span className="meta-icon">
-          <FontAwesomeIcon icon={"user-alt"} className="mr-1" />
-        </span>
-        <span className="meta-description">
-          <a href="/">{hostName}</a>
-        </span>
-      </div>
-      <div className="meta-item">
-        <span className="meta-icon">
-          <FontAwesomeIcon icon="book" className="mr-1" />
-        </span>
-        {category && (
+      {hostName && (
+        <div className="meta-item">
+          <span className="meta-icon">
+            <FontAwesomeIcon icon={'user-alt'} className="mr-1" />
+          </span>
+          <span className="meta-description">
+            <a href="/">{hostName}</a>
+          </span>
+        </div>
+      )}
+
+      {category && (
+        <div className="meta-item">
+          <span className="meta-icon">
+            <FontAwesomeIcon icon="book" className="mr-1" />
+          </span>
           <span className="meta-description">
             <a href={`/trip/category/${category.slug}`}>{category.name}</a>
           </span>
-        )}
-      </div>
-      {destination && <div className="meta-item">
-        <span className="meta-icon">
-          <FontAwesomeIcon icon="fire-alt" className="mr-1" />
-        </span>
-        <span className="meta-description">
-          <a href="/">{destination.name}</a>
-        </span>
-      </div>
-      }
+        </div>
+      )}
+
+      {destination && (
+        <div className="meta-item">
+          <span className="meta-icon">
+            <FontAwesomeIcon icon="fire-alt" className="mr-1" />
+          </span>
+          <span className="meta-description">
+            <a href="/">{destination.name}</a>
+          </span>
+        </div>
+      )}
     </div>
   );
 };
