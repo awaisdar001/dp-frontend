@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  TripCategories,
-  TripDepartureLocation,
-  TripFacilities,
-  TripGear,
-  TripLocations,
-} from './index';
-import { useModel, useModels } from '../../../generic/model-store';
+import {TripCategories, TripDepartureLocation, TripFacilities, TripGear, TripLocations,} from './index';
+import {useModel, useModels} from '../../../generic/model-store';
 
-export default function TripDetails({ trip }) {
+export default function TripDetails({trip}) {
   const tripDestination = useModel('location', trip.destination);
   const startingLocation = useModel('location', trip.startingLocation);
   const tripLocations = useModels('location', trip.locations);
@@ -22,15 +16,16 @@ export default function TripDetails({ trip }) {
           destination={tripDestination?.name}
           startingLocation={startingLocation?.name}
         />
-        <TripFacilities tripFacilities={tripFacilities} />
-        <TripGear tripGear={trip.gear} />
+
+        {tripFacilities.length > 0 && (<TripFacilities tripFacilities={tripFacilities}/>)}
+        {trip.gear.length > 0 && (<TripGear tripGear={trip.gear}/>)}
         <TripLocations
           destination={tripDestination?.name}
           startingLocation={startingLocation?.name}
           tripLocations={tripLocations.map((location) => location?.name)}
 
         />
-        <TripCategories tripCategories={trip.categories} primary={trip.primaryCategory} />
+        <TripCategories tripCategories={trip.categories} primary={trip.primaryCategory}/>
       </ul>
     </div>
   );

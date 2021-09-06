@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import camelCase from 'lodash.camelcase';
 import snakeCase from 'lodash.snakecase';
+import {hostRatingMappings} from './trips/data/enums';
+import _ from 'lodash';
 
 export const DateFormats = {
   DayMonth: 'DD MMM', // 10 Oct
@@ -14,16 +16,16 @@ export class DateUtils {
     if (format === true) {
       return this.formatToYearMonthDay(date);
     }
-    return date
-  };
+    return date;
+  }
 
   static formatToYearMonthDay(date) {
     return date.format('YYYY-MM-DD');
-  };
+  }
 
   static formatToDayMonth(date) {
     return date.format('DD MMM');
-  };
+  }
 }
 
 /**
@@ -34,15 +36,15 @@ export class DateUtils {
 export function modifyObjectKeys(object, modify) {
   // If the passed in object is not an Object, return it.
   if (
-    object === undefined
-    || object === null
-    || (typeof object !== 'object' && !Array.isArray(object))
+    object === undefined ||
+    object === null ||
+    (typeof object !== 'object' && !Array.isArray(object))
   ) {
     return object;
   }
 
   if (Array.isArray(object)) {
-    return object.map(value => modifyObjectKeys(value, modify));
+    return object.map((value) => modifyObjectKeys(value, modify));
   }
 
   // Otherwise, process all its keys.
@@ -72,7 +74,7 @@ export function snakeCaseObject(object) {
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
-export const NewLineToBr = ({ children = '' }) => {
+export const NewLineToBr = ({children = ''}) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
@@ -83,27 +85,11 @@ export const NewLineToBr = ({ children = '' }) => {
   }, []);
 };
 
-export const renameKeys = (instance) => {
-  return Object.keys(instance).reduce((acc, key) => {
-    const cambleCaseKey = key
-      .split('_')
-      .map(function (name, i) {
-        if (i > 0) {
-          return name.charAt(0).toUpperCase() + name.substr(1);
-        }
-        return name;
-      })
-      .join('');
-    return {
-      ...acc,
-      ...{ [cambleCaseKey]: instance[key] },
-    };
-  }, {});
-};
+export const transformQueryString = (queryArray) =>
+  queryArray
+    .map((keywords) => `${keywords[0]}=${keywords[1]}`)
+    .reduce((queryItem, result) => `${queryItem}&${result}`);
 
-export const transformQueryString = (queryArray) => queryArray
-  .map((keywords) => `${keywords[0]}=${keywords[1]}`)
-  .reduce((queryItem, result) => `${queryItem}&${result}`);
 export const buildQueryString = (dataArray, name, key = 'name') =>
   /*
     Given a list object, builds querystring
@@ -116,9 +102,6 @@ export const buildQueryString = (dataArray, name, key = 'name') =>
 
   dataArray.map((item) => `${encodeURIComponent(name)}=${encodeURIComponent(item[key])}`).join('&');
 
-export const getQueryStringFromParams = (params) =>
-  new URLSearchParams(params).toString();
-
 export const getQueryStringParams = (query) => {
   /* 
     Get querystring object from the url.
@@ -128,26 +111,47 @@ export const getQueryStringParams = (query) => {
   */
 
   return query
-    ? (/^[?#]/.test(query) ? query.slice(1) : query)
-      .split('&')
-      .reduce((params, param) => {
-        let [key, value] = param.split('=');
-        params[key] = value
-          ? decodeURIComponent(value.replace(/\+/g, ' '))
-          : '';
-        return params;
-      }, {})
+    ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce((params, param) => {
+      let [key, value] = param.split('=');
+      params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+      return params;
+    }, {})
     : {};
 };
 
-export const normalizeBySlug = (data) => (data && {
-  id: data.slug,
-  ...data,
-});
+export const normalizeBySlug = (data) =>
+  data && {
+    id: data.slug,
+    ...data,
+  };
 export const normalizeUser = (data, key) => ({
   id: data[key].username,
   ...data[key],
 });
 
-export const createMarkup = (html) => ({ __html: html });
+export const createMarkup = (html) => ({__html: html});
 
+export const getRatingFeedback = (rating) => {
+  const wholeRating = Math.floor(rating);
+  const ratingHit = hostRatingMappings[wholeRating];
+  if (!_.isNil(ratingHit)) {
+    return ratingHit;
+  }
+  const ratingNumber = _.max(
+    Object.keys(hostRatingMappings)
+      .map((key) => parseInt(key))
+      .filter((key) => wholeRating > key),
+  );
+  return hostRatingMappings[ratingNumber];
+};
+
+/**
+ * Removes duplicates from the data array.
+ * Expects data contains objects with "id" keys.
+ * @param data
+ */
+export const filterDuplicatesFromList = (data) => {
+  const uniques = {}
+  data.forEach(item => uniques[item.id] = item);
+  return Object.keys(uniques).map(key => uniques[key]);
+};

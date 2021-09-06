@@ -10,8 +10,8 @@ export default function TripFacilities({ tripFacilities }) {
         </Col>
         <Col lg={10} className="item-value">
           <ul>
-            {Object.keys(tripFacilities).map((facilityId) => (
-              <li key={facilityId} className="tick">{tripFacilities[facilityId].name}</li>
+            {tripFacilities.map(facility => (
+              <li key={facility.id} className="tick">{facility.name}</li>
             ))}
           </ul>
         </Col>
