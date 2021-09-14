@@ -3,10 +3,10 @@ import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Storage from '../../storage';
-import { getFeedTypeItems } from './data/selectors';
 import { getLoadingStatus } from '../data/selectors';
-import { feedTypeSelectionChanged } from './data/slice';
 import Checkbox from './Checkbox';
+import { getFeedTypeItems } from './data/selectors';
+import { feedTypeSelectionChanged } from './data/slice';
 import Header from './Header';
 
 const id = 'collapse-feed-types';

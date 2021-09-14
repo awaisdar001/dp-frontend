@@ -2,11 +2,12 @@ import DateFnsUtils from '@date-io/moment'; // choose your lib
 import {faCalendar} from '@fortawesome/free-regular-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {MuiThemeProvider, TextField} from '@material-ui/core';
-import {createTheme} from '@material-ui/core/styles';
 import lightGreen from '@material-ui/core/colors/lightGreen';
+import {createTheme} from '@material-ui/core/styles';
 import {DatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
-import React, {useContext, useState} from 'react';
 import moment from 'moment';
+import React, {useContext, useState} from 'react';
+
 import {DateUtils} from "../../../utils";
 
 const customTheme = createTheme({

@@ -1,6 +1,6 @@
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import React from 'react';
 
 export const TripItemPlaceholder = () => {
   return (

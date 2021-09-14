@@ -1,11 +1,12 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
+
+import { useModel } from '../../../../generic/model-store';
 import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
-import VideoPreview from './Preview';
 import VideoDescription from './Description';
-import { useModel } from '../../../../generic/model-store';
+import VideoPreview from './Preview';
 
 export default function VideoCard({ instance, card }) {
   const { absUrl, createdAt, seenCount, tags, name, description } = instance;

@@ -1,6 +1,7 @@
 import React from 'react';
-import TripCrums from './TripCrum';
+
 import SearchInput from './SearchInput';
+import TripCrums from './TripCrum';
 
 const Cover = () => {
   return (

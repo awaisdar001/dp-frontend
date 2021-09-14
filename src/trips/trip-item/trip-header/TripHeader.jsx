@@ -1,6 +1,7 @@
 import React from 'react';
-import TripHeaderItem from './HeaderItem';
+
 import { tripHeaderItems } from '../../data/enums';
+import TripHeaderItem from './HeaderItem';
 
 function TripHeader() {
   const [activeLink, setActiveLink] = React.useState(tripHeaderItems[0].slug);

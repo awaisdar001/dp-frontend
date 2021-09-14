@@ -1,7 +1,8 @@
-import {itemsReceived, itemsRequested, itemsRequestFailed} from './slice';
-import {getTripItems} from './api';
-import {addModels} from '../../generic/model-store';
 import _ from 'lodash';
+
+import {addModels} from '../../generic/model-store';
+import {getTripItems} from './api';
+import {itemsReceived, itemsRequested, itemsRequestFailed} from './slice';
 
 export function fetchTripsList(searchParams) {
   return async (dispatch) => {

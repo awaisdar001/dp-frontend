@@ -1,6 +1,7 @@
 import React from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Col, Row } from 'react-bootstrap';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 import { useModel } from '../../generic/model-store';
 
 const RenderProgressBar = ({ title, number }) => (

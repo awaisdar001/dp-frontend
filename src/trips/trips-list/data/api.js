@@ -1,5 +1,5 @@
-import {camelCaseObject} from "../../../utils";
 import {getAuthenticatedHttpClient} from "../../../data/api";
+import {camelCaseObject} from "../../../utils";
 
 /**
  * Fetches timeline items.

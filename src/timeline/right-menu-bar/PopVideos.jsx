@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
-import { ProgressiveImage } from '../../common';
 import { useSelector } from 'react-redux';
+
+import { ProgressiveImage } from '../../common';
 import { getLoading, getPopularVideos } from './data/selectors';
 
 const PopVideoPlaceHolder = () => (

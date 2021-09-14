@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {DpCheckbox} from '../../../common';
 
 function Destinations({items: destinations, onChange}) {

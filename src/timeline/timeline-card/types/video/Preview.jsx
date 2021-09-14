@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col } from 'react-bootstrap';
+
 import { ProgressiveImage } from '../../../../common';
 
 export default function VideoPreview({ name, absUrl, posterUrls }) {

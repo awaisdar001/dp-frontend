@@ -1,11 +1,12 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+
 import { ProgressiveImage } from '../../../../common';
+import { useModel } from '../../../../generic/model-store';
 import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
 import Description from './Description';
-import { useModel } from '../../../../generic/model-store';
 
 export default function ImageCard({ instance, card }) {
   const { tags, absUrl, imageUrls, createdAt, seenCount } = instance;

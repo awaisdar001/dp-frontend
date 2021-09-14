@@ -1,6 +1,7 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
+
 import { getLoading, getPopularBlogs } from './data/selectors';
 
 const FavBlog = ({ absURL, banner, name }) => {

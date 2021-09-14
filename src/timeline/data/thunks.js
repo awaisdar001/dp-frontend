@@ -1,3 +1,4 @@
+import { addModels } from '../../generic/model-store';
 import { getTimelineItems } from './api';
 import {
   itemsReceived,
@@ -5,7 +6,6 @@ import {
   itemsRequestFailed,
   restItems,
 } from './slice';
-import { addModels } from '../../generic/model-store';
 
 export function fetchTimelineItems(
   selectedProps,

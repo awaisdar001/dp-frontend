@@ -1,10 +1,11 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
+
+import { useModel } from '../../../../generic/model-store';
 import Footer from '../../Footer';
 import Header from '../../Header';
 import Tags from '../../Tags';
 import QuestionTitle from './Description';
-import { useModel } from '../../../../generic/model-store';
 
 export default function CardQuestion({ card, instance }) {
   const { name, absUrl, createdAt, seenCount } = instance;

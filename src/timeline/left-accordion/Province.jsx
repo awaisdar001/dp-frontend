@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Accordion, Card, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Storage from '../../storage';
 
+import Storage from '../../storage';
 import { getLoadingStatus } from '../data/selectors';
+import Checkbox from './Checkbox';
 import { getProItems } from './data/selectors';
 import { provinceSelectionChanged } from './data/slice';
-import Checkbox from './Checkbox';
 import Header from './Header';
 
 const id = 'collapse-pro';

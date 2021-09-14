@@ -1,6 +1,6 @@
-import { itemsRequested, itemsReceived, itemsRequestFailed } from './slice';
-import { getPopularItems } from './api';
 import { addModels } from '../../../generic/model-store';
+import { getPopularItems } from './api';
+import { itemsReceived, itemsRequested, itemsRequestFailed } from './slice';
 
 export function fetchPopularTimelineItems() {
   return async (dispatch) => {

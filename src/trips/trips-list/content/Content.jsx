@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import TripCard from './TripCard';
+
 import { getLoadingStatus, getTrips, getTripsMetaData } from '../../data/selectors';
-import classNames from 'classnames';
+import TripCard from './TripCard';
 
 const Content = () => {
   const isLoading = useSelector(getLoadingStatus);

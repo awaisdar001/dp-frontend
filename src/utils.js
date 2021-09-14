@@ -1,9 +1,10 @@
-import React from 'react';
-import moment from 'moment';
+import _ from 'lodash';
 import camelCase from 'lodash.camelcase';
 import snakeCase from 'lodash.snakecase';
+import moment from 'moment';
+import React from 'react';
+
 import {hostRatingMappings} from './trips/data/enums';
-import _ from 'lodash';
 
 export const DateFormats = {
   DayMonth: 'DD MMM', // 10 Oct

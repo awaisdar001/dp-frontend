@@ -1,6 +1,7 @@
 import React from 'react';
-import Metadata from '../trips-list/content/Metadata';
+
 import { useModel } from '../../generic/model-store';
+import Metadata from '../trips-list/content/Metadata';
 
 export default function TripHighlights({ trip }) {
   const tripCategory = useModel('category', trip.primaryCategory);
