@@ -79,7 +79,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx .",
-    "lint:fix": "eslint 'src/*.js' --fix",
+    "lint:fix": "eslint --ext .js --ext .jsx 'src/' --fix",
     "move-dist": "npm run move-dist-css && npm run move-dist-js",
     "move-dist-css": "copyfiles -Vf \"build-dist/css/*\" \"../../static/css/react\"",
     "move-dist-js": "copyfiles -Vf \"build-dist/js/*\" \"../../static/js/react\"",
