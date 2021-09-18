@@ -1,22 +1,31 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getLoadingStatus, getTrips, getTripsMetaData } from '../../data/selectors';
+import { fetchTripsNextPage } from '../../data/thunks';
 import TripCard from './TripCard';
+import TripsListPagination from './TripsListPagination';
 
 const Content = () => {
   const isLoading = useSelector(getLoadingStatus);
+  const dispatch = useDispatch();
+  const { ref, inView, entry } = useInView({
+    threshold: 1,
+  });
 
   const trips = useSelector(getTrips);
   const tripsMeta = useSelector(getTripsMetaData);
-  if (isLoading) {
-    return <></>;
-  }
+  useEffect(() => {
+    if (inView === true) {
+      dispatch(fetchTripsNextPage({ pageUrl: tripsMeta.next }));
+    }
+  }, [dispatch, inView, tripsMeta.next]);
 
   return (
     <div>
+      <h1>Total: {trips.length}</h1>
       <div
         className={classNames('search-results', {
           loading: isLoading,
@@ -27,15 +36,11 @@ const Content = () => {
         ))}
       </div>
 
-      {tripsMeta.next && (
-        <div className="load-more">
-          <button type="button" className="btn btn-success btn-block" data-href="#">
-            <FontAwesomeIcon icon="sync" className="mr-1" />
-            Load Page {`${tripsMeta.current + 1}`}
-          </button>
-        </div>
-      )}
+      {!isLoading && <TripsListPagination next={tripsMeta.next} nextPageRef={ref} />}
     </div>
   );
 };
 export default Content;
+
+
+

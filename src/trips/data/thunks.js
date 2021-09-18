@@ -1,15 +1,15 @@
 import _ from 'lodash';
 
-import {addModels} from '../../generic/model-store';
-import {getTripItems} from './api';
-import {itemsReceived, itemsRequested, itemsRequestFailed} from './slice';
+import { addModels } from '../../generic/model-store';
+import { getTripItems } from './api';
+import { itemsReceived, itemsRequested, itemsRequestFailed, resetItems } from './slice';
 
-export function fetchTripsList(searchParams) {
+export function fetchTripsList(options) {
   return async (dispatch) => {
     await dispatch(itemsRequested());
     try {
       const { categories, facilities, hosts, items, locations, metaData, users } =
-        await getTripItems(searchParams);
+        await getTripItems(options);
 
       if (_.size(items) > 0) {
         dispatch(addModels({ modelType: 'host', models: hosts }));
@@ -21,7 +21,20 @@ export function fetchTripsList(searchParams) {
       }
     } catch (error) {
       console.log('=>error', error);
-      dispatch(itemsRequestFailed({error: error.toString()}));
+      dispatch(itemsRequestFailed({ error: error.toString() }));
     }
+  };
+}
+
+export function fetchAndRestTripsListItems(options) {
+  return async (dispatch) => {
+    dispatch(resetItems());
+    await dispatch(fetchTripsList(options));
+  };
+}
+
+export function fetchTripsNextPage(options) {
+  return async (dispatch) => {
+    await dispatch(fetchTripsList(options));
   };
 }

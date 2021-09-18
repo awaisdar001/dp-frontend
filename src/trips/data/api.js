@@ -71,8 +71,8 @@ const createTripSchedules = ({ type, options }) => {
  * Fetches timeline items.
  * @returns {Promise<[{}]>}
  */
-export async function getTripItems(searchParams) {
-  const { data } = await getAuthenticatedHttpClient().get(getTripsListURL(searchParams));
+export async function getTripItems(options) {
+  const { data } = await getAuthenticatedHttpClient().get(getTripsListURL(options));
   return normalizeTripsListData(data);
 }
 
@@ -144,18 +144,22 @@ const normalizeHost = (host) => {
   };
 };
 
-const getTripsListURL = (params) => {
-  const destinations = params.selectedDestinations.reduce(
+const getTripsListURL = (options) => {
+  if (options.pageUrl) {
+    return options.pageUrl;
+  }
+
+  const destinations = options.selectedDestinations.reduce(
     (acc, d) => `${acc.slug ? acc.slug : acc},${d.slug}`,
     '',
   );
 
-  const [minPrice, maxPrice] = params.searchPrices;
-  const [minDate, maxDate] = params.searchDates;
-  const [minDay, maxDay] = params.searchDays;
+  const [minPrice, maxPrice] = options.searchPrices;
+  const [minDate, maxDate] = options.searchDates;
+  const [minDay, maxDay] = options.searchDays;
 
   const queryString = transformQueryString([
-    ['name', params.searchKeyword],
+    ['name', options.searchKeyword],
     ['destination', destinations],
     ['duration_from', minDay],
     ['duration_to', maxDay],

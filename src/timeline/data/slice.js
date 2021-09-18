@@ -4,8 +4,9 @@ const slice = createSlice({
   name: 'timeline',
   initialState: {
     feedItems: [],
-    metaData: {},
+    metaData: { nextPage: '' },
     loadingStatus: true,
+    loadingStatusNextPage: false,
   },
   reducers: {
     itemsRequested: (state, { payload }) => {
@@ -13,6 +14,9 @@ const slice = createSlice({
     },
     updateLoadingStatus: (state, { payload }) => {
       state.loadingStatus = payload.status;
+    },
+    updateLoadingNextPage: (state, { payload }) => {
+      state.loadingStatusNextPage = payload.status;
     },
     itemsReceived: (state, { payload }) => {
       state.loadingStatus = false;
@@ -40,6 +44,7 @@ export const {
   itemsRequestFailed,
   restItemsRequested,
   updateLoadingStatus,
+  updateLoadingNextPage,
 } = slice.actions;
 
 export const { reducer } = slice;

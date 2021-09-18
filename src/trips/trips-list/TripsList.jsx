@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 
 import Storage from "../../storage";
-import { fetchTripsList } from '../data/thunks';
+import {fetchAndRestTripsListItems} from '../data/thunks';
 import Content from './content';
 import Cover from './cover/';
 import { tripHeadingItems } from "./data/enums";
@@ -37,8 +37,11 @@ export default function TripList() {
 
   useEffect(() => {
     console.log('[useEffect]: TripsList-API Call here.');
+    if (selectedDestinations.length === 0) {
+      return;
+    }
     dispatch(
-      fetchTripsList({
+      fetchAndRestTripsListItems({
         searchDays,
         searchDates,
         searchPrices,
@@ -46,7 +49,7 @@ export default function TripList() {
         selectedDestinations,
       }),
     );
-  }, [dispatch, searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations, search]);
+  }, [dispatch, searchDays, searchDates, searchPrices, searchKeyword, selectedDestinations]);
 
   return (
     <>
