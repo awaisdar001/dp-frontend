@@ -1,6 +1,6 @@
-import {getAuthenticatedHttpClient} from '../../data/api';
+import { getAuthenticatedHttpClient } from '../../data/api';
 import DpApiService from '../../data/services/DpService';
-import {camelCaseObject, normalizeBySlug, normalizeUser} from '../../utils';
+import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../utils';
 
 /**
  * Fetches timeline items.
@@ -8,7 +8,7 @@ import {camelCaseObject, normalizeBySlug, normalizeUser} from '../../utils';
  */
 export async function getTimelineItems(options) {
   const url = DpApiService.getTimelineFeedsUrl(options);
-  const {data} = await getAuthenticatedHttpClient().get(url);
+  const { data } = await getAuthenticatedHttpClient().get(url);
   return normalizeTimelineItems(data);
 }
 
@@ -33,9 +33,7 @@ const normalizeTimelineItems = (data) => {
       ...data.results.map((item) => normalizeUser(item.instance, 'created_by')),
       ...data.results.map((item) => normalizeUser(item, 'display_user')),
     ],
-    city: data.results.map(
-      (item) => item.instance.city && normalizeBySlug(item.instance.city),
-    ),
+    city: data.results.map((item) => item.instance.city && normalizeBySlug(item.instance.city)),
     pro: data.results.map((item) => normalizeBySlug(item.instance.pro)),
     metaData: {
       nextPage: data.next,

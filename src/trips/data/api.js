@@ -1,4 +1,3 @@
-import SelectInput from '@material-ui/core/Select/SelectInput';
 import _ from 'lodash';
 import moment from 'moment';
 

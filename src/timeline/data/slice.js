@@ -1,36 +1,36 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'timeline',
   initialState: {
     feedItems: [],
-    metaData: {nextPage: ''},
+    metaData: { nextPage: '' },
     loadingStatus: true,
     loadingStatusNextPage: false,
   },
   reducers: {
-    itemsRequested: (state, {payload}) => {
+    itemsRequested: (state, { payload }) => {
       state.loadingStatus = true;
     },
-    updateLoadingStatus: (state, {payload}) => {
+    updateLoadingStatus: (state, { payload }) => {
       state.loadingStatus = payload.status;
     },
-    updateLoadingNextPage: (state, {payload}) => {
+    updateLoadingNextPage: (state, { payload }) => {
       state.loadingStatusNextPage = payload.status;
     },
-    itemsReceived: (state, {payload}) => {
+    itemsReceived: (state, { payload }) => {
       state.loadingStatus = false;
       state.feedItems = [...state.feedItems, ...payload.items];
       state.metaData = payload.metaData;
     },
-    restItems: (state, {payload}) => {
+    restItems: (state, { payload }) => {
       state.feedItems = [];
     },
-    itemsRequestFailed: (state, {payload}) => {
+    itemsRequestFailed: (state, { payload }) => {
       state.loadingStatus = false;
       state.error = payload.error;
     },
-    restItemsRequested: (state, {payload}) => {
+    restItemsRequested: (state, { payload }) => {
       state.loadingStatus = true;
       state.feedItems = [];
     },
@@ -47,5 +47,4 @@ export const {
   updateLoadingNextPage,
 } = slice.actions;
 
-
-export const {reducer} = slice;
+export const { reducer } = slice;
