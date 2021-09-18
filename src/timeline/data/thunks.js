@@ -5,19 +5,15 @@ import {
   itemsRequested,
   itemsRequestFailed,
   restItems,
+  updateLoadingNextPage,
 } from './slice';
 
-export function fetchTimelineItems(
-  selectedProps,
-  selectedFeedTypes,
-  pageNumber = 0,
-) {
+export function fetchTimelineItems(options) {
   return async (dispatch) => {
     await dispatch(itemsRequested());
     try {
       const { items, users, pro, city, states, metaData } =
-        await getTimelineItems(selectedProps, selectedFeedTypes, pageNumber);
-      // dispatch(addModels({modelType: 'items', models: items}));
+        await getTimelineItems(options);
       dispatch(addModels({ modelType: 'user', models: users }));
       dispatch(addModels({ modelType: 'pro', models: pro }));
       dispatch(addModels({ modelType: 'city', models: city }));
@@ -30,15 +26,19 @@ export function fetchTimelineItems(
   };
 }
 
-export function fetchAndRestTimelineItems(
-  selectedProps,
-  selectedFeedTypes,
-  pageNumber = 0,
-) {
+export function fetchAndRestTimelineItems(options) {
   return async (dispatch) => {
     dispatch(restItems());
     await dispatch(
-      fetchTimelineItems(selectedProps, selectedFeedTypes, pageNumber),
+      fetchTimelineItems(options),
     );
+  };
+}
+
+export function fetchTimelineNextPage(options) {
+  return async (dispatch) => {
+    dispatch(updateLoadingNextPage({status: true}));
+    await dispatch(fetchTimelineItems(options));
+    dispatch(updateLoadingNextPage({status: false}));
   };
 }

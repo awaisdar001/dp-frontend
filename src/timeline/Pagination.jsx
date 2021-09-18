@@ -1,7 +1,10 @@
 import React from 'react';
-import { Pagination } from 'react-bootstrap';
+import {Pagination} from 'react-bootstrap';
 
-const TimelinePagination = ({ next, previous, nextPageElement }) => {
+const TimelinePagination = ({next, previous, nextPageElement}) => {
+  if (!next) {
+    return <span>You have reached at the end of the feeds.</span>
+  }
   return (
     <Pagination className="invisible">
       {previous && previous.url && (

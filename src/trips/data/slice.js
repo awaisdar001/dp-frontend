@@ -17,13 +17,17 @@ const slice = createSlice({
     },
     itemsReceived: (state, {payload}) => {
       state.loadingStatus = false;
-      state.trips = payload.items;
+      state.trips = [...state.trips, ...payload.items];
       state.tripsMeta = payload.metaData;
     },
     itemsRequestFailed: (state, {payload}) => {
       state.loadingStatus = false;
       state.error = payload.error;
     },
+    resetItems: (state, {payload}) => {
+      state.trips = []
+      state.tripsMeta = {}
+    }
   },
 });
 
@@ -31,6 +35,7 @@ export const {
   itemsRequested,
   itemsReceived,
   itemsRequestFailed,
+  resetItems,
   updateDestination,
 } = slice.actions;
 

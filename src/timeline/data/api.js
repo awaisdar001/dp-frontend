@@ -1,21 +1,14 @@
-import { getAuthenticatedHttpClient } from '../../data/api';
+import {getAuthenticatedHttpClient} from '../../data/api';
 import DpApiService from '../../data/services/DpService';
-import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../utils';
+import {camelCaseObject, normalizeBySlug, normalizeUser} from '../../utils';
+
 /**
  * Fetches timeline items.
  * @returns {Promise<[{}]>}
  */
-export async function getTimelineItems(
-  selectedPros,
-  selectedFeedTypes,
-  pageNumber,
-) {
-  const url = DpApiService.getTimelineFeedsUrl(
-    selectedPros,
-    selectedFeedTypes,
-    pageNumber,
-  );
-  const { data } = await getAuthenticatedHttpClient().get(url);
+export async function getTimelineItems(options) {
+  const url = DpApiService.getTimelineFeedsUrl(options);
+  const {data} = await getAuthenticatedHttpClient().get(url);
   return normalizeTimelineItems(data);
 }
 
