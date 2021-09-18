@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { useModel, useModels } from '../../../generic/model-store';
 import {
   TripCategories,
   TripDepartureLocation,
@@ -6,7 +8,6 @@ import {
   TripGear,
   TripLocations,
 } from './index';
-import { useModel, useModels } from '../../../generic/model-store';
 
 export default function TripDetails({ trip }) {
   const tripDestination = useModel('location', trip.destination);

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import Metadata from './Metadata';
-import ReadOnlyRating from './Rating';
-import { Title, TitlePrice } from '../../TripCommon';
 import { Link } from 'react-router-dom';
+
 import { useModel } from '../../../generic/model-store';
 import { createMarkup } from '../../../utils';
-
 import { getTripDetailURL } from '../../index';
+import { Title, TitlePrice } from '../../TripCommon';
+import Metadata from './Metadata';
+import ReadOnlyRating from './Rating';
 
 let backgroundPoster = {
   backgroundImage:

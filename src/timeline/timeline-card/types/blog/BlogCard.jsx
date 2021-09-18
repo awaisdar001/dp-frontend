@@ -1,10 +1,11 @@
 import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
-import Description from './Description';
-import Footer from '../../Footer';
-import Tags from './Tags';
-import Header from '../../Header';
+
 import { useModel } from '../../../../generic/model-store';
+import Footer from '../../Footer';
+import Header from '../../Header';
+import Description from './Description';
+import Tags from './Tags';
 
 export default function BlogCard({ instance, card }) {
   const { name, description, category, tags, absUrl, createdAt, seenCount } =

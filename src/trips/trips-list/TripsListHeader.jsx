@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
 import React from "react";
 import {Col, Row} from "react-bootstrap";
-import classNames from "classnames";
 
 const TripsListHeader = ({items, active, onChange}) => {
   const handleClick = (id) => {

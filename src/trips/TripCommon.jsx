@@ -1,8 +1,8 @@
 import Rating from '@material-ui/lab/Rating';
+import Humanize from "humanize-plus";
 import React, {useContext, useState} from 'react';
 import {Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import Humanize from "humanize-plus";
 
 export function Title({className, name, url}) {
   return (

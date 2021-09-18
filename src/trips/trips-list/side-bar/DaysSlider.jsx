@@ -1,5 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+
 import { DpSlider } from '../../../common';
 
 const id = 'id-days-slider';

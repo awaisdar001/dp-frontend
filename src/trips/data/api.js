@@ -1,4 +1,7 @@
 import _ from 'lodash';
+import moment from 'moment';
+
+import { getAuthenticatedHttpClient } from '../../data/api';
 import {
   camelCaseObject,
   DateUtils,
@@ -7,8 +10,6 @@ import {
   normalizeUser,
   transformQueryString,
 } from '../../utils';
-import { getAuthenticatedHttpClient } from '../../data/api';
-import moment from 'moment';
 
 // URLs.js
 const TRIP_DETAIL_API_URL = '/api/trip';

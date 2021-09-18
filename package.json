@@ -78,6 +78,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint --ext .js --ext .jsx .",
+    "lint:fix": "eslint --ext .js --ext .jsx 'src/' --fix",
     "move-dist": "npm run move-dist-css && npm run move-dist-js",
     "move-dist-css": "copyfiles -Vf \"build-dist/css/*\" \"../../static/css/react\"",
     "move-dist-js": "copyfiles -Vf \"build-dist/js/*\" \"../../static/js/react\"",
@@ -104,8 +106,13 @@
     "@babel/preset-env": "7.15.0",
     "@types/jest": "^26.0.9",
     "axios-mock-adapter": "^1.18.2",
+    "babel-eslint": "^10.1.0",
     "copyfiles": "^2.2.0",
     "create-react-app": "4.0.3",
+    "eslint": "6.8.0",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "node-sass": "^6.0.1",
     "renamer": "^2.0.1"
   }

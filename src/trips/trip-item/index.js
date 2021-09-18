@@ -1,10 +1,10 @@
-export { default } from './TripItem';
-export { default as TripHeader } from './trip-header';
 export { default as CancellationPolicy } from './CancellationPolicy';
 export { default as Carousel } from './Carousel';
+export { reducer } from './data/slice';
+export { default as TripHighlights } from './Highlights';
 export { default as Location } from './Location';
 export { default as PostComment } from './PostComment';
 export { default as ReviewsAndRatings } from './ReviewsAndRatings';
 export { default as TourPlan } from './TourPlan';
-export { default as TripHighlights } from './Highlights';
-export { reducer } from './data/slice';
+export { default as TripHeader } from './trip-header';
+export { default } from './TripItem';

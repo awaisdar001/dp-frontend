@@ -1,7 +1,8 @@
-import React from 'react';
-import moment from 'moment';
 import 'moment-timezone';
+
+import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import React from 'react';
 export const ReactFEFormat = 'MMM DD, YYYY';
 
 momentDurationFormatSetup(moment);

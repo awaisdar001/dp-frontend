@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Col, Row, Form } from 'react-bootstrap';
+import { Button, Col, Form,Row } from 'react-bootstrap';
+
 import { RatingPlugin } from '../TripCommon';
 
 const RenderInput = (props) => (

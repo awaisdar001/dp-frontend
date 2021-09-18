@@ -1,13 +1,12 @@
+export { useModel, useModels } from './hooks';
 export {
-  reducer,
   addModel,
   addModels,
   addModelsMap,
+  reducer,
+  removeModel,
+  removeModels,
   updateModel,
   updateModels,
   updateModelsMap,
-  removeModel,
-  removeModels,
 } from './slice';
-
-export { useModel, useModels } from './hooks';

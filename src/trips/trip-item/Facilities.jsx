@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+
 import { useModels } from "../../generic/model-store";
 
 export default function Facilities({ trip }) {

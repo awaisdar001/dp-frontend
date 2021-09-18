@@ -1,7 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'moment-timezone';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col } from 'react-bootstrap';
+
 import { FacebookComment, MomentTime } from '../../common';
 
 export default function Footer({ absUrl, createdAt, seenCount }) {

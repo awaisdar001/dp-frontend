@@ -1,6 +1,6 @@
-import { tripReceived, tripRequested, tripRequestFailed } from './slice';
-import { getTrip } from '../../data/api';
 import { addModel, addModels } from '../../../generic/model-store';
+import { getTrip } from '../../data/api';
+import { tripReceived, tripRequested, tripRequestFailed } from './slice';
 
 export function fetchTrip(slug) {
   return async (dispatch) => {

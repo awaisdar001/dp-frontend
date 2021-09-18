@@ -2,6 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Humanize from 'humanize-plus';
 import React, {useState} from 'react';
+
 import {DpSlider} from '../../../common';
 
 const id = 'id-price-slider';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Col,Container, Row } from 'react-bootstrap';
 // import KumratBackground from '../public/static/media/kumrat-valley-poster.jpg'
 // background-image: url(/static/media/kumrat-valley-poster.jpg);
 

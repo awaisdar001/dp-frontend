@@ -1,13 +1,13 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTimelineItems } from './data/thunks';
 
 import { FeedsPlaceholder, LoadingNewFeeds } from '../common';
+import { getLoadingStatus, getNextPage, getPreviousPage, getTimelineFeeds, } from './data/selectors';
+import { fetchTimelineItems } from './data/thunks';
+import { getSelectedFeedTypes, getSelectedPros, } from './left-accordion/data/selectors';
 import TimelinePagination from './Pagination';
 import TimelineCards from './TimelineCards';
-import { getSelectedFeedTypes, getSelectedPros, } from './left-accordion/data/selectors';
-import { getLoadingStatus, getNextPage, getPreviousPage, getTimelineFeeds, } from './data/selectors';
 
 const TimelineContent = () => {
   const observer = useRef();

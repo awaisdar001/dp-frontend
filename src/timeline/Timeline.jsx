@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
+
 import DPAccordion from './left-accordion';
-import TimelineContent from './TimelineContent';
 import RightMenuBar from './right-menu-bar';
+import TimelineContent from './TimelineContent';
 
 export default function Timeline() {
   return (

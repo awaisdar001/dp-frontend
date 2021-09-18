@@ -2,9 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useSelector } from 'react-redux';
+
 import { MomentTime } from '../../common';
-import { getLoading, getPopularQuestions } from './data/selectors';
 import { useModel } from '../../generic/model-store';
+import { getLoading, getPopularQuestions } from './data/selectors';
 
 const PopQuestionPlaceholder = ({ count }) => {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TimelineCard from './timeline-card';
 
 const TimelineCards = ({ items }) => {

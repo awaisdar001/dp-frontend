@@ -1,6 +1,6 @@
 import { getAuthenticatedHttpClient } from '../../data/api';
-import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../utils';
 import DpApiService from '../../data/services/DpService';
+import { camelCaseObject, normalizeBySlug, normalizeUser } from '../../utils';
 /**
  * Fetches timeline items.
  * @returns {Promise<[{}]>}

@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import {Col, Container, Row} from 'react-bootstrap';
-import BookingSideBar from './booking-sidebar';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {fetchTrip} from './data/thunks';
-import {Title, TitlePrice} from '../TripCommon';
 import {createMarkup} from '../../utils';
-
-import {TripDetails} from './trip-details';
+import {TripItemPlaceholder} from '../Placeholders';
+import {Title, TitlePrice} from '../TripCommon';
+import BookingSideBar from './booking-sidebar';
+import {fetchTrip} from './data/thunks';
 import {
   CancellationPolicy,
   Carousel,
@@ -17,7 +16,7 @@ import {
   TripHeader,
   TripHighlights,
 } from './index';
-import {TripItemPlaceholder} from '../Placeholders';
+import {TripDetails} from './trip-details';
 
 export default function TripItem({slug}) {
   const dispatch = useDispatch();

@@ -1,16 +1,17 @@
+import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchAndRestTimelineItems } from '../data/thunks';
 import { getSelectedFeedTypes, getSelectedPros } from './data/selectors';
-import FeedsAccordion from './Feed';
-import ProAccordion from './Province';
 import {
   restAllFilters,
   restFeedTypes,
   restProvinces,
 } from './data/slice';
-import { fetchAndRestTimelineItems } from '../data/thunks';
-import _ from 'lodash';
+import FeedsAccordion from './Feed';
+import ProAccordion from './Province';
 
 /**
  * Accordion component for showing checkboxes for quick filtering of timelne

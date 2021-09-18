@@ -1,8 +1,9 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { DateUtils, getDateFromMilliSec } from '../../../utils';
+
 import { DpSlider } from '../../../common';
+import { DateUtils, getDateFromMilliSec } from '../../../utils';
 
 const id = 'id-date-sliders';
 const step = 86400000;

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from "react-redux";
+
+import Storage from "../../storage";
+import { fetchTripsList } from '../data/thunks';
 import Content from './content';
 import Cover from './cover/';
-import TripsListHeader from './TripsListHeader';
 import { tripHeadingItems } from "./data/enums";
-import Storage from "../../storage";
-import { useDispatch, useSelector } from "react-redux";
 import {
   getSearchDates,
   getSearchDays,
@@ -14,9 +15,9 @@ import {
   getSearchState,
   getSelectedDestinations,
 } from "./data/selectors";
-import { fetchTripsList } from '../data/thunks';
-import Sidebar from './side-bar';
 import { fetchTripDestinations } from './data/thunks';
+import Sidebar from './side-bar';
+import TripsListHeader from './TripsListHeader';
 
 export default function TripList() {
   const handleActiveItem = (id) => Storage.updateTripsActiveSorting(id);
