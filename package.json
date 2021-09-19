@@ -110,7 +110,7 @@
     "copyfiles": "^2.2.0",
     "create-react-app": "4.0.3",
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.25.2",
+    "eslint-plugin-react": "7.25.3",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "node-sass": "^6.0.1",
