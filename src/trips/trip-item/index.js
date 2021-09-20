@@ -1,6 +1,7 @@
 export { default as CancellationPolicy } from './CancellationPolicy';
 export { default as Carousel } from './Carousel';
 export { reducer } from './data/slice';
+export { default as GoogleLocation } from './GoogleLocation';
 export { default as TripHighlights } from './Highlights';
 export { default as Location } from './Location';
 export { default as PostComment } from './PostComment';

@@ -23,6 +23,8 @@ build/
 build-dist/
 yarn.lock
 npm-debug.log
+.env.development
+package-lock.json
 
 # Webpack
 webpack-stats*.json
@@ -38,5 +40,5 @@ coverage/
 .prospector.yml
 .coveragerc
 
-#Folders
+# Folders
 .DS_Store
