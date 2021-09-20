@@ -14,7 +14,7 @@ export const DateFormats = {
 export class DateUtils {
   static getDateFromMilliSec(number, format = true) {
     const date = moment(number);
-    if (format === true) {
+    if (format) {
       return this.formatToYearMonthDay(date);
     }
     return date;
@@ -75,7 +75,7 @@ export function snakeCaseObject(object) {
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
-export const NewLineToBr = ({children = ''}) => {
+export const NewLineToBr = ({ children = '' }) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
@@ -113,10 +113,10 @@ export const getQueryStringParams = (query) => {
 
   return query
     ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce((params, param) => {
-      let [key, value] = param.split('=');
-      params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-      return params;
-    }, {})
+        let [key, value] = param.split('=');
+        params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+        return params;
+      }, {})
     : {};
 };
 
@@ -125,6 +125,13 @@ export const normalizeBySlug = (data) =>
     id: data.slug,
     ...data,
   };
+export const normalizeLocation = (location) => {
+  let normalizedLocation = normalizeBySlug(location);
+  const [lat, lng] = normalizedLocation.coordinates.split(',');
+  normalizedLocation.lat = parseFloat(lat);
+  normalizedLocation.lng = parseFloat(lng);
+  return normalizedLocation;
+};
 export const normalizeUser = (data, key) => ({
   id: data[key].username,
   ...data[key],

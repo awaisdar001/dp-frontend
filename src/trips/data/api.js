@@ -6,7 +6,7 @@ import {
   camelCaseObject,
   DateUtils,
   getRatingFeedback,
-  normalizeBySlug,
+  normalizeBySlug, normalizeLocation,
   normalizeUser,
   transformQueryString,
 } from '../../utils';
@@ -27,9 +27,9 @@ export async function getTrip(slug) {
 const normalizeTripData = (trip) => {
   const tripCategories = trip.categories.map((category) => normalizeBySlug(category));
   const tripPrimaryCategory = normalizeBySlug(trip.primary_category);
-  const tripLocations = trip.locations.map((location) => normalizeBySlug(location));
-  const tripDestination = normalizeBySlug(trip.destination);
-  const tripStartingLocation = normalizeBySlug(trip.starting_location);
+  const tripLocations = trip.locations.map((location) => normalizeLocation(location));
+  const tripDestination = normalizeLocation(trip.destination);
+  const tripStartingLocation = normalizeLocation(trip.starting_location);
 
   const tripData = {
     trip: {
