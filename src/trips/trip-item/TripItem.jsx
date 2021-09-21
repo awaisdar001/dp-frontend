@@ -16,6 +16,7 @@ import {
   TourPlan,
   TripHeader,
   TripHighlights,
+  TripHost,
 } from './index';
 import { TripDetails } from './trip-details';
 
@@ -31,55 +32,58 @@ export default function TripItem({ slug }) {
 
   if (isLoading) {
     return <TripItemPlaceholder />;
-  } else {
-    const tripDetail = {
-      destination: trip.destination,
-      startingLocation: trip.startingLocation,
-      locations: trip.locations,
-      facilities: trip.facilities,
-      gear: trip.gear,
-      categories: trip.categories,
-      primaryCategory: trip.primaryCategory,
-    };
-    const tripHighlights = {
-      duration: trip.duration,
-      host: trip.host,
-      primaryCategory: trip.primaryCategory,
-      destination: trip.destination,
-    };
-
-    return (
-      <div className="dp-trips">
-        <Carousel />
-        <Container fluid>
-          <TripHeader />
-          <div className="trip-wrapper">
-            <Row>
-              <Col lg={9}>
-                <div className="item-detail">
-                  <Title className="float-left" name={trip.name} url="#" />
-                  <TitlePrice className={'float-right'} tripMinPrice={trip.minPrice} />
-                  <TripHighlights trip={tripHighlights} />
-                  <hr />
-                  <div className="item-description">
-                    <p dangerouslySetInnerHTML={createMarkup(trip.description)} />
-                  </div>
-                  <TripDetails trip={tripDetail} />
-                  {<TourPlan tripItinerary={trip.tripItinerary} />}
-                  <GoogleLocation tripDetail={tripDetail} />
-                  {<CancellationPolicy cancellationPolicy={trip.cancellationPolicy} />}
-                  <ReviewsAndRatings host={trip.host} />
-                  <PostComment />
-                </div>
-              </Col>
-              <Col lg={3}>
-                <BookingSideBar tripDates={trip.schedules} />
-              </Col>
-            </Row>
-          </div>
-        </Container>
-      </div>
-    );
   }
+  const tripLocations = {
+    destination: trip.destination,
+    startingLocation: trip.startingLocation,
+    locations: trip.locations,
+  };
+  const tripDetail = {
+    ...tripLocations,
+    facilities: trip.facilities,
+    gear: trip.gear,
+    categories: trip.categories,
+    primaryCategory: trip.primaryCategory,
+  };
+  const tripHighlights = {
+    duration: trip.duration,
+    host: trip.host,
+    primaryCategory: trip.primaryCategory,
+    destination: trip.destination,
+  };
+
+  return (
+    <div className="dp-trips">
+      <Carousel />
+      <Container fluid>
+        <TripHeader />
+        <div className="trip-wrapper">
+          <Row>
+            <Col lg={9}>
+              <div className="item-detail">
+                <Title className="float-left" name={trip.name} url="#" />
+                <TitlePrice className={'float-right'} tripMinPrice={trip.minPrice} />
+                <TripHighlights trip={tripHighlights} />
+                <hr />
+                <div className="item-description">
+                  <p dangerouslySetInnerHTML={createMarkup(trip.description)} />
+                </div>
+                <TripDetails trip={tripDetail} />
+                <TourPlan tripItinerary={trip.tripItinerary} />
+                <GoogleLocation trip={tripLocations} />
+                <CancellationPolicy cancellationPolicy={trip.cancellationPolicy} />
+                <TripHost host={trip.host} />
+                <PostComment />
+              </div>
+            </Col>
+            <Col lg={3}>
+              <BookingSideBar tripDates={trip.schedules} />
+            </Col>
+          </Row>
+        </div>
+      </Container>
+    </div>
+  );
 }
+
 

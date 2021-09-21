@@ -8,4 +8,5 @@ export { default as PostComment } from './PostComment';
 export { default as ReviewsAndRatings } from './ReviewsAndRatings';
 export { default as TourPlan } from './TourPlan';
 export { default as TripHeader } from './trip-header';
+export { default as TripHost } from './TripHost';
 export { default } from './TripItem';
