@@ -12,7 +12,6 @@ import {
   Carousel,
   GoogleLocation,
   PostComment,
-  ReviewsAndRatings,
   TourPlan,
   TripHeader,
   TripHighlights,
