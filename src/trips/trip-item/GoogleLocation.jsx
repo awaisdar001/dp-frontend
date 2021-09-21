@@ -14,12 +14,12 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
-export default function GoogleLocation({ tripDetail }) {
+export default function GoogleLocation({ trip }) {
   const [selectedMarker, setSelectedMarker] = useState(null);
 
-  const startingLocation = useModel('location', tripDetail.startingLocation);
-  const tripDestination = useModel('location', tripDetail.destination);
-  const tripLocations = useModels('location', tripDetail.locations);
+  const startingLocation = useModel('location', trip.startingLocation);
+  const tripDestination = useModel('location', trip.destination);
+  const tripLocations = useModels('location', trip.locations);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_URL,

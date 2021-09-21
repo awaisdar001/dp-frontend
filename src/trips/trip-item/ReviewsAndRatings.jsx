@@ -25,7 +25,7 @@ function ReviewsAndRatings({host}) {
 
   return (
     <div id="reviews" className="trip-review-wrapper wrapper-block">
-      <h3 className="h3">Tour Review Scores And Score Breakdown</h3>
+      <h3 className="h3">Tour Rating & Review</h3>
       <Row>
         <Col lg={3} className="rating-average">
           <div className="average">
@@ -39,7 +39,7 @@ function ReviewsAndRatings({host}) {
           </div>
         </Col>
         <Col lg={9} className="rating-percentage">
-          <RenderProgressBar title="Overall" number={rating.percent}/>
+          <RenderProgressBar title="Overall" number={rating.percent} />
           {/*<RenderProgressBar title="Meals" number="60" />*/}
           {/*<RenderProgressBar title="Accommodation" number="50" />*/}
           {/*<RenderProgressBar title="Transport" number="90" />*/}

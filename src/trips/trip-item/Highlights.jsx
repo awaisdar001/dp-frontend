@@ -6,7 +6,7 @@ import Metadata from '../trips-list/content/Metadata';
 export default function TripHighlights({ trip }) {
   const tripCategory = useModel('category', trip.primaryCategory);
   const tripDestination = useModel('location', trip.destination);
-    const tripHost = useModel('host', trip.host);
+  const tripHost = useModel('host', trip.host);
 
   return (
     <Metadata
