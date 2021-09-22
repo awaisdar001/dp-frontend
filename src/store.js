@@ -8,7 +8,7 @@ import { reducer as TripsListReducer } from './trips';
 import { reducer as TripReducer } from './trips/trip-item';
 import { reducer as TripsListListReducer } from './trips/trips-list';
 
-export default function initializeStore() {
+export default function initializeStore(preloadedState = undefined) {
   return configureStore({
     reducer: {
       accordion: accordionReducer,
@@ -19,5 +19,6 @@ export default function initializeStore() {
       tripItem: TripReducer,
       models: ModelReducer,
     },
+    preloadedState,
   });
 }
