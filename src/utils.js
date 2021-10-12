@@ -122,9 +122,15 @@ export const getQueryStringParams = (query) => {
 
 export const normalizeBySlug = (data) =>
   data && {
-    id: data.slug,
     ...data,
+    id: data.slug,
   };
+
+export const normalizeUser = (data, key) => ({
+  ...data[key],
+  id: data[key].username,
+});
+
 export const normalizeLocation = (location) => {
   let normalizedLocation = normalizeBySlug(location);
   const [lat, lng] = normalizedLocation.coordinates.split(',');
@@ -132,10 +138,7 @@ export const normalizeLocation = (location) => {
   normalizedLocation.lng = parseFloat(lng);
   return normalizedLocation;
 };
-export const normalizeUser = (data, key) => ({
-  id: data[key].username,
-  ...data[key],
-});
+
 
 export const createMarkup = (html) => ({__html: html});
 

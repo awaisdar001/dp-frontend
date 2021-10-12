@@ -6,5 +6,6 @@ export const getAuthenticatedHttpClient = () => {
     baseURL: process.env.REACT_APP_BASE_URL,
   });
   instance.defaults.headers.common['Authorization'] = `Basic YWRtaW46YXJiaXNvZnQx`;  // todo
+  instance.defaults.headers.common['Content-Type'] = 'application/json'
   return instance;
 }
