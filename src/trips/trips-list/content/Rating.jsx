@@ -1,6 +1,7 @@
-import { faStar } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faStar} from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
+
 
 const ReadOnlyRating = React.memo(function ({rating, ratedBy}) {
   let remainder = rating % 1;
@@ -8,17 +9,21 @@ const ReadOnlyRating = React.memo(function ({rating, ratedBy}) {
   const halfStar = <FontAwesomeIcon icon="star-half-alt" className="mr-2"/>
   const emptyStar = <FontAwesomeIcon icon={faStar} className="mr-2"/>
 
-  const ratingStars = [...Array(5)].map((item, index) => {
-    const currentRating = index + 1;
-    if (currentRating <= rating) {
-      return fullStar;
-    } else if (remainder > 0) {
-      remainder = 0;
-      return halfStar;
-    } else {
-      return emptyStar;
-    }
-  });
+  const RatingIcons = () => {
+    return [...Array(5)].map((item, index) => {
+      const currentRating = index + 1;
+      let _icon = 'star';
+      if (currentRating <= rating) {
+        _icon = 'star';
+      } else if (remainder > 0) {
+        remainder = 0;
+        _icon = "star-half-alt";
+      } else {
+        _icon = faStar
+      }
+      return <FontAwesomeIcon key={currentRating} icon={_icon} className="mr-2"/>
+    });
+  }
 
   return (
     <div className="item-rating wrapper-block">
@@ -26,7 +31,7 @@ const ReadOnlyRating = React.memo(function ({rating, ratedBy}) {
       <div className="rating-wrapper">
         <span className="rating-stars-wrapper">
           <span className="rating-stars">
-            {ratingStars}
+            <RatingIcons/>
           </span>
           <div className="rating-review-summary">
             <span className="reviews-count mr-1">{ratedBy}</span>

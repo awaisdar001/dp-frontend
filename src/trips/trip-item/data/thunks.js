@@ -7,6 +7,7 @@ export function fetchTrip(slug) {
     await dispatch(tripRequested());
     try {
       const { categories, facilities, host, trip, locations, users } = await getTrip(slug);
+
       dispatch(addModel({ modelType: 'host', model: host }));
       dispatch(addModels({ modelType: 'category', models: categories }));
       dispatch(addModels({ modelType: 'facility', models: facilities }));

@@ -9,7 +9,7 @@ export function fetchTripDestinations() {
       dispatch(destinationsReceived({destinations}));
     } catch (error) {
       console.log('=>error', error);
-      dispatch(destinationsRequestFailed({error}));
+      dispatch(destinationsRequestFailed({error: error.toJSON()}));
     }
   };
 }

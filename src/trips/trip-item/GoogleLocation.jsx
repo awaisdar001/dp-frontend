@@ -54,8 +54,8 @@ export default function GoogleLocation({ trip }) {
           />
         )}
 
-        {tripLocations.map((marker) => (
-          <MapMarker marker={marker} handleClick={() => setSelectedMarker(marker)} />
+        {tripLocations.map((marker, idx) => (
+          <MapMarker key={idx} marker={marker} handleClick={() => setSelectedMarker(marker)} />
         ))}
         {selectedMarker && (
           <MapInfoWindow
