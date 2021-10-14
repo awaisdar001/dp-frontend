@@ -1673,7 +1673,7 @@ textarea.theme-textarea {
   transition: border-color 175ms cubic-bezier(0.18, 0.43, 0.58, 1);
 
   &:focus {
-    color: #303030;
+    color: $theme-black;
     border-color: #808285;
   }
 }

@@ -6,8 +6,10 @@ import {
   camelCaseObject,
   DateUtils,
   getRatingFeedback,
-  normalizeBySlug, normalizeLocation,
+  normalizeBySlug,
+  normalizeLocation,
   normalizeUser,
+  toBr,
   transformQueryString,
 } from '../../utils';
 
@@ -68,7 +70,7 @@ const createTripSchedules = ({ type, options }) => {
 };
 
 /**
- * Fetches timeline items.
+ * Fetches trip list items.
  * @returns {Promise<[{}]>}
  */
 export async function getTripItems(options) {
@@ -98,10 +100,9 @@ const normalizeTripsListData = (data) => {
   const normalizedData = {
     items: data.results.map((trip) => normalizeTrip(trip)),
     categories: [].concat(...categories, primaryCategories),
-    users: users,
     facilities: [].concat(...facilities),
-    hosts,
     locations: [].concat(locations, startingLocations, destinations),
+    hosts,
     metaData: {
       current: data.current,
       pages: data.pages,
@@ -109,7 +110,9 @@ const normalizeTripsListData = (data) => {
       previous: data.previous,
       total: data.count,
     },
+    users: users,
   };
+
   return camelCaseObject(normalizedData);
 };
 
@@ -117,16 +120,27 @@ const normalizeTrip = (trip) => ({
   ...trip,
   categories: trip.categories.map((category) => category.slug),
   cancellation_policy: trip.cancellation_policy,
-  primary_category: trip.primary_category?.slug,
   createdBy: trip.created_by.username,
+  destination: trip.destination?.slug,
+  description: toBr(trip.description),
+  introduction: _.truncate(trip.description, {
+    length: process.env.REACT_APP_LIMIT_TRIP_INTRO_TO_CHAR,
+    separator: '.',
+    omission: '. [...]',
+  }),
   facilities: trip.facilities.map((facility) => facility.slug),
+  gear: trip.gear,
   host: trip.host.slug,
   locations: trip.locations.map((location) => location.slug),
-  destination: trip.destination?.slug,
-  starting_location: trip.starting_location?.slug,
-  gear: trip.gear,
   minPrice: trip.trip_availability.price,
+  primary_category: trip.primary_category?.slug,
+  starting_location: trip.starting_location?.slug,
+  trip_itinerary: trip.trip_itinerary.map((day) => ({
+    ...day,
+    description: toBr(day.description),
+  })),
 });
+
 
 const normalizeHost = (host) => {
   const tripHostRating = host.rating;

@@ -1,6 +1,8 @@
 import React from 'react';
 
-const TripItem = ({ day, setHeading }) => {
+import { createMarkup, NewLineToBr, toBr } from '../../utils';
+
+const TripItinerary = ({ day, setHeading }) => {
   const { heading, description } = day;
   return (
     <div className="item">
@@ -20,14 +22,11 @@ const TripItem = ({ day, setHeading }) => {
 
       <div className="cbp_tmlabel">
         {setHeading && <h2>{heading}</h2>}
-        {/*<p dangerouslySetInnerHTML={createMarkup(day.description)} />*/}
-
-        <p>{description}</p>
+        <p dangerouslySetInnerHTML={createMarkup(description)} />
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 function TourPlan({ tripItinerary }) {
   return (
@@ -35,7 +34,7 @@ function TourPlan({ tripItinerary }) {
       <h3 className="h3">Tour Plan</h3>
       <div id="plan-timeline" className="timeline-with-label">
         {tripItinerary.map((day, idx) => (
-          <TripItem key={`plan-${idx}`} day={day} setHeading={false} />
+          <TripItinerary key={`plan-${idx}`} day={day} setHeading={false} />
         ))}
       </div>
     </div>

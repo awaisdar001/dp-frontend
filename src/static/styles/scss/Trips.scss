@@ -540,7 +540,7 @@
   @extend .input-with-icon-default;
   text-transform: capitalize;
   &:focus {
-    color: #303030;
+    color: $theme-black;
   }
   &:-moz-placeholder {
     color: inherit;
@@ -556,7 +556,7 @@
 .input-with-icon input[type="email"] {
   @extend .input-with-icon-default;
   &:focus {
-    color: #303030;
+    color: $theme-black;
   }
   &:-moz-placeholder {
     color: inherit;
@@ -572,7 +572,7 @@
 .input-with-icon input[type="password"] {
   @extend .input-with-icon-default;
   &:focus {
-    color: #303030;
+    color: $theme-black;
   }
   &:-moz-placeholder {
     color: inherit;
@@ -588,7 +588,7 @@
 .input-with-icon input[type="number"] {
   @extend .input-with-icon-default;
   &:focus {
-    color: #303030;
+    color: $theme-black;
   }
   &:-moz-placeholder {
     color: inherit;
@@ -608,7 +608,7 @@
 
   @extend .input-with-icon-default;
   &:focus {
-    color: #303030;
+    color: $theme-black;
   }
   &:-moz-placeholder {
     color: inherit;
@@ -694,7 +694,6 @@
         display: none;
       }
       p {
-        white-space: pre-line;
         margin-top: 1rem;
         margin-bottom: 1rem;
       }
@@ -739,7 +738,7 @@
       margin-right: 9px;
       font-size: 15px;
       line-height: 1.667em;
-      color: #303030;
+      color: $theme-black;
       font-weight: 700;
     }
     .rating-wrapper {
