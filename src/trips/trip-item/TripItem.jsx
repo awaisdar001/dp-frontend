@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {NewLineToBr} from '../../utils';
-import {TripItemPlaceholder} from '../Placeholders';
-import {Title, TitlePrice} from '../TripCommon';
+import { createMarkup, NewLineToBr, toBr } from '../../utils';
+import { TripItemPlaceholder } from '../Placeholders';
+import { Title, TitlePrice } from '../TripCommon';
 import BookingSideBar from './booking-sidebar';
-import {fetchTrip} from './data/thunks';
+import { fetchTrip } from './data/thunks';
 import {
   CancellationPolicy,
   Carousel,
@@ -17,9 +17,9 @@ import {
   TripHighlights,
   TripHost,
 } from './index';
-import {TripDetails} from './trip-details';
+import { TripDetails } from './trip-details';
 
-export default function TripItem({slug}) {
+export default function TripItem({ slug }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function TripItem({slug}) {
   const trip = useSelector((state) => state.tripItem.trip);
 
   if (isLoading) {
-    return <TripItemPlaceholder/>;
+    return <TripItemPlaceholder />;
   }
   const tripLocations = {
     destination: trip.destination,
@@ -53,31 +53,38 @@ export default function TripItem({slug}) {
 
   return (
     <div className="dp-trips">
-      <Carousel/>
+      <Carousel />
       <Container fluid>
-        <TripHeader/>
+        <TripHeader />
         <div className="trip-wrapper">
           <Row>
             <Col lg={9}>
               <div className="item-detail">
-                <Title className="float-left" name={trip.name} url="#"/>
-                <TitlePrice className={'float-right'} tripMinPrice={trip.minPrice}/>
-                <TripHighlights trip={tripHighlights}/>
-                <hr/>
+                <Title className="float-left" name={trip.name} url="#" />
+                <TitlePrice className={'float-right'} tripMinPrice={trip.minPrice} />
+                <TripHighlights trip={tripHighlights} />
+                <hr />
                 <div className="item-description">
-                  <NewLineToBr>{trip.description}</NewLineToBr>
+                  <p dangerouslySetInnerHTML={createMarkup(trip.description)} />
                 </div>
-                <TripDetails trip={tripDetail}/>
-                <TourPlan tripItinerary={trip.tripItinerary}/>
-                <GoogleLocation trip={tripLocations}/>
-                <CancellationPolicy cancellationPolicy={trip.cancellationPolicy}/>
-                <TripHost host={trip.host}/>
-                <PostComment/>
+
+                <TripDetails trip={tripDetail} />
+                <TourPlan tripItinerary={trip.tripItinerary} />
+                <GoogleLocation trip={tripLocations} />
+                <CancellationPolicy cancellationPolicy={trip.cancellationPolicy} />
+                <TripHost host={trip.host} />
+                <PostComment />
               </div>
             </Col>
             <Col lg={3}>
-              <BookingSideBar tripDates={trip.schedules}/>
-              <a href={trip.metadata.url} className="btn btn-success btn-block btn-lg" target='_blank'>
+              <BookingSideBar tripDates={trip.schedules} />
+              {/*TODO: delete it when we release.*/}
+              <a
+                href={trip.metadata.url}
+                className="btn btn-success btn-block btn-lg"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Go to trip details
               </a>
             </Col>

@@ -60,13 +60,11 @@ const TripCard = ({trip}) => {
             </div>
           </div>
           <div className="item-detail">
-            <Title name={trip.name} url={tripUrl}/>
-            <TitlePrice tripMinPrice={trip.minPrice}/>
-            <div className="item-description">
-              <TripDescription/>
-            </div>
+            <Title name={trip.name} url={tripUrl} />
+            <TitlePrice tripMinPrice={trip.minPrice} />
+            <div className="item-description">{trip.introduction}</div>
 
-            <ReadOnlyRating rating={hostRating.value} ratedBy={hostRating.ratedBy}/>
+            <ReadOnlyRating rating={hostRating.value} ratedBy={hostRating.ratedBy} />
 
             <Metadata
               className="mt-4"

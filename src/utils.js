@@ -75,6 +75,14 @@ export function snakeCaseObject(object) {
 export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
   moment(number).format(format);
 
+/*
+* Convert all returns into HTML line break elements.
+* @param data{str} object
+*/
+  export const toBr = (data) => {
+    return data.replace(/(?:\r\n|\r|\n)/g, '<br />');
+};
+
 export const NewLineToBr = ({ children = '' }) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
