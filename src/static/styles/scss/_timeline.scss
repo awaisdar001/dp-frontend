@@ -45,11 +45,11 @@
     top: 20px;
   }
   h2 {
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 20px;
     padding: 0 0 5px;
     margin-bottom: 10px;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $gray-400;
     svg {
       font-size: 18px;
       @include mxmargin(0 5px 0 0);
@@ -76,7 +76,7 @@
       @include mxmargin(4px 4px 4px 0);
       background: #fff;
       border: 1px solid #dedede;
-      color: $theme-gray;
+      color: $grey-800;
       text-decoration: none;
       font-size: 0.9em;
       white-space: nowrap;

@@ -150,7 +150,7 @@
 
 .dp-trips .results-wrapper .search-results .trip-item .trip-item-container .item-poster .item-label-overlay .item-label-container {
   font-family: "NYCDR";
-  color: #7ed12d;
+  color: #7ED12D;
   font-size: 2rem;
   position: absolute;
   bottom: 40px;
@@ -169,7 +169,7 @@
   padding: 30px 20px 35px;
   background-color: #f9f9f9;
   position: relative;
-  background-image: url(https://wanderers.qodeinteractive.com/wp-content/plugins/mkdf-tours/assets/img/booking-sidebar-image.png);
+  background-image: url("../../media/booking-sidebar-image.png");
 }
 
 .dp-trips aside.sidebar .search-filter .search-filter-title {
@@ -193,7 +193,7 @@
 }
 
 .dp-trips aside.sidebar .search-filter button {
-  padding: 11px 35px !important;
+  padding: 11px 35px;
   text-transform: capitalize;
 }
 
@@ -261,7 +261,7 @@
 .dp-trips .item-rating .rating-wrapper i,
 .dp-trips .item-rating .rating-wrapper svg {
   margin-right: 4px;
-  color: #7ed12d;
+  color: #7ED12D;
 }
 
 .dp-trips .item-rating .rating-wrapper .rating-review-summary {
@@ -300,7 +300,7 @@
 }
 
 .dp-trips .item-metadata .meta-item .meta-icon {
-  color: #7ed12d;
+  color: #7ED12D;
 }
 
 .dp-trips .item-metadata .meta-item .meta-description a {
@@ -308,7 +308,7 @@
 }
 
 .dp-trips .item-metadata .meta-item .meta-description a:hover {
-  color: #7ed12d;
+  color: #7ED12D;
 }
 
 .dp-trips .trip-wrapper {
@@ -388,7 +388,7 @@
 }
 
 .dp-trips .trip-details-wrapper ul.trip-details li.item:hover .item-heading {
-  color: #7ed12d;
+  color: #7ED12D;
 }
 
 .dp-trips .trip-details-wrapper ul.trip-details li.item .item-heading {
@@ -401,7 +401,7 @@
 }
 
 .dp-trips .trip-details-wrapper ul.trip-details li.item .item-heading:hover {
-  color: #7ed12d;
+  color: #7ED12D;
 }
 
 .dp-trips .trip-details-wrapper ul.trip-details li.item .item-value {
@@ -463,7 +463,7 @@
 .li-circle::before, .dp-trips .trip-details-wrapper ul.trip-details li.item .item-value li.circle::before {
   width: 8px;
   height: 8px;
-  background: #7ed12d;
+  background: #7ED12D;
   content: "";
   display: inline-block;
   border-radius: 20px;
@@ -474,7 +474,7 @@
   margin-right: 5px;
   position: relative;
   top: 2px;
-  color: #7ed12d;
+  color: #7ED12D;
   margin: 0 5px 0 15px;
 }
 
@@ -503,6 +503,10 @@
   outline: none;
 }
 
+.input-with-icon-default:read-only, .input-with-icon input:read-only[type="text"], .input-with-icon input:read-only[type="email"], .input-with-icon input:read-only[type="password"], .input-with-icon input:read-only[type="number"], .input-with-icon textarea:read-only {
+  background-color: #F3F3F3;
+}
+
 .input-with-icon {
   position: relative;
   margin-bottom: 15px;
@@ -514,7 +518,7 @@
   top: 25px;
   width: auto;
   font-size: 15px;
-  color: #7ed12d;
+  color: #7ED12D;
   z-index: 1;
   transform: translateY(-50%);
 }
@@ -649,7 +653,7 @@
   left: 80px;
   width: 4px;
   content: "";
-  background: #f3f3f3;
+  background: #F3F3F3;
   position: absolute;
 }
 
@@ -667,16 +671,16 @@
   width: 10px;
   height: 10px;
   position: absolute;
-  background: #7ed12d;
-  color: #7ed12d;
-  box-shadow: 0 0 0 4px #f3f3f3;
+  background: #7ED12D;
+  color: #7ED12D;
+  box-shadow: 0 0 0 4px #F3F3F3;
   border-radius: 50%;
   -webkit-font-smoothing: antialiased;
 }
 
 .timeline-with-label .item .itinerary-day {
   position: absolute;
-  color: #fff;
+  color: #FFFFFF;
   left: 0;
   top: 17px;
 }
@@ -707,7 +711,7 @@
 }
 
 .rating-average .average {
-  color: #7ed12d;
+  color: #7ED12D;
   margin-top: 25px;
   font-size: 60px;
   line-height: 1em;
@@ -745,6 +749,6 @@
 }
 
 #form-trip-comment .comment-rating .rating-wrapper {
-  color: #7ed12d;
+  color: #7ED12D;
   vertical-align: middle;
 }

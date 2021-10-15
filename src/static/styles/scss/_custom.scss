@@ -250,7 +250,7 @@ button:hover {
 .headline {
   display: block;
   margin: 10px 0 25px 0;
-  border-bottom: 1px dotted $border-color;
+  border-bottom: 1px dotted $gray-400;
   h2 {
     font-size: 22px;
     @include heading-class-style();
@@ -283,7 +283,7 @@ button:hover {
       width: 70%;
       position: absolute;
       border-width: 1px;
-      border-color: $border-color;
+      border-color: $gray-400;
       left: 100%;
     }
     &:before {
@@ -402,7 +402,7 @@ a.dp-hover-opacity:hover {
       margin-right: 2px;
       background: #f4f4f4;
       &:hover {
-        background: $theme-green-d1;
+        background: $theme-green-200;
       }
     }
   }
@@ -421,24 +421,24 @@ form.center-label {
 
 .btn-success {
   background-color: $theme-green;
-  background: linear-gradient(to bottom, $theme-green, $theme-green-d1);
-  background: -webkit-linear-gradient(to bottom, $theme-green, $theme-green-d1);
-  background: -moz-linear-gradient(to bottom, $theme-green, $theme-green-d1);
+  background: linear-gradient(to bottom, $theme-green, $theme-green-200);
+  background: -webkit-linear-gradient(to bottom, $theme-green, $theme-green-200);
+  background: -moz-linear-gradient(to bottom, $theme-green, $theme-green-200);
   border: 1px solid transparent;
   &:hover,
   &:active,
   &:active,
   &:focus {
-    background-color: $theme-green-d1;
+    background-color: $theme-green-200;
     border: 1px solid transparent;
   }
   &:not(:disabled):not(.disabled):active {
     border: 1px solid transparent;
-    background-color: $theme-green-d1;
+    background-color: $theme-green-200;
   }
 }
 .btn-success.active {
-  background-color: $theme-green-d1 !important;
+  background-color: $theme-green-200 !important;
   border: 1px solid transparent !important;
 }
 .text-success {
@@ -466,7 +466,7 @@ form.center-label {
   margin: 0;
 }
 .section-header h1 span {
-  border-bottom: 5px solid $theme-green-d1;
+  border-bottom: 5px solid $theme-green-200;
   padding-bottom: 10px;
 }
 /* =xxx= Section headers =xxx= */
@@ -491,12 +491,12 @@ form.center-label {
 
 .tag-box-v1 {
   border: solid 1px #eee;
-  border-top: solid 2px $theme-green-d1;
+  border-top: solid 2px $theme-green-200;
 }
 
 /* =xxx= Tag boxes =xxx= */
 .service-block-u {
-  background: $theme-green-d1;
+  background: $theme-green-200;
 }
 .service-block-blue {
   background: #3498db;
@@ -608,7 +608,7 @@ form.center-label {
 
 .sidebar-nav-v1 ul li:hover a,
 .sidebar-nav-v1 ul li.active a {
-  color: $theme-green-d1;
+  color: $theme-green-200;
 }
 
 .list-group-item li > .badge {
@@ -776,7 +776,7 @@ form.center-label {
       font-size: 20px;
     }
     span i {
-      color: $theme-green-d1;
+      color: $theme-green-200;
       font-size: 18px;
       margin-right: 5px;
     }
@@ -902,7 +902,7 @@ form.center-label {
   border-color: #999;
 }
 .text-green {
-  color: $theme-green-d1;
+  color: $theme-green-200;
 }
 
 .links-tabs {
@@ -916,7 +916,7 @@ form.center-label {
         background: #fff;
         padding: 7px 15px 9px;
         border: solid 1px #dee2e6;
-        border-top: solid 2px $theme-green-d1;
+        border-top: solid 2px $theme-green-200;
         border-bottom: none !important;
       }
     }
@@ -983,7 +983,7 @@ form.center-label {
       color: #585f69;
       line-height: 32px;
       &:hover {
-        color: $theme-green-d1;
+        color: $theme-green-200;
         text-decoration: none;
       }
     }
@@ -1418,12 +1418,12 @@ form.center-label {
 
 /*Panel Green*/
 .panel-green {
-  border-color: $theme-green-dark;
+  border-color: $theme-green-300;
 }
 
 .panel-green > .panel-heading {
-  background: $theme-green-d1;
-  border-color: $theme-green-dark;
+  background: $theme-green-200;
+  border-color: $theme-green-300;
   color: #fff;
   padding: 5px 15px;
 }
@@ -1450,7 +1450,7 @@ form.center-label {
 .tag-box-v2 {
   background: #fafafa;
   border: solid 1px #eee;
-  border-left: solid 2px $theme-green-d1;
+  border-left: solid 2px $theme-green-200;
 }
 
 // FAQs

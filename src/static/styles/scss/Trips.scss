@@ -175,7 +175,7 @@
       padding: 30px 20px 35px;
       background-color: #f9f9f9;
       position: relative;
-      background-image: url(https://wanderers.qodeinteractive.com/wp-content/plugins/mkdf-tours/assets/img/booking-sidebar-image.png);
+      background-image: url("../../media/booking-sidebar-image.png");
       .search-filter-title {
         margin-bottom: 19px;
         text-align: left;
@@ -194,7 +194,7 @@
       }
 
       button {
-        padding: 11px 35px !important;
+        padding: 11px 35px;
         text-transform: capitalize;
         &:focus {
           outline: none;
@@ -518,6 +518,9 @@
   &:focus {
     outline: none;
   }
+  &:read-only{
+    background-color: $grey-200;
+  }
 }
 
 .input-with-icon {
@@ -656,7 +659,7 @@
     left: 80px;
     width: 4px;
     content: "";
-    background: $background-grey;
+    background: $grey-200;
     position: absolute;
   }
   .item {
@@ -673,7 +676,7 @@
       position: absolute;
       background: $theme-green;
       color: $theme-green;
-      box-shadow: 0 0 0 4px $background-grey;
+      box-shadow: 0 0 0 4px $grey-200;
       border-radius: 50%;
       -webkit-font-smoothing: antialiased;
     }
