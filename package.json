@@ -36,7 +36,7 @@
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.31",
-    "query-string": "^6.13.1",
+    "query-string": "7.0.1",
     "react": "16.14.0",
     "react-bootstrap": "1.6.1",
     "react-dom": "16.14.0",
