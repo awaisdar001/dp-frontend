@@ -6,6 +6,7 @@ body {
   font-family: $font-lato-serif;
   color: $text-color;
 }
+
 body {
   line-height: 1.8rem;
   background-color: $color-white;
@@ -17,10 +18,12 @@ textarea {
   -webkit-border-radius: 0;
   -webkit-appearance: none;
 }
+
 hr {
   border: 0;
   border-top: 1px solid #eee;
 }
+
 h1.hl,
 h2.hl,
 h3.hl,
@@ -45,6 +48,7 @@ h6.hl {
     width: 95vw;
   }
 }
+
 #react-container {
   margin-top: 50px;
 }
@@ -52,6 +56,7 @@ h6.hl {
 .auto-margin-left {
   @include ml(auto);
 }
+
 .margin-left-5 {
   @include ml(5px);
 }
@@ -59,12 +64,15 @@ h6.hl {
 .margin-right-3 {
   @include margin-right(3px);
 }
+
 .margin-right-5 {
   @include margin-right(5px);
 }
+
 .margin-top-3 {
   @include margin-top(3px);
 }
+
 .margin-top-5 {
   @include margin-top(5px);
 }
@@ -76,6 +84,7 @@ h6.hl {
 .margin-bottom-40 {
   @include mb(40px);
 }
+
 .margin-bottom-15 {
   @include mb(15px);
 }
@@ -92,6 +101,7 @@ h6.hl {
   display: flex;
   justify-content: center !important;
 }
+
 .ias-trigger-next {
   cursor: pointer;
   border: 1px solid;
@@ -106,71 +116,85 @@ h1 {
   font-family: "Lato", sans-serif;
   @include heading-font-style();
   font-size: 28px;
+
   .small,
   small {
     @include heading-small();
   }
+
   svg {
     @include margin-right(5px);
   }
 }
+
 .h1 {
   .small,
   small {
     @include heading-small();
   }
 }
+
 h2 {
   font-family: "Lato", sans-serif;
   font-size: 24px;
   @include heading-font-style();
+
   .small,
   small {
     @include heading-small();
   }
+
   svg {
     @include margin-right(5px);
   }
 }
+
 .h2 {
   .heading-xs {
     font-size: 16px;
     line-height: 22px;
   }
+
   .heading-sm {
     font-size: 18px;
     line-height: 24px;
   }
+
   .heading-md {
     font-size: 20px;
     line-height: 24px;
   }
+
   .small,
   small {
     @include heading-small();
   }
 }
+
 h3 {
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
   line-height: 27px;
   @include heading-font-style();
+
   .heading-xs {
     font-size: 14px;
     margin-bottom: 0;
   }
+
   .heading-md {
     font-size: 18px;
     line-height: 24px;
   }
+
   .small,
   small {
     @include heading-small();
   }
+
   svg {
     @include margin-right(5px);
   }
 }
+
 .h3 {
   .heading-md {
     line-height: 22px;
@@ -180,25 +204,27 @@ h3 {
     font-size: 16px;
     line-height: 20px;
   }
+
   .small,
   small {
     @include heading-small();
   }
 }
+
 h4 {
-  font-family: "Lato", sans-serif;
   line-height: 25px;
-  font-size: 18px;
   @include heading-font-style();
+
   svg {
     @include margin-right(5px);
   }
 }
+
 h5 {
-  font-family: "Lato", sans-serif;
   line-height-step: 1.8rem;
   font-size: 14px;
   @include heading-font-style();
+
   svg {
     @include margin-right(5px);
   }
@@ -208,6 +234,7 @@ h6 {
   font-family: "Lato", sans-serif;
   line-height: 18px;
   @include heading-font-style();
+
   svg {
     @include margin-right(5px);
   }
@@ -221,6 +248,7 @@ a:active {
   color: $theme-green;
   text-decoration: none;
 }
+
 a {
   color: $text-color;
   text-decoration: none;
@@ -232,6 +260,7 @@ li,
 li a {
   color: $text-color;
 }
+
 .radio,
 .form-check {
   display: block;
@@ -251,13 +280,16 @@ button:hover {
   display: block;
   margin: 10px 0 25px 0;
   border-bottom: 1px dotted $gray-400;
+
   h2 {
     font-size: 22px;
     @include heading-class-style();
   }
+
   h3 {
     @include heading-class-style();
   }
+
   h4 {
     @include heading-class-style();
   }
@@ -265,6 +297,7 @@ button:hover {
 
 .headline-md {
   margin-bottom: 15px;
+
   h2 {
     font-size: 21px;
   }
@@ -273,6 +306,7 @@ button:hover {
 /*Heading Options*/
 .heading {
   text-align: center;
+
   h2 {
     padding: 0 12px;
     position: relative;
@@ -286,14 +320,17 @@ button:hover {
       border-color: $gray-400;
       left: 100%;
     }
+
     &:before {
       right: 100%;
     }
   }
 }
+
 .dp-checkbox {
   .checkbox-item {
     margin-bottom: 7px;
+
     input[type="checkbox"] {
       display: none;
     }
@@ -308,12 +345,14 @@ button:hover {
       -ms-user-select: none;
       user-select: none;
       cursor: pointer;
+
       span {
         text-transform: capitalize;
         position: relative;
         top: 1px;
       }
     }
+
     label:before {
       content: "";
       display: inline-block;
@@ -328,11 +367,13 @@ button:hover {
       box-sizing: border-box;
       border: 1px solid #ddd;
     }
+
     input[type="checkbox"]:checked + label:before {
       content: "\2713";
       color: $theme-green;
       background-color: #fff;
     }
+
     &:first-child {
       margin-top: 34px;
     }
@@ -345,6 +386,7 @@ button:hover {
     width: 20%;
   }
 }
+
 span.badge {
   font-size: 12px;
   font-weight: 400;
@@ -357,6 +399,7 @@ span.label-u,
 span.badge-u {
   background: $theme-green;
 }
+
 a.dp-hover-opacity:hover {
   opacity: 0.7;
 }
@@ -377,6 +420,7 @@ a.dp-hover-opacity:hover {
 .gallery-item-icons {
   font-size: 24px;
   color: #444;
+
   li {
     span {
       font-size: 14px;
@@ -390,9 +434,11 @@ a.dp-hover-opacity:hover {
   margin-bottom: 10px;
   border-top: solid 1px #eee;
   border-bottom: solid 1px #eee;
+
   ul {
     margin-bottom: 3px;
   }
+
   ul.dp-tags {
     a {
       color: #555;
@@ -401,6 +447,7 @@ a.dp-hover-opacity:hover {
       padding: 3px 7px;
       margin-right: 2px;
       background: #f4f4f4;
+
       &:hover {
         background: $theme-green-200;
       }
@@ -415,16 +462,14 @@ form.center-label {
   }
 }
 
-.btn {
-  border-radius: 0;
-}
 
 .btn-success {
-  background-color: $theme-green;
   background: linear-gradient(to bottom, $theme-green, $theme-green-200);
   background: -webkit-linear-gradient(to bottom, $theme-green, $theme-green-200);
   background: -moz-linear-gradient(to bottom, $theme-green, $theme-green-200);
   border: 1px solid transparent;
+  color: $color-white;
+
   &:hover,
   &:active,
   &:active,
@@ -432,18 +477,27 @@ form.center-label {
     background-color: $theme-green-200;
     border: 1px solid transparent;
   }
+
   &:not(:disabled):not(.disabled):active {
     border: 1px solid transparent;
     background-color: $theme-green-200;
   }
+
+  &.disabled,
+  &:disabled {
+    color: $color-white;
+  }
 }
+
 .btn-success.active {
   background-color: $theme-green-200 !important;
   border: 1px solid transparent !important;
 }
+
 .text-success {
   color: $theme-green !important;
 }
+
 // Google maps container on view image.
 .pac-container {
   z-index: 1050;
@@ -457,6 +511,7 @@ form.center-label {
   padding: 15px 0;
   margin-bottom: 50px;
 }
+
 .section-header h1 {
   color: #666;
   font-size: 16px;
@@ -465,10 +520,12 @@ form.center-label {
   padding: 0;
   margin: 0;
 }
+
 .section-header h1 span {
   border-bottom: 5px solid $theme-green-200;
   padding-bottom: 10px;
 }
+
 /* =xxx= Section headers =xxx= */
 
 /* ===== Tag boxes ===== */
@@ -476,10 +533,12 @@ form.center-label {
   padding: 20px;
   background: #fff;
   margin-bottom: 30px;
+
   h2 {
     font-size: 20px;
     line-height: 25px;
   }
+
   p {
     margin-bottom: 0;
   }
@@ -498,6 +557,7 @@ form.center-label {
 .service-block-u {
   background: $theme-green-200;
 }
+
 .service-block-blue {
   background: #3498db;
 }
@@ -553,9 +613,11 @@ form.center-label {
 .service-block-light {
   background: #ecf0f1;
 }
+
 .progress-xxs {
   height: 3px;
 }
+
 .content {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -630,15 +692,18 @@ form.center-label {
   padding: 3px 5px;
   margin-right: 10px;
 }
+
 /* ===== Profile ===== */
 
 .profile {
   .overflow-h {
     overflow: hidden;
   }
+
   .heading-sm-v2 {
     font-size: 16px;
   }
+
   .list-group {
     i {
       min-width: 20px;
@@ -646,23 +711,28 @@ form.center-label {
       text-align: center;
     }
   }
+
   .panel-profile {
     border: none;
     margin-bottom: 0;
     box-shadow: none;
   }
+
   .panel-heading {
     color: #585f69;
     background: #fff;
     padding: 7px 15px;
     border-bottom: solid 3px #f7f7f7;
   }
+
   .panel-title {
     font-size: 16px;
   }
+
   .panel-body {
     padding: 15px;
   }
+
   .profile-body {
     padding: 20px;
     background: #f7f7f7;
@@ -673,12 +743,15 @@ form.center-label {
 .profile {
   .table {
     background: #fff;
+
     th {
       min-width: 100px;
     }
+
     td {
       vertical-align: middle;
     }
+
     h3 {
       margin-top: 0;
       font-size: 16px;
@@ -704,6 +777,7 @@ form.center-label {
     background: #fff;
     position: relative;
     padding: 15px 10px 5px 15px;
+
     a.change-pic {
       left: 50%;
       bottom: 20px;
@@ -711,13 +785,16 @@ form.center-label {
       text-align: center;
       position: absolute;
     }
+
     h2 {
       margin-top: 0;
       font-weight: 200;
     }
+
     span {
       display: block;
     }
+
     hr {
       margin: 12px 0 10px;
     }
@@ -728,16 +805,20 @@ form.center-label {
 .profile {
   .contact-info {
     margin-bottom: 0;
+
     li {
       padding: 12px 0;
       border-top: 1px solid #f0f0f0;
+
       &:first-child {
         padding-top: 0;
         border-top: none;
       }
+
       &:last-child {
         padding-bottom: 0;
       }
+
       i {
         color: #fff;
         width: 25px;
@@ -747,18 +828,23 @@ form.center-label {
         text-align: center;
         display: inline-block;
       }
+
       i.tw {
         background: #159ceb;
       }
+
       i.fb {
         background: #4862a3;
       }
+
       i.sk {
         background: #00aceb;
       }
+
       i.gp {
         background: #dc4a38;
       }
+
       i.gm {
         background: #c6574b;
       }
@@ -770,11 +856,13 @@ form.center-label {
   .name-location {
     overflow: hidden;
     margin-bottom: 15px;
+
     strong {
       color: #555;
       display: block;
       font-size: 20px;
     }
+
     span i {
       color: $theme-green-200;
       font-size: 18px;
@@ -790,15 +878,19 @@ form.center-label {
   .profile-edit {
     padding: 20px;
     background: #fff;
+
     h2 {
       font-weight: 200;
     }
+
     dt {
       text-align: inherit;
     }
+
     hr {
       margin: 17px 0 15px;
     }
+
     .tab-content {
       padding: 0;
     }
@@ -815,39 +907,47 @@ form.center-label {
 ------------------------------------*/
 .profile-overview-block {
   padding: 20px;
+
   i {
     color: #fff;
     float: left;
     font-size: 50px;
     margin: 0 20px 20px 0;
   }
+
   .service-heading,
   .service-in small {
     color: #fff;
     opacity: 0.8;
     line-height: 1;
   }
+
   .service-in h4,
   .counter {
     color: #fff;
   }
+
   .service-heading {
     font-size: 16px;
     text-transform: uppercase;
   }
+
   .counter {
     display: block;
     line-height: 1;
     font-size: 30px;
   }
+
   .progress {
     margin-bottom: 7px;
   }
+
   .service-in {
     small {
       font-size: 16px;
       text-transform: uppercase;
     }
+
     h4 {
       font-size: 16px;
       line-height: 0.8;
@@ -863,12 +963,15 @@ form.center-label {
       color: #fff;
       opacity: 0.8;
     }
+
     small {
       color: #fff;
     }
+
     .progress {
       background: #bbb;
     }
+
     .progress-bar-light {
       background: #fff;
     }
@@ -878,16 +981,19 @@ form.center-label {
 .block-inverse {
   border-radius: 5px;
   border: 1px solid #eee;
+
   .head-inverse {
     background: #f5f5f5;
     padding: 10px;
     border-bottom: 1px solid #eee;
   }
+
   .body-inverse {
     padding-top: 10px;
     padding-bottom: 10px;
   }
 }
+
 .user-gallery img {
   height: 60px;
   width: 60px;
@@ -901,6 +1007,7 @@ form.center-label {
 .user-gallery img:hover {
   border-color: #999;
 }
+
 .text-green {
   color: $theme-green-200;
 }
@@ -908,9 +1015,11 @@ form.center-label {
 .links-tabs {
   .nav-tabs {
     border: 0;
+
     .nav-link {
       padding-bottom: 10px;
     }
+
     li {
       a.active {
         background: #fff;
@@ -930,17 +1039,21 @@ form.center-label {
     background: 0;
     border-bottom: solid 2px $theme-green;
     padding-bottom: 4px;
+
     a {
       padding: 5px 15px;
 
       font-size: 14px;
     }
+
     .tab-content {
       padding: 10px 0;
+
       img {
         margin-top: 4px;
         margin-bottom: 15px;
       }
+
       img.img-tab-space {
         margin-top: 7px;
       }
@@ -965,6 +1078,7 @@ form.center-label {
   background: $theme-green;
   color: #fff;
 }
+
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
@@ -979,9 +1093,11 @@ form.center-label {
     font-size: 30px;
     line-height: 32px;
     margin-bottom: 10px;
+
     a {
       color: #585f69;
       line-height: 32px;
+
       &:hover {
         color: $theme-green-200;
         text-decoration: none;
@@ -989,6 +1105,7 @@ form.center-label {
     }
   }
 }
+
 .blog-page {
   .blog-credits {
     a {
@@ -996,6 +1113,7 @@ form.center-label {
     }
   }
 }
+
 // Blog.
 .panel {
   margin-bottom: 20px;
@@ -1025,6 +1143,7 @@ form.center-label {
   margin-bottom: 0;
   font-size: 16px;
   color: inherit;
+
   a {
     color: inherit;
   }
@@ -1047,12 +1166,14 @@ form.center-label {
     border-width: 1px 0;
     border-radius: 0;
   }
+
   &:first-child {
     .list-group-item:first-child {
       border-top: 0;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
+
     &:last-child {
       .list-group-item:last-child {
         border-bottom: 0;
@@ -1081,63 +1202,63 @@ form.center-label {
 
 .panel > .table:first-child > thead:first-child > tr:first-child td:first-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > thead:first-child
-  > tr:first-child
-  td:first-child,
+> .table-responsive:first-child
+> .table:first-child
+> thead:first-child
+> tr:first-child
+td:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > tbody:first-child
-  > tr:first-child
-  td:first-child,
+> .table-responsive:first-child
+> .table:first-child
+> tbody:first-child
+> tr:first-child
+td:first-child,
 .panel > .table:first-child > thead:first-child > tr:first-child th:first-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > thead:first-child
-  > tr:first-child
-  th:first-child,
+> .table-responsive:first-child
+> .table:first-child
+> thead:first-child
+> tr:first-child
+th:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > tbody:first-child
-  > tr:first-child
-  th:first-child {
+> .table-responsive:first-child
+> .table:first-child
+> tbody:first-child
+> tr:first-child
+th:first-child {
   border-top-left-radius: 3px;
 }
 
 .panel > .table:first-child > thead:first-child > tr:first-child td:last-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > thead:first-child
-  > tr:first-child
-  td:last-child,
+> .table-responsive:first-child
+> .table:first-child
+> thead:first-child
+> tr:first-child
+td:last-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > tbody:first-child
-  > tr:first-child
-  td:last-child,
+> .table-responsive:first-child
+> .table:first-child
+> tbody:first-child
+> tr:first-child
+td:last-child,
 .panel > .table:first-child > thead:first-child > tr:first-child th:last-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > thead:first-child
-  > tr:first-child
-  th:last-child,
+> .table-responsive:first-child
+> .table:first-child
+> thead:first-child
+> tr:first-child
+th:last-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
 .panel
-  > .table-responsive:first-child
-  > .table:first-child
-  > tbody:first-child
-  > tr:first-child
-  th:last-child {
+> .table-responsive:first-child
+> .table:first-child
+> tbody:first-child
+> tr:first-child
+th:last-child {
   border-top-right-radius: 3px;
 }
 
@@ -1149,63 +1270,63 @@ form.center-label {
 
 .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tbody:last-child
-  > tr:last-child
-  td:first-child,
+> .table-responsive:last-child
+> .table:last-child
+> tbody:last-child
+> tr:last-child
+td:first-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tfoot:last-child
-  > tr:last-child
-  td:first-child,
+> .table-responsive:last-child
+> .table:last-child
+> tfoot:last-child
+> tr:last-child
+td:first-child,
 .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tbody:last-child
-  > tr:last-child
-  th:first-child,
+> .table-responsive:last-child
+> .table:last-child
+> tbody:last-child
+> tr:last-child
+th:first-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tfoot:last-child
-  > tr:last-child
-  th:first-child {
+> .table-responsive:last-child
+> .table:last-child
+> tfoot:last-child
+> tr:last-child
+th:first-child {
   border-bottom-left-radius: 3px;
 }
 
 .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tbody:last-child
-  > tr:last-child
-  td:last-child,
+> .table-responsive:last-child
+> .table:last-child
+> tbody:last-child
+> tr:last-child
+td:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tfoot:last-child
-  > tr:last-child
-  td:last-child,
+> .table-responsive:last-child
+> .table:last-child
+> tfoot:last-child
+> tr:last-child
+td:last-child,
 .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tbody:last-child
-  > tr:last-child
-  th:last-child,
+> .table-responsive:last-child
+> .table:last-child
+> tbody:last-child
+> tr:last-child
+th:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
 .panel
-  > .table-responsive:last-child
-  > .table:last-child
-  > tfoot:last-child
-  > tr:last-child
-  th:last-child {
+> .table-responsive:last-child
+> .table:last-child
+> tfoot:last-child
+> tr:last-child
+th:last-child {
   border-bottom-right-radius: 3px;
 }
 
@@ -1283,12 +1404,15 @@ form.center-label {
 
 .panel-group {
   margin-bottom: 20px;
+
   .panel-heading {
     border-bottom: 0;
   }
+
   .panel-footer {
     border-top: 0;
   }
+
   .panel {
     margin-bottom: 0;
     overflow: hidden;
@@ -1438,6 +1562,7 @@ form.center-label {
   margin-bottom: 50px;
   padding: 15px 0;
 }
+
 .page-tip p {
   margin: 0;
 }
@@ -1447,6 +1572,7 @@ form.center-label {
   background: #fff;
   margin-bottom: 30px;
 }
+
 .tag-box-v2 {
   background: #fafafa;
   border: solid 1px #eee;
@@ -1459,12 +1585,14 @@ form.center-label {
   background-size: cover !important;
   background-color: rgba(88, 95, 105, 0.3) !important;
   position: relative;
+
   .faq-cover-150 {
     padding-top: 10.71429rem !important;
     padding-bottom: 10.71429rem !important;
     z-index: 1;
     position: relative;
   }
+
   &::after {
     content: "";
     background-color: rgba(88, 95, 105, 0.3) !important;
@@ -1475,6 +1603,7 @@ form.center-label {
     left: 0;
   }
 }
+
 .faq-bg-cover::after {
   content: "";
   position: absolute;
@@ -1492,16 +1621,19 @@ form.center-label {
   display: block;
   box-sizing: border-box;
   margin: 30px 0;
+
   .faq-stats-block {
     margin-bottom: 30px;
     border-right: solid 1px !important;
     border-color: #72c02c !important;
+
     .count {
       margin-bottom: 7px !important;
       color: #555 !important;
       font-weight: 300 !important;
       font-size: 35px;
     }
+
     .count-desc {
       color: #999 !important;
     }
@@ -1510,10 +1642,12 @@ form.center-label {
 
 .faq-question-heading {
   margin-bottom: 0.35714rem !important;
+
   h1 {
     color: white;
     font-size: 3rem !important;
   }
+
   h2 {
     color: white;
     font-weight: 300 !important;
@@ -1566,12 +1700,15 @@ form.center-label {
 .qa-comment-item {
   padding-bottom: 20px;
   border-bottom: 1px solid #eeeeee;
+
   .qa-comment-likes {
     margin-bottom: 0 !important;
     margin-left: 5px;
+
     li,
     a {
       color: #999 !important;
+
       &:hover {
         color: #72c02c !important;
       }
@@ -1587,6 +1724,7 @@ form.center-label {
 
 .qa-comment-replies {
   margin: 10px 10px 0 50px;
+
   .qa-comment-item:last-child {
     border-bottom: none !important;
   }
@@ -1606,11 +1744,14 @@ form.center-label {
   direction: ltr;
   -webkit-font-smoothing: subpixel-antialiased;
   display: inline-block;
+
   .qa-comment-user {
     font-weight: 600 !important;
     font-size: 14px;
+
     a {
       color: #000 !important;
+
       &:hover,
       &:focus {
         color: #72c02c !important;
@@ -1625,12 +1766,14 @@ form.center-label {
 .login-section {
   padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important;
+
   .reg-page {
     color: #555;
     padding: 30px;
     background: #fefefe;
     border: solid 1px #eee;
     box-shadow: 0 0 3px #eee;
+
     header {
       color: #555;
       text-align: center;
@@ -1694,6 +1837,7 @@ textarea.theme-textarea {
 .btn-dp-success {
   background-color: $theme-green;
   color: white;
+
   &:hover {
     color: white;
   }

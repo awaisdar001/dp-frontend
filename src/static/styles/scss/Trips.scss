@@ -249,7 +249,7 @@
     font-size: 2rem;
     .item-price-desc {
       font-size: 1rem;
-      color: #c2c2c2;
+      color: $grey-500;
     }
   }
   .item-description {
@@ -298,7 +298,7 @@
       }
       .meta-description {
         a {
-          color: #c2c2c2;
+          color: $grey-600;
           &:hover {
             color: $theme-green;
           }

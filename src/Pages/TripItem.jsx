@@ -1,4 +1,4 @@
-import '../static/styles/css/Trips.css';
+import '../static/styles/scss/Trips.scss';
 
 import React from 'react';
 import { useParams } from 'react-router-dom';

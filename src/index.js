@@ -1,9 +1,8 @@
 import './common/FontAwsome';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './static/styles/css/App.css';
+import './static/styles/scss/App.scss';
 
-// import './static/styles/scss/_variables.scss'
-// import './static/styles/scss/App.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './static/styles/css/App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

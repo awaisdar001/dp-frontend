@@ -1,7 +1,11 @@
+@import '_variables.scss';
 @import "config";
 @import "custom";
+
+
+
 @import "left-menu-bar";
 @import "timeline";
 @import "popular-feeds";
 
-//@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap/scss/bootstrap.scss';

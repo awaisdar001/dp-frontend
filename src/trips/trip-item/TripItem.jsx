@@ -61,7 +61,7 @@ export default function TripItem({ slug }) {
             <Col lg={9}>
               <div className="item-detail">
                 <Title className="float-left" name={trip.name} url="#" />
-                <TitlePrice className={'float-right'} tripMinPrice={trip.minPrice} />
+                <TitlePrice className="float-right" tripMinPrice={trip.minPrice} />
                 <TripHighlights trip={tripHighlights} />
                 <hr />
                 <div className="item-description">
