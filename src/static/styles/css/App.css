@@ -2,12 +2,12 @@ html,
 body {
   font-size: 14px !important;
   font-family: "Lato", sans-serif;
-  color: #555;
+  color: #555555;
 }
 
 body {
   line-height: 1.8rem;
-  background-color: #fff;
+  background-color: #FFFFFF;
 }
 
 input,
@@ -113,7 +113,7 @@ h6.hl {
 
 h1 {
   font-family: "Lato", sans-serif;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -127,7 +127,7 @@ h1 small {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h1 svg {
@@ -140,13 +140,13 @@ h1 svg {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h2 {
   font-family: "Lato", sans-serif;
   font-size: 24px;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -159,7 +159,7 @@ h2 small {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h2 svg {
@@ -187,14 +187,14 @@ h2 svg {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h3 {
   font-family: "Lato", sans-serif;
   font-size: 20px;
   line-height: 27px;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -217,7 +217,7 @@ h3 small {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h3 svg {
@@ -239,14 +239,14 @@ h3 svg {
   font-size: 65%;
   font-weight: 400;
   line-height: 1;
-  color: #999;
+  color: #999999;
 }
 
 h4 {
   font-family: "Lato", sans-serif;
   line-height: 25px;
   font-size: 18px;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -261,7 +261,7 @@ h5 {
   font-family: "Lato", sans-serif;
   line-height-step: 1.8rem;
   font-size: 14px;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -275,7 +275,7 @@ h5 svg {
 h6 {
   font-family: "Lato", sans-serif;
   line-height: 18px;
-  color: #555;
+  color: #555555;
   margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: none;
@@ -291,12 +291,12 @@ a:focus,
 a:hover,
 a:active {
   outline: 0 !important;
-  color: #7ed12d;
+  color: #7ED12D;
   text-decoration: none;
 }
 
 a {
-  color: #555;
+  color: #555555;
   text-decoration: none;
   transition: color 0.3s ease-out;
 }
@@ -304,7 +304,7 @@ a {
 p,
 li,
 li a {
-  color: #555;
+  color: #555555;
 }
 
 .radio,
@@ -325,7 +325,7 @@ button:hover {
 .headline {
   display: block;
   margin: 10px 0 25px 0;
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px dotted #DDDDDD;
 }
 
 .headline h2 {
@@ -333,21 +333,21 @@ button:hover {
   margin: 0 0 -2px 0;
   padding-bottom: 5px;
   display: inline-block;
-  border-bottom: 2px solid #72c02c;
+  border-bottom: 2px solid #72C02C;
 }
 
 .headline h3 {
   margin: 0 0 -2px 0;
   padding-bottom: 5px;
   display: inline-block;
-  border-bottom: 2px solid #72c02c;
+  border-bottom: 2px solid #72C02C;
 }
 
 .headline h4 {
   margin: 0 0 -2px 0;
   padding-bottom: 5px;
   display: inline-block;
-  border-bottom: 2px solid #72c02c;
+  border-bottom: 2px solid #72C02C;
 }
 
 .headline-md {
@@ -376,7 +376,7 @@ button:hover {
   width: 70%;
   position: absolute;
   border-width: 1px;
-  border-color: #ddd;
+  border-color: #DDDDDD;
   left: 100%;
 }
 
@@ -423,7 +423,7 @@ button:hover {
 
 .dp-checkbox .checkbox-item input[type="checkbox"]:checked + label:before {
   content: "\2713";
-  color: #7ed12d;
+  color: #7ED12D;
   background-color: #fff;
 }
 
@@ -442,13 +442,13 @@ span.badge {
   font-size: 12px;
   font-weight: 400;
   padding: 4px 7px;
-  color: #fff;
+  color: #FFFFFF;
   border-radius: 10px;
 }
 
 span.label-u,
 span.badge-u {
-  background: #7ed12d;
+  background: #7ED12D;
 }
 
 a.dp-hover-opacity:hover {
@@ -499,7 +499,7 @@ a.dp-hover-opacity:hover {
 }
 
 .attr-tags ul.dp-tags a:hover {
-  background: #72c02c;
+  background: #72C02C;
 }
 
 form.center-label label {
@@ -511,30 +511,13 @@ form.center-label label {
   border-radius: 0;
 }
 
-.btn-success {
-  background-color: #7ed12d;
-  background: linear-gradient(to bottom, #7ed12d, #72c02c);
-  background: -moz-linear-gradient(to bottom, #7ed12d, #72c02c);
-  border: 1px solid transparent;
-}
-
-.btn-success:hover, .btn-success:active, .btn-success:active, .btn-success:focus {
-  background-color: #72c02c;
-  border: 1px solid transparent;
-}
-
-.btn-success:not(:disabled):not(.disabled):active {
-  border: 1px solid transparent;
-  background-color: #72c02c;
-}
-
 .btn-success.active {
-  background-color: #72c02c !important;
+  background-color: #72C02C !important;
   border: 1px solid transparent !important;
 }
 
 .text-success {
-  color: #7ed12d !important;
+  color: #7ED12D !important;
 }
 
 .pac-container {
@@ -560,7 +543,7 @@ form.center-label label {
 }
 
 .section-header h1 span {
-  border-bottom: 5px solid #72c02c;
+  border-bottom: 5px solid #72C02C;
   padding-bottom: 10px;
 }
 
@@ -587,12 +570,12 @@ form.center-label label {
 
 .tag-box-v1 {
   border: solid 1px #eee;
-  border-top: solid 2px #72c02c;
+  border-top: solid 2px #72C02C;
 }
 
 /* =xxx= Tag boxes =xxx= */
 .service-block-u {
-  background: #72c02c;
+  background: #72C02C;
 }
 
 .service-block-blue {
@@ -707,7 +690,7 @@ form.center-label label {
 
 .sidebar-nav-v1 ul li:hover a,
 .sidebar-nav-v1 ul li.active a {
-  color: #72c02c;
+  color: #72C02C;
 }
 
 .list-group-item li > .badge {
@@ -890,7 +873,7 @@ form.center-label label {
 }
 
 .profile .name-location span i {
-  color: #72c02c;
+  color: #72C02C;
   font-size: 18px;
   margin-right: 5px;
 }
@@ -1025,7 +1008,7 @@ form.center-label label {
 }
 
 .text-green {
-  color: #72c02c;
+  color: #72C02C;
 }
 
 .links-tabs .nav-tabs {
@@ -1040,7 +1023,7 @@ form.center-label label {
   background: #fff;
   padding: 7px 15px 9px;
   border: solid 1px #dee2e6;
-  border-top: solid 2px #72c02c;
+  border-top: solid 2px #72C02C;
   border-bottom: none !important;
 }
 
@@ -1048,7 +1031,7 @@ form.center-label label {
   margin-bottom: 15px;
   border: 0;
   background: 0;
-  border-bottom: solid 2px #7ed12d;
+  border-bottom: solid 2px #7ED12D;
   padding-bottom: 4px;
 }
 
@@ -1075,7 +1058,7 @@ form.center-label label {
 .tab-v1 .nav-tabs > .active > a:focus {
   color: #fff;
   border: 0;
-  background: #7ed12d;
+  background: #7ED12D;
 }
 
 .tab-v1 .nav-tabs > li > a {
@@ -1084,7 +1067,7 @@ form.center-label label {
 
 .tab-v1 .nav-tabs > li > a:hover,
 .tab-v1 .nav-tabs > li > a.active {
-  background: #7ed12d;
+  background: #7ED12D;
   color: #fff;
 }
 
@@ -1109,7 +1092,7 @@ form.center-label label {
 }
 
 .blog h1 a:hover {
-  color: #72c02c;
+  color: #72C02C;
   text-decoration: none;
 }
 
@@ -1457,12 +1440,12 @@ form.center-label label {
 
 /*Panel Green*/
 .panel-green {
-  border-color: #5fb611;
+  border-color: #5FB611;
 }
 
 .panel-green > .panel-heading {
-  background: #72c02c;
-  border-color: #5fb611;
+  background: #72C02C;
+  border-color: #5FB611;
   color: #fff;
   padding: 5px 15px;
 }
@@ -1488,7 +1471,7 @@ form.center-label label {
 .tag-box-v2 {
   background: #fafafa;
   border: solid 1px #eee;
-  border-left: solid 2px #72c02c;
+  border-left: solid 2px #72C02C;
 }
 
 .faq-bg-cover {
@@ -1736,11 +1719,11 @@ textarea.theme-textarea:focus {
 }
 
 .bg-dp-success {
-  background-color: #7ed12d;
+  background-color: #7ED12D;
 }
 
 .btn-dp-success {
-  background-color: #7ed12d;
+  background-color: #7ED12D;
   color: white;
 }
 
@@ -1757,13 +1740,13 @@ textarea.theme-textarea:focus {
 }
 
 #filter-feeds #filter-by-block h1 {
-  color: #fff;
+  color: #FFFFFF;
   width: 100%;
   font-size: 24px;
   padding: 7px 10px;
   text-align: center;
   margin-bottom: 5px;
-  background: #7ed12d;
+  background: #7ED12D;
   text-transform: uppercase;
 }
 
@@ -1815,13 +1798,13 @@ textarea.theme-textarea:focus {
 #filter-feeds #filter-by-block #btn-reset {
   background: 0;
   color: #555;
-  border: solid 1px #7ed12d;
+  border: solid 1px #7ED12D;
   border-radius: 0;
   margin-bottom: 30px;
 }
 
 #filter-feeds #filter-by-block #btn-reset:hover {
-  background: #5fb611;
+  background: #5FB611;
   color: #fff;
 }
 
@@ -1912,11 +1895,11 @@ textarea.theme-textarea:focus {
 }
 
 .cbp_tmlabel h2 {
-  margin-top: 0px;
+  margin-top: 0;
   font-size: 20px;
   padding: 0 0 5px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #DDDDDD;
 }
 
 .cbp_tmlabel h2 svg {
@@ -1953,13 +1936,13 @@ textarea.theme-textarea:focus {
 }
 
 .cbp_tmlabel .timeline-tags a:hover {
-  background: #7ed12d;
-  color: #fff;
-  border-color: #7ed12d;
+  background: #7ED12D;
+  color: #FFFFFF;
+  border-color: #7ED12D;
 }
 
 .cbp_tmlabel .timeline-tags a:hover::before {
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .timeline-icon {
@@ -1968,8 +1951,8 @@ textarea.theme-textarea:focus {
   width: 10px;
   height: 10px;
   position: absolute;
-  background: #7ed12d;
-  color: #7ed12d;
+  background: #7ED12D;
+  color: #7ED12D;
   margin: 0 0 0 -17px;
   box-shadow: 0 0 0 4px #f3f3f3;
   border-radius: 50%;
@@ -2218,11 +2201,11 @@ textarea.theme-textarea:focus {
   height: 60px;
   padding: 2px;
   margin-top: 2px;
-  border: solid 1px #ddd;
+  border: solid 1px #DDDDDD;
 }
 
 .posts .dl-horizontal dt img:hover {
-  border-color: #7ed12d;
+  border-color: #7ED12D;
 }
 
 .posts .dl-horizontal dd {
@@ -2234,7 +2217,7 @@ textarea.theme-textarea:focus {
 ul.dp-updates li {
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #EEEEEE;
 }
 
 ul.dp-updates h3 {
@@ -2244,11 +2227,11 @@ ul.dp-updates h3 {
 }
 
 ul.dp-updates small {
-  color: #777;
+  color: #777777;
 }
 
 ul.dp-updates small a {
-  color: #777;
+  color: #777777;
 }
 
 ul.dp-updates small + small::before {
@@ -2271,12 +2254,12 @@ ul.pop-questions-list .question-item .questions-div svg {
 }
 
 ul.pop-questions-list .question-item .questions-div small.post-meta {
-  color: #777;
+  color: #777777;
   display: block;
 }
 
 ul.pop-questions-list .question-item .questions-div small.post-meta a {
-  color: #777;
+  color: #777777;
 }
 
 ul.pop-questions-list .question-item .questions-div small.post-meta span + span::before {

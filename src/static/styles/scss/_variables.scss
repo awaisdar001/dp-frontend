@@ -1,0 +1,51 @@
+
+
+// Brand Color Shades.
+$theme-green: #7ED12D;
+$theme-green-200: #72C02C;
+$theme-green-300: #5FB611;
+
+$primary: $theme-green;
+$success: $theme-green;
+$green: $theme-green;
+
+$color-white: #FFFFFF;
+$grey-100: #F9F9F9;
+$grey-200: #F3F3F3;
+$gray-300: #EEEEEE;
+$gray-400: #DDDDDD; // used for border colors.
+$grey-500: #999999;
+$grey-600: #777777;
+$grey-700: #555555;
+$grey-800: #515151;
+
+
+
+$theme-black: #303030;
+$footer-color: #272727;
+
+$font-lato-serif: "Lato", sans-serif;
+
+$text-color: $grey-700;
+
+//$green: red;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "primary":         $primary,
+    //"brand":           $brand,
+    "success":         $success,
+    //"info":            $accent-a,
+    //"warning":         $accent-b,
+    //"danger":          $danger,
+    //"light":           $light,
+    //"dark":            $dark,
+    //"accent-a":        $accent-a,
+    //"accent-b":        $accent-b,
+  ),
+  $theme-colors
+);
+
+$btn-border-radius-lg: 0;
+$btn-font-family: $font-lato-serif;

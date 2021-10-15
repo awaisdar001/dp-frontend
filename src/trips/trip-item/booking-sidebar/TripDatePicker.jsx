@@ -56,21 +56,22 @@ const renderInput = (props) => {
         placeholder={props.placeholder}
         InputProps={{
           disableUnderline: true,
+          readOnly: props.readOnly,
         }}
       />
       <span className="input-icon">
-        <FontAwesomeIcon icon={faCalendar} className="margin-right-3"/>
+        <FontAwesomeIcon icon={faCalendar} className="margin-right-3" />
       </span>
     </div>
   );
 };
 
-const TripDatePicker = ({name, tripDates}) => {
+const TripDatePicker = ({ name, tripDates, readOnly }) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleChange = (date) => {
     setSelectedDate(DateUtils.formatToYearMonthDay(date));
-  }
+  };
   const handleShouldDisplayDate = (day) => {
     const includes = tripDates.includes(DateUtils.formatToYearMonthDay(day));
     return !includes;
@@ -94,6 +95,7 @@ const TripDatePicker = ({name, tripDates}) => {
           maxDate={moment('2022-01-01')}
           animateYearScrolling
           TextFieldComponent={renderInput}
+          readOnly={readOnly}
         />
       </MuiPickersUtilsProvider>
     </MuiThemeProvider>
