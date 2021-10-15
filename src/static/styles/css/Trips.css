@@ -182,7 +182,7 @@
 }
 
 .dp-trips aside.sidebar .search-filter .title {
-  color: #555;
+  color: #555555;
   font-size: 16px;
   font-weight: 400;
   display: block;
@@ -246,7 +246,7 @@
 
 .dp-trips .item-price .item-price-desc {
   font-size: 1rem;
-  color: #c2c2c2;
+  color: #999999;
 }
 
 .dp-trips .item-description {
@@ -265,7 +265,7 @@
 }
 
 .dp-trips .item-rating .rating-wrapper .rating-review-summary {
-  color: #c2c2c2;
+  color: #999999;
   font-size: 1rem;
   display: inline-block;
 }
@@ -284,7 +284,7 @@
   width: 100%;
   vertical-align: middle;
   line-height: 1;
-  color: #c2c2c2;
+  color: #999999;
   font-size: 15px;
   box-sizing: border-box;
 }
@@ -304,7 +304,7 @@
 }
 
 .dp-trips .item-metadata .meta-item .meta-description a {
-  color: #c2c2c2;
+  color: #999999;
 }
 
 .dp-trips .item-metadata .meta-item .meta-description a:hover {

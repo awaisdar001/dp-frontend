@@ -184,7 +184,7 @@
         }
       }
       .title {
-        color: #555;
+        color: $grey-700;
         font-size: 16px;
         font-weight: 400;
         display: block;
@@ -249,7 +249,7 @@
     font-size: 2rem;
     .item-price-desc {
       font-size: 1rem;
-      color: #c2c2c2;
+      color: $grey-500;
     }
   }
   .item-description {
@@ -265,7 +265,7 @@
         color: $theme-green;
       }
       .rating-review-summary {
-        color: #c2c2c2;
+        color: $grey-500;
         font-size: 1rem;
         display: inline-block;
         &:before {
@@ -283,7 +283,7 @@
     width: 100%;
     vertical-align: middle;
     line-height: 1;
-    color: #c2c2c2;
+    color: $grey-500;
     font-size: 15px;
     box-sizing: border-box;
     .meta-item {
@@ -298,7 +298,7 @@
       }
       .meta-description {
         a {
-          color: #c2c2c2;
+          color: $grey-500;
           &:hover {
             color: $theme-green;
           }

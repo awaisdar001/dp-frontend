@@ -511,6 +511,27 @@ form.center-label label {
   border-radius: 0;
 }
 
+.btn-success {
+  background-color: #7ED12D;
+  background: linear-gradient(to bottom, #7ED12D, #72C02C);
+  background: -moz-linear-gradient(to bottom, #7ED12D, #72C02C);
+  border: 1px solid transparent;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:active, .btn-success:focus {
+  background-color: #72C02C;
+  border: 1px solid transparent;
+}
+
+.btn-success:not(:disabled):not(.disabled):active {
+  border: 1px solid transparent;
+  background-color: #72C02C;
+}
+
+.btn-success.disabled, .btn-success:disabled {
+  border: #5FB611;
+}
+
 .btn-success.active {
   background-color: #72C02C !important;
   border: 1px solid transparent !important;
