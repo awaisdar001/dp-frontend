@@ -436,6 +436,9 @@ form.center-label {
     border: 1px solid transparent;
     background-color: $theme-green-200;
   }
+  &.disabled, &:disabled {
+    border: $theme-green-300;
+  }
 }
 .btn-success.active {
   background-color: $theme-green-200 !important;

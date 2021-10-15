@@ -11,6 +11,7 @@ import {
   normalizeUser,
   toBr,
   transformQueryString,
+  TripAvailability,
 } from '../../utils';
 
 // URLs.js
@@ -23,7 +24,9 @@ export const getTripDetailURL = (slug) => `${TRIP_DETAIL_URL}/${slug}`;
 // api.js
 export async function getTrip(slug) {
   const { data } = await getAuthenticatedHttpClient().get(`${TRIP_DETAIL_API_URL}/${slug}/`);
-  return normalizeTripData(data);
+
+  const tripData = normalizeTripData(data);
+  return tripData;
 }
 
 const normalizeTripData = (trip) => {
@@ -36,7 +39,7 @@ const normalizeTripData = (trip) => {
   const tripData = {
     trip: {
       ...normalizeTrip(trip),
-      schedules: createTripSchedules(trip.trip_availability),
+      schedules: new TripAvailability(camelCaseObject(trip.trip_availability)).getFormattedDates(),
     },
     categories: tripCategories.concat(tripPrimaryCategory),
     users: [normalizeUser(trip, 'created_by')],
@@ -47,26 +50,40 @@ const normalizeTripData = (trip) => {
   return camelCaseObject(tripData);
 };
 
-const createTripSchedules = ({ type, options }) => {
+const createTripSchedules = ({ type, dateTo, options, ...rest }) => {
   const today = moment();
+  const beginDate = today.clone();
+  const mo = moment;
+  let scheduleDates = [];
   if (type === 'Daily') {
-    let newSchedules = [];
-    const scheduleFrom = DateUtils.getDateFromMilliSec(options['date_from'], false);
-    const scheduleTo = DateUtils.getDateFromMilliSec(options['date_to'], false);
+    const startDate = DateUtils.getDateFromTimestamp(options['date_from'], false);
+    const endDate = DateUtils.getDateFromTimestamp(options['date_to'], false);
+    // number of days until end-date.
+    // Days in past : -10 days (10 days passed after last date, no need schedules remaining).
+    // Days in future: 10 days (10 days remaining)
+    const daysUntilEndDate = today.diff(endDate, 'days') * -1;
 
-    const upcomingScheduleDays = today.diff(scheduleTo, 'days');
-
-    const schedulesAreInProgress = today.diff(scheduleFrom, 'days') > 0;
-    const hasUpcomingSchedules = upcomingScheduleDays < 0;
-
-    if (hasUpcomingSchedules && schedulesAreInProgress) {
-      // Array(-1) (of a negative number) would fail, that's why need to multiply the number with -1.
-      newSchedules = [...Array(upcomingScheduleDays * -1 + 2)].map((_, i) => {
-        return today.clone().add(i, 'days').format('YYYY-MM-DD');
-      });
+    while (beginDate.isSameOrBefore(endDate, 'date')) {
+      if (beginDate.isSameOrAfter(today, 'date')) {
+        scheduleDates.push(beginDate);
+      }
+      beginDate.add(1, 'day');
     }
-    return newSchedules;
+  } else if (type === 'Weekly') {
+    const daysOfWeek = options.dayOfWeek;
+    const endDate = moment(dateTo);
+    while (beginDate.isSameOrBefore(endDate, 'date')) {
+      if (beginDate.isSameOrAfter(today, 'date') && daysOfWeek.includes(beginDate.isoWeekday())) {
+        scheduleDates.push(beginDate);
+      }
+      beginDate.add(1, 'day');
+    }
+  } else if (type === 'FixDate') {
+    scheduleDates = options.dates
+      .map((date) => DateUtils.getDateFromTimestamp(date, false))
+      .filter((date) => date.isSameOrAfter(today, 'date'));
   }
+  return scheduleDates.map((date) => date.format('YYYY-MM-DD'));
 };
 
 /**
@@ -141,7 +158,6 @@ const normalizeTrip = (trip) => ({
   })),
 });
 
-
 const normalizeHost = (host) => {
   const tripHostRating = host.rating;
 
@@ -179,8 +195,8 @@ const getTripsListURL = (options) => {
     ['duration_to', maxDay],
     ['price_from', minPrice],
     ['price_to', maxPrice],
-    ['date_from', DateUtils.getDateFromMilliSec(minDate)],
-    ['date_to', DateUtils.getDateFromMilliSec(maxDate)],
+    ['date_from', DateUtils.getDateFromTimestamp(minDate)],
+    ['date_to', DateUtils.getDateFromTimestamp(maxDate)],
   ]);
   return `${TRIPS_LIST}/?${queryString}`;
 };
