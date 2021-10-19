@@ -11,7 +11,7 @@ const step = 86400000;
 const DateSlider = ({ minDate, maxDate, onChange }) => {
   const [dates, setDates] = React.useState([minDate, maxDate]);
 
-  const formatToDayMonth = (number) => DateUtils.formatToDayMonth(DateUtils.getDateFromMilliSec(number, false));
+  const formatToDayMonth = (number) => DateUtils.formatToDayMonth(DateUtils.getDateFromTimestamp(number, false));
 
   const Heading = () => (
     <Typography id={id} gutterBottom>
