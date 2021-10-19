@@ -7,29 +7,29 @@ import {withSidebar} from '../../../common';
 import TripDatePicker from './TripDatePicker';
 
 const BookingSideBar = ({tripDates}) => {
-  const readOnly = Boolean(tripDates);
+  const readOnly = tripDates.length < 0;
 
   return (
     <div>
-      <TripDatePicker name="trip-date" tripDates={tripDates} readOnly/>
+      <TripDatePicker name="trip-date" tripDates={tripDates} readOnly={readOnly}/>
 
       <div className="input-with-icon">
-        <input type="text" placeholder="Name*" name="name" readOnly />
+        <input type="text" placeholder="Name*" name="name" readOnly={readOnly}/>
         <span className="input-icon">
-          <FontAwesomeIcon icon={faEdit} className="margin-right-3" />
+          <FontAwesomeIcon icon={faEdit} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
         <NumberFormat
+          name="phone"
           format="+92 (###) #######"
           allowEmptyFormatting
           mask="_"
-          name="phone"
-          readOnly
+          readOnly={readOnly}
         />
         <span className="input-icon">
-          <FontAwesomeIcon icon="phone" className="margin-right-3" />
+          <FontAwesomeIcon icon="phone" className="margin-right-3"/>
         </span>
       </div>
 
@@ -39,25 +39,25 @@ const BookingSideBar = ({tripDates}) => {
           format="#####-#######-#"
           placeholder="CNIC*"
           mask="_"
-          readOnly
+          readOnly={readOnly}
         />
         <span className="input-icon">
-          <FontAwesomeIcon icon={faIdCard} className="margin-right-3" />
+          <FontAwesomeIcon icon={faIdCard} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <input type="email" placeholder="Email*" name="email" readOnly />
+        <input type="email" placeholder="Email*" name="email" readOnly={readOnly}/>
         <span className="input-icon">
-          <FontAwesomeIcon icon={faEnvelope} className="margin-right-3" />
+          <FontAwesomeIcon icon={faEnvelope} className="margin-right-3"/>
         </span>
       </div>
 
       <div className="input-with-icon">
-        <textarea name="message" placeholder="Message" rows="7" readOnly />
+        <textarea name="message" placeholder="Message" rows="7" readOnly={readOnly}/>
       </div>
 
-      <button type="submit" className="btn btn-success btn-block btn-lg" disabled>
+      <button type="submit" className="btn btn-success btn-block btn-lg" disabled={readOnly}>
         Book My Trip
       </button>
     </div>
