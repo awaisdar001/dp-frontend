@@ -163,41 +163,19 @@ describe('Test DateUtils', () => {
       expect(normalizedUser).toBeUndefined();
     });
 
-    test('normalizeLocation should return expected data', () => {
-      const location = { name: 'boston', slug: 'boston', coordinates: '00,11' };
-      let normalizedLocation = normalizeLocation(location);
-
-      expect(normalizedLocation).toMatchObject({
-        ...location,
-        id: location.slug,
-        lat: 0,
-        lng: 11,
-      });
-    });
-
-    test('normalizeLocation should return expected float type data', () => {
-      const location = { name: 'boston', slug: 'boston', coordinates: '-73.210210,64.093826' };
-      let normalizedLocation = normalizeLocation(location);
-
-      expect(normalizedLocation).toMatchObject({
-        ...location,
-        id: location.slug,
-        lat: -73.21021,
-        lng: 64.093826,
-      });
-    });
-
     test.each([
-      [{ name: 'boston', slug: 'boston', coordinates: 'aa,bb' }],
-      [{ name: 'boston', slug: 'boston' }],
-    ])('.normalizeLocation(%o) should return  0 when coordinates are not available', (location) => {
+      [{ name: 'boston', slug: 'boston', coordinates: '-73.210210,64.093826' }, -73.21021, 64.093826],
+      [{ name: 'boston', slug: 'boston', coordinates: '00,11' }, 0, 11],
+      [{ name: 'boston', slug: 'boston', coordinates: 'aa,bb' },0,0],
+      [{ name: 'boston', slug: 'boston' }, 0, 0],
+    ])('.normalizeLocation(%o) should return  0 when coordinates are not available', (location, lat, lng) => {
       let normalizedLocation = normalizeLocation(location);
 
       expect(normalizedLocation).toMatchObject({
         ...location,
         id: location.slug,
-        lat: 0,
-        lng: 0,
+        lat: lat,
+        lng: lng,
       });
     });
 
