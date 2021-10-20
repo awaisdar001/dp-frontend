@@ -153,18 +153,13 @@ describe('Test DateUtils', () => {
       expect(normalizedUser).toMatchObject({ ...user.created_by, id: 'foobar' });
     });
 
-    test('normalizeUser should return undefined', () => {
-      let normalizedUser = normalizeUser({}, 'created_by');
-      const noUsername = { created_by: { uId: 'foobar', full_name: 'Foo Bar' } };
-      expect(normalizedUser).toBeUndefined();
-
-      normalizedUser = normalizeUser({ updated_by: { username: 'foobar' } }, 'created_by');
-      expect(normalizedUser).toBeUndefined();
-
-      normalizedUser = normalizeUser(undefined, 'created_by');
-      expect(normalizedUser).toBeUndefined();
-
-      normalizedUser = normalizeUser(noUsername, 'created_by');
+    test.each([
+      [{}, 'created_by'],
+      [undefined, 'created_by'],
+      [{ updated_by: { username: 'foobar' } }, 'created_by'],
+      [{ created_by: { uId: 'foobar', full_name: 'Foo Bar' } }, 'created_by'],
+    ])('.normalizeUser(%o) should return undefined', (userInfo, _key) => {
+      const normalizedUser = normalizeUser(userInfo, _key);
       expect(normalizedUser).toBeUndefined();
     });
 
@@ -192,20 +187,10 @@ describe('Test DateUtils', () => {
       });
     });
 
-    test('normalizeLocation should return 0 when invalid coordinates', () => {
-      const location = { name: 'boston', slug: 'boston', coordinates: 'aa,bb' };
-      let normalizedLocation = normalizeLocation(location);
-
-      expect(normalizedLocation).toMatchObject({
-        ...location,
-        id: location.slug,
-        lat: 0,
-        lng: 0,
-      });
-    });
-
-    test('normalizeLocation should return 0 when coordinates are not available', () => {
-      const location = { name: 'boston', slug: 'boston' };
+    test.each([
+      [{ name: 'boston', slug: 'boston', coordinates: 'aa,bb' }],
+      [{ name: 'boston', slug: 'boston' }],
+    ])('.normalizeLocation(%o) should return  0 when coordinates are not available', (location) => {
       let normalizedLocation = normalizeLocation(location);
 
       expect(normalizedLocation).toMatchObject({
@@ -262,7 +247,7 @@ describe('Test DateUtils', () => {
       },
     );
 
-    test.each(_.chunk(_.range(5.1, 10, 0.1), 1))(
+    test.each(_.chunk(_.range(6, 10, 1), 1))(
       '.getRatingFeedback(%f) returns "Outstanding" above 5',
       (rating) => {
         expect(getRatingFeedback(rating)).toEqual('Outstanding');
