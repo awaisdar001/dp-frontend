@@ -4,30 +4,49 @@ import snakeCase from 'lodash.snakecase';
 import moment from 'moment';
 import React from 'react';
 
-import {hostRatingMappings} from './trips/data/enums';
+import { hostRatingMappings } from './trips/data/enums';
 
 export const DateFormats = {
   DayMonth: 'DD MMM', // 10 Oct
   YearMonthDate: 'YYYY-MM-DD', // 2020-10-10
 };
 
-
 export class DateUtils {
-  static getDateFromTimestamp(number, format = true) {
+  /** getDateFromTimestamp static method for getting date instance from miliseconds.
+   * @param  {number} number [miliseconds representation of date.]
+   * @param  {string} format [Date format.]
+   * @returns {Moment|string} for date representation.
+   * */
+  static getDateFromTimestamp(number, format = DateFormats.YearMonthDate) {
     const date = moment(number);
     if (format) {
-      return this.formatToYearMonthDay(date);
+      return date.format(format);
     }
     return date;
   }
-
+  /**
+   *
+   * @param {Moment} date
+   * @returns {string} date representation.
+   */
   static formatToYearMonthDay(date) {
-    return date.format('YYYY-MM-DD');
+    return date.format(DateFormats.YearMonthDate);
+  }
+  /**
+   *
+   * @param {Moment} date
+   * @returns {string} date representation.
+   */
+  static formatToDayMonth(date) {
+    return date.format(DateFormats.DayMonth);
   }
 
-  static formatToDayMonth(date) {
-    return date.format('DD MMM');
-  }
+  /** getDateFromMilliSec static method for getting miliseconds from date instance.
+   * @param  {Number} number [string date format.]
+   * @returns {Moment} date instance.
+   * */
+  static getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
+    moment(number).format(format);
 }
 
 /** TripAvailability is used to get spcific set of dates for which a trip is available. */
@@ -57,7 +76,7 @@ export class TripAvailability {
    * @param  {Number} rest.price [Number indicating the price of the trip]
    * @param  {Boolean} rest.is_per_person_price [Boolean indicating if the price is per person or group.]
    */
-  constructor({type, dateTo, options, ...rest}) {
+  constructor({ type, dateTo, options, ...rest }) {
     this.type = type;
     this.dateTo = dateTo;
     this.options = options;
@@ -66,7 +85,10 @@ export class TripAvailability {
     this.scheduleDates = this.getDates();
   }
 
-  /** getDates is called by constructor & can be called publicly.  */
+  /**
+   * getDates is called by constructor & can be called publicly.
+   * @returns {[Moment]}
+   * */
   getDates = () => {
     if (this.type === TripAvailability.TYPE.Daily) {
       return this._getDailyScheduleDates();
@@ -77,10 +99,11 @@ export class TripAvailability {
     } else {
       return [];
     }
-  }
+  };
 
   /** formattedDates public method which can be used to get formatted dates.
    * @param  {String} dateFormat [string date format.]
+   * * @returns {[string]}
    * */
   getFormattedDates(dateFormat = 'YYYY-MM-DD') {
     return this.scheduleDates.map((date) => date.format(dateFormat));
@@ -89,6 +112,7 @@ export class TripAvailability {
   /**
    * _getDailyScheduleDates private method for calculating daily schedules.
    * @private
+   * @returns {[Moment]}
    **/
   _getDailyScheduleDates() {
     const beginDate = this.today.clone();
@@ -108,6 +132,7 @@ export class TripAvailability {
   /**
    * _getWeeklyScheduleDates private method for calculating weekly schedules.
    * @private
+   * @returns {[Moment]}
    **/
   _getWeeklyScheduleDates() {
     const beginDate = this.today.clone();
@@ -116,7 +141,7 @@ export class TripAvailability {
     const scheduleDates = [];
 
     while (beginDate.isSameOrBefore(endDate, 'date')) {
-      const dateWeekDateIsRequired = daysOfWeek.includes(beginDate.isoWeekday())
+      const dateWeekDateIsRequired = daysOfWeek.includes(beginDate.isoWeekday());
       if (this._includeDate(beginDate) && dateWeekDateIsRequired) {
         scheduleDates.push(beginDate.clone());
       }
@@ -128,11 +153,12 @@ export class TripAvailability {
   /**
    * _getWeeklyScheduleDates private method for getting fixed date schedules.
    * @private
+   * @returns {[Moment]}
    **/
   _getFixDateScheduleDates() {
     const scheduleDates = this.options.dates
       .map((date) => moment(date))
-      .filter(date => this._includeDate(date));
+      .filter((date) => this._includeDate(date));
     return scheduleDates;
   }
 
@@ -142,6 +168,7 @@ export class TripAvailability {
    * @private
    * @param  {Date} inputDate [Date (moment) instance]
    * @param  {Date} compareDateWith [Date (moment) instance]
+   * @returns {Boolean}
    **/
   _isSameOrAfter(inputDate, compareDateWith) {
     return inputDate.isSameOrAfter(compareDateWith, 'date');
@@ -151,6 +178,7 @@ export class TripAvailability {
    * _includeDate returns boolean if date is today or in future
    * @private
    * @param  {Date} date [Date (moment) instance]
+   * @returns {Boolean}
    * **/
   _includeDate(date) {
     return this._isSameOrAfter(date, this.today);
@@ -200,9 +228,6 @@ export function snakeCaseObject(object) {
   return modifyObjectKeys(object, snakeCase);
 }
 
-export const getDateFromMilliSec = (number, format = DateFormats.DayMonth) =>
-  moment(number).format(format);
-
 /*
  * Convert all returns into HTML line break elements.
  * @param data{str} object
@@ -211,7 +236,7 @@ export const toBr = (data) => {
   return data.replace(/(?:\r\n|\r|\n)/g, '<br />');
 };
 
-export const NewLineToBr = ({children = ''}) => {
+export const NewLineToBr = ({ children = '' }) => {
   return children.split('\n').reduce((arr, line, index) => {
     const addP = <p key={index}>{line}</p>;
     if (line) {
@@ -227,56 +252,44 @@ export const transformQueryString = (queryArray) =>
     .map((keywords) => `${keywords[0]}=${keywords[1]}`)
     .reduce((queryItem, result) => `${queryItem}&${result}`);
 
-export const buildQueryString = (dataArray, name, key = 'name') =>
-  /*
-    Given a list object, builds querystring
-
-    dataArray ([]): list which contains dict objects. [{key: "value"}, {key: "value2"}]
-    name (str): keyword name to be used while building querystring. name=value&name=value2
-    key(str): key to be used for getting the data from dataArray. 
-
-    */
-
+/*
+ * Given a list object, builds querystring
+ * @param  {[]} dataArray [list which contains dict objects. [{key: "value"}, {key: "value2"}]]
+ * @param {str} name [keyword name to be used while building querystring. name=value&name=value2]
+ * @returns {str} key [key to be used for getting the data from dataArray. ]
+ */
+export const buildQsFromArray = (dataArray, name, key = 'name') =>
   dataArray.map((item) => `${encodeURIComponent(name)}=${encodeURIComponent(item[key])}`).join('&');
 
-export const getQueryStringParams = (query) => {
-  /* 
-    Get querystring object from the url.
-
-    query (str): querystring part of the url. 
-    Returns: dictionary object with key-value pairs.
-  */
-
-  return query
-    ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce((params, param) => {
-      let [key, value] = param.split('=');
-      params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-      return params;
-    }, {})
-    : {};
-};
-
 export const normalizeBySlug = (data) =>
-  data && {
+  data &&
+  data.slug && {
     ...data,
     id: data.slug,
   };
 
-export const normalizeUser = (data, key) => ({
-  ...data[key],
-  id: data[key].username,
-});
+export const normalizeUser = (data, key) =>
+  data &&
+  data[key]?.username && {
+    ...data[key],
+    id: data[key].username,
+  };
 
 export const normalizeLocation = (location) => {
+  const [defaultLat, defaultLng] = [0, 0];
+  let [locLat, locLng] = [defaultLng, defaultLng];
   let normalizedLocation = normalizeBySlug(location);
-  const [lat, lng] = normalizedLocation.coordinates.split(',');
-  normalizedLocation.lat = parseFloat(lat);
-  normalizedLocation.lng = parseFloat(lng);
+
+  if ('coordinates' in normalizedLocation) {
+    [locLat, locLng] = normalizedLocation.coordinates.split(',');
+    [locLat, locLng] = [parseFloat(locLat) || defaultLat, parseFloat(locLng) || defaultLng];
+  }
+
+  [normalizedLocation.lat, normalizedLocation.lng] = [locLat, locLng];
   return normalizedLocation;
 };
 
-
-export const createMarkup = (html) => ({__html: html});
+export const createMarkup = (html) => ({ __html: html });
 
 export const getRatingFeedback = (rating) => {
   const wholeRating = Math.floor(rating);
@@ -290,15 +303,4 @@ export const getRatingFeedback = (rating) => {
       .filter((key) => wholeRating > key),
   );
   return hostRatingMappings[ratingNumber];
-};
-
-/**
- * Removes duplicates from the data array.
- * Expects data contains objects with "id" keys.
- * @param data
- */
-export const filterDuplicatesFromList = (data) => {
-  const uniques = {}
-  data.forEach(item => uniques[item.id] = item);
-  return Object.keys(uniques).map(key => uniques[key]);
 };

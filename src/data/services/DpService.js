@@ -1,4 +1,4 @@
-import { buildQueryString as qs } from '../../utils';
+import { buildQsFromArray as qs } from '../../utils';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
