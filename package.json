@@ -2,9 +2,7 @@
   "name": "dp-frontend",
   "version": "0.1.0",
   "private": true,
-  "jest": {
-
-  },
+  "jest": {},
   "dependencies": {
     "@date-io/moment": "1.3.13",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
