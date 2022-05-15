@@ -28,7 +28,7 @@
     "moment-timezone": "^0.5.31",
     "query-string": "7.0.1",
     "react": "16.14.0",
-    "react-bootstrap": "1.6.1",
+    "react-bootstrap": "2.4.0",
     "react-dom": "16.14.0",
     "react-intersection-observer": "^8.32.1",
     "react-loading-skeleton": "^2.1.1",
