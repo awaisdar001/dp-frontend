@@ -1,19 +1,15 @@
 .media-container {
   margin-top: 40px;
 }
-
 .media-container .video {
   padding: 0 0 60%;
 }
-
 .media-container .map {
   padding: 0 0 40%;
 }
-
 .media-container img {
   max-width: 100%;
 }
-
 .media-container .video,
 .media-container .map {
   position: relative;
@@ -21,7 +17,6 @@
   line-height: 0;
   text-align: center;
 }
-
 .media-container .video iframe,
 .media-container .map iframe {
   position: absolute;

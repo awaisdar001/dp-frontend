@@ -4,10 +4,12 @@ WORKDIR /app/
 
 # Install dependencies
 
-RUN npm install
-
 # Add rest of the client code
 COPY . /app/
+
+RUN npm install
+
+
 
 EXPOSE 3000
 
